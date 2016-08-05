@@ -81,7 +81,7 @@ The name originates from the real variables technique used for prooving the theo
 		\label{est:f0}
 	\end{gather}
 
-	Thus $f_0 \in L^{p_0}(X,\mu)$. Analogously it can be checked, that $\|f_1\|^{p_1}_{L^{p_1}} \leqslant (\delta\alpha)^{p_1 - p}\|f\|_{L^p}^p$ and so $f_1 \in L^{p_1}(X,\mu)$. Therefore $f \equiv f_0 + f_1 \in L^{p_0} + L^{p_1}$.\\
+	Thus $f_0 \in L^{p_0}(X,\mu)$. Analogously it can be checked, that $f_1 \in L^{p_1}(X,\mu)$ by the estimate $\|f_1\|^{p_1}_{L^{p_1}} \leqslant (\delta\alpha)^{p_1 - p}\|f\|_{L^p}^p$. Therefore $f \equiv f_0 + f_1 \in L^{p_0} + L^{p_1}$.\\
 	
 	\emph{Proof of the equality $(\dagger)$.} Assume $\mu$ is defined on the $\sigma$-algebra $\mathcal{A}$. We have to proove that $\{\vert f \vert > \delta\alpha\} \in \mathcal{A}$\footnote{
 		For $Y \in \mathcal{A}$ the $\mu$-integral of $f: X \rightarrow \mathbb{C}$ over $Y$ is defined to be $\displaystyle \int_Y fd\mu := \int_X f \cdot \chi_Y d\mu$. For more details see \cite[135--136]{elstrodt:mass:2011}.}.
@@ -135,7 +135,7 @@ Now by hypothesis (\ref{hyp:fp_0}) we can estimate $d_{T(f_0)}(\alpha/2)$ as fol
 	\end{aligned}
 \end{gather}
 
-Analogously, we get by hypothesis (\ref{hyp:fp_1}) the estimate $d_{T(f_1)}(\alpha/2) \leqslant \left(\frac{A_1}{\alpha/2}\right)^{p_1} \|f_1\|^{p_1}_{L^{p_1}}\label{est:p_1}$.
+Analogously, we get  $d_{T(f_1)}(\alpha/2) \leqslant \left(\frac{A_1}{\alpha/2}\right)^{p_1} \|f_1\|^{p_1}_{L^{p_1}}\label{est:p_1}$ by hypothesis (\ref{hyp:fp_1}).
 
 	\item By
 
@@ -166,14 +166,14 @@ Analogously, we get by hypothesis (\ref{hyp:fp_1}) the estimate $d_{T(f_1)}(\alp
 
 		\begin{gather}
 			\begin{aligned}
-				\|T(f)\|^p_{L^p(Y,\mathcal{B},\nu)} = & p\int_0^{+\infty}\alpha^{p-1}d_{T(f)} d\lambda\\
+				\|T(f)\|^p_{L^p} = & p\int_0^{\infty}\alpha^{p-1}d_{T(f)} d\lambda\\
 				\leqslant & p(2A_0)^{p_0}\int_0^{\infty}\alpha^{p-p_0-1} \int_{\{\vert f \vert > \delta \alpha\}} \vert f\vert^{p_0}d\mu d\lambda\\
-				& + p(2A_1)^{p_1}\int_0^{+\infty}\alpha^{p-p_1-1} \int_{\{\vert f \vert \leqslant \delta \alpha\}} \vert f \vert^{p_1}d\mu d\lambda\\
+				& + p(2A_1)^{p_1}\int_0^{\infty}\alpha^{p-p_1-1} \int_{\{\vert f \vert \leqslant \delta \alpha\}} \vert f \vert^{p_1}d\mu d\lambda\\
 				= & p(2A_0)^{p_0}\int_{\{\vert f \vert > 0\}} \vert f \vert^{p_0} \int_0^{\frac{1}{\delta}\vert f\vert}\alpha^{p-p_0-1} d\lambda d\mu\\
 				& + p(2A_0)^{p_0}\int_{\{\vert f \vert = 0\}} \vert f \vert^{p_0} \int_0^{\frac{1}{\delta}\vert f\vert}\alpha^{p-p_0-1} d\lambda d\mu\\
-				& + p(2A_1)^{p_1}\int_X \vert f\vert^{p_1} \int_{\frac{1}{\delta}\vert f\vert}^{+\infty}\alpha^{p - p_1 - 1} d\lambda d\mu\\
+				& + p(2A_1)^{p_1}\int_X \vert f\vert^{p_1} \int_{\frac{1}{\delta}\vert f\vert}^{\infty}\alpha^{p - p_1 - 1} d\lambda d\mu\\
 				= & p(2A_0)^{p_0}\int_X \vert f \vert^{p_0} \int_0^{\frac{1}{\delta}\vert f\vert}\alpha^{p-p_0-1} d\lambda d\mu\\
-				& + p(2A_1)^{p_1}\int_X \vert f\vert^{p_1} \int_{\frac{1}{\delta}\vert f\vert}^{+\infty}\alpha^{p - p_1 - 1} d\lambda d\mu\\
+				& + p(2A_1)^{p_1}\int_X \vert f\vert^{p_1} \int_{\frac{1}{\delta}\vert f\vert}^{\infty}\alpha^{p - p_1 - 1} d\lambda d\mu\\
 				= & \frac{p(2A_0)^{p_0}}{p-p_0}\frac{1}{\delta^{p-p_0}}\int_X \vert f \vert^{p_0}\vert f \vert^{p-p_0} d\mu\\
 				& + \frac{p(2A_1)^{p_1}}{p_1-p}\frac{1}{\delta^{p-p_1}}\int_X \vert f \vert^{p_1} \vert f\vert^{p-p_1}d\mu\\
 				= & p\left( \frac{(2A_0)^{p_0}}{p - p_0}\frac{1}{\delta^{p - p_0}} + \frac{(2A_1)^{p_1}}{p_1 - p}\delta^{p_1 - p} \right)\|f\|_{L^p}^p
