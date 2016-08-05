@@ -1,0 +1,10 @@
+.DS*
+*.aux
+*.idx
+*.log
+*.blg
+*.out
+*.run*
+*.pyg
+*.bbl
+interpolation-blx.bib

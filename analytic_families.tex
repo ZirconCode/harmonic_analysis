@@ -1,0 +1,161 @@
+\section{Interpolation of Analytic Families of Operators}
+First, we have to extend Hadamard's three lines lemma appropriately (lemma \ref{lemma:HTL}). To do so, we first need some theorems and definitions of complex analyis.
+
+\vspace{2mm}
+
+\begin{mdframed}
+	\begin{theorem}\emph{(The Poisson Formula)}
+		Let $h(e^{i\theta})$ be a continuous function on the unit circle. Then the \emph{Poisson integral} 
+
+		\begin{equation*}
+			\tilde{h}\left( z \right) = \int_{-\pi}^{\pi} h\left( e^{i\varphi} \right) P_r\left( \theta - \varphi \right)\frac{d \lambda(\varphi)}{2\pi} \qquad z := re^{i\theta} \in \mathbb{D} := \{\vert z \vert < 1\}	
+		\end{equation*}
+
+		where 
+
+		\begin{equation}
+			P_r(\theta) := \sum\limits_{k \in \mathbb{Z}} r^{\vert k \vert} e^{ik\theta} \qquad 0 \leqslant r < 1, -\pi \leqslant \theta \leqslant \pi
+		\end{equation}
+
+		denotes the \emph{Poisson kernel function}, is a harmonic function on $\mathbb{D}$ with boundary values $h\left( e^{i\theta} \right)$, that is, $\tilde{h}\left( e^{i\theta} \right)$ tends to $h\left( \zeta \right)$ as $z \in \mathbb{D}$ tends to $\zeta \in \partial\mathbb{D}$.
+		\label{thm:poisson}
+	\end{theorem}
+\end{mdframed}
+
+\begin{proof}
+	A proof can be found in \cite[277--278]{gamelin:complex_analysis:2001}.	
+\end{proof}
+
+Further we introduce the notion of a subharmonic function as found in \cite[394]{gamelin:complex_analysis:2001}.
+
+\vspace{2mm}
+
+\begin{mdframed}
+	\begin{definition}
+		Let $D \subseteq \mathbb{C}$ be a domain (open and path-connected), and let $u: D \rightarrow [-\infty,\infty[$ be continuous. We say that $u(z)$ is \emph{subharmonic} if for each $z_0 \in D$, there is $\varepsilon > 0$ such that $u(z)$ satisfies the mean value inequality
+
+			\begin{equation}
+				u(z_0) \leqslant \int_0^{2\pi} u\left( z_0 + re^{i\theta} \right) \frac{d\lambda(\theta)}{2\pi} \qquad 0 < r < \varepsilon
+			\end{equation}
+	\end{definition}
+\end{mdframed}
+
+\vspace{2mm}
+
+And the notion of a conformal mapping (\cite[59]{gamelin:complex_analysis:2001}).
+
+\vspace{2mm}
+
+\begin{mdframed}
+	\begin{definition}
+		A smooth complex-valued function $g(z)$ (that is, $g(z)$ has as many derivatives as is necessary for whatever is being asserted to be true) is \emph{conformal at $z_0$} if whenever $\gamma_0$, $\gamma_1$ are two curves terminating at $z_0$ with non-zero tangents, then the curves $g \circ \gamma_0$, $g \circ \gamma_1$ have non-zero tangents at $g(z_0)$ and the angle from $\left( g \circ \gamma_0 \right)'(z_0)$ to $\left( g \circ \gamma_1 \right)'(z_0)$ is the same as the angle from $\gamma_0'(z_0)$ to $\gamma_1'(z_0)$. A \emph{conformal mapping} of one domain $D$ onto another $V$ is a continuously differentiable function that is conformal at each point of $D$ and that maps $D$ one-to-one onto $V$.
+	\end{definition}
+\end{mdframed}
+
+\vspace{2mm}
+
+Now we are able to formulate the proof of the extension of Hadamard's three lines lemma.
+
+\vspace{2mm}
+
+\begin{mdframed}
+	\begin{lemma}\emph{(Hadamard's three lines lemma, extension)}
+		Let $F$ be an analytic function on the strip $S := \{z \in \mathbb{C}: 0 < \mathrm{Re}z < 1\}$ and continuous on $\overline{S}$, such that for every $z \in \overline{S}$ we have $\log \vert F(z)\vert \leqslant A e^{\tau \vert \mathrm{Im}z \vert}$ for some $A < \infty$ and $\tau \in [0,\pi[$. Then
+
+			\begin{equation*}
+				\vert F(z) \vert \leqslant \exp\left( \frac{\sin(\pi x)}{2} \int_{-\infty}^\infty \left[ \frac{\log \vert F(it + iy)\vert}{\cosh(\pi t) - \cos(\pi x)} + \frac{\log \vert F(1 + it + iy)\vert}{\cosh(\pi t) + \cos(\pi x)} \right] d\lambda(t)\right)
+			\end{equation*}
+
+			whenever $z := x + iy \in S$.
+	\end{lemma}
+\end{mdframed}
+
+\begin{proof}
+	Consider the function 
+
+	\begin{equation}
+		h(z) := \frac{1}{\pi i}\mathrm{Log}\left( \frac{z + 1}{iz - i} \right) = \frac{1}{\pi} \left( \mathrm{Arg} \left( \frac{1 + z}{1 - z} \right)-i\log\left\vert \frac{1 + z}{1 - z} \right\vert\right)
+	\end{equation}
+
+which maps $\mathbb{D}$ onto $]0,1[ \times \mathbb{R}$.
+\end{proof}
+
+\vspace{2mm}
+
+\begin{mdframed}
+	\begin{definition}\emph{(Analytic family, admissible growth)}
+		Let $(X,\mu)$, $(Y,\nu)$ be measure spaces and $\left( T_z \right)_{z \in \overline{S}}$, where $T_z$ is defined on the space of all finitely simple functions on $X$ and taking values in the space of all measurable functions on $Y$ such that
+
+		\begin{equation}
+			\int_Y \vert T_z(\chi_A)\chi_B \vert d\nu
+		\end{equation}
+
+		whenever $\mu(A),\nu(B) < \infty$. The family $\left( T_z \right)_{z \in \overline{S}}$ is said to be \emph{analytic} if for all $f$, $g$ finitely simple we have that
+
+		\begin{equation}
+			z \mapsto \int_Y T_z(f)gd\nu
+		\end{equation}
+
+		is analytic on $S$ and continuous on $\overline{S}$. Further, an analytic family $\left( T_z \right)_{z \in \overline{S}}$ is called of \emph{admissible growth}, if there is a constant $\tau \in [0,\pi[$, such that for all finitely simple functions $f$, $g$ a constant $C(f,g)$ exists with
+
+			\begin{equation}
+				\log\left\vert \int_Y T_z(f) g d\nu\right\vert \leqslant C(f,g)e^{\tau\vert \mathrm{Im}z\vert}
+			\end{equation}
+
+			for all $z \in \overline{S}$.
+	\end{definition}
+\end{mdframed}
+
+\vspace{2mm}
+
+\begin{mdframed}
+	\begin{theorem}\emph{(Riesz-Thorin interpolation theorem, extension)}
+		Let $\left( T_z \right)_{z \in \overline{S}}$ be an analytic family of admissible growth, $1 \leqslant p_0,p_1,q_0,q_1 \leqslant \infty$ and suppose that $M_0$, $M_1$ are positive functions on the real line such that for some $\tau \in [0,\pi[$
+
+			\begin{equation}
+				\sup\left\{e^{-\tau \vert y \vert} \log M_0(y) : y \in \mathbb{R}\right\} < \infty \qquad \sup\left\{e^{-\tau \vert y \vert} \log M_1(y) : y \in \mathbb{R}\right\} < \infty
+			\end{equation}
+
+			Fix $0 < \theta < 1$ and define
+
+			\begin{equation}
+				\frac{1}{p} := \frac{1 - \theta}{p_0} + \frac{\theta}{p_1} \qquad \frac{1}{q} := \frac{1 - \theta}{q_0} + \frac{\theta}{q_1}
+			\end{equation}
+
+			Further suppose that for all finitely simple functions $f$ on $X$ and $y \in \mathbb{R}$ we have
+
+			\begin{equation}
+				\|T_{iy}(y)\|_{L^{q_0}} \leqslant M_0(y)\|f\|_{L^{p_0}} \qquad \|T_{1 + iy}(y)\|_{L^{q_1}} \leqslant M_1(y)\|f\|_{L^{p_1}} 
+			\end{equation}
+
+			Then for all finitely simple functions $f$ on $X$ we have
+
+			\begin{equation*}
+				\|T_\theta(f)\|_{L^q} \leqslant M(\theta)\|f\|_{L^p}
+			\end{equation*}
+
+			where for $0 < x < 1$
+
+			\begin{equation*}
+				M(x) = \exp\left( \frac{\sin(\pi x)}{2} \int_{-\infty}^\infty \left[ \frac{\log M_0(t)}{\cosh(\pi t) - \cos(\pi x)} + \frac{\log M_1(t)}{\cosh(\pi t) + \cos(\pi x)}\right] d\lambda(t) \right)
+			\end{equation*}
+	\end{theorem}
+\end{mdframed}
+
+\begin{proof}
+	Fix $0 < \theta < 1$ and finitely simple functions $f$, $g$ on $X$, $Y$ respectively with $\|f\|_{L^p} = \|g\|_{L^{q'}} = 1$. Define $f_z$, $g_z$ as in (\ref{def:fzgz}) and for $z \in \overline{S}$
+
+	\begin{equation}
+		F(z) := \int_Y T_z(f_z)g_z d\nu	
+	\end{equation}
+
+	Observe, that $\vert a^{P(z)}_j\vert \leqslant a_j^{p/p_0 + p/p_1}$ and $\vert b^{Q(z)}_k\vert \leqslant b_k^{q'/q'_0 + q'/q'_1}$ for $z \in \overline{S}$. Hence
+
+	\begin{gather}
+		\begin{aligned}
+			\log \vert F(z) \vert &= \log \left\vert \sum_{j = 1}^n\sum_{k = 1}^m a^{P(z)}_j b_j^{Q(z)} e^{i\alpha_j} e^{i\beta_k} \int_YT_z(\chi_{X_j})(y)\chi_{Y_k}(y)d\nu(y)\right\vert\\
+			&\leqslant \log \left( \sum_{j = 1}^n\sum_{k = 1}^m \vert a^{P(z)}_j\vert \vert b_j^{Q(z)}\vert \int_Y\vert T_z(\chi_{X_j})(y)\vert \chi_{Y_k}(y)d\nu(y)\right)\\
+			&\leqslant  \log \left( \sum_{j = 1}^n\sum_{k = 1}^m a_j^{p/p_0 + p/p_1} b_k^{q'/q'_0 + q'/q'_1} \int_{Y_k}\vert T_z(\chi_{X_j})\vert d\nu\right)\\
+		\end{aligned}
+	\end{gather}
+\end{proof}
