@@ -1,6 +1,81 @@
 This is makeindex, version 2.15 [TeX Live 2013] (kpathsea + Thai support).
-Scanning input file interpolation.idx....done (3 entries accepted, 0 rejected).
-Sorting entries....done (5 comparisons).
-Generating output file interpolation.ind....done (13 lines written, 0 warnings).
-Output written in interpolation.ind.
+Scanning input file interpolation.tex...
+!! Input index error (file = interpolation.tex, line = 1):
+   -- Unknown index keyword \input.
+!! Input index error (file = interpolation.tex, line = 3):
+   -- Unknown index keyword \begin.
+!! Input index error (file = interpolation.tex, line = 4):
+   -- Unknown index keyword \begin.
+!! Input index error (file = interpolation.tex, line = 5):
+   -- Unknown index keyword InthiswrittenseminarworkIwillbasicallyfollow\cite[33--48].
+!! Input index error (file = interpolation.tex, line = 6):
+   -- Unknown index keyword \end.
+!! Input index error (file = interpolation.tex, line = 8):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = interpolation.tex, line = 10):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = interpolation.tex, line = 12):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = interpolation.tex, line = 14):
+   -- Unknown index keyword \section.
+!! Input index error (file = interpolation.tex, line = 15):
+   -- Unknown index keyword \subsection.
+!! Input index error (file = interpolation.tex, line = 16):
+   -- Unknown index keyword Firstweneedtohaveapreciseandsuitableideaof\emph.
+!! Input index error (file = interpolation.tex, line = 17):
+   -- Unknown index keyword \vspace.
+!! Input index error (file = interpolation.tex, line = 18):
+   -- Unknown index keyword \begin.
+!! Input index error (file = interpolation.tex, line = 19):
+   -- Unknown index keyword \begin.
+!! Input index error (file = interpolation.tex, line = 20):
+   -- Unknown index keyword Let$(X,\mu)$and$(Y,\nu)$bemeasurespaces.Furtherlet$T$beanoperatordefinedonalinearspaceofcomplex-valuedmeasurablefunctionson$X$andtakingvaluesinthesetofallcomplex-valued,finitealmosteverywhere,measurablefunctionson$Y$.Then$T$iscalled\emph.
+!! Input index error (file = interpolation.tex, line = 22):
+   -- Unknown index keyword \begin.
+!! Input index error (file = interpolation.tex, line = 23):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = interpolation.tex, line = 24):
+   -- Unknown index keyword \label.
+!! Input index error (file = interpolation.tex, line = 25):
+   -- Unknown index keyword \end.
+!! Input index error (file = interpolation.tex, line = 27):
+   -- Unknown index keyword and\emph.
+!! Input index error (file = interpolation.tex, line = 29):
+   -- Unknown index keyword \begin.
+!! Input index error (file = interpolation.tex, line = 30):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = interpolation.tex, line = 31):
+   -- Unknown index keyword \label.
+!! Input index error (file = interpolation.tex, line = 32):
+   -- Unknown index keyword \end.
+!! Input index error (file = interpolation.tex, line = 34):
+   -- Unknown index keyword holdsforsomerealconstant$K>0$.If$K=1$,$T$iscalled\emph.
+!! Input index error (file = interpolation.tex, line = 35):
+   -- Unknown index keyword \end.
+!! Input index error (file = interpolation.tex, line = 36):
+   -- Unknown index keyword \end.
+!! Input index error (file = interpolation.tex, line = 38):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = interpolation.tex, line = 39):
+   -- Unknown index keyword \input.
+!! Input index error (file = interpolation.tex, line = 40):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = interpolation.tex, line = 41):
+   -- Unknown index keyword \input.
+!! Input index error (file = interpolation.tex, line = 42):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = interpolation.tex, line = 43):
+   -- Unknown index keyword \input.
+!! Input index error (file = interpolation.tex, line = 45):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = interpolation.tex, line = 47):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = interpolation.tex, line = 49):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = interpolation.tex, line = 51):
+   -- Missing arguments -- need two (premature LFD).
+!! Input index error (file = interpolation.tex, line = 52):
+   -- Unknown index keyword \end.
+done (0 entries accepted, 38 rejected).
+Nothing written in interpolation.ind.
 Transcript written in interpolation.ilg.

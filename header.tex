@@ -14,8 +14,7 @@
 \documentclass[
 	10pt, 
 	oneside, 
-	a4paper, 
-	footsepline
+	a4paper
 ]{amsart}
 
 \usepackage[
@@ -46,12 +45,16 @@
 	\fancyfoot[C]{\thepage}
 	%Separation line header and footer
 	\renewcommand{\headrulewidth}{0.4pt}
-	\renewcommand{\footrulewidth}{0.4pt}
+	%\renewcommand{\footrulewidth}{0.4pt}
+	
+	\setlength{\headheight}{19pt} 
 
 %Title
 \title{\Huge Classical Fourier Analysis: Interpolation on $L^p$ Spaces}
 
 \makeatletter
+\def\@textbottom{\vskip \z@ \@plus 1pt}
+\let\@texttop\relax
 \usepackage{etoolbox}
 \patchcmd{\abstract}{\scshape\abstractname}{\textbf{\abstractname}}{}{}
 
@@ -190,7 +193,7 @@
   colorlinks   = true, %Colours links instead of ugly boxes
   urlcolor     = blue, %Colour for external hyperlinks
   linkcolor    = blue, %Colour of internal links
-  citecolor    = red %Colour of citations
+  citecolor    = blue %Colour of citations
 }
 %Weierstrass-P symbol for power set
 \newcommand{\powerset}{\raisebox{.15\baselineskip}{\Large\ensuremath{\wp}}}
