@@ -94,7 +94,7 @@ Now we are able to proove the Riesz-Thorin Interpolation theorem without an inte
 	The proof heavily relies on the fact, that the $L^p$ norm of a function can be obtained via duality for $1 \leqslant p \leqslant \infty$ (for $p = \infty$ the underlying space has to be $\sigma$-finite according to \cite[288--289]{elstrodt:mass:2011}) by 
 	
 	\begin{equation*}
-		\|f\|_{L^p(Y,\mathcal{B},\nu)} = \sup \left\{ \left\vert \int_Y fgd\nu\right\vert : \|g\|_{L^{p'}(Y,\mathcal{B},\nu)} = 1\right\}
+		\|f\|_{L^p} = \sup \left\{ \left\vert \int_Y fgd\nu\right\vert : \|g\|_{L^{p'}} = 1\right\}
 	\end{equation*}
 
 with $p' := \frac{p}{p - 1}$ for $p \in ]1,\infty[$ and $p' := 1$ for $p = \infty$. Let $\mathcal{B}$ denote the domain of $\nu$ and define for notational simplification $\mathfrak{F} := \mathrm{span}_{\mathbb{C}}\{\chi_E: E \in \mathcal{B},\nu(E) < \infty\}$, the set of all finitely simple functions on $Y$\footnote{
@@ -120,7 +120,7 @@ with $p' := \frac{p}{p - 1}$ for $p \in ]1,\infty[$ and $p' := 1$ for $p = \inft
 	to see, that also
 
 	\begin{equation*}
-		\|f\|_{L^p} = \sup \left\{ \left\vert \int_Y fgd\mu\right\vert : g \in \mathfrak{F},\|g\|_{L^{p'}} \leqslant 1\right\}
+		\|f\|_{L^p} = \sup \left\{ \left\vert \int_Y fgd\mu\right\vert : g \in \mathfrak{F},\|g\|_{L^{p'}} = 1\right\}
 	\end{equation*}
 
 	First we will deal with the case \underline{$q > 1$}. Fix $f :\equiv \sum_{k = 1}^n a_k e^{i\alpha_k}\chi_{X_k}$, where $n \in \mathbb{N}_{>0}$,$a_k > 0$, $\alpha_k \in [0,2\pi[$, $X_i \cap X_j = \emptyset$ for $i,j = 1,\hdots,n$ and $\mu(X_k) < \infty$ for every $k = 1,\hdots,n$. Further let $g :\equiv \sum_{k = 1}^m b_k e^{i\beta_k}\chi_{Y_k} \in \mathfrak{F}$, where $m \in \mathbb{N}_{>0}$,$b_k > 0$ and $\beta_k \in [0,2\pi[$. Define
@@ -156,12 +156,12 @@ with $p' := \frac{p}{p - 1}$ for $p \in ]1,\infty[$ and $p' := 1$ for $p = \inft
 						&= \|T(\chi_{X_j})\chi_{Y_k}\|_{L^1}\\
 						&\leqslant \|T(\chi_{X_j})\|_{L^{q_0}} \|\chi_{Y_k}\|_{L^{q_0'}}\\
 						&\leqslant M_0\|\chi_{X_j}\|_{L^{p_0}} \|\chi_{Y_k}\|_{L^{q_0'}}\\
-						&= M_0 \mu(X_j)^{1/p_0} \nu(Y_k)^{1/q_0'}\\
+						&\overset{q_0' \neq \infty}{=} M_0\|\chi_{X_j}\|_{L^{p_0}} \mu(Y_k)^{1/q_0'}\\ 
 						&< \infty
 					\end{aligned}
 				\end{gather}
 
-				for $p_0 < \infty$ and each $j = 1,\hdots,n$, $k = 1,\hdots,m$. The case $p_0,q_0' = \infty$ is trivial, since $\|\chi_{X_j}\|_{L^\infty(X,\mathcal{A},\mu)},\|\chi_{Y_k}\|_{L^\infty} \leqslant 1$. Now
+				for each $j = 1,\hdots,n$, $k = 1,\hdots,m$. In the case $q_0' = \infty$ we simply have $\|\chi_{Y_k}\|_{L^\infty} \leqslant 1 $. Thus the function $F$ is well-defined on $\overline{S}$. Now
 
 				\begin{gather}
 					\begin{aligned}
@@ -181,7 +181,8 @@ with $p' := \frac{p}{p - 1}$ for $p \in ]1,\infty[$ and $p' := 1$ for $p = \inft
 						&= \|T(f_{it}) g_{it}\|_{L^1}\\
 						&\leqslant \|T(f_{it})\|_{L^{q_0}}\|g_{it}\|_{L^{q_0'}}\\
 						&\leqslant M_0 \|f_{it}\|_{L^{p_0}} \|g_{it}\|_{L^{q_0'}}\\
-						&= M_0  \|f\|_{L^p}^{p/p_0} \|g\|_{L^{q'}}^{q'/q'_0}
+						&= M_0 \|f\|_{L^p}^{p/p_0} \|g\|_{L^{q'}}^{q'/q'_0}\\
+						&< \infty
 					\end{aligned}
 				\end{gather}
 
@@ -197,22 +198,36 @@ with $p' := \frac{p}{p - 1}$ for $p \in ]1,\infty[$ and $p' := 1$ for $p = \inft
 					\vert F(1 + it)\vert \leqslant M_1 \|f\|_{L^p}^{p/p_1}\|g\|_{L^{q'}}^{q'/q_1'}
 				\end{equation}	
 
-					Since $F$ is analytic on $S$, continuous on $\overline{S}$ and further 
+				Further 
 		
-		\begin{gather}
+		\begin{gather*}
 			\begin{aligned}
 				\vert F(z)\vert &\leqslant \int_Y\vert T(f_z)(y)g_z(y)\vert d\nu(y)\\
 				&= \|T(f_z)g_z\|_{L^1}\\
 				&\leqslant \|T(f_z)\|_{L^{q_0}} \|g_z\|_{L^{q'_0}}\\
 				&\leqslant M_0 \|f_z\|_{L^{p_0}} \|g_z\|_{L^{q'_0}}\\
-				&= M_0 \left(\int_X \vert f_z \vert^{p_0} d\mu\right)^{1/p_0} \left(\int_Y \vert g_z \vert^{q'_0} d\nu\right)^{1/q'_0}\\
+				&\overset{p_0,q_0' \neq \infty}{=} M_0 \left(\int_X \vert f_z \vert^{p_0} d\mu\right)^{1/p_0} \left(\int_Y \vert g_z \vert^{q'_0} d\nu\right)^{1/q'_0}\\
 				&= M_0 \left( \sum\limits_{j = 1}^n a_j^{p_0\mathrm{Re}P(z)}\mu(X_j) \right)^{1/p_0} \left( \sum\limits_{k = 1}^m b_k^{q'_0\mathrm{Re}Q(z)} \nu(Y_k) \right)^{1/q'_0}\\
-				&\leqslant M_0 \left( \sum\limits_{j = 1}^n a_j^{p + (pp_0)/p_1}\mu(X_j) \right)^{1/p_0} \left( \sum\limits_{k = 1}^m b_k^{q' + (q'q'_0)/q'_1} \nu(Y_k) \right)^{1/q'_0}
+				&= M_0 \left( \sum\limits_{j = 1}^n a_j^{p(1 - \mathrm{Re}z) + (pp_0\mathrm{Re}z)/p_1}\mu(X_j) \right)^{1/p_0} \left( \sum\limits_{k = 1}^m b_k^{q'(1 - \mathrm{Re}z) + (q'q'_0\mathrm{Re} z)/q_1'} \nu(Y_k) \right)^{1/q'_0}\\
+				&\leqslant M_0 \left( \sum\limits_{j = 1}^n a_j^{p + (pp_0)/p_1}\mu(X_j) \right)^{1/p_0} \left( \sum\limits_{k = 1}^m b_k^{q' + (q'q'_0)/q'_1} \nu(Y_k) \right)^{1/q'_0}\\
+				&= M_0 \|f\|_{L^{p + (pp_0)/p_1}}^{p/p_0 + p/p_1} \|g\|_{L^{q' + (q'q'_0)/q'_1}}^{q'/q_0' + q'/q_1'}\\
+				&=: C(f,g)
 			\end{aligned}
-		\end{gather}
+		\end{gather*}
 		
 		
-		for $p,q'_0 \neq \infty$ by H\"older's inequality (the remaining cases are trivial), $F$ is bounded on $\overline{S}$, therefore we can apply Hadamard's three lines lemma to get
+		by H\"older's inequality and in the edge cases
+		
+		\begin{gather*}
+			\begin{aligned}
+				&p_0 = \infty, q_0' \neq \infty: \qquad & C(f,g) := M_0 \max_{j = 1,\hdots,n} a_j^{p/p_1} \|g\|_{L^{q' + (q'q'_0)/q'_1}}^{q'/q_0' + q'/q_1'}\\
+				&p_0 \neq \infty, q_0' = \infty: & C(f,g) :=  M_0 \|f\|_{L^{p + (pp_0)/p_1}}^{p/p_0 + p/p_1} \max_{k = 1,\hdots,m} b_k^{q'/q_1'}\\
+				&p_0 = \infty, q_0' = \infty: & C(f,g) := M_0 \max_{j = 1,\hdots,n} a_j^{p/p_1} \max_{k = 1,\hdots,m} b_k^{q'/q_1'}
+			\end{aligned}
+		\end{gather*}
+		
+		
+		Hence $F$ is bounded on $\overline{S}$. It is obvious, that $F$ is analytic on $S$ and continuous on $\overline{S}$. Therefore we can apply Hadamard's three lines lemma to get
 
 		\begin{gather}
 			\begin{aligned}
@@ -222,7 +237,7 @@ with $p' := \frac{p}{p - 1}$ for $p \in ]1,\infty[$ and $p' := 1$ for $p = \inft
 		\end{aligned}
 		\end{gather}
 
-		for $\mathrm{Re}z = \theta$ where $0 \leqslant \theta \leqslant 1$. Further observe $P(\theta) = Q(\theta) = 1$ and thus 
+		for $\mathrm{Re}z = \theta$ where $0 \leqslant \theta \leqslant 1$. Further observe $P(\theta) = Q(\theta) = 1$ for $0 < \theta < 1$ and thus 
 		
 		\begin{gather}
 			\begin{aligned}
@@ -233,5 +248,42 @@ with $p' := \frac{p}{p - 1}$ for $p \in ]1,\infty[$ and $p' := 1$ for $p = \inft
 			\end{aligned}
 		\end{gather}
 
-		Now assume \underline{$q = 1$}. Then $q_0 = q_1 = 1$ and so $Q(z) = 1$ which implies $g_z \equiv g$ for every $z \in \overline{S}$. Assume, that $\|g\|_{L^\infty} = 1$. Then the above proof is also valid (with slight modifications and changes of bounds), if we take the supremum over the simple functions, instead of finitely simple functions, since by \cite[100]{cohn:measure_theory:2013} the simple functions are dense in $L^{\infty}$.		
+		Now assume \underline{$q = 1$}. Then $q_0 = q_1 = 1$. Let $g :\equiv \sum_{k = 1}^m b_k e^{i\beta_k}\chi_{Y_k}$ be a simple function (this means, that $\nu(Y_k) = \infty$ is possible for some $Y_k$) with $\|g\|_{L^{\infty}} = 1$. Define $f_z$ as above and
+
+		\begin{equation}
+			F(z) := \int_Y T(f_z)(y)g(y)d\nu(y)	
+		\end{equation}
+
+		Using the linearity property of $T$ we see again, that $F(z)$ is well-defined on $\overline{S}$. Analogously we get 
+
+		\begin{equation}
+			\vert F(it)\vert \leqslant M_0 \|f\|_{L^p}^{p/p_0} \qquad \vert F(1 + it) \vert \leqslant M_1 \|f\|_{L^p}^{p/p_1}
+		\end{equation}
+
+		Again, $F$ is bounded on $\overline{S}$ by 
+
+		\begin{gather*}
+			\begin{aligned}
+				&p_0 \neq \infty, q_0' = \infty: & C(f,g) :=  M_0 \|f\|_{L^{p + (pp_0)/p_1}}^{p/p_0 + p/p_1} \max_{k = 1,\hdots,m} b_k^{q'/q_1'}\\
+				&p_0 = \infty, q_0' = \infty: & C(f,g) := M_0 \max_{j = 1,\hdots,n} a_j^{p/p_1} \max_{k = 1,\hdots,m} b_k^{q'/q_1'}
+			\end{aligned}
+		\end{gather*}
+
+		Hadamard's three lines lemma therefore yields
+
+		\begin{equation}
+			\vert F(z)\vert \leqslant \left(M_0 \|f\|_{L^p}^{p/p_0}\right)^{1 - \theta} \left( M_1 \|f\|_{L^p}^{p/p_1}\right)^\theta =  M_0^{1 - \theta} M_1^\theta \|f\|_{L^p}
+		\end{equation}
+
+		and observing $P(\theta) = 1$ for $0 < \theta < 1$ yields
+
+		\begin{gather}
+			\begin{aligned}
+				\| T(f) \|_{L^1} &= \sup \left\{\left\vert \int_Y T(f)gd\nu \right\vert : g \text{ simple}, \|g\|_{L^{\infty}} = 1 \right\}\\
+				&= \sup \{\vert F(\theta) \vert : g \text{ simple}, \|g\|_{L^{\infty}} = 1 \}\\
+				&\leqslant  M_0^{1 - \theta} M_1^\theta \|f\|_{L^p}
+			\end{aligned}
+		\end{gather}
+
+		This is justified by the fact, that the simple functions are dense in $L^{\infty}$ (for a proof see \cite[100]{cohn:measure_theory:2013}).	
 \end{proof}
