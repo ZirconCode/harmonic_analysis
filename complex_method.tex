@@ -146,6 +146,7 @@ with $p' := \frac{p}{p - 1}$ for $p \in ]1,\infty[$ and $p' := 1$ for $p = \inft
 
 				\begin{gather}
 					F(z) = \sum_{j = 1}^n\sum_{k = 1}^m a^{P(z)}_j b_j^{Q(z)} e^{i\alpha_j} e^{i\beta_k} \int_YT(\chi_{X_j})(y)\chi_{Y_k}(y)d\nu(y) 
+					\label{def:F}
 				\end{gather}
 
 				and by using H\"older's inequality \footnote{A proof can be found in \cite[223]{elstrodt:mass:2011}.}
@@ -220,14 +221,14 @@ with $p' := \frac{p}{p - 1}$ for $p \in ]1,\infty[$ and $p' := 1$ for $p = \inft
 		
 		\begin{gather*}
 			\begin{aligned}
-				&p_0 = \infty, q_0' \neq \infty: \qquad & C(f,g) := M_0 \max_{j = 1,\hdots,n} a_j^{p/p_1} \|g\|_{L^{q' + (q'q'_0)/q'_1}}^{q'/q_0' + q'/q_1'}\\
-				&p_0 \neq \infty, q_0' = \infty: & C(f,g) :=  M_0 \|f\|_{L^{p + (pp_0)/p_1}}^{p/p_0 + p/p_1} \max_{k = 1,\hdots,m} b_k^{q'/q_1'}\\
-				&p_0 = \infty, q_0' = \infty: & C(f,g) := M_0 \max_{j = 1,\hdots,n} a_j^{p/p_1} \max_{k = 1,\hdots,m} b_k^{q'/q_1'}
+				&p_0 = \infty, q_0' \neq \infty: \qquad C(f,g) := M_0 \max_{j = 1,\hdots,n} a_j^{p/p_1} \|g\|_{L^{q' + (q'q'_0)/q'_1}}^{q'/q_0' + q'/q_1'}\\
+				&p_0 \neq \infty, q_0' = \infty: \qquad C(f,g) :=  M_0 \|f\|_{L^{p + (pp_0)/p_1}}^{p/p_0 + p/p_1} \max_{k = 1,\hdots,m} b_k^{q'/q_1'}\\
+				&p_0 = \infty, q_0' = \infty: \qquad C(f,g) := M_0 \max_{j = 1,\hdots,n} a_j^{p/p_1} \max_{k = 1,\hdots,m} b_k^{q'/q_1'}
 			\end{aligned}
 		\end{gather*}
 		
 		
-		Hence $F$ is bounded on $\overline{S}$. It is obvious, that $F$ is analytic on $S$ and continuous on $\overline{S}$. Therefore we can apply Hadamard's three lines lemma to get
+		Hence $F$ is bounded on $\overline{S}$. It is obvious, that $F$ is analytic on $S$ and continuous on $\overline{S}$ (as the sum, product,quotient,composition of analytic/continuous functions). Therefore we can apply Hadamard's three lines lemma to get
 
 		\begin{gather}
 			\begin{aligned}
@@ -264,8 +265,8 @@ with $p' := \frac{p}{p - 1}$ for $p \in ]1,\infty[$ and $p' := 1$ for $p = \inft
 
 		\begin{gather*}
 			\begin{aligned}
-				&p_0 \neq \infty, q_0' = \infty: & C(f,g) :=  M_0 \|f\|_{L^{p + (pp_0)/p_1}}^{p/p_0 + p/p_1} \max_{k = 1,\hdots,m} b_k^{q'/q_1'}\\
-				&p_0 = \infty, q_0' = \infty: & C(f,g) := M_0 \max_{j = 1,\hdots,n} a_j^{p/p_1} \max_{k = 1,\hdots,m} b_k^{q'/q_1'}
+				&p_0 \neq \infty, q_0' = \infty: \qquad C(f,g) :=  M_0 \|f\|_{L^{p + (pp_0)/p_1}}^{p/p_0 + p/p_1} \max_{k = 1,\hdots,m} b_k^{q'/q_1'}\\
+				&p_0 = \infty, q_0' = \infty: \qquad C(f,g) := M_0 \max_{j = 1,\hdots,n} a_j^{p/p_1} \max_{k = 1,\hdots,m} b_k^{q'/q_1'}
 			\end{aligned}
 		\end{gather*}
 
@@ -287,3 +288,91 @@ with $p' := \frac{p}{p - 1}$ for $p \in ]1,\infty[$ and $p' := 1$ for $p = \inft
 
 		This is justified by the fact, that the simple functions are dense in $L^{\infty}$ (for a proof see \cite[100]{cohn:measure_theory:2013}).	
 \end{proof}
+
+\begin{remark}
+	As you can see in the proof of the case $q = 1$, it is necessary to have $0 < \theta < 1$. Since for example choosing $q_1 = 1$ and $q_0 > 1$ arbitrary leads for $\theta = 1$ to $q = 1$ but then the function $g$ can be choosen so, that the integral in the definition \textup{(\ref{def:F})} diverges.
+\end{remark}
+
+\subsection{Young's inequality}
+Using the Riesz-Thorin interpolation theorem, we can give an alternative proof of Young's inequality \cite[22--23]{grafakos:fourier:2014}.
+
+\vspace{2mm}
+
+\begin{mdframed}
+	\begin{theorem}\emph{(Young's inequality)}
+		Let $G$ be a locally compact group, which is a countable union of compact subsets, and let $\eta$ be a left invariant Haar measure. Let $1 \leqslant p,q,r \leqslant \infty$
+
+		\begin{equation}
+			\frac{1}{q} + 1 = \frac{1}{p} + \frac{1}{r}
+		\end{equation}
+
+		Then for all $f \in L^p(G,\eta)$ and all $g \in L^r(G,\eta)$ satisfying $\|g\|_{L^r} = \|\tilde{g}\|_{L^r}$ we have $f \ast g$ exists $\eta$-a.e. and satisfies
+
+		\begin{equation}
+			\|f \ast g\|_{L^q} \leqslant \|g\|_{L^r}\|f\|_{L^p}
+		\end{equation}
+	\end{theorem}
+\end{mdframed}
+
+\begin{proof}
+	Fix $g \in L^r(G,\eta)$ and let $T(f) := f \ast g$ be defined on $L^1(G,\eta) + L^{r'}(G,\eta)$. Obviously, $T$ is a linear operator by the linearity of the integral. By Minkowski's integral inequality (see exercise \textbf{1.1.6} \cite[13]{grafakos:fourier:2014}) we get
+
+	\begin{gather}
+		\begin{aligned}
+			\|T(f)\|_{L^r} &= \left(\int_G \left\vert \int_G f(y)g(y^{-1}x) d\eta(y)\right\vert^r d\eta(x)\right)^{1/r}\\
+			&\leqslant \int_G \left( \int_G \vert f(y) \vert^r \vert g(y^{-1}x) \vert^r d\eta(x)\right)^{1/r} d\eta(y)\\
+			&= \int_G \vert f(y) \vert \left( \int_G \vert g(y^{-1}x) \vert^r d\eta(y^{-1}x) \right)^{1/r} d\eta(y)\\
+			&= \int_G \vert f(y) \vert \left( \int_G \vert g(z) \vert^r d\eta(z) \right)^{1/r} d\eta(y)\\
+			&\leqslant \|f\|_{L^1} \|g\|_{L^r}
+		\end{aligned} 
+	\end{gather}
+
+	for $f \in L^1(g,\mu)$ and $1 \leqslant p < \infty$ (since $(G,\eta)$ is $\sigma$-finite). The case $r = \infty$ follows from
+	
+	\begin{equation}
+		\vert (f \ast g)(x) \vert = \left\vert \int_G f(y)g(y^{-1}x) d\eta(y)\right\vert \leqslant \int_G \vert f(y)\vert \vert g(y^{-1}x)\vert d\eta(y) \leqslant \|g\|_{L^\infty}\|f\|_{L^1}
+	\end{equation}
+	
+	By stipulating $h(y) := g(y^{-1}x)$ we have 
+
+	\begin{gather}
+		\begin{aligned}
+			\vert (f \ast g)(x) \vert &= \left\vert \int_G f(y)g(y^{-1}x) d\eta(y)\right\vert \leqslant \int_G \vert f(y)g(y^{-1}x)\vert d\eta(y)\\
+			&= \|fh\|_{L^1} \leqslant \|f\|_{L^{r'}} \|h\|_{L^r} = \|f\|_{L^{r'}} \|\tilde{g}\|_{L^r} = \|g\|_{L^r} \|f\|_{L^{r'}}
+		\end{aligned}
+	\end{gather}
+
+	for $r < \infty$ and $f \in L^{r'}(g,\eta)$, since
+
+	\begin{equation*}
+		\|h\|^r_{L^r} = \int_G \vert g(y^{-1}x)\vert^r d\eta(y) = \int_G \vert\tilde{g}(x^{-1}y)\vert d\eta(y) = \|\tilde{g}\|^r_{L^{r}}
+	\end{equation*}
+
+	The Riesz-Thorin interpolation theorem now yields for any $0 < \theta < 1$
+
+	\begin{equation}
+		\|f \ast g\|_{L^q} = \|T(f)\|_{L^q} \leqslant \|g\|_{L^r}^{1 - \theta}\|g\|_{L^r}^{\theta} \|f\|_{L^p} = \|g\|_{L^r}\|f\|_{L^p}
+	\end{equation}
+
+	where 
+
+	\begin{equation*}
+		\frac{1}{p} = \frac{1 - \theta}{1} + \frac{\theta}{r'} \qquad \frac{1}{q} = \frac{1 - \theta}{r} + \frac{\theta}{\infty}
+	\end{equation*}
+
+	and by 
+
+	\begin{equation*}
+		\frac{1}{p} = 1 - \frac{\theta}{r} \qquad \frac{1}{q} = \frac{1}{r} - \frac{\theta}{r}
+	\end{equation*}
+
+	we get 
+
+	\begin{equation*}
+			\frac{1}{q} + 1 = \frac{1}{p} + \frac{1}{r}		
+	\end{equation*}
+\end{proof}
+
+\begin{remark}
+	The proof would be much shorter if we just used Minkowski's inequality \textup{\cite[21--22]{grafakos:fourier:2014}} instead of Minkowski's integral inequality. However, the proof given here is an alternative version of the one given already for Minkowski's inequality.
+\end{remark}
