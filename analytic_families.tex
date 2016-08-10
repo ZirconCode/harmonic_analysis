@@ -73,10 +73,54 @@ Now we are able to formulate the proof of the extension of Hadamard's three line
 	Consider the function 
 
 	\begin{equation}
-		h(z) := \frac{1}{\pi i}\mathrm{Log}\left( \frac{z + 1}{iz - i} \right) = \frac{1}{\pi} \left( \mathrm{Arg} \left( \frac{1 + z}{1 - z} \right)-i\log\left\vert \frac{1 + z}{1 - z} \right\vert\right)
+		h(z) := \frac{1}{\pi i}\mathrm{Log}\left( i\frac{1 + z}{1 - z} \right)
 	\end{equation}
 
-which maps $\mathbb{D}$ onto $]0,1[ \times \mathbb{R}$.
+	on $D := \{z \in \mathbb{C} : \vert z \vert < 1\}$. Define $\psi(z) := i(1 + z)/(1 - z)$. If we write $z := x + iy \in D$, we have 
+
+	\begin{equation}
+		\psi(z) = \frac{-2y}{(1 - x)^2 + y^2} + i \frac{1 - x^2 - y^2}{(1 - x)^2 + y^2}
+	\end{equation}
+
+	Hence $\mathrm{Im} h(z) > 0$. Stipulating $x := 1 - y$ for $y$ satisfying $y^2 < y$, we get
+
+	\begin{equation}
+		\lim\limits_{y^2 < y, y \rightarrow 0^+} \mathrm{Im} \psi(z) = \lim\limits_{y^2 < y, y \rightarrow 0^+} \left( \frac{1}{y} - 1 \right) = \infty
+	\end{equation}
+
+	using the same definition of $x$ we get
+
+	\begin{equation}
+		\lim\limits_{y^2 < y, y \rightarrow 0^+} \mathrm{Re} \psi(z) = -\lim\limits_{y^2 < y, y \rightarrow 0^+} \frac{1}{y} = -\infty
+	\end{equation}
+
+	and by stipulating $x := 1 + y$
+
+	\begin{equation}
+		\lim\limits_{y^2 < -y, y \rightarrow 0^-} \mathrm{Re} \psi(z) = -\lim\limits_{y^2 < -y, y \rightarrow 0^-} \frac{1}{y} = \infty	
+	\end{equation}
+
+
+	Since $2i \neq 0$, $\psi$ is a linear fractional transformation with
+
+	\begin{equation}
+		\psi^{-1}(z) = \frac{z - i}{z + i}
+	\end{equation}
+
+	Therefore $\psi$ maps the unit circle onto the upper half plane. The principal value of $\log z$ is $\mathrm{Log} z$ defined by 
+
+	\begin{equation}
+		\mathrm{Log}z := \log \vert z \vert + i \mathrm{Arg}z, \qquad z \neq 0
+	\end{equation}
+
+where $-\pi < \mathrm{Arg} z \leqslant \pi$ is the principal value of the argument of $z \neq 0$ (that is the angle $\theta$ in the polar representation $z = r\left( \cos \theta + i \sin \theta \right)$). We see that $\pi i h(z)$ maps the upper half plane onto the strip $\mathbb{R} \times ]0,\pi[$. Thus $h(z)$ maps the unit circle $D$ onto the strip $]0,1[ \times \mathbb{R}$ (the division of $h$ by $i$ is equivalent to multiplying $h$ by $i$ which corresponds to a clockwise rotation of $\pi/2$, and we scale with $1/\pi$). Since $h$ is a sum, product, quotient and composition of analytic functions, by \cite[278--279]{rudin:rc_analysis:1987} and
+
+\begin{equation}
+	h'(z) = \frac{2}{\pi i} \frac{1}{z - 1} \neq 0
+\end{equation}
+
+on $D$, $h$ is a conformal map from $D$ onto $S$.
+
 \end{proof}
 
 \subsection{Stein's Theorem on Interpolation of Analytic Families of Operators}
