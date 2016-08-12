@@ -69,7 +69,7 @@
     {\normalfont\bfseries}}%
 }
 \newcommand{\originalsectionstyle}{%
-\def\@secnumfont{\mdseries}
+\def\@secnumfont{\bfseries}%\mdseries
 \def\section{\@startsection{section}{1}%
   \z@{.7\linespacing\@plus\linespacing}{.5\linespacing}%
   {\normalfont\bfseries\centering}}
@@ -187,7 +187,9 @@
 %\usepackage[babel, german = swiss]{csquotes}
 \bibliography{Bibliography}
 %PDF-Linking
+%\usepackage[hyphens]{url}
 \usepackage[bookmarksopen=true,bookmarksnumbered=true]{hyperref}
+%\PassOptionsToPackage{hyphens}{url}\usepackage{hyperref}
 \hypersetup{
   colorlinks   = true, %Colours links instead of ugly boxes
   urlcolor     = blue, %Colour for external hyperlinks

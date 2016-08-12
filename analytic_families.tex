@@ -1,59 +1,8 @@
 \section{Interpolation of Analytic Families of Operators}
-\subsection{The Poisson Formula}
-First, we have to extend Hadamard's three lines lemma appropriately (lemma \ref{lemma:HTL}). To do so, we first need some theorems and definitions of complex analyis.
+This generalization of the classical Riesz-Thorin theorem is due to \href{http://www.ams.org/journals/tran/1956-083-02/S0002-9947-1956-0082586-0/S0002-9947-1956-0082586-0.pdf}{Elias M. Stein}. Crucial for its proof is again a complex-analytic theorem which can be extended on the basis of Hadamard's three lines lemma.
 
-\begin{mdframed}
-	\begin{theorem}\emph{(Complex Analysis Revisited)}
-		Let $h(e^{i\theta})$ be a continuous function on the unit circle. Then the \emph{Poisson integral} 
-
-		\begin{equation*}
-			\tilde{h}\left( z \right) = \int_{-\pi}^{\pi} h\left( e^{i\varphi} \right) P_r\left( \theta - \varphi \right)\frac{d \lambda(\varphi)}{2\pi} \qquad z := re^{i\theta} \in \mathbb{D} := \{\vert z \vert < 1\}	
-		\end{equation*}
-
-		where 
-
-		\begin{equation}
-			P_r(\theta) := \sum\limits_{k \in \mathbb{Z}} r^{\vert k \vert} e^{ik\theta} \qquad 0 \leqslant r < 1, -\pi \leqslant \theta \leqslant \pi
-		\end{equation}
-
-		denotes the \emph{Poisson kernel function}, is a harmonic function on $\mathbb{D}$ with boundary values $h\left( e^{i\theta} \right)$, that is, $\tilde{h}\left( e^{i\theta} \right)$ tends to $h\left( \zeta \right)$ as $z \in \mathbb{D}$ tends to $\zeta \in \partial\mathbb{D}$.
-		\label{thm:poisson}
-	\end{theorem}
-\end{mdframed}
-
-\begin{proof}
-	A proof can be found in \cite[277--278]{gamelin:complex_analysis:2001}.	
-\end{proof}
-
-Further we introduce the notion of a subharmonic function as found in \cite[394]{gamelin:complex_analysis:2001}.
-
-\vspace{2mm}
-
-\begin{mdframed}
-	\begin{definition}
-		Let $D \subseteq \mathbb{C}$ be a domain (open and path-connected), and let $u: D \rightarrow [-\infty,\infty[$ be continuous. We say that $u(z)$ is \emph{subharmonic} if for each $z_0 \in D$, there is $\varepsilon > 0$ such that $u(z)$ satisfies the mean value inequality
-
-			\begin{equation}
-				u(z_0) \leqslant \int_0^{2\pi} u\left( z_0 + re^{i\theta} \right) \frac{d\lambda(\theta)}{2\pi} \qquad 0 < r < \varepsilon
-			\end{equation}
-	\end{definition}
-\end{mdframed}
-
-\vspace{2mm}
-
-And the notion of a conformal mapping (\cite[59]{gamelin:complex_analysis:2001}).
-
-\vspace{2mm}
-
-\begin{mdframed}
-	\begin{definition}
-		A smooth complex-valued function $g(z)$ (that is, $g(z)$ has as many derivatives as is necessary for whatever is being asserted to be true) is \emph{conformal at $z_0$} if whenever $\gamma_0$, $\gamma_1$ are two curves terminating at $z_0$ with non-zero tangents, then the curves $g \circ \gamma_0$, $g \circ \gamma_1$ have non-zero tangents at $g(z_0)$ and the angle from $\left( g \circ \gamma_0 \right)'(z_0)$ to $\left( g \circ \gamma_1 \right)'(z_0)$ is the same as the angle from $\gamma_0'(z_0)$ to $\gamma_1'(z_0)$. A \emph{conformal mapping} of one domain $D$ onto another $V$ is a continuously differentiable function that is conformal at each point of $D$ and that maps $D$ one-to-one onto $V$.
-	\end{definition}
-\end{mdframed}
-
-\vspace{2mm}
-
-Now we are able to formulate the proof of the extension of Hadamard's three lines lemma.
+\subsection{Extension of Hadamard's Three Lines Lemma}
+This theorem is analogous to the one originally used by Stein itself and formulated by \href{http://download.springer.com/static/pdf/285/art\%253A10.1007\%252FBF02825637.pdf?originUrl=http\%3A\%2F\%2Flink.springer.com\%2Farticle\%2F10.1007\%2FBF02825637\&token2=exp=1470939579~acl=\%2Fstatic\%2Fpdf\%2F285\%2Fart\%25253A10.1007\%25252FBF02825637.pdf\%3ForiginUrl\%3Dhttp\%253A\%252F\%252Flink.springer.com\%252Farticle\%252F10.1007\%252FBF02825637*~hmac=d88bfe05b2cc8b0deed0f4781b8dfdd3701969606a6033727bfaf0c034cbd876}{ I. I. Hirschman, Jr.}
 
 \vspace{2mm}
 
@@ -70,7 +19,7 @@ Now we are able to formulate the proof of the extension of Hadamard's three line
 \end{mdframed}
 
 \begin{proof}
-	Consider the function 
+	Assume $F$ not identically zero (the case where $F$ is identically zero is trivial). Consider the function 
 
 	\begin{equation}
 		h(z) := \frac{1}{\pi i}\mathrm{Log}\left( i\frac{1 + z}{1 - z} \right)
@@ -113,13 +62,39 @@ Now we are able to formulate the proof of the extension of Hadamard's three line
 		\mathrm{Log}z := \log \vert z \vert + i \mathrm{Arg}z, \qquad z \neq 0
 	\end{equation}
 
-where $-\pi < \mathrm{Arg} z \leqslant \pi$ is the principal value of the argument of $z \neq 0$ (that is the angle $\theta$ in the polar representation $z = r\left( \cos \theta + i \sin \theta \right)$). We see that $\pi i h(z)$ maps the upper half plane onto the strip $\mathbb{R} \times ]0,\pi[$. Thus $h(z)$ maps the unit circle $D$ onto the strip $]0,1[ \times \mathbb{R}$ (the division of $h$ by $i$ is equivalent to multiplying $h$ by $i$ which corresponds to a clockwise rotation of $\pi/2$, and we scale with $1/\pi$). Since $h$ is a sum, product, quotient and composition of analytic functions, by \cite[278--279]{rudin:rc_analysis:1987} and
+where $-\pi < \mathrm{Arg} z \leqslant \pi$ is the principal value of the argument of $z \neq 0$.  We see that $\pi i h(z)$ maps the upper half plane onto the strip $\mathbb{R} \times ]0,\pi[$. Thus $h(z)$ maps the unit circle $D$ onto the strip $]0,1[ \times \mathbb{R}$. Since $h$ is a sum, product, quotient and composition of analytic functions, by \cite[278--279]{rudin:rc_analysis:1987} and
 
 \begin{equation}
 	h'(z) = \frac{2}{\pi i} \frac{1}{z - 1} \neq 0
 \end{equation}
 
-on $D$, $h$ is a conformal map from $D$ onto $S$.
+on $D$, $h$ is a conformal map from $D$ onto $S$. By composition, $F \circ h$ is analytic and thus by \cite[336]{rudin:rc_analysis:1987} $\log\vert F \circ h \vert$ is subharmonic on $D$.\\
+Fix some $0 \leqslant R < 1$. Then $\log\vert F \circ h \vert$ is continuous (as the sum, product, quotient, composition of continuous functions) for $\vert z \vert = R$. Define 
+
+\begin{gather*}
+	\begin{aligned}
+		H(re^{i\theta}):= \begin{cases}
+			\displaystyle
+			\log \vert F(h(Re^{i\theta}))\vert & r = R,\\
+			\displaystyle
+			\frac{1}{2\pi} \int_{-\pi}^\pi \log\vert F(h(Re^{it}))\vert \frac{R^2 - r^2}{R^2 - 2Rr\cos(\theta - t) + r^2} d\lambda(t) & 0 \leqslant r < R
+	\end{cases}
+	\end{aligned}
+\end{gather*}
+
+Then $H$ is continuous for $\vert z \vert \leqslant R$ and harmonic for $\vert z \vert < R$ (see \cite[234--235]{rudin:rc_analysis:1987}). Since $\log\vert F(h(Re^{i\theta}))\vert = H(Re^{i\theta})$, by \cite[336]{rudin:rc_analysis:1987} we have
+
+\begin{equation}
+	\log\vert F(h(re^{i\theta})) \leqslant \frac{1}{2\pi} \int_{-\pi}^\pi \log\vert F(h(Re^{it}))\vert \frac{R^2 - r^2}{R^2 - 2Rr\cos(\theta - t) + r^2} d\lambda(t) 
+\end{equation}
+
+Consider $e^{i\theta}$ where $\mathrm{Arg}e^{i\theta} \neq 0,\pi$, we have $\mathrm{Im}\psi(e^{i\theta}) = 0$ and hence $\psi(e^{i\theta}) \in \mathbb{R}$. But then either $\mathrm{Re}h(e^{i\theta}) = 0$, $\psi(e^{i\theta}) > 0$ or $\mathrm{Re}h(e^{i\theta}) = 1$, $\psi(e^{i\theta}) < 0$. Hence the growth property of the hypothesis implies
+
+\begin{equation}
+		\log \vert F(h(e^{i\theta})) \vert \leqslant Ae^{\tau\vert \mathrm{Im} h(e^{i\theta})\vert} = Ae^{\tau/\pi\vert \log\vert (1 + e^{i\theta})(1 - e^{i\theta})\vert\vert} = A \vert 1 + e^{i\theta}\vert^{\tau/\pi} \vert 1 - e^{i\theta} \vert^{-\tau/\pi}
+\end{equation}
+
+
 
 \end{proof}
 
