@@ -2,6 +2,9 @@
 This theorem will unfortunately only be applicable to linear operators but will yield a more natural bound of the operator on the intermediate space. The proof will make strong use of complex variables technique. A major tool will be an application of the maximum modulus principle, known as \emph{Hadamard's three lines lemma}.
 
 \subsection{Hadamard's Three Lines Lemma}
+As the name already says, the lemma yields a natural bound of an analytic function defined on a vertical strip in the complex plane using the bounds of the function on the two parallel lines enclosing the strip.
+
+\vspace{2mm}
 
 \begin{mdframed}
 	\begin{lemma}{Hadamard's three lines lemma)}
@@ -20,7 +23,7 @@ This theorem will unfortunately only be applicable to linear operators but will 
 \end{equation}
 
 Obviously, $G(z)$ and $G_n(z)$ are analytic functions on $S$ for $n \in \mathbb{N}_{>0}$\footnote{
-						Recall, that a function $f$ is called \emph{analytic on $U$}, $U \subseteq \mathbb{C}$ open, if $f$ is analytic at every $z_0 \in U$, that is, there exists a power series $\sum_{n \in \mathbb{N}} a_n (z - z_0)^n$ and some $r > 0$, such that the series converges absolutely for $\vert z - z_0 \vert < r$, and such that for such $z$, we have $f(z) = \sum_{n \in \mathbb{N}} a_n (z - z_0)^n$ (as defined in \cite[68--69]{lang:complex_analysis:1993}). If $f$ and $g$ are analytic on $U \subseteq \mathbb{C}$, so are $f + g$, $f \cdot g$. Also $f/g$ is analytic on the open subset of $z \in U$ such that $g(z) \neq 0$. If $g:U \rightarrow V$ and $f: V \rightarrow C$ are analytic so is $f \circ g$. Further, if $f(z) = \sum_{n \in \mathbb{N}}a_n z^n$ is a power series with radius of convergence $r$, $f$ is analytic on $B_r(0)$ (for a proof see \cite[69--70]{lang:complex_analysis:1993}).	
+	I adapt here the terminology established in \cite[197]{rudin:rc_analysis:1987}. A complex-valued function $f$ is said to be \emph{holomorphic} or \emph{analytic} in $\Omega \subseteq \mathbb{C}$ open, if $f'(z)$ exists for any $z \in \Omega$.	
 					}. Further, we have
 
 					\begin{gather}
@@ -48,18 +51,7 @@ Obviously, $G(z)$ and $G_n(z)$ are analytic functions on $S$ for $n \in \mathbb{
 					\end{gather}
 
 					we have $\lim_{y \rightarrow \pm \infty}\sup\{\vert G_n(z)\vert : x \in [0,1]\} = 0$ by the pinching-principle. Hence there exists some $C(n) \in \mathbb{R}_{>0}$, such that $\vert G_n(z) \vert \leqslant 1$ for all $\vert y \vert \geqslant C(n)$ and all $x \in [0,1]$. Consider the rectangle $R := [0,1] \times [-C(n),C(n)]$. Now $\vert G_n(z) \vert \leqslant 1$ on the lines $[0,1] \times \{\pm C(n)\}$ and since $\vert G(z) \vert = \vert F(z)\vert/B_0 \leqslant 1$, $\vert G(z) \vert = \vert F(z) \vert/B_1 \leqslant 1$ on the line $\{0\} \times [-C(n),C(n)]$ and $\{1\} \times [-C(n),C(n)]$ respectively by assumption, we have $\vert G_n(z) \vert \leqslant 1$ on $\partial S$. By the maximum modulus principle \footnote{
-						The theorem can be found in\cite[91--92]{lang:complex_analysis:1993}. I will reproduce it here.
-
-						\begin{lemma}\emph{(Maximum Modulus Principle, global version)}
-							Let $U \subseteq \mathbb{C}$ be a connected open set, and let $f$ be an analytic function on $U$. If $z_0 \in U$ is a maximum point for $\vert f \vert$, that is $\vert f(z_0) \vert \geqslant \vert f(z) \vert$ for all $z \in U$, then $f$ is constant on $U$.
-						\end{lemma}
-
-						For our purpose the following corollary is more appropriate.
-
-						\begin{corollary}
-							Let $U \subseteq \mathbb{C}$ be a connected open set and $f$ be a continuous function on $\overline{U}$, analytic and non-constant on $U$. If $z_0 \in \overline{U}$ is a maximum for $f$, that is $\vert f(z_0) \vert \geqslant \vert f(z) \vert$ for all $z \in \overline{U}$, then $z_0 \in \partial U$.
-						\end{corollary}
-					}
+						Let $\Omega$ be a bounded region of the complex plane, $f$ be a complex-valued continuous function on $\overline{\Omega}$ which is holomorphic in $\Omega$. Then $\vert f(z) \vert \leqslant \sup\left\{ \vert f(z) \vert : z \in \partial \Omega\right\}$ for every $z \in \Omega$. See \cite[253]{rudin:rc_analysis:1987}.}
 					we have $\vert G_n(z) \vert \leqslant 1$ on $R$ and thus $\vert G_n(z) \vert \leqslant 1$ on $\overline{S}$. Since inequalities are preserved by limits and the modulus is a continuous function, we have that $\vert G(z) \vert = \lim_{n \rightarrow \infty} \vert G_n(z) \vert \leqslant 1$ on $\overline{S}$. Taking $z := \theta + it$, where $0 \leqslant \theta \leqslant 1$ and $t \in \mathbb{R}$, we conclude $\vert F(z) \vert = \vert G(z) \vert \vert B_0^{1 - z}B_1^z\vert \leqslant B_0^{1 - \theta} B_1^{\theta}$, which completes the proof.\\
 		\end{proof}
 
