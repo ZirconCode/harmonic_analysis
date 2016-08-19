@@ -8,7 +8,7 @@ This theorem is analogous to the one originally used by Stein itself and formula
 
 \begin{mdframed}
 	\begin{lemma}\emph{(Hadamard's three lines lemma, extension)}
-		Let $F$ be an analytic function on the strip $S := \{z \in \mathbb{C}: 0 < \mathrm{Re}z < 1\}$ and continuous on $\overline{S}$, such that for every $z \in \overline{S}$ we have $\log \vert F(z)\vert \leqslant A e^{\tau \vert \mathrm{Im}z \vert}$ for some $A < \infty$ and $\tau \in [0,\pi[$. Then
+		Let $F$ be an analytic function in the strip $S := \{z \in \mathbb{C}: 0 < \mathrm{Re}z < 1\}$ and continuous on $\overline{S}$, such that for every $z \in \overline{S}$ we have $\log \vert F(z)\vert \leqslant A e^{\tau \vert \mathrm{Im}z \vert}$ for some $A < \infty$ and $\tau \in [0,\pi[$. Then
 
 			\begin{equation*}
 				\vert F(z) \vert \leqslant \exp\left( \frac{\sin(\pi x)}{2} \int_{-\infty}^\infty \left[ \frac{\log \vert F(it + iy)\vert}{\cosh(\pi t) - \cos(\pi x)} + \frac{\log \vert F(1 + it + iy)\vert}{\cosh(\pi t) + \cos(\pi x)} \right] d\lambda(t)\right)
@@ -19,57 +19,71 @@ This theorem is analogous to the one originally used by Stein itself and formula
 \end{mdframed}
 
 \begin{proof}
-	Assume $F$ not identically zero (the case where $F$ is identically zero is trivial). Consider the function 
+	Since the proof is rather long we divide it as follows.
+
+	\begin{enumerate}[label = \textbf{(\roman*.)}]
+		\item Construct a holomorphic function $h$ defined on the open unit disc $D := \{z \in \mathbb{C} : \vert z \vert < 1\}$ with range $S$.
+		\item Using the Poisson integral formula and the maximum principle for subharmonic functions find an upper bound for $\log\vert F \circ h\vert$ for $D$.
+	\end{enumerate}
+
+	\begin{enumerate}[label = \textbf{(\roman*.)}]
+		\item Assume $F$ not identically zero (the case where $F$ is identically zero is trivial). Consider the function 
 
 	\begin{equation}
-		h(z) := \frac{1}{\pi i}\mathrm{Log}\left( i\frac{1 + z}{1 - z} \right)
+		h(z) := \frac{1}{\pi i}\Log\left( i\frac{1 + z}{1 - z} \right)
 	\end{equation}
 
-	on $D := \{z \in \mathbb{C} : \vert z \vert < 1\}$. Define $\psi(z) := i(1 + z)/(1 - z)$. If we write $z := x + iy \in D$, we have 
+	on $D$. Define $\psi(z) := i(1 + z)/(1 - z)$. If we write $z := x + iy \in D$, we have 
 
 	\begin{equation}
 		\psi(z) = \frac{-2y}{(1 - x)^2 + y^2} + i \frac{1 - x^2 - y^2}{(1 - x)^2 + y^2}
 	\end{equation}
 
-	Hence $\mathrm{Im} h(z) > 0$. Stipulating $x := 1 - y$ for $y$ satisfying $y^2 < y$, we get
+	Hence $\Im \psi(z) > 0$. Stipulating $x := 1 - y$ for $y$ satisfying $y^2 < y$, we get
 
 	\begin{equation}
-		\lim\limits_{y^2 < y, y \rightarrow 0^+} \mathrm{Im} \psi(z) = \lim\limits_{y^2 < y, y \rightarrow 0^+} \left( \frac{1}{y} - 1 \right) = \infty
+		\lim\limits_{y^2 < y, y \rightarrow 0^+} \Im \psi(z) = \lim\limits_{y^2 < y, y \rightarrow 0^+} \left( \frac{1}{y} - 1 \right) = \infty
 	\end{equation}
 
 	using the same definition of $x$ we get
 
 	\begin{equation}
-		\lim\limits_{y^2 < y, y \rightarrow 0^+} \mathrm{Re} \psi(z) = -\lim\limits_{y^2 < y, y \rightarrow 0^+} \frac{1}{y} = -\infty
+		\lim\limits_{y^2 < y, y \rightarrow 0^+} \Re \psi(z) = -\lim\limits_{y^2 < y, y \rightarrow 0^+} \frac{1}{y} = -\infty
 	\end{equation}
 
 	and by stipulating $x := 1 + y$
 
 	\begin{equation}
-		\lim\limits_{y^2 < -y, y \rightarrow 0^-} \mathrm{Re} \psi(z) = -\lim\limits_{y^2 < -y, y \rightarrow 0^-} \frac{1}{y} = \infty	
+		\lim\limits_{y^2 < -y, y \rightarrow 0^-} \Re \psi(z) = -\lim\limits_{y^2 < -y, y \rightarrow 0^-} \frac{1}{y} = \infty	
 	\end{equation}
 
 
-	Since $2i \neq 0$, $\psi$ is a linear fractional transformation with
+	Since $2i \neq 0$, $\psi$ is a linear fractional transformation (see \cite[279]{rudin:rc_analysis:1987}) with
 
 	\begin{equation}
 		\psi^{-1}(z) = \frac{z - i}{z + i}
 	\end{equation}
 
-	Therefore $\psi$ maps the unit circle onto the upper half plane. The principal value of $\log z$ is $\mathrm{Log} z$ defined by 
+	Therefore $\psi$ maps the unit circle $D$ onto the upper half plane. The principal value of $\log z$ denoted by $\Log z$ is defined by 
 
 	\begin{equation}
-		\mathrm{Log}z := \log \vert z \vert + i \mathrm{Arg}z, \qquad z \neq 0
+		\Log z := \log \vert z \vert + i \Arg z \qquad z \neq 0
 	\end{equation}
 
-where $-\pi < \mathrm{Arg} z \leqslant \pi$ is the principal value of the argument of $z \neq 0$.  We see that $\pi i h(z)$ maps the upper half plane onto the strip $\mathbb{R} \times ]0,\pi[$. Thus $h(z)$ maps the unit circle $D$ onto the strip $]0,1[ \times \mathbb{R}$. Since $h$ is a sum, product, quotient and composition of analytic functions, by \cite[278--279]{rudin:rc_analysis:1987} and
+where $-\pi < \mathrm{Arg} z \leqslant \pi$ is the principal value of the argument of $z \neq 0$.  We see that $\pi i h(z)$ maps the upper half plane onto the strip $\mathbb{R} \times ]0,\pi[$. Thus $h(z)$ maps the unit circle $D$ onto the strip $]0,1[ \times \mathbb{R}$. By
 
 \begin{equation}
-	h'(z) = \frac{2}{\pi i} \frac{1}{z - 1} \neq 0
+	h'(z) = \frac{2}{\pi i} \frac{1}{z - 1}
 \end{equation}
 
-on $D$, $h$ is a conformal map from $D$ onto $S$. By composition, $F \circ h$ is analytic and thus by \cite[336]{rudin:rc_analysis:1987} $\log\vert F \circ h \vert$ is subharmonic on $D$.\\
-Fix some $0 \leqslant R < 1$. Then $\log\vert F \circ h \vert$ is continuous (as the sum, product, quotient, composition of continuous functions) for $\vert z \vert = R$. Define 
+we see that $h$ is a holomorphic function on $D$. By composition, $F \circ h$ is holomorphic on $D$ and thus by \cite[336]{rudin:rc_analysis:1987} $\log\vert F \circ h \vert$ is subharmonic on $D$. It is easy to verify, that 
+
+\begin{equation}
+	h^{-1}(z) = \frac{e^{\pi i z} - i}{e^{\pi i z} + i}
+\end{equation}
+ on the unit strip $S$.\\
+
+ \item Fix some $0 \leqslant R < 1$. Then $\log\vert F \circ h \vert$ is continuous (as the sum, product, quotient, composition of continuous functions) for $\vert z \vert = R$. Define 
 
 \begin{gather*}
 	\begin{aligned}
@@ -88,14 +102,54 @@ Then $H$ is continuous for $\vert z \vert \leqslant R$ and harmonic for $\vert z
 	\log\vert F(h(re^{i\theta})) \leqslant \frac{1}{2\pi} \int_{-\pi}^\pi \log\vert F(h(Re^{it}))\vert \frac{R^2 - r^2}{R^2 - 2Rr\cos(\theta - t) + r^2} d\lambda(t) 
 \end{equation}
 
-Consider $e^{i\theta}$ where $\mathrm{Arg}e^{i\theta} \neq 0,\pi$, we have $\mathrm{Im}\psi(e^{i\theta}) = 0$ and hence $\psi(e^{i\theta}) \in \mathbb{R}$. But then either $\mathrm{Re}h(e^{i\theta}) = 0$, $\psi(e^{i\theta}) > 0$ or $\mathrm{Re}h(e^{i\theta}) = 1$, $\psi(e^{i\theta}) < 0$. Hence the growth property of the hypothesis implies
+Consider $e^{i\theta}$ where $\Arg e^{i\theta} \neq 0,\pi$, we have $\Im \psi(e^{i\theta}) = 0$ and hence $\psi(e^{i\theta}) \in \mathbb{R}$. But then either $\Re h(e^{i\theta}) = 0$, $\psi(e^{i\theta}) > 0$ or $\Re h(e^{i\theta}) = 1$, $\psi(e^{i\theta}) < 0$. Hence the growth property of the hypothesis implies
 
-\begin{equation}
-		\log \vert F(h(e^{i\theta})) \vert \leqslant Ae^{\tau\vert \mathrm{Im} h(e^{i\theta})\vert} = Ae^{\tau/\pi\vert \log\vert (1 + e^{i\theta})(1 - e^{i\theta})\vert\vert} = A \vert 1 + e^{i\theta}\vert^{\tau/\pi} \vert 1 - e^{i\theta} \vert^{-\tau/\pi}
-\end{equation}
+\begin{gather}
+	\begin{aligned}
+		\log \vert F(h(e^{i\theta})) \vert &\leqslant Ae^{\tau\vert \Im h(e^{i\theta})\vert}\\
+		&= Ae^{\tau/\pi\vert \log\vert (1 + e^{i\theta})(1 - e^{i\theta})\vert\vert}\\
+		&= A \left\vert \frac{1 + e^{i\theta}}{1 - e^{i\theta}} \right\vert^{\tau/\pi}
+	\end{aligned}
+\end{gather}
+
+\item Fix some $re^{i\theta}$, $r < R$ and stipulate $x := h(re^{i\theta})$. Then we obtain
+
+	\begin{gather}
+		\begin{aligned}
+			re^{i\theta} =& h^{-1}(x)\\
+			=& \frac{e^{\pi i x}- i}{e^{\pi i x} + i}\\
+			=& \frac{\cos(\pi x) + i\sin(\pi x) - i}{\cos(\pi x) + i\sin(\pi x) + i}\\
+			=& \frac{\cos(\pi x) + i\sin(\pi x) - i}{\cos(\pi x) + i\sin(\pi x) + i}\frac{\cos(\pi x) - i\sin(\pi x) - i}{\cos(\pi x) - i\sin(\pi x) + i}\\
+			=& -i \frac{\cos(\pi x)}{1 + \sin(\pi x)}
+		\end{aligned}
+	\end{gather}
+
+	by
+
+	\begin{gather*}
+		\begin{aligned}
+			\left(\cos(\pi x) + i\sin(\pi x) - i\right)\left(\cos(\pi x) - i\sin(\pi x) - i\right) =& \cos^2(\pi x) - i\sin(\pi x)\cos(\pi x)\\	
+			& -i\cos(\pi x) + i\sin(\pi x)\cos(\pi x)\\
+			& + \sin^2(\pi x) + \sin(\pi x)\\
+			& -i \cos(\pi x) - \sin(\pi x) -1\\
+			=& -2i \cos(\pi x)  
+		\end{aligned}
+	\end{gather*}
+
+	and
+
+	\begin{gather*}
+		\begin{aligned}
+			\left( \cos(\pi x) + i\sin(\pi x) + i \right)\left( \cos(\pi x) - i\sin(\pi x) - i \right) =& \cos^2(\pi x) - i\sin(\pi x)\cos(\pi x)\\
+			& -i\cos(\pi x) + i\sin(\pi x)\cos(\pi x)\\
+			& + \sin^2(\pi x) + \sin(\pi x)\\
+			& + i \cos(\pi x) + \sin(\pi x) + 1\\
+			=& 2 + 2\sin(\pi x)
+		\end{aligned}
+	\end{gather*}
 
 
-
+	\end{enumerate}
 \end{proof}
 
 \subsection{Stein's Theorem on Interpolation of Analytic Families of Operators}
