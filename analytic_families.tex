@@ -37,6 +37,7 @@ This theorem is analogous to the one originally used by Stein itself and formula
 
 	\begin{equation}
 		\psi(z) = \frac{-2y}{(1 - x)^2 + y^2} + i \frac{1 - x^2 - y^2}{(1 - x)^2 + y^2}
+		\label{eq:rep_lft}
 	\end{equation}
 
 	Hence $\Im \psi(z) > 0$. Stipulating $x := 1 - y$ for $y$ satisfying $y^2 < y$, we get
@@ -73,13 +74,15 @@ This theorem is analogous to the one originally used by Stein itself and formula
 where $-\pi < \mathrm{Arg} z \leqslant \pi$ is the principal value of the argument of $z \neq 0$.  We see that $\pi i h(z)$ maps the upper half plane onto the strip $\mathbb{R} \times ]0,\pi[$. Thus $h(z)$ maps the unit circle $D$ onto the strip $]0,1[ \times \mathbb{R}$. By
 
 \begin{equation}
-	h'(z) = \frac{2}{\pi i} \frac{1}{z - 1}
+	h'(z) = \frac{2}{\pi i} \frac{1}{1 - z}
+	\label{eq:h_diff}
 \end{equation}
 
 we see that $h$ is a holomorphic function on $D$. By composition, $F \circ h$ is holomorphic on $D$ and thus by \cite[336]{rudin:rc_analysis:1987} $\log\vert F \circ h \vert$ is subharmonic on $D$. It is easy to verify, that 
 
 \begin{equation}
 	h^{-1}(z) = \frac{e^{\pi i z} - i}{e^{\pi i z} + i}
+	\label{eq:h_inv}
 \end{equation}
  on the unit strip $S$.\\
 
@@ -112,7 +115,9 @@ Consider $e^{i\theta}$ where $\Arg e^{i\theta} \neq 0,\pi$, we have $\Im \psi(e^
 	\end{aligned}
 \end{gather}
 
-\item Fix some $re^{i\theta}$, $r < R$ and stipulate $x := h(re^{i\theta})$. Then we obtain
+\item Fix some $re^{i\theta}$, $r < R$ and stipulate $x := h(re^{i\theta})$. Then we obtain \footnote{
+		Recall, that for $z \in \mathbb{C}$ the trigonometric functions are defined by $\sin(z) := \frac{e^{iz} - e^{-iz}}{2i}$ and $\cos(z) := \frac{e^{iz} + e^{-iz}}{2}$. Hence the identities $e^{iz} = \cos(z) + i\sin(z)$ and $\cos^2(z) + \sin^2(z) = 1$ holds for any $z \in \mathbb{C}$.	
+	}
 
 	\begin{gather}
 		\begin{aligned}
@@ -120,8 +125,10 @@ Consider $e^{i\theta}$ where $\Arg e^{i\theta} \neq 0,\pi$, we have $\Im \psi(e^
 			=& \frac{e^{\pi i x}- i}{e^{\pi i x} + i}\\
 			=& \frac{\cos(\pi x) + i\sin(\pi x) - i}{\cos(\pi x) + i\sin(\pi x) + i}\\
 			=& \frac{\cos(\pi x) + i\sin(\pi x) - i}{\cos(\pi x) + i\sin(\pi x) + i}\frac{\cos(\pi x) - i\sin(\pi x) - i}{\cos(\pi x) - i\sin(\pi x) + i}\\
-			=& -i \frac{\cos(\pi x)}{1 + \sin(\pi x)}
+			=& -i \frac{\cos(\pi x)}{1 + \sin(\pi x)}\\
+			=& \left( \frac{\cos(\pi x)}{1 + \sin(\pi x)} \right)e^{-i\pi/2}
 		\end{aligned}
+		\label{eq:radius_angle}
 	\end{gather}
 
 	by
@@ -148,8 +155,96 @@ Consider $e^{i\theta}$ where $\Arg e^{i\theta} \neq 0,\pi$, we have $\Im \psi(e^
 		\end{aligned}
 	\end{gather*}
 
+	From equality (\ref{eq:radius_angle}) we deduce $r = \frac{\cos(\pi x)}{1 + \sin(\pi x)}$, $\theta = \frac{\pi}{2}$ if $0 < x \leqslant \frac{1}{2}$ and $r = -\frac{\cos(\pi x)}{1 + \sin(\pi x)}$, $\theta = \frac{\pi}{2}$ if $\frac{1}{2} \leqslant x < 1$. Let $0 < x \leqslant \frac{1}{2}$. Then we have
+
+	\begin{gather*}
+		\begin{aligned}
+			\frac{1 - r^2}{1 - 2r\cos(\theta - \varphi) + r^2} &= \frac{1 + 2\sin(\pi x) + \sin^2(\pi x) - \cos^2(\pi x)}{1 + 2\sin(\pi x) + \sin^2(\pi x) + 2\cos(\pi x)\sin(\varphi)(1 + \sin(\pi x)) + \cos^2(\pi x)}\\
+			&= \frac{\sin(\pi x) + \sin^2(\pi x)}{1 + \sin(\pi x) + \cos(\pi x)\sin(\varphi)(1 + \sin(\pi x))}\\
+			&= \frac{\sin(\pi x)}{1 + \cos(\pi x)\sin(\varphi)}
+		\end{aligned}
+	\end{gather*}
+
+	since $\cos\left( -\pi/2 - \varphi \right) = -\sin(\varphi)$. That the case $\frac{1}{2} \leqslant x < 1$ yields the same result is due to $\cos(\pi/2 - \varphi) = \sin(\varphi)$.\\
+	Now we have to reformulate 
+
+	\begin{equation}
+		\frac{1}{2\pi} \int_{-\pi}^\pi \frac{\sin(\pi x)}{1 + \cos(\pi x)\sin(\varphi)} \log \vert F(h(e^{i\varphi}))\vert d\lambda(\varphi)
+		\label{eq:int}
+	\end{equation}
+
+	To reach that we split the integral (\ref{eq:int}) into two parts. 
+
+	\begin{enumerate}[label = \textbf{\alph*.}]
+		\item Consider the interval $]-\pi,0[$. Let us proove a quick lemma.
+
+				\begin{lemma}
+				The map $\Phi: ]-\pi,0[ \rightarrow \mathbb{R}$ defined by $\Phi(\varphi) := -i h(e^{i\varphi})$ is a $C^1$-diffeomorphism.
+				\end{lemma}
+
+				\begin{proof}
+				Not so obviously seen is, that $\Phi$ is a real-valued function. Since $\vert e^{i\varphi}\vert = 1$ we see $\Re \psi(e^{i\varphi}) > 0$ from the representation (\ref{eq:rep_lft}) and the fact that $\varphi \in ]-\pi,0[$ implies $y < 0$. Hence $\Im \Log(e^{i\varphi}) = 0$. Further $\lim_{\varphi \rightarrow 0} \Phi(\varphi) = \infty$ and $\lim_{\varphi \rightarrow -\pi} \Phi(\varphi) = \infty$. By (\ref{eq:h_diff}) $\Phi$ is continuously differentiable on $]-\pi,0[$ and by (\ref{eq:h_inv}), $\Phi$ has a continuously differentiable inverse on $\mathbb{R}$.
+				\end{proof}
+
+				Further
+
+				\begin{gather*}
+					\begin{aligned}
+						e^{i\varphi} &= h^{-1}(it) = \frac{e^{-\pi t} - i}{e^{-\pi t} + i} \frac{e^{-\pi t} - i}{e^{-\pi t} - i} = \frac{e^{-2\pi t} - 2ie^{-\pi t} - 1}{e^{-2\pi t} + 1}\\
+						&= \frac{e^{-2\pi t} - 1}{e^{-2\pi t} + 1} - \frac{2ie^{-\pi t}}{e^{-2\pi t} + 1} = \frac{e^{-2\pi t} - 1}{e^{-2\pi t} + 1} - \frac{2i}{e^{-\pi t} + e^{\pi t}}\\
+						&= \frac{1 - e^{2\pi t}}{1 + e^{2\pi t}} - \frac{2i}{e^{-\pi t} + e^{\pi t}} = -\tanh (\pi t) - i \sech(\pi t)
+					\end{aligned}
+				\end{gather*}
+
+				and
+
+				\begin{gather*}
+					\begin{aligned}
+					d\lambda(\varphi) &= -i\frac{d}{dt}\log\left( -\tanh (\pi t) - i \sech(\pi t) \right) = -\pi\frac{\frac{i}{\cosh^2(\pi t)} + \frac{\sinh(\pi t)}{\cosh^2(\pi t)}}{\tanh (\pi t) + i \sech(\pi t)}\\
+						&= -\pi \frac{i + \sinh(\pi t)}{\sinh(\pi t)\cosh(\pi t) + i\cosh(\pi t)} = -\pi \frac{1}{\cosh(\pi t)} = -\pi \sech(\pi t)
+					\end{aligned}
+				\end{gather*}
+
+				By 
+
+				\begin{gather*}
+					\begin{aligned}
+						\sin(\varphi)\cosh(\pi t) &= \sin\left( -i\log\left( -\tanh (\pi t) - i \sech(\pi t) \right)\right) \cosh(\pi t)\\
+						&= \frac{1}{2i} \left[ -\tanh(\pi t) - i\sech(\pi t) + \frac{1}{\tanh(\pi t) + i\sech(\pi t) }\right]\cosh(\pi t)\\
+						&= \frac{1}{2i} \left[ \frac{\cosh(\pi t) - \tanh(\pi t) \sinh(\pi t) - 2i\tanh(\pi t) + \sech(\pi t)}{\tanh(\pi t) + i\sech(\pi t)}\right]\\
+						&= \frac{1}{2i} \left[ \frac{\cosh^2(\pi t) - \sinh^2(\pi t) - 2i \sinh(\pi t) + 1}{\sinh(\pi t) + i}\right]\\
+						&= \frac{1 - i\sinh(\pi t)}{i\sinh(\pi t) - 1}\\
+						&= -1
+					\end{aligned}
+				\end{gather*}
+
+				we therefore get
+
+				\begin{multline}
+					\frac{1}{2\pi} \int_{-\pi}^0 \frac{\sin(\pi x)}{1 + \cos(\pi x)\sin(\varphi)} \log \vert F(h(e^{i\varphi}))\vert d\lambda(\varphi)\\ = \frac{1}{2}\int_{-\infty}^\infty\frac{\sin(\pi x)}{\cosh(\pi t) - \cos(\pi x)} \log\vert F(it) \vert d\lambda(t)
+				\end{multline}
+
+		\item Consider the interval $]0,\pi[$. The change of variables $1 + it = h(e^{i\varphi})$ is equivalent to $e^{i\varphi} = - \tanh(\pi t) + i\sech(\pi t)$. Furthermore $d\lambda(\varphi) = \pi \sech(\pi t) d\lambda(t)$. Therefore 
+
+				\begin{multline}
+					\frac{1}{2\pi} \int_0^\pi \frac{\sin(\pi x)}{1 + \cos(\pi x)\sin(\varphi)} \log \vert F(h(e^{i\varphi}))\vert d\lambda(\varphi)\\ = \frac{1}{2}\int_{-\infty}^\infty\frac{\sin(\pi x)}{\cosh(\pi t) + \cos(\pi x)} \log\vert F(1 + it) \vert d\lambda(t)
+				\end{multline}
+
+				since
+
+				\begin{gather*}
+					\begin{aligned}
+						\sin(\varphi)\cosh(\pi t) &= \sin\left( -i\log\left( -\tanh (\pi t) + i \sech(\pi t) \right)\right) \cosh(\pi t)\\
+						&= \frac{1}{2i} \left[ -\tanh(\pi t) + i\sech(\pi t) - \frac{1}{-\tanh(\pi t) + i\sech(\pi t) }\right]\cosh(\pi t)\\
+						&= \frac{1}{2i} \left[ \frac{-\cosh(\pi t) + \tanh(\pi t) \sinh(\pi t) - 2i\tanh(\pi t) - \sech(\pi t)}{-\tanh(\pi t) + i\sech(\pi t)}\right]\\
+						&= \frac{1}{2i} \left[ \frac{- \cosh^2(\pi t) + \sinh^2(\pi t) - 2i \sinh(\pi t) - 1}{i - \sinh(\pi t)}\right]\\
+						&= \frac{1 + i\sinh(\pi t)}{1 + i\sinh(\pi t)}\\
+						&= 1
+					\end{aligned}
+				\end{gather*}
 
 	\end{enumerate}
+\end{enumerate}
 \end{proof}
 
 \subsection{Stein's Theorem on Interpolation of Analytic Families of Operators}
