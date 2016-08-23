@@ -8,7 +8,7 @@ This theorem is analogous to the one originally used by Stein itself and formula
 
 \begin{mdframed}
 	\begin{lemma}\emph{(Hadamard's three lines lemma, extension)}
-		Let $F$ be an analytic function in the strip $S := \{z \in \mathbb{C}: 0 < \mathrm{Re}z < 1\}$ and continuous on $\overline{S}$, such that for every $z \in \overline{S}$ we have $\log \vert F(z)\vert \leqslant A e^{\tau \vert \mathrm{Im}z \vert}$ for some $A < \infty$ and $\tau \in [0,\pi[$. Then
+		Let $F$ be a holomorphic function in the strip $S := \{z \in \mathbb{C}: 0 < \mathrm{Re}z < 1\}$ and continuous on $\overline{S}$, such that for some $A < \infty$ and $\tau \in [0,\pi[$ we have $\log \vert F(z)\vert \leqslant A e^{\tau \vert \Im z \vert}$ for every $z \in \overline{S}$. Then
 
 			\begin{equation*}
 				\vert F(z) \vert \leqslant \exp\left( \frac{\sin(\pi x)}{2} \int_{-\infty}^\infty \left[ \frac{\log \vert F(it + iy)\vert}{\cosh(\pi t) - \cos(\pi x)} + \frac{\log \vert F(1 + it + iy)\vert}{\cosh(\pi t) + \cos(\pi x)} \right] d\lambda(t)\right)
@@ -19,15 +19,27 @@ This theorem is analogous to the one originally used by Stein itself and formula
 \end{mdframed}
 
 \begin{proof}
-	Since the proof is rather long we divide it as follows.
+Since the proof is rather long, we divide it as follows.
 
-	\begin{enumerate}[label = \textbf{(\roman*.)}]
-		\item Construct a holomorphic function $h$ defined on the open unit disc $D := \{z \in \mathbb{C} : \vert z \vert < 1\}$ with range $S$.
-		\item Using the Poisson integral formula and the maximum principle for subharmonic functions find an upper bound for $\log\vert F \circ h\vert$ for $D$.
-	\end{enumerate}
+\begin{enumerate}[label = \textbf{(\roman*)}]
+	\item \underline{$y = 0$.}
+		\begin{enumerate}[label = \textbf{\alph*.}]
+			\item Construct a holomorphic function $h$ on $D := \{z \in \mathbb{C} : \vert z \vert < 1\}$ with range $S$.
+			\item Using the Poisson integral formula and the maximum principle for subharmonic functions find an upper bound for the subharmonic function $\log\vert F \circ h\vert$ on $D$. Furthermore, applying the Lebesgue dominated convergence theorem yields a bound on $\overline{D} \setminus \{\pm 1\}$.
+			\item The next steps are basically about finding an appropriate form of the integral bound. First we rewrite the integral bound obtained via the Lebesgue dominated convergence theorem.
+			\item We split the integral into two parts. First we consider the interval $]-\pi,0[$.
+			\item In this step we consider the interval $]0,\pi[$ and conclude.
+		\end{enumerate}
+	\item \underline{$y \neq 0$.}
+		\begin{enumerate}[label = \textbf{\alph*.}]
+			\item Define an auxiliary function which satisfies the assumptions of the lemma and deduce from the case $y = 0$.
+		\end{enumerate}
+\end{enumerate}
 
-	\begin{enumerate}[label = \textbf{(\roman*.)}]
-		\item Assume $F$ not identically zero (the case where $F$ is identically zero is trivial). Consider the function 
+\begin{enumerate}[label = \textbf{(\roman*)}]
+	\item Consider the case \underline{$y = 0$.}
+	\begin{enumerate}[label = \textbf{\alph*.}]
+	\item Assume $F$ to be not identically zero (the case where $F$ is identically zero is trivial). Consider the function 
 
 	\begin{equation}
 		h(z) := \frac{1}{\pi i}\Log\left( i\frac{1 + z}{1 - z} \right)
@@ -107,13 +119,11 @@ Then $H$ is continuous for $\vert z \vert \leqslant R$ and harmonic for $\vert z
 
 Consider $e^{i\theta}$ where $\Arg e^{i\theta} \neq 0,\pi$, we have $\Im \psi(e^{i\theta}) = 0$ and hence $\psi(e^{i\theta}) \in \mathbb{R}$. But then either $\Re h(e^{i\theta}) = 0$, $\psi(e^{i\theta}) > 0$ or $\Re h(e^{i\theta}) = 1$, $\psi(e^{i\theta}) < 0$. Hence the growth property of the hypothesis implies
 
-\begin{gather}
-	\begin{aligned}
-		\log \vert F(h(e^{i\theta})) \vert &\leqslant Ae^{\tau\vert \Im h(e^{i\theta})\vert}\\
-		&= Ae^{\tau/\pi\vert \log\vert (1 + e^{i\theta})(1 - e^{i\theta})\vert\vert}\\
-		&= A \left\vert \frac{1 + e^{i\theta}}{1 - e^{i\theta}} \right\vert^{\tau/\pi}
-	\end{aligned}
-\end{gather}
+\begin{gather*}
+		\log \vert F(h(e^{i\theta})) \vert \leqslant Ae^{\tau\vert \Im h(e^{i\theta})\vert}
+		= Ae^{\tau/\pi\vert \log\vert (1 + e^{i\theta})(1 - e^{i\theta})\vert\vert}
+		= A \left\vert \frac{1 + e^{i\theta}}{1 - e^{i\theta}} \right\vert^{\tau/\pi}
+\end{gather*}
 
 \item Fix some $re^{i\theta}$, $r < R$ and stipulate $x := h(re^{i\theta})$. Then we obtain \footnote{
 		Recall, that for $z \in \mathbb{C}$ the trigonometric functions are defined by $\sin(z) := \frac{e^{iz} - e^{-iz}}{2i}$ and $\cos(z) := \frac{e^{iz} + e^{-iz}}{2}$. Hence the identities $e^{iz} = \cos(z) + i\sin(z)$ and $\cos^2(z) + \sin^2(z) = 1$ holds for any $z \in \mathbb{C}$.	
@@ -121,39 +131,27 @@ Consider $e^{i\theta}$ where $\Arg e^{i\theta} \neq 0,\pi$, we have $\Im \psi(e^
 
 	\begin{gather}
 		\begin{aligned}
-			re^{i\theta} =& h^{-1}(x)\\
-			=& \frac{e^{\pi i x}- i}{e^{\pi i x} + i}\\
-			=& \frac{\cos(\pi x) + i\sin(\pi x) - i}{\cos(\pi x) + i\sin(\pi x) + i}\\
-			=& \frac{\cos(\pi x) + i\sin(\pi x) - i}{\cos(\pi x) + i\sin(\pi x) + i}\frac{\cos(\pi x) - i\sin(\pi x) - i}{\cos(\pi x) - i\sin(\pi x) + i}\\
-			=& -i \frac{\cos(\pi x)}{1 + \sin(\pi x)}\\
-			=& \left( \frac{\cos(\pi x)}{1 + \sin(\pi x)} \right)e^{-i\pi/2}
+			re^{i\theta} &= h^{-1}(x) = \frac{e^{\pi i x}- i}{e^{\pi i x} + i} = \frac{\cos(\pi x) + i\sin(\pi x) - i}{\cos(\pi x) + i\sin(\pi x) + i}\\
+			&= \frac{\cos(\pi x) + i\sin(\pi x) - i}{\cos(\pi x) + i\sin(\pi x) + i}\frac{\cos(\pi x) - i\sin(\pi x) - i}{\cos(\pi x) - i\sin(\pi x) - i} = -i \frac{\cos(\pi x)}{1 + \sin(\pi x)}\\
+			&= \left( \frac{\cos(\pi x)}{1 + \sin(\pi x)} \right)e^{-i\pi/2}
 		\end{aligned}
 		\label{eq:radius_angle}
 	\end{gather}
 
 	by
 
-	\begin{gather*}
-		\begin{aligned}
-			\left(\cos(\pi x) + i\sin(\pi x) - i\right)\left(\cos(\pi x) - i\sin(\pi x) - i\right) =& \cos^2(\pi x) - i\sin(\pi x)\cos(\pi x)\\	
-			& -i\cos(\pi x) + i\sin(\pi x)\cos(\pi x)\\
-			& + \sin^2(\pi x) + \sin(\pi x)\\
-			& -i \cos(\pi x) - \sin(\pi x) -1\\
-			=& -2i \cos(\pi x)  
-		\end{aligned}
-	\end{gather*}
+	\begin{multline*}
+			\left(\cos(\pi x) + i\sin(\pi x) - i\right)\left(\cos(\pi x) - i\sin(\pi x) - i\right)\\ = \cos^2(\pi x) - i\sin(\pi x)\cos(\pi x)	
+			 -i\cos(\pi x) + i\sin(\pi x)\cos(\pi x)\\
+			 + \sin^2(\pi x) + \sin(\pi x) - i \cos(\pi x) - \sin(\pi x) - 1 = -2i \cos(\pi x)  
+	\end{multline*}
 
 	and
 
-	\begin{gather*}
-		\begin{aligned}
-			\left( \cos(\pi x) + i\sin(\pi x) + i \right)\left( \cos(\pi x) - i\sin(\pi x) - i \right) =& \cos^2(\pi x) - i\sin(\pi x)\cos(\pi x)\\
-			& -i\cos(\pi x) + i\sin(\pi x)\cos(\pi x)\\
-			& + \sin^2(\pi x) + \sin(\pi x)\\
-			& + i \cos(\pi x) + \sin(\pi x) + 1\\
-			=& 2 + 2\sin(\pi x)
-		\end{aligned}
-	\end{gather*}
+	\begin{multline*}
+		\left( \cos(\pi x) + i\sin(\pi x) + i \right)\left( \cos(\pi x) - i\sin(\pi x) - i \right)\\ = \cos^2(\pi x) - i\sin(\pi x)\cos(\pi x) - i\cos(\pi x) + i\sin(\pi x)\cos(\pi x)\\
+		 + \sin^2(\pi x) + \sin(\pi x)+ i \cos(\pi x) + \sin(\pi x) + 1 = 2 + 2\sin(\pi x)
+	\end{multline*}
 
 	From equality (\ref{eq:radius_angle}) we deduce $r = \frac{\cos(\pi x)}{1 + \sin(\pi x)}$, $\theta = \frac{\pi}{2}$ if $0 < x \leqslant \frac{1}{2}$ and $r = -\frac{\cos(\pi x)}{1 + \sin(\pi x)}$, $\theta = \frac{\pi}{2}$ if $\frac{1}{2} \leqslant x < 1$. Let $0 < x \leqslant \frac{1}{2}$. Then we have
 
@@ -175,18 +173,7 @@ Consider $e^{i\theta}$ where $\Arg e^{i\theta} \neq 0,\pi$, we have $\Im \psi(e^
 
 	To reach that we split the integral (\ref{eq:int}) into two parts. 
 
-	\begin{enumerate}[label = \textbf{\alph*.}]
-		\item Consider the interval $]-\pi,0[$. Let us proove a quick lemma.
-
-				\begin{lemma}
-				The map $\Phi: ]-\pi,0[ \rightarrow \mathbb{R}$ defined by $\Phi(\varphi) := -i h(e^{i\varphi})$ is a $C^1$-diffeomorphism.
-				\end{lemma}
-
-				\begin{proof}
-				Not so obviously seen is, that $\Phi$ is a real-valued function. Since $\vert e^{i\varphi}\vert = 1$ we see $\Re \psi(e^{i\varphi}) > 0$ from the representation (\ref{eq:rep_lft}) and the fact that $\varphi \in ]-\pi,0[$ implies $y < 0$. Hence $\Im \Log(e^{i\varphi}) = 0$. Further $\lim_{\varphi \rightarrow 0} \Phi(\varphi) = \infty$ and $\lim_{\varphi \rightarrow -\pi} \Phi(\varphi) = \infty$. By (\ref{eq:h_diff}) $\Phi$ is continuously differentiable on $]-\pi,0[$ and by (\ref{eq:h_inv}), $\Phi$ has a continuously differentiable inverse on $\mathbb{R}$.
-				\end{proof}
-
-				Further
+	\item Consider the interval $]-\pi,0[$. We have
 
 				\begin{gather*}
 					\begin{aligned}
@@ -243,6 +230,24 @@ Consider $e^{i\theta}$ where $\Arg e^{i\theta} \neq 0,\pi$, we have $\Im \psi(e^
 					\end{aligned}
 				\end{gather*}
 
+				Thus the case $y = 0$ is prooven.
+	\end{enumerate}
+\item Consider the case \underline{$y \neq 0$.}
+
+	\begin{enumerate}[label = \textbf{\alph*.}]
+		\item Fix $y \neq 0$ and define $G(z) := F(z + iy)$ for $z \in \overline{S}$. Then $G$ is a holomorphic function in $S$ and continuous on $\overline{S}$ as a composition of continuous and holomorphic functions. Moreover, the hypothesis on $F$ yields
+
+		\begin{equation}
+			\log \vert G(z) \vert = \log \vert F(z + iy) \vert \leqslant Ae^{\tau \vert \Im z + y\vert} \leqslant Ae^{\tau \vert \Im z \vert}e^{\tau \vert y \vert}
+		\end{equation}
+
+		for all $z \in \overline{S}$. The previous case yields for $G$ with $A$ replaced by $Ae^{\tau\vert y \vert}$
+
+		\begin{equation}
+			\vert G(x) \vert \leqslant \exp\left( \frac{\sin(\pi x)}{2} \int_{-\infty}^\infty \left[ \frac{\log \vert G(it)\vert}{\cosh(\pi t) - \cos(\pi x)} + \frac{\log \vert G(1 + it)\vert}{\cosh(\pi t) + \cos(\pi x)} \right] d\lambda(t)\right)
+		\end{equation}
+
+		Now, observing $G(x) = F(x + iy)$, $G(it) = F(it + iy)$ and $G(1 + it) = F(1 + it + iy)$ yields the desired result.
 	\end{enumerate}
 \end{enumerate}
 \end{proof}
