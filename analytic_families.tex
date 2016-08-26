@@ -4,6 +4,85 @@ This generalization of the classical Riesz-Thorin theorem is due to \href{http:/
 \subsection{Extension of Hadamard's Three Lines Lemma}
 This theorem is analogous to the one originally used by Stein itself and formulated by \href{http://download.springer.com/static/pdf/285/art\%253A10.1007\%252FBF02825637.pdf?originUrl=http\%3A\%2F\%2Flink.springer.com\%2Farticle\%2F10.1007\%2FBF02825637\&token2=exp=1470939579~acl=\%2Fstatic\%2Fpdf\%2F285\%2Fart\%25253A10.1007\%25252FBF02825637.pdf\%3ForiginUrl\%3Dhttp\%253A\%252F\%252Flink.springer.com\%252Farticle\%252F10.1007\%252FBF02825637*~hmac=d88bfe05b2cc8b0deed0f4781b8dfdd3701969606a6033727bfaf0c034cbd876}{ I. I. Hirschman, Jr.}
 
+\subsubsection{Auxiliary Lemmata} To shorten the proof of the extension of Hadamard's three lines lemma, I will summarize the most important facts used during the proof.
+
+\begin{lemma}
+	Let $D := \{z \in \mathbb{C} : \vert z \vert < 1\}$ be the open unit disc and 
+	
+	\begin{equation}
+		h(z) := \frac{1}{\pi i}\log\left( i\frac{1 + z}{1 - z} \right)
+	\end{equation}
+
+	for $z \in D$ where we shall interpret $\log z := \log \vert z \vert + i \arg z$ as the principal value, this means $-\pi < \arg z \leqslant \pi$. Then $h$ is a holomorphic function which maps $D$ bijectively onto the strip $S := \{z \in \mathbb{C} : 0 < \Re z < 1\}$.
+
+	\label{lem:h}
+\end{lemma}
+
+\begin{proof}
+	Define $\displaystyle f(z) := i\frac{1 + z}{1 - z}$. If we write $z := x + iy \in D$, we have 
+
+	\begin{equation}
+		f(z) = \frac{-2y}{(1 - x)^2 + y^2} + i \frac{1 - x^2 - y^2}{(1 - x)^2 + y^2}
+		\label{eq:rep_lft}
+	\end{equation}
+
+	Hence $\Im f(z) > 0$ on $D$. Stipulating $x := 1 - y$ for $y$ satisfying $y^2 < y$, we get
+
+	\begin{equation}
+		\lim\limits_{y^2 < y, y \rightarrow 0^+} \Im f(z) = \lim\limits_{y^2 < y, y \rightarrow 0^+} \left( \frac{1}{y} - 1 \right) = \infty
+	\end{equation}
+
+	using the same definition of $x$ we get
+
+	\begin{equation}
+		\lim\limits_{y^2 < y, y \rightarrow 0^+} \Re f(z) = -\lim\limits_{y^2 < y, y \rightarrow 0^+} \frac{1}{y} = -\infty
+	\end{equation}
+
+	and by stipulating $x := 1 + y$
+
+	\begin{equation}
+		\lim\limits_{y^2 < -y, y \rightarrow 0^-} \Re f(z) = -\lim\limits_{y^2 < -y, y \rightarrow 0^-} \frac{1}{y} = \infty	
+	\end{equation}
+
+
+	Since $2i \neq 0$, $f$ is a linear fractional transformation (see \cite[279]{rudin:rc_analysis:1987}) with
+
+	\begin{equation}
+		f^{-1}(z) = \frac{z - i}{z + i}
+	\end{equation}
+
+	Therefore $f$ maps the unit circle $D$ onto the upper half plane $\{z \in \mathbb{C} : \Im z > 0\}$. The preceeding logarithm maps the upper half plane onto the strip $\{z \in \mathbb{C} : 0 < \Im z < \pi \}$. Thus $h(z)$ maps the unit circle $D$ onto the strip $S$. By
+
+\begin{equation}
+	h'(z) = \frac{2}{\pi i} \frac{1}{1 - z}
+	\label{eq:h_diff}
+\end{equation}
+
+	we see that $h$ is a holomorphic function in $D$. 
+\end{proof}
+
+\begin{lemma}
+	The mapping $\Phi: \mathbb{R} \rightarrow (-\pi,0)$ defined by $\Phi(t) := -i\log\left( h^{-1}(it) \right)$ is a $C^1$-Diffeomorphism with $\vert D\Phi(t)\vert = \pi \sech(\pi t)$. In an analogous manner we have that $\Psi: \mathbb{R} \rightarrow (0,\pi)$, $\Psi(t) := -i\log\left( h^{-1}(1 + it) \right)$ is a $C^1$-Diffeomorphism with $\vert D\Psi(t)\vert = \pi \sech(\pi t)$.
+	\label{lem:change_of_variables}
+\end{lemma}
+
+\begin{proof}
+	It is easier to consider $\Phi^{-1}(\varphi) = -i h(e^{i\varphi})$ and $\Psi^{-1}(\varphi) = -i\left( h(e^{i\varphi}) - 1 \right)$ (this already shows that $\Phi$ is a bijective mapping). Since $\left| e^{i\varphi}\right| = 1$ it is immediate by the representation (\ref{eq:rep_lft}) and $y < 0$ that $\Im \Phi(\varphi) = 0$. Furthermore, $\lim_{\varphi \rightarrow -\pi} \Phi(\varphi) = \infty$ and $\lim_{\varphi \rightarrow 0} \Phi(\varphi) = -\infty$. By (\ref{eq:h_diff}) $\Phi$ is clearly continuously differentiable. Using
+	
+	\begin{equation*}
+		h^{-1}(it) = \frac{e^{-\pi t} - i}{e^{-\pi t} + i}
+	\end{equation*}
+	
+	we get
+
+	\begin{gather*}
+		\left| D\Phi(t)\right| = \pi\left| \frac{e^{-\pi t}}{e^{\pi t} - i} - \frac{e^{-\pi t}}{e^{-\pi t} + i}\right| = \pi\left| \frac{2e^{-\pi t}}{e^{-2\pi t} + 1}\right| \pi \left| \frac{2}{e^{-\pi t} + e^{\pi t}}\right|= \pi \sech(\pi t)
+	\end{gather*}
+\end{proof}
+
+\subsubsection{The Lemma}
+Now we are able to proove the main result in prooving Stein's interpolation theorem.
+
 \vspace{2mm}
 
 \begin{mdframed}
@@ -15,82 +94,14 @@ This theorem is analogous to the one originally used by Stein itself and formula
 			\end{equation*}
 
 			whenever $z := x + iy \in S$.
+			\label{lem:EHTL}
 	\end{lemma}
 \end{mdframed}
 
 \begin{proof}
-Since the proof is rather long, we divide it as follows.
+	We will first proove the case \underline{$y = 0$.} Assume $F$ to be not identically zero (the case where $F$ is identically zero is trivial). Consider the function 
 
-\begin{enumerate}[label = \textbf{(\roman*)}]
-	\item \underline{$y = 0$.}
-		\begin{enumerate}[label = \textbf{\alph*.}]
-			\item Construct a holomorphic function $h$ on $D := \{z \in \mathbb{C} : \vert z \vert < 1\}$ with range $S$.
-			\item Using the Poisson integral formula and the maximum principle for subharmonic functions find an upper bound for the subharmonic function $\log\vert F \circ h\vert$ on $D$. Furthermore, applying the Lebesgue dominated convergence theorem yields a bound on $\overline{D} \setminus \{\pm 1\}$.
-			\item The next steps are basically about finding an appropriate form of the integral bound. First we rewrite the integral bound obtained via the Lebesgue dominated convergence theorem.
-			\item We split the integral into two parts. First we consider the interval $]-\pi,0[$.
-			\item In this step we consider the interval $]0,\pi[$ and conclude.
-		\end{enumerate}
-	\item \underline{$y \neq 0$.}
-		\begin{enumerate}[label = \textbf{\alph*.}]
-			\item Define an auxiliary function which satisfies the assumptions of the lemma and deduce from the case $y = 0$.
-		\end{enumerate}
-\end{enumerate}
-
-\begin{enumerate}[label = \textbf{(\roman*)}]
-	\item Consider the case \underline{$y = 0$.}
-	\begin{enumerate}[label = \textbf{\alph*.}]
-	\item Assume $F$ to be not identically zero (the case where $F$ is identically zero is trivial). Consider the function 
-
-	\begin{equation}
-		h(z) := \frac{1}{\pi i}\Log\left( i\frac{1 + z}{1 - z} \right)
-	\end{equation}
-
-	on $D$. Define $\psi(z) := i(1 + z)/(1 - z)$. If we write $z := x + iy \in D$, we have 
-
-	\begin{equation}
-		\psi(z) = \frac{-2y}{(1 - x)^2 + y^2} + i \frac{1 - x^2 - y^2}{(1 - x)^2 + y^2}
-		\label{eq:rep_lft}
-	\end{equation}
-
-	Hence $\Im \psi(z) > 0$. Stipulating $x := 1 - y$ for $y$ satisfying $y^2 < y$, we get
-
-	\begin{equation}
-		\lim\limits_{y^2 < y, y \rightarrow 0^+} \Im \psi(z) = \lim\limits_{y^2 < y, y \rightarrow 0^+} \left( \frac{1}{y} - 1 \right) = \infty
-	\end{equation}
-
-	using the same definition of $x$ we get
-
-	\begin{equation}
-		\lim\limits_{y^2 < y, y \rightarrow 0^+} \Re \psi(z) = -\lim\limits_{y^2 < y, y \rightarrow 0^+} \frac{1}{y} = -\infty
-	\end{equation}
-
-	and by stipulating $x := 1 + y$
-
-	\begin{equation}
-		\lim\limits_{y^2 < -y, y \rightarrow 0^-} \Re \psi(z) = -\lim\limits_{y^2 < -y, y \rightarrow 0^-} \frac{1}{y} = \infty	
-	\end{equation}
-
-
-	Since $2i \neq 0$, $\psi$ is a linear fractional transformation (see \cite[279]{rudin:rc_analysis:1987}) with
-
-	\begin{equation}
-		\psi^{-1}(z) = \frac{z - i}{z + i}
-	\end{equation}
-
-	Therefore $\psi$ maps the unit circle $D$ onto the upper half plane. The principal value of $\log z$ denoted by $\Log z$ is defined by 
-
-	\begin{equation}
-		\Log z := \log \vert z \vert + i \Arg z \qquad z \neq 0
-	\end{equation}
-
-where $-\pi < \mathrm{Arg} z \leqslant \pi$ is the principal value of the argument of $z \neq 0$.  We see that $\pi i h(z)$ maps the upper half plane onto the strip $\mathbb{R} \times ]0,\pi[$. Thus $h(z)$ maps the unit circle $D$ onto the strip $]0,1[ \times \mathbb{R}$. By
-
-\begin{equation}
-	h'(z) = \frac{2}{\pi i} \frac{1}{1 - z}
-	\label{eq:h_diff}
-\end{equation}
-
-we see that $h$ is a holomorphic function on $D$. By composition, $F \circ h$ is holomorphic on $D$ and thus by \cite[336]{rudin:rc_analysis:1987} $\log\vert F \circ h \vert$ is subharmonic on $D$. It is easy to verify, that 
+	on $D$.By composition, $F \circ h$ is holomorphic on $D$ and thus by \cite[336]{rudin:rc_analysis:1987} $\log\vert F \circ h \vert$ is subharmonic on $D$. It is easy to verify, that 
 
 \begin{equation}
 	h^{-1}(z) = \frac{e^{\pi i z} - i}{e^{\pi i z} + i}
@@ -98,35 +109,39 @@ we see that $h$ is a holomorphic function on $D$. By composition, $F \circ h$ is
 \end{equation}
  on the unit strip $S$.\\
 
- \item Fix some $0 \leqslant R < 1$. Then $\log\vert F \circ h \vert$ is continuous (as the sum, product, quotient, composition of continuous functions) for $\vert z \vert = R$. Define 
-
-\begin{gather*}
-	\begin{aligned}
-		H(re^{i\theta}):= \begin{cases}
-			\displaystyle
-			\log \vert F(h(Re^{i\theta}))\vert & r = R,\\
-			\displaystyle
-			\frac{1}{2\pi} \int_{-\pi}^\pi \log\vert F(h(Re^{it}))\vert \frac{R^2 - r^2}{R^2 - 2Rr\cos(\theta - t) + r^2} d\lambda(t) & 0 \leqslant r < R
-	\end{cases}
-	\end{aligned}
-\end{gather*}
+Fix some $0 < R < 1$. Then $\log\left| F \circ h \right|$ is continuous for $\left| z \right| = R$ and subharmonic in by \cite[336]{rudin:rc_analysis:1987}. Define
+	 
+	\begin{gather*}
+		\begin{aligned}
+			H(re^{i\theta}):= \begin{cases}
+				\log \vert F(h(Re^{i\theta}))\vert & r = R,\\
+				\displaystyle \frac{1}{2\pi} \int_{-\pi}^\pi \log\vert F(h(Re^{it}))\vert \frac{R^2 - r^2}{R^2 - 2Rr\cos(\theta - t) + r^2} d\lambda(t) & 0 \leqslant r < R
+		\end{cases}
+		\end{aligned}
+	\end{gather*}
 
 Then $H$ is continuous for $\vert z \vert \leqslant R$ and harmonic for $\vert z \vert < R$ (see \cite[234--235]{rudin:rc_analysis:1987}). Since $\log\vert F(h(Re^{i\theta}))\vert = H(Re^{i\theta})$, by \cite[336]{rudin:rc_analysis:1987} we have
 
-\begin{equation}
+\begin{equation*}
 	\log\vert F(h(re^{i\theta})) \leqslant \frac{1}{2\pi} \int_{-\pi}^\pi \log\vert F(h(Re^{it}))\vert \frac{R^2 - r^2}{R^2 - 2Rr\cos(\theta - t) + r^2} d\lambda(t) 
+\end{equation*}
+
+for $0 \leqslant r < R$. Now fix $r < R$, $-\pi < \theta \leqslant \pi$ and let $R := 1 - \frac{1}{n}$ for $n \in \mathbb{N}$ such that $r < R$ holds. Thus
+
+\begin{equation}
+	\log\vert F(h(re^{i\theta})) \leqslant \frac{1}{2\pi} \int_{-\pi}^\pi f_n(t) d\lambda(t)
 \end{equation}
 
 Consider $e^{i\theta}$ where $\Arg e^{i\theta} \neq 0,\pi$, we have $\Im \psi(e^{i\theta}) = 0$ and hence $\psi(e^{i\theta}) \in \mathbb{R}$. But then either $\Re h(e^{i\theta}) = 0$, $\psi(e^{i\theta}) > 0$ or $\Re h(e^{i\theta}) = 1$, $\psi(e^{i\theta}) < 0$. Hence the growth property of the hypothesis implies
 
 \begin{gather*}
 		\log \vert F(h(e^{i\theta})) \vert \leqslant Ae^{\tau\vert \Im h(e^{i\theta})\vert}
-		= Ae^{\tau/\pi\vert \log\vert (1 + e^{i\theta})(1 - e^{i\theta})\vert\vert}
+		= Ae^{\tau/\pi\vert \log\vert (1 + e^{i\theta})(1 - e^{i\theta})^{-1}\vert\vert}
 		= A \left\vert \frac{1 + e^{i\theta}}{1 - e^{i\theta}} \right\vert^{\tau/\pi}
 \end{gather*}
 
 \item Fix some $re^{i\theta}$, $r < R$ and stipulate $x := h(re^{i\theta})$. Then we obtain \footnote{
-		Recall, that for $z \in \mathbb{C}$ the trigonometric functions are defined by $\sin(z) := \frac{e^{iz} - e^{-iz}}{2i}$ and $\cos(z) := \frac{e^{iz} + e^{-iz}}{2}$. Hence the identities $e^{iz} = \cos(z) + i\sin(z)$ and $\cos^2(z) + \sin^2(z) = 1$ holds for any $z \in \mathbb{C}$.	
+		Recall, that for $z \in \mathbb{C}$ the trigonometric functions are defined by $\sin(z) := \frac{e^{iz} - e^{-iz}}{2i}$ and $\cos(z) := \frac{e^{iz} + e^{-iz}}{2}$. Hence the identities $e^{iz} = \cos(z) + i\sin(z)$ and $\cos^2(z) + \sin^2(z) = 1$ holds for any $z \in \mathbb{C}$ (see \cite[42--44]{ahlfors:complex_analysis:1979}).	
 	}
 
 	\begin{gather}
@@ -140,28 +155,26 @@ Consider $e^{i\theta}$ where $\Arg e^{i\theta} \neq 0,\pi$, we have $\Im \psi(e^
 
 	by
 
-	\begin{multline*}
+		\begin{multline*}
 			\left(\cos(\pi x) + i\sin(\pi x) - i\right)\left(\cos(\pi x) - i\sin(\pi x) - i\right)\\ = \cos^2(\pi x) - i\sin(\pi x)\cos(\pi x)	
 			 -i\cos(\pi x) + i\sin(\pi x)\cos(\pi x)\\
 			 + \sin^2(\pi x) + \sin(\pi x) - i \cos(\pi x) - \sin(\pi x) - 1 = -2i \cos(\pi x)  
-	\end{multline*}
+		\end{multline*}
 
 	and
-
-	\begin{multline*}
-		\left( \cos(\pi x) + i\sin(\pi x) + i \right)\left( \cos(\pi x) - i\sin(\pi x) - i \right)\\ = \cos^2(\pi x) - i\sin(\pi x)\cos(\pi x) - i\cos(\pi x) + i\sin(\pi x)\cos(\pi x)\\
-		 + \sin^2(\pi x) + \sin(\pi x)+ i \cos(\pi x) + \sin(\pi x) + 1 = 2 + 2\sin(\pi x)
-	\end{multline*}
+	
+		\begin{multline*}
+			\left( \cos(\pi x) + i\sin(\pi x) + i \right)\left( \cos(\pi x) - i\sin(\pi x) - i \right)\\ = \cos^2(\pi x) - i\sin(\pi x)\cos(\pi x) - i\cos(\pi x) + i\sin(\pi x)\cos(\pi x)\\
+		 	+ \sin^2(\pi x) + \sin(\pi x)+ i \cos(\pi x) + \sin(\pi x) + 1 = 2 + 2\sin(\pi x)
+		\end{multline*}
 
 	From equality (\ref{eq:radius_angle}) we deduce $r = \frac{\cos(\pi x)}{1 + \sin(\pi x)}$, $\theta = \frac{\pi}{2}$ if $0 < x \leqslant \frac{1}{2}$ and $r = -\frac{\cos(\pi x)}{1 + \sin(\pi x)}$, $\theta = \frac{\pi}{2}$ if $\frac{1}{2} \leqslant x < 1$. Let $0 < x \leqslant \frac{1}{2}$. Then we have
 
-	\begin{gather*}
-		\begin{aligned}
-			\frac{1 - r^2}{1 - 2r\cos(\theta - \varphi) + r^2} &= \frac{1 + 2\sin(\pi x) + \sin^2(\pi x) - \cos^2(\pi x)}{1 + 2\sin(\pi x) + \sin^2(\pi x) + 2\cos(\pi x)\sin(\varphi)(1 + \sin(\pi x)) + \cos^2(\pi x)}\\
-			&= \frac{\sin(\pi x) + \sin^2(\pi x)}{1 + \sin(\pi x) + \cos(\pi x)\sin(\varphi)(1 + \sin(\pi x))}\\
-			&= \frac{\sin(\pi x)}{1 + \cos(\pi x)\sin(\varphi)}
-		\end{aligned}
-	\end{gather*}
+	\begin{multline*}
+		\frac{1 - r^2}{1 - 2r\cos(\theta - \varphi) + r^2} \\= \frac{1 + 2\sin(\pi x) + \sin^2(\pi x) - \cos^2(\pi x)}{1 + 2\sin(\pi x) + \sin^2(\pi x) + 2\cos(\pi x)\sin(\varphi)(1 + \sin(\pi x)) + \cos^2(\pi x)}\\
+			= \frac{\sin(\pi x) + \sin^2(\pi x)}{1 + \sin(\pi x) + \cos(\pi x)\sin(\varphi)(1 + \sin(\pi x))}
+			= \frac{\sin(\pi x)}{1 + \cos(\pi x)\sin(\varphi)}
+	\end{multline*}
 
 	since $\cos\left( -\pi/2 - \varphi \right) = -\sin(\varphi)$. That the case $\frac{1}{2} \leqslant x < 1$ yields the same result is due to $\cos(\pi/2 - \varphi) = \sin(\varphi)$.\\
 	Now we have to reformulate 
@@ -171,71 +184,56 @@ Consider $e^{i\theta}$ where $\Arg e^{i\theta} \neq 0,\pi$, we have $\Im \psi(e^
 		\label{eq:int}
 	\end{equation}
 
-	To reach that we split the integral (\ref{eq:int}) into two parts. 
 
-	\item Consider the interval $]-\pi,0[$. We have
+Let $\Phi$ and $\Psi$ be defined as in lemma (\ref{lem:change_of_variables}). We have 
+				
+\begin{gather*}
+	\begin{aligned}
+		e^{i\Phi(t)} &= h^{-1}(it) = \frac{e^{-\pi t} - i}{e^{-\pi t} + i} \frac{e^{-\pi t} - i}{e^{-\pi t} - i} = \frac{e^{-2\pi t} - 2ie^{-\pi t} - 1}{e^{-2\pi t} + 1} = \frac{e^{-2\pi t} - 1}{e^{-2\pi t} + 1} - \frac{2ie^{-\pi t}}{e^{-2\pi t} + 1}\\ 
+		&= \frac{e^{-2\pi t} - 1}{e^{-2\pi t} + 1} - \frac{2i}{e^{-\pi t} + e^{\pi t}} = \frac{1 - e^{2\pi t}}{1 + e^{2\pi t}} - \frac{2i}{e^{-\pi t} + e^{\pi t}} = -\tanh (\pi t) - i \sech(\pi t)
+	\end{aligned}
+\end{gather*}
+	
+and thus
 
-				\begin{gather*}
-					\begin{aligned}
-						e^{i\varphi} &= h^{-1}(it) = \frac{e^{-\pi t} - i}{e^{-\pi t} + i} \frac{e^{-\pi t} - i}{e^{-\pi t} - i} = \frac{e^{-2\pi t} - 2ie^{-\pi t} - 1}{e^{-2\pi t} + 1}\\
-						&= \frac{e^{-2\pi t} - 1}{e^{-2\pi t} + 1} - \frac{2ie^{-\pi t}}{e^{-2\pi t} + 1} = \frac{e^{-2\pi t} - 1}{e^{-2\pi t} + 1} - \frac{2i}{e^{-\pi t} + e^{\pi t}}\\
-						&= \frac{1 - e^{2\pi t}}{1 + e^{2\pi t}} - \frac{2i}{e^{-\pi t} + e^{\pi t}} = -\tanh (\pi t) - i \sech(\pi t)
-					\end{aligned}
-				\end{gather*}
+\begin{gather*}
+	\begin{aligned}
+		\sin\left( \Phi(t) \right)\cosh(\pi t) &= \sin\left( -i\log\left( -\tanh (\pi t) - i \sech(\pi t) \right)\right) \cosh(\pi t)\\
+		&= \frac{1}{2i} \left[ -\tanh(\pi t) - i\sech(\pi t) + \frac{1}{\tanh(\pi t) + i\sech(\pi t) }\right]\cosh(\pi t)\\
+		&= \frac{1}{2i} \left[ \frac{\cosh(\pi t) - \tanh(\pi t) \sinh(\pi t) - 2i\tanh(\pi t) + \sech(\pi t)}{\tanh(\pi t) + i\sech(\pi t)}\right]\\
+		&= \frac{1}{2i} \left[ \frac{\cosh^2(\pi t) - \sinh^2(\pi t) - 2i \sinh(\pi t) + 1}{\sinh(\pi t) + i}\right]\\
+		&= \frac{1 - i\sinh(\pi t)}{i\sinh(\pi t) - 1}\\
+		&= -1
+	\end{aligned}
+\end{gather*}
 
-				and
+Therefore the transformation formula yields
 
-				\begin{gather*}
-					\begin{aligned}
-					d\lambda(\varphi) &= -i\frac{d}{dt}\log\left( -\tanh (\pi t) - i \sech(\pi t) \right) = -\pi\frac{\frac{i}{\cosh^2(\pi t)} + \frac{\sinh(\pi t)}{\cosh^2(\pi t)}}{\tanh (\pi t) + i \sech(\pi t)}\\
-						&= -\pi \frac{i + \sinh(\pi t)}{\sinh(\pi t)\cosh(\pi t) + i\cosh(\pi t)} = -\pi \frac{1}{\cosh(\pi t)} = -\pi \sech(\pi t)
-					\end{aligned}
-				\end{gather*}
+\begin{multline}
+	\frac{1}{2\pi} \int_{-\pi}^0 \frac{\sin(\pi x)}{1 + \cos(\pi x)\sin(\varphi)} \log \vert F(h(e^{i\varphi}))\vert d\lambda(\varphi)\\ = \frac{1}{2}\int_{-\infty}^\infty\frac{\sin(\pi x)}{\cosh(\pi t) - \cos(\pi x)} \log\vert F(it) \vert d\lambda(t)
+\end{multline}
+				
+and in a similar manner
+		
+\begin{multline}
+	\frac{1}{2\pi} \int_0^\pi \frac{\sin(\pi x)}{1 + \cos(\pi x)\sin(\varphi)} \log \vert F(h(e^{i\varphi}))\vert d\lambda(\varphi)\\ = \frac{1}{2}\int_{-\infty}^\infty\frac{\sin(\pi x)}{\cosh(\pi t) + \cos(\pi x)} \log\vert F(1 + it) \vert d\lambda(t)
+\end{multline}
 
-				By 
+holds since
 
-				\begin{gather*}
-					\begin{aligned}
-						\sin(\varphi)\cosh(\pi t) &= \sin\left( -i\log\left( -\tanh (\pi t) - i \sech(\pi t) \right)\right) \cosh(\pi t)\\
-						&= \frac{1}{2i} \left[ -\tanh(\pi t) - i\sech(\pi t) + \frac{1}{\tanh(\pi t) + i\sech(\pi t) }\right]\cosh(\pi t)\\
-						&= \frac{1}{2i} \left[ \frac{\cosh(\pi t) - \tanh(\pi t) \sinh(\pi t) - 2i\tanh(\pi t) + \sech(\pi t)}{\tanh(\pi t) + i\sech(\pi t)}\right]\\
-						&= \frac{1}{2i} \left[ \frac{\cosh^2(\pi t) - \sinh^2(\pi t) - 2i \sinh(\pi t) + 1}{\sinh(\pi t) + i}\right]\\
-						&= \frac{1 - i\sinh(\pi t)}{i\sinh(\pi t) - 1}\\
-						&= -1
-					\end{aligned}
-				\end{gather*}
+\begin{gather*}
+	\begin{aligned}
+		\sin\left(\Psi(t)\right)\cosh(\pi t) &= \sin\left( -i\log\left( -\tanh (\pi t) + i \sech(\pi t) \right)\right) \cosh(\pi t)\\
+		&= \frac{1}{2i} \left[ -\tanh(\pi t) + i\sech(\pi t) - \frac{1}{-\tanh(\pi t) + i\sech(\pi t) }\right]\cosh(\pi t)\\
+		&= \frac{1}{2i} \left[ \frac{-\cosh(\pi t) + \tanh(\pi t) \sinh(\pi t) - 2i\tanh(\pi t) - \sech(\pi t)}{-\tanh(\pi t) + i\sech(\pi t)}\right]\\
+		&= \frac{1}{2i} \left[ \frac{- \cosh^2(\pi t) + \sinh^2(\pi t) - 2i \sinh(\pi t) - 1}{i - \sinh(\pi t)}\right]\\
+		&= \frac{1 + i\sinh(\pi t)}{1 + i\sinh(\pi t)}\\
+		&= 1
+	\end{aligned}
+\end{gather*}
 
-				we therefore get
-
-				\begin{multline}
-					\frac{1}{2\pi} \int_{-\pi}^0 \frac{\sin(\pi x)}{1 + \cos(\pi x)\sin(\varphi)} \log \vert F(h(e^{i\varphi}))\vert d\lambda(\varphi)\\ = \frac{1}{2}\int_{-\infty}^\infty\frac{\sin(\pi x)}{\cosh(\pi t) - \cos(\pi x)} \log\vert F(it) \vert d\lambda(t)
-				\end{multline}
-
-		\item Consider the interval $]0,\pi[$. The change of variables $1 + it = h(e^{i\varphi})$ is equivalent to $e^{i\varphi} = - \tanh(\pi t) + i\sech(\pi t)$. Furthermore $d\lambda(\varphi) = \pi \sech(\pi t) d\lambda(t)$. Therefore 
-
-				\begin{multline}
-					\frac{1}{2\pi} \int_0^\pi \frac{\sin(\pi x)}{1 + \cos(\pi x)\sin(\varphi)} \log \vert F(h(e^{i\varphi}))\vert d\lambda(\varphi)\\ = \frac{1}{2}\int_{-\infty}^\infty\frac{\sin(\pi x)}{\cosh(\pi t) + \cos(\pi x)} \log\vert F(1 + it) \vert d\lambda(t)
-				\end{multline}
-
-				since
-
-				\begin{gather*}
-					\begin{aligned}
-						\sin(\varphi)\cosh(\pi t) &= \sin\left( -i\log\left( -\tanh (\pi t) + i \sech(\pi t) \right)\right) \cosh(\pi t)\\
-						&= \frac{1}{2i} \left[ -\tanh(\pi t) + i\sech(\pi t) - \frac{1}{-\tanh(\pi t) + i\sech(\pi t) }\right]\cosh(\pi t)\\
-						&= \frac{1}{2i} \left[ \frac{-\cosh(\pi t) + \tanh(\pi t) \sinh(\pi t) - 2i\tanh(\pi t) - \sech(\pi t)}{-\tanh(\pi t) + i\sech(\pi t)}\right]\\
-						&= \frac{1}{2i} \left[ \frac{- \cosh^2(\pi t) + \sinh^2(\pi t) - 2i \sinh(\pi t) - 1}{i - \sinh(\pi t)}\right]\\
-						&= \frac{1 + i\sinh(\pi t)}{1 + i\sinh(\pi t)}\\
-						&= 1
-					\end{aligned}
-				\end{gather*}
-
-				Thus the case $y = 0$ is prooven.
-	\end{enumerate}
-\item Consider the case \underline{$y \neq 0$.}
-
-	\begin{enumerate}[label = \textbf{\alph*.}]
-		\item Fix $y \neq 0$ and define $G(z) := F(z + iy)$ for $z \in \overline{S}$. Then $G$ is a holomorphic function in $S$ and continuous on $\overline{S}$ as a composition of continuous and holomorphic functions. Moreover, the hypothesis on $F$ yields
+Thus the case $y = 0$ is prooven.\\
+The case \underline{$y \neq 0$.} follows easily from the previous one. Fix $y \neq 0$ and define $G(z) := F(z + iy)$ for $z \in \overline{S}$. Then $G$ is a holomorphic function in $S$ and continuous on $\overline{S}$ as a composition of continuous and holomorphic functions. Moreover, the hypothesis on $F$ yields
 
 		\begin{equation}
 			\log \vert G(z) \vert = \log \vert F(z + iy) \vert \leqslant Ae^{\tau \vert \Im z + y\vert} \leqslant Ae^{\tau \vert \Im z \vert}e^{\tau \vert y \vert}
@@ -248,15 +246,16 @@ Consider $e^{i\theta}$ where $\Arg e^{i\theta} \neq 0,\pi$, we have $\Im \psi(e^
 		\end{equation}
 
 		Now, observing $G(x) = F(x + iy)$, $G(it) = F(it + iy)$ and $G(1 + it) = F(1 + it + iy)$ yields the desired result.
-	\end{enumerate}
-\end{enumerate}
 \end{proof}
 
 \subsection{Stein's Theorem on Interpolation of Analytic Families of Operators}
+Because of the complex nature of the proof of the Riesz-Thorin Interpolation Theorem (\ref{thm:Riesz_Thorin}), Elias M. Stein realized quickly, that the restritction to consider only one linear operator $T$ could easily be omited and instead, an analytic family of operators $T_z$ depending on some complex parameter $z$ could be considered.
+
+\vspace{2mm}
 
 \begin{mdframed}
 	\begin{definition}\emph{(Analytic family, admissible growth)}
-		Let $(X,\mu)$, $(Y,\nu)$ be measure spaces and $\left( T_z \right)_{z \in \overline{S}}$, where $T_z$ is defined on the space of all finitely simple functions on $X$ and taking values in the space of all measurable functions on $Y$ such that
+		Let $(X,\mu)$ be a measure space, $(Y,\nu)$ be a $\sigma$-finite measure spaces and $\left( T_z \right)_{z \in \overline{S}}$, where $T_z$ is defined on the space of all finitely simple functions on $X$ and taking values in the space of all measurable functions on $Y$ such that
 
 		\begin{equation}
 			\int_Y \vert T_z(\chi_A)\chi_B \vert d\nu
@@ -280,9 +279,13 @@ Consider $e^{i\theta}$ where $\Arg e^{i\theta} \neq 0,\pi$, we have $\Im \psi(e^
 
 \vspace{2mm}
 
+Now we are able to write down the theorem.
+
+\vspace{2mm}
+
 \begin{mdframed}
-	\begin{theorem}\emph{(Riesz-Thorin interpolation theorem, extension)}
-		Let $\left( T_z \right)_{z \in \overline{S}}$ be an analytic family of admissible growth, $1 \leqslant p_0,p_1,q_0,q_1 \leqslant \infty$ and suppose that $M_0$, $M_1$ are positive functions on the real line such that for some $\tau \in [0,\pi[$
+	\begin{theorem}\emph{(Stein's Theorem on Interpolation of Analytic Families of Operators)}
+		Let $\left( T_z \right)_{z \in \overline{S}}$ be an analytic family of admissible growth, $1 \leqslant p_0,p_1,q_0,q_1 \leqslant \infty$ and suppose that $M_0$, $M_1$ are positive functions on the real line such that for some $\tau \in [0,\pi)$
 
 			\begin{equation}
 				\sup\left\{e^{-\tau \vert y \vert} \log M_0(y) : y \in \mathbb{R}\right\} < \infty \qquad \sup\left\{e^{-\tau \vert y \vert} \log M_1(y) : y \in \mathbb{R}\right\} < \infty
@@ -321,13 +324,60 @@ Consider $e^{i\theta}$ where $\Arg e^{i\theta} \neq 0,\pi$, we have $\Im \psi(e^
 		F(z) := \int_Y T_z(f_z)g_z d\nu	
 	\end{equation}
 
-	Observe, that $\vert a^{P(z)}_j\vert \leqslant a_j^{p/p_0 + p/p_1}$ and $\vert b^{Q(z)}_k\vert \leqslant b_k^{q'/q'_0 + q'/q'_1}$ for $z \in \overline{S}$. Hence
+	Observe, that $\left| a^{P(z)}_j\right| \leqslant a_j^{p/p_0 + p/p_1}$ and $\left| b^{Q(z)}_k\right| \leqslant b_k^{q'/q'_0 + q'/q'_1}$ for $z \in \overline{S}$. Hence
 
-	\begin{gather}
+	\begin{gather*}
 		\begin{aligned}
-			\log \vert F(z) \vert &= \log \left\vert \sum_{j = 1}^n\sum_{k = 1}^m a^{P(z)}_j b_j^{Q(z)} e^{i\alpha_j} e^{i\beta_k} \int_YT_z(\chi_{X_j})(y)\chi_{Y_k}(y)d\nu(y)\right\vert\\
-			&\leqslant \log \left( \sum_{j = 1}^n\sum_{k = 1}^m \vert a^{P(z)}_j\vert \vert b_j^{Q(z)}\vert \int_Y\vert T_z(\chi_{X_j})(y)\vert \chi_{Y_k}(y)d\nu(y)\right)\\
-			&\leqslant  \log \left( \sum_{j = 1}^n\sum_{k = 1}^m a_j^{p/p_0 + p/p_1} b_k^{q'/q'_0 + q'/q'_1} \int_{Y_k}\vert T_z(\chi_{X_j})\vert d\nu\right)\\
+			\log \left| F(z) \right| &= \log \left| \sum_{j = 1}^n\sum_{k = 1}^m a^{P(z)}_j b_j^{Q(z)} e^{i\alpha_j} e^{i\beta_k} \int_YT_z(\chi_{X_j})(y)\chi_{Y_k}(y)d\nu(y)\right|\\
+			&\leqslant  \log \left( \sum_{j = 1}^n\sum_{k = 1}^m a_j^{p/p_0 + p/p_1} b_k^{q'/q'_0 + q'/q'_1} \left|\int_{Y_k} T_z(\chi_{X_j}) d\nu\right|\right)\\
 		\end{aligned}
-	\end{gather}
+	\end{gather*}
+
+	The same calculations as in the proof of the Riesz-Thorin interpolation theorem (\ref{thm:Riesz_Thorin}) yields for $y \in \mathbb{R}$
+
+	\begin{equation*}
+		\left\| f_{iy}\right\|_{L^{p_0}} = \left\| f\right\|^{p/p_0}_{L^p} = 1 = \left\| g\right\|_{L^{q'}}^{q'/q'_0} = \left\| g_{iy}\right\|_{L^{q_0'}}
+	\end{equation*}
+
+	and
+
+	\begin{equation*}
+		\left\| f_{1 + iy}\right\|_{L^{p_1}} = \left\| f\right\|^{p/p_1}_{L^p} = 1 = \left\| g\right\|_{L^{q'}}^{q'/q'_1} = \left\| g_{1 + iy}\right\|_{L^{q_1'}}
+	\end{equation*}
+
+	Further
+
+	\begin{equation*}
+		\left| F(iy)\right| \leqslant \left\| T_{iy}(f_{iy})\right\|_{L^{q_0}} \left\| g_{iy}\right\|_{L^{q'_0}} \leqslant M_0(y) \left\|f_{iy}\right\|_{L^{p_0}}\left\| g_{iy}\right\|_{L^{q_0'}} = M_0(y)
+	\end{equation*}
+
+	and
+
+	\begin{equation*}
+		\left| F(1 + iy)\right| \leqslant \left\| T_{1 + iy}(f_{1 + iy})\right\|_{L^{q_1}} \left\| g_{1 + iy}\right\|_{L^{q'_1}} \leqslant M_1(y) \left\|f_{1 + iy}\right\|_{L^{p_1}}\left\| g_{1 + iy}\right\|_{L^{q_1'}} = M_1(y)
+	\end{equation*}
+
+	by H\"older's inequality and the hypotheses on the analytic family $(T_z)_{z \in \overline{S}}$. Therefore the extension of Hadamard's three lines lemma (\ref{lem:EHTL}) yields
+
+	\begin{equation*}
+		\left| F(x) \right| \leqslant \exp\left( \frac{\sin(\pi x)}{2} \int_{-\infty}^\infty \left[ \frac{\log M_0(t)}{\cosh(\pi t) - \cos(\pi x)} + \frac{\log M_1(t)}{\cosh(\pi t) + \cos(\pi x)}\right] d\lambda(t) \right) = M(x)
+	\end{equation*}
+
+	for every $0 < x < 1$. Furthermore observe that
+
+	\begin{equation*}
+		F(\theta) = \int_Y T_\theta(f)gd\nu
+	\end{equation*}
+
+	and thus by \cite[189]{folland:real_analysis:1999} ($\Sigma$ denotes the set of all finitely simple functions on the $\sigma$-finite space $Y$)
+
+	\begin{gather*}
+		\begin{aligned}
+			M_q\left(T_\theta(f)\right) &= \sup\left\{ \left| \int_Y T_\theta(f) g\right| : g \in \Sigma, \left\|g \right\|_{L^{q'}}\right\}\\
+			&= \sup\left\{ \left| F(\theta)\right| : g \in \Sigma, \left\| g \right\|_{L^{q'}}\right\}\\
+			&\leqslant M(\theta)
+		\end{aligned}
+	\end{gather*}
+
+	Since $M(\theta)$ is an absolutely convergent integral for any $0 < \theta < 1$, $M_q\left(T_\theta(f)\right) < \infty$ and thus $M_q\left(T_\theta(f)\right) = \left\| T_\theta(f)\right\|_{L^q}$. The general statement follows by replacing $f$ with $f/\left\| f\right\|_{L^p}$ when $\left\|f \right\|_{L^p} \neq 0$. The theorem is trivially true when $\left\| f\right\|_{L^p} = 0$.
 \end{proof}
