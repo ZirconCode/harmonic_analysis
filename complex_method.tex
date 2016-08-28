@@ -190,19 +190,12 @@ by H\"older's inequality and in the edge cases
 	\end{aligned}
 \end{gather*}
 		
-	Hence $F$ is bounded on $\overline{S}$. By writing
-	
-\begin{equation*}
-	F(z) = \sum_{j = 1}^n\sum_{k = 1}^m e^{P(z)\log\left( a_j \right)} e^{Q(z)\log\left( b_k \right)} e^{i\alpha_j} e^{i\beta_k} \int_YT(\chi_{A_j})(y)\chi_{B_k}(y)d\nu(y) 		
-\end{equation*}
-	
-it is immediate that $F$ is continuous on $\overline{S}$ and by 
-
+	Hence $F$ is bounded on $\overline{S}$. By 
 \begin{multline*}
 	F'(z) = \sum_{j = 1}^n\sum_{k = 1}^m a^{P(z)}_j\log \left( a_j \right) \left( \frac{p}{p_1} - \frac{p}{p_0} \right) b_k^{Q(z)}\log\left( b_j \right)\left( \frac{q'}{q'_1} - \frac{q'}{q'_0} \right) e^{i\alpha_j} e^{i\beta_k} \\\int_YT(\chi_{A_j})(y)\chi_{B_k}(y)d\nu(y) 	
 \end{multline*}
 
-$F$ is holomorphic in $S$. Therefore Hadamard's three lines lemma (\ref{lem:HTL}) yields
+it is immediate, that $F$ is an entire function (see \cite[198]{rudin:rc_analysis:1987}) and thus holomorphic in $S$ and continuous on $\overline{S}$. Therefore Hadamard's three lines lemma (\ref{lem:HTL}) yields
 
 \begin{gather}
 	\begin{aligned}
@@ -223,7 +216,7 @@ $F$ is holomorphic in $S$. Therefore Hadamard's three lines lemma (\ref{lem:HTL}
 	\end{aligned}
 \end{gather}
 
-	we conclude $\left\| T(f)\right\|_{L^q} = M_q\left( T(f) \right)$ for any $f \in \Sigma_X$ using \cite[189]{folland:real_analysis:1999} (observe, that $T(f)g \in L^1$ by either one of the hypotheses on the linear operator $T$).
+	we conclude $\left\| T(f)\right\|_{L^q} = M_q\left( T(f) \right)$ for any $f \in \Sigma_X$ using \cite[189]{folland:real_analysis:1999} (observe, that $T(f)g \in L^1$ for any $g \in \Sigma_Y$ by either one of the hypotheses on the linear operator $T$).
 \end{proof}
 
 \begin{remark}
