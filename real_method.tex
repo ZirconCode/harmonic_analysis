@@ -24,7 +24,7 @@ This theorem applies to sublinear operators (aswell as for quasilinear operators
 		Then for all $p_0 < p < p_1$ and for all $f \in L^p(X,\mu)$ we have the estimate
 
 		\begin{equation}
-			\|T(f)\|_{L^p} \leqslant A \|f\|_{L^p}
+			\left\|T(f)\right\|_{L^p} \leqslant A \left\|f\right\|_{L^p}
 		\end{equation}
 
 		where
@@ -37,56 +37,44 @@ This theorem applies to sublinear operators (aswell as for quasilinear operators
 \end{mdframed}
 
 \begin{proof}
-	The proof is subdivided into two main parts, which are further subdivided. In detail, we have the following partitioning:
+Let us first consider the case \underline{$p_1 < \infty$}. Fix $f \in L^p(X,\mu)$, $\alpha > 0$ and $\delta > 0$ ($\delta$ will be determined later). We split $f$ using so-called \emph{cut-off} functions, by stipulating $f \equiv f_0(\cdot;\alpha,\delta) + f_1(\cdot;\alpha,\delta)$, where $f_0(\cdot;\alpha,\delta)$ is the \emph{unbounded part of $f$} and $f_1(\cdot;\alpha,\delta)$ is the \emph{bounded part of $f$}, defined by
 
-	\begin{enumerate}[label = \textbf{(\roman*.)}]
-		\item \underline{$p_1 < \infty$.}
-			\begin{enumerate}[label = \textbf{\alph*.}]
-				\item Split $f$ using cut-off functions.
-				\item Estimate the distribution function $d_{T(f)}$.
-				\item Estimate $\|T(f)\|_{L^p}^p$.
-			\end{enumerate}
-		\item \underline{$p_1 = \infty$.}
-			\begin{enumerate}[label = \textbf{\alph*.}]
-				\item Show that $\mu(\{\vert T(f_1)\vert > \alpha/2\}) = 0$.
-				\item Estimate the distribution function $d_{T(f_0)}$.
-				\item Estimate $\|T(f)\|_{L^p}^p$.
-			\end{enumerate}
-	\end{enumerate}
+\begin{gather}
+	\begin{aligned}
+		f_0(x;\alpha,\delta) &:= \begin{cases}
+			f(x), & \vert f(x) \vert > \delta \alpha,\\
+			0, & \vert f(x)\vert \leqslant \delta \alpha.
+		\end{cases}\\
+		f_1(x;\alpha,\delta) &:= \begin{cases}
+			f(x), & \vert f(x) \vert \leqslant \delta \alpha,\\
+			0, & \vert f(x)\vert > \delta \alpha.
+		\end{cases}
+	\end{aligned}
+	\label{eq:cut_off}
+\end{gather}
 
-	\begin{enumerate}[label = \textbf{(\roman*.)}]
-		\item 
-			\begin{enumerate}[label = \textbf{\alph*.}]
-				\item Let us first consider the case \underline{$p_1 < \infty$}. Fix $f \in L^p(X,\mu)$, $\alpha > 0$ and $\delta > 0$ ($\delta$ will be determined later). We split $f$ using so-called \emph{cut-off} functions, by stipulating $f \equiv f_0(\cdot;\alpha,\delta) + f_1(\cdot;\alpha,\delta)$, where $f_0(\cdot;\alpha,\delta)$ is the \emph{unbounded part of $f$} and $f_1(\cdot;\alpha,\delta)$ is the \emph{bounded part of $f$}, defined by
-
-	\begin{gather}
-		\begin{aligned}
-			f_0(x;\alpha,\delta) &:= \begin{cases}
-				f(x), & \vert f(x) \vert > \delta \alpha,\\
-				0, & \vert f(x)\vert \leqslant \delta \alpha.
-			\end{cases}\\
-			f_1(x;\alpha,\delta) &:= \begin{cases}
-				f(x), & \vert f(x) \vert \leqslant \delta \alpha,\\
-				0, & \vert f(x)\vert > \delta \alpha.
-			\end{cases}
-		\end{aligned}
-		\label{eq:cut_off}
-	\end{gather}
-
-	for $x \in X$. To facilitate reading I will omit the dependency of $f_0(\cdot;\alpha,\delta)$ and $f_1(\cdot;\alpha,\delta)$ upon the parameters $\alpha$ and $\delta$ in what follows and simply write $f_0$, $f_1$ respectively. Since $p_0 < p$ we have 
-
-	\begin{gather}
-		\begin{aligned}
-			\|f_0\|^{p_0}_{L^{p_0}} &= \int_{X} \vert f_0\vert^{p_0} d\mu =\int_{X} \vert f \vert^{p_0} \cdot \chi_{\left\{\vert f\vert > \delta\alpha \right\}} d\mu \overset{(\dagger)}{=} \int_{\left\{\vert f \vert > \delta\alpha \right\}} \vert f \vert^{p_0}d\mu\\ 
-			&= \int_{\left\{\vert f\vert > \delta\alpha \right\}} \vert f \vert^p \vert f \vert^{p_0 - p} d\mu = \int_{\left\{\vert f\vert > \delta\alpha \right\}} \frac{\vert f \vert^p}{\vert f \vert^{p - p_0}} d\mu\\
-			&\leqslant \frac{1}{(\delta\alpha)^{p - p_0}} \int_{\left\{\vert f\vert > \delta\alpha \right\}} \vert f \vert^p d\mu = (\delta\alpha)^{p_0 - p} \int_{X} \vert f \vert^p \cdot \chi_{\left\{\vert f\vert > \delta\alpha \right\}} d\mu\\
-			& \leqslant (\delta\alpha)^{p_0 - p} \int_{X} \vert f \vert^p d\mu = (\delta\alpha)^{p_0 - p} \|f\|^p_{L^p} < \infty
-		\end{aligned}
-		\label{est:f0}
-	\end{gather}
-
-	Thus $f_0 \in L^{p_0}(X,\mu)$. Analogously it can be checked, that $f_1 \in L^{p_1}(X,\mu)$ by the estimate $\|f_1\|^{p_1}_{L^{p_1}} \leqslant (\delta\alpha)^{p_1 - p}\|f\|_{L^p}^p$. Therefore $f \equiv f_0 + f_1 \in L^{p_0} + L^{p_1}$.\\
+for $x \in X$. To facilitate reading I will omit the dependency of $f_0(\cdot;\alpha,\delta)$ and $f_1(\cdot;\alpha,\delta)$ upon the parameters $\alpha$ and $\delta$ in what follows and simply write $f_0$, $f_1$ respectively. 
 	
+\begin{lemma}
+The functions $f_0$ and $f_1$ defined above satisfy $f_0 \in L^{p_0}(X,\mu)$ and $f_1 \in L^{p_1}(X,\mu)$ respectively.
+\label{lem:f0f1}
+\end{lemma}
+	
+\begin{proof}
+Since $p_0 < p$ we have 
+
+\begin{gather}
+	\begin{aligned}
+		\|f_0\|^{p_0}_{L^{p_0}} &= \int_{X} \vert f_0\vert^{p_0} d\mu =\int_{X} \vert f \vert^{p_0} \cdot \chi_{\left\{\vert f\vert > \delta\alpha \right\}} d\mu \overset{(\dagger)}{=} \int_{\left\{\vert f \vert > \delta\alpha \right\}} \vert f \vert^{p_0}d\mu\\ 
+		&= \int_{\left\{\vert f\vert > \delta\alpha \right\}} \vert f \vert^p \vert f \vert^{p_0 - p} d\mu = \int_{\left\{\vert f\vert > \delta\alpha \right\}} \frac{\vert f \vert^p}{\vert f \vert^{p - p_0}} d\mu\\
+		&\leqslant \frac{1}{(\delta\alpha)^{p - p_0}} \int_{\left\{\vert f\vert > \delta\alpha \right\}} \vert f \vert^p d\mu = (\delta\alpha)^{p_0 - p} \int_{X} \vert f \vert^p \cdot \chi_{\left\{\vert f\vert > \delta\alpha \right\}} d\mu\\
+		& \leqslant (\delta\alpha)^{p_0 - p} \int_{X} \vert f \vert^p d\mu = (\delta\alpha)^{p_0 - p} \|f\|^p_{L^p} < \infty
+	\end{aligned}
+	\label{est:f0}
+\end{gather}
+
+Thus $f_0 \in L^{p_0}(X,\mu)$. Analogously it can be checked, that $f_1 \in L^{p_1}(X,\mu)$ by the estimate $\|f_1\|^{p_1}_{L^{p_1}} \leqslant (\delta\alpha)^{p_1 - p}\|f\|_{L^p}^p$.\\
+
 	\emph{Proof of the equality $(\dagger)$.} Assume $\mu$ is defined on the $\sigma$-algebra $\mathcal{A}$. We have to proove that $\{\vert f \vert > \delta\alpha\} \in \mathcal{A}$\footnote{
 		For $Y \in \mathcal{A}$ the $\mu$-integral of $f: X \rightarrow \mathbb{C}$ over $Y$ is defined to be $\displaystyle \int_Y fd\mu := \int_X f \cdot \chi_Y d\mu$. For more details see \cite[135--136]{elstrodt:mass:2011}.}.
 		Since $f$ is complex-valued, we may write $f \equiv \mathrm{Re} f + i\mathrm{Im}f$ and thus $\vert f\vert^2 \equiv \mathrm{Re}^2 f + \mathrm{Im}^2f$. Since $f$ is measurable by hypothesis this implies that $ \mathrm{Re} f$ and $\mathrm{Im}f$ are measurable\footnote{For a proof see \cite[106]{elstrodt:mass:2011}}. Further for measurable real-valued functions $f,g: (X,\mathcal{A}) \rightarrow (\overline{\mathbb{R}},\overline{\mathfrak{B}})$\footnote{$\overline{\mathfrak{B}} := \sigma(\overline{\mathbb{R}})$ and $\overline{\mathfrak{B}} = \{B \cup E : B \in \mathfrak{B}, E \subseteq \{\pm \infty\}\}$.} 
@@ -106,8 +94,20 @@ This theorem applies to sublinear operators (aswell as for quasilinear operators
 	By Lemma \ref{lem:charfun} and the fact that $f \cdot g$ is measurable for two measurable functions $f,g: (X,\mathcal{A}) \rightarrow (\mathbb{C},\mathfrak{B}^2)$\footcite[107]{elstrodt:mass:2011}, $f_0$ and $f_1$ are measurable since $f_0 \equiv f \cdot \chi_{\{\vert f \vert > \delta \alpha\}}$ and $f_1 \equiv f \cdot \chi_{\{\vert f \vert \leqslant \delta \alpha\}}$.\\
 
 	One subtility is left to clear: the $\mu$-integrability of either $\vert f_1\vert^{p_0}$ or $\vert f_1 \vert^{p_1}$ requires that $\vert f_0 \vert^{p_0}$ and $\vert f_1 \vert^{p_1}$ are measurable functions. By the fact that any continuous map $g: (X,d_X) \rightarrow (Y,d_Y)$ between metric spaces is Borel-measurable (see \cite[86]{elstrodt:mass:2011}) and that the composition of measurable functions is again measurable (see \cite[87]{elstrodt:mass:2011}), the measurability of either $f_0$ or $f_1$ follows by $\vert f_0 \vert^{p_0} \equiv \cdot^{p_0} \circ \vert f \cdot \chi_{\{\vert f\vert > \delta\alpha\}}\vert$ and $\vert f_1 \vert^{p_1} \equiv \cdot^{p_1} \circ \vert f \cdot \chi_{\{\vert f \vert \leqslant \delta \alpha\}}\vert$ by stipulating $\cdot^{p}: (\mathbb{R}_{\geqslant 0},\vert \cdot \vert) \rightarrow (\mathbb{C},\vert \cdot \vert)$, $x^{p} := \exp(p \log(x))$ for $p > 0$ and $x \in \mathbb{R}_{> 0}$ and $x^p := 0$ if $x = 0$.
+\end{proof}
 
-	\item Since $T$ is a sublinear operator we have $\vert T(f) \vert = \vert T(f_0 + f_1) \vert \leqslant \vert T(f_0) \vert + \vert T(f_1)\vert$. Thus for any $y \in Y$ with $\vert T(f)(y) \vert > \alpha$ we therefore have either $\vert T(f_0)(y) \vert > \alpha/2$ or $\vert T(f_1)(y) \vert > \alpha/2$ 
+By lemma (\ref{lem:f0f1}) we therefore have $f \equiv f_0 + f_1 \in L^{p_0} + L^{p_1}$. 
+
+\begin{lemma}
+	For fixed $\alpha > 0$, the distribution function $d_{T(f)}(\alpha)$ obeys an upper bound of the form
+
+	\begin{equation*}
+		d_{T(f)}(\alpha) \leqslant  \left(\frac{A_0}{\alpha/2}\right)^{p_0} \left\|f_0\right\|^{p_0}_{L^{p_0}} + \left(\frac{A_1}{\alpha/2}\right)^{p_1} \left\|f_1\right\|^{p_1}_{L^{p_1}}
+	\end{equation*}
+\end{lemma}
+
+\begin{proof}
+Since $T$ is a sublinear operator we have $\vert T(f) \vert = \vert T(f_0 + f_1) \vert \leqslant \vert T(f_0) \vert + \vert T(f_1)\vert$. Thus for any $y \in Y$ with $\vert T(f)(y) \vert > \alpha$ we therefore have either $\vert T(f_0)(y) \vert > \alpha/2$ or $\vert T(f_1)(y) \vert > \alpha/2$ 
 		\footnote{Without loss of generality assume $\vert T(f_0)(y) \vert \leqslant \vert T(f_1)(y) \vert $. Then we have $\alpha < \vert T(f)(y)\vert \leqslant \vert T(f_0)(y) \vert + \vert T(f_1)(y)\vert \leqslant 2\vert T(f_1)(y)\vert$ (this is possible since $\mathbb{R}$ is an ordered field).}
 		. Hence
 
@@ -140,52 +140,53 @@ Now by hypothesis (\ref{hyp:fp_0}) we can estimate $d_{T(f_0)}(\alpha/2)$ as fol
 \end{gather}
 
 Analogously, we get  $d_{T(f_1)}(\alpha/2) \leqslant \left(\frac{A_1}{\alpha/2}\right)^{p_1} \|f_1\|^{p_1}_{L^{p_1}}\label{est:p_1}$ by hypothesis (\ref{hyp:fp_1}).
+\end{proof}
 
-	\item By
+By
 
-		\begin{gather}
-			\begin{aligned}
-				\int_0^{\frac{1}{\delta}\vert f\vert}\alpha^{p-p_0-1} d\lambda = 
-				\begin{cases}
-					\frac{1}{p-p_0}\frac{1}{\delta^{p-p_0}}\vert f \vert^{p - p_0}, & p \geqslant p_0 + 1\\
-					\lim\limits_{\omega \rightarrow 0^+} \int_\omega^{\frac{1}{\delta}\vert f\vert}\alpha^{p-p_0-1} d\lambda\\
-					= \lim\limits_{\omega \rightarrow 0^+}\left[\frac{1}{p-p_0}\alpha^{p - p_0}\big\vert_\omega^{\frac{1}{\delta}\vert f\vert}\right]\\
-					= \frac{1}{p-p_0}\left[\frac{1}{\delta^{p-p_0}}\vert f \vert^{p - p_0} - \lim\limits_{\omega \rightarrow 0^+} \omega^{p-p_0}\right]\\
-					= \frac{1}{p-p_0}\frac{1}{\delta^{p-p_0}} \vert f\vert^{p - p_0}, & p_0 < p < p_0 + 1
-				\end{cases}
-			\end{aligned}
-		\end{gather}
+\begin{gather}
+	\begin{aligned}
+		\int_0^{\frac{1}{\delta}\left| f\right|}\alpha^{p-p_0-1} d\lambda = 
+			\begin{cases}
+				\frac{1}{p-p_0}\frac{1}{\delta^{p-p_0}}\left| f \right|^{p - p_0}, & p \geqslant p_0 + 1\\
+				=\lim_{\omega \to 0^+} \int_\omega^{\frac{1}{\delta}\left| f\right|}\alpha^{p-p_0-1} d\lambda\\
+				= \lim_{\omega \to 0^+}\left[\frac{1}{p-p_0}\alpha^{p - p_0}\right]_\omega^{\frac{1}{\delta}\left| f\right|}\\
+				= \frac{1}{p-p_0}\left[\frac{1}{\delta^{p-p_0}}\left| f \right|^{p - p_0} - \lim_{\omega \to 0^+} \omega^{p-p_0}\right]\\
+				= \frac{1}{p-p_0}\frac{1}{\delta^{p-p_0}} \left| f\right|^{p - p_0}, & p_0 < p < p_0 + 1
+			\end{cases}
+	\end{aligned}
+\end{gather}
 
-		and
+and
 
-		\begin{gather}
-			\begin{aligned}
-				\int_{\frac{1}{\delta}\vert f\vert}^{\infty}\alpha^{p-p_1-1} d\lambda &= \lim_{\omega \rightarrow \infty} \left[ \frac{1}{p - p_1} \alpha^{p - p_1}\right]^\omega_{\frac{1}{\delta}\vert f\vert}\\
-				&= \frac{1}{p - p_1} \left[  \lim_{\omega \rightarrow \infty} \omega^{p - p_1} - \frac{1}{\delta^{p - p_1}} \vert f\vert^{p - p_1}\right]\\
-				&= \frac{1}{p_1 - p}\frac{1}{\delta^{p-p_1}} \vert f \vert^{p - p_1}
-			\end{aligned}
-		\end{gather}
+\begin{gather}
+	\begin{aligned}
+		\int_{\frac{1}{\delta}\left| f\right|}^{\infty}\alpha^{p-p_1-1} d\lambda &= \lim_{\omega \to \infty} \left[ \frac{1}{p - p_1} \alpha^{p - p_1}\right]^\omega_{\frac{1}{\delta}\left| f\right|}\\
+		&= \frac{1}{p - p_1} \left[ \lim_{\omega \to \infty} \omega^{p - p_1} - \frac{1}{\delta^{p - p_1}} \left| f\right|^{p - p_1}\right]\\
+		&= \frac{1}{p_1 - p}\frac{1}{\delta^{p-p_1}} \left| f \right|^{p - p_1}
+	\end{aligned}
+\end{gather}
 
-		and the representation $\displaystyle \|f\|^p_{L^p} = p \int_0^{\infty} \alpha^{p-1}d_f(\alpha) d\lambda$ for $ 0 < p < \infty$ we get
+and the representation $\displaystyle \left\|f\right\|^p_{L^p} = p \int_0^{\infty} \alpha^{p-1}d_f(\alpha) d\lambda$ for $ 0 < p < \infty$ we get
 
-		\begin{gather}
-			\begin{aligned}
-				\|T(f)\|^p_{L^p} = & p\int_0^{\infty}\alpha^{p-1}d_{T(f)} d\lambda\\
-				\leqslant & p(2A_0)^{p_0}\int_0^{\infty}\alpha^{p-p_0-1} \int_{\{\vert f \vert > \delta \alpha\}} \vert f\vert^{p_0}d\mu d\lambda\\
-				& + p(2A_1)^{p_1}\int_0^{\infty}\alpha^{p-p_1-1} \int_{\{\vert f \vert \leqslant \delta \alpha\}} \vert f \vert^{p_1}d\mu d\lambda\\
-				= & p(2A_0)^{p_0}\int_{\{\vert f \vert > 0\}} \vert f \vert^{p_0} \int_0^{\frac{1}{\delta}\vert f\vert}\alpha^{p-p_0-1} d\lambda d\mu\\
-				& + p(2A_0)^{p_0}\int_{\{\vert f \vert = 0\}} \vert f \vert^{p_0} \int_0^{\frac{1}{\delta}\vert f\vert}\alpha^{p-p_0-1} d\lambda d\mu\\
-				& + p(2A_1)^{p_1}\int_X \vert f\vert^{p_1} \int_{\frac{1}{\delta}\vert f\vert}^{\infty}\alpha^{p - p_1 - 1} d\lambda d\mu\\
-				= & p(2A_0)^{p_0}\int_X \vert f \vert^{p_0} \int_0^{\frac{1}{\delta}\vert f\vert}\alpha^{p-p_0-1} d\lambda d\mu\\
-				& + p(2A_1)^{p_1}\int_X \vert f\vert^{p_1} \int_{\frac{1}{\delta}\vert f\vert}^{\infty}\alpha^{p - p_1 - 1} d\lambda d\mu\\
-				= & \frac{p(2A_0)^{p_0}}{p-p_0}\frac{1}{\delta^{p-p_0}}\int_X \vert f \vert^{p_0}\vert f \vert^{p-p_0} d\mu\\
-				& + \frac{p(2A_1)^{p_1}}{p_1-p}\frac{1}{\delta^{p-p_1}}\int_X \vert f \vert^{p_1} \vert f\vert^{p-p_1}d\mu\\
-				= & p\left( \frac{(2A_0)^{p_0}}{p - p_0}\frac{1}{\delta^{p - p_0}} + \frac{(2A_1)^{p_1}}{p_1 - p}\delta^{p_1 - p} \right)\|f\|_{L^p}^p
-			\end{aligned}
-			\label{est:Tfp}
-		\end{gather}
+\begin{gather}
+	\begin{aligned}
+		\left\|T(f)\right\|^p_{L^p} = &~p\int_0^{\infty}\alpha^{p-1}d_{T(f)} d\lambda\\
+		\leqslant &~p\left(2A_0\right)^{p_0}\int_0^{\infty}\alpha^{p-p_0-1} \int_{\{\left| f \right| > \delta \alpha\}} \left| f\right|^{p_0}d\mu d\lambda\\
+		&+ p(2A_1)^{p_1}\int_0^{\infty}\alpha^{p-p_1-1} \int_{\{\left| f \right| \leqslant \delta \alpha\}} \left| f \right|^{p_1}d\mu d\lambda\\
+		= &~p\left(2A_0\right)^{p_0}\int_{\{\left| f \right| > 0\}} \left| f \right|^{p_0} \int_0^{\frac{1}{\delta}\left| f\right|}\alpha^{p-p_0-1} d\lambda d\mu\\
+		&+ p\left(2A_0\right)^{p_0}\int_{\{\left| f \right| = 0\}} \left| f \right|^{p_0} \int_0^{\frac{1}{\delta}\left| f\right|}\alpha^{p-p_0-1} d\lambda d\mu\\
+		&+ p\left(2A_1\right)^{p_1}\int_X \left| f\right|^{p_1} \int_{\frac{1}{\delta}\left| f\right|}^{\infty}\alpha^{p - p_1 - 1} d\lambda d\mu\\
+		= &~p\left(2A_0\right)^{p_0}\int_X \left| f \right|^{p_0} \int_0^{\frac{1}{\delta}\left| f\right|}\alpha^{p-p_0-1} d\lambda d\mu\\
+		&+ p\left(2A_1\right)^{p_1}\int_X \left| f\right|^{p_1} \int_{\frac{1}{\delta}\left| f\right|}^{\infty}\alpha^{p - p_1 - 1} d\lambda d\mu\\
+		=&~\frac{p\left(2A_0\right)^{p_0}}{p-p_0}\frac{1}{\delta^{p-p_0}}\int_X \left| f \right|^{p_0}\left| f \right|^{p-p_0} d\mu\\
+		&+ \frac{p\left(2A_1\right)^{p_1}}{p_1-p}\frac{1}{\delta^{p-p_1}}\int_X \left| f \right|^{p_1} \left| f\right|^{p-p_1}d\mu\\
+		= &~p\left( \frac{\left(2A_0\right)^{p_0}}{p - p_0}\frac{1}{\delta^{p - p_0}} + \frac{\left(2A_1\right)^{p_1}}{p_1 - p}\delta^{p_1 - p} \right)\left\|f\right\|_{L^p}^p
+	\end{aligned}
+	\label{est:Tfp}
+\end{gather}
 
-		We pick $\delta > 0$ such that $(2A_0)^{p_0}\delta^{p_0 - p} = (2A_1)^{p_1}\delta^{p_1 - p}$. Solving for $\delta$ yields 
+		We pick $\delta > 0$ such that $\left(2A_0\right)^{p_0}\delta^{p_0 - p} = \left(2A_1\right)^{p_1}\delta^{p_1 - p}$. Solving for $\delta$ yields 
 
 		\begin{equation}
 			\delta = \frac{1}{2} \left( \frac{A_0}{A_1}\right)^{p_1/(p_1 - p_0)}
@@ -210,11 +211,7 @@ Analogously, we get  $d_{T(f_1)}(\alpha/2) \leqslant \left(\frac{A_1}{\alpha/2}\
 				&= 2\left( \frac{p}{p - p_0} + \frac{p}{p_1- p} \right)^{1/p} A_0^{\frac{\frac{1}{p} - \frac{1}{p_1}}{\frac{1}{p_0} - \frac{1}{p_1}}}A_1^{\frac{\frac{1}{p_0} - \frac{1}{p}}{\frac{1}{p_0} - \frac{1}{p_1}}}\|f\|_{L^p}
 			\end{aligned}
 		\end{gather}
-	\end{enumerate}
-	
-\item
-	\begin{enumerate}[label = \textbf{\alph*.}]
-		\item Assume \underline{$p_1 = \infty$}. We again use the cut-off functions defined in (\ref{eq:cut_off}) to decompose $f$.  Since $\{\vert f_1\vert > \delta\alpha \} = \emptyset$, we have 
+		Assume \underline{$p_1 = \infty$}. We again use the cut-off functions defined in (\ref{eq:cut_off}) to decompose $f$.  Since $\{\vert f_1\vert > \delta\alpha \} = \emptyset$, we have 
 
 \begin{equation*}
 	\|T(f_1)\|_{L^\infty} \leqslant A_1 \|f_1\|_{L^\infty} = A_1 \inf \left\{B > 0: \mu(\{\vert f_1 \vert > B\}) = 0 \right\} \leqslant A_1\delta\alpha = \alpha/2
@@ -222,9 +219,9 @@ Analogously, we get  $d_{T(f_1)}(\alpha/2) \leqslant \left(\frac{A_1}{\alpha/2}\
 
 Provided we stipulate $\delta := 1/(2A_1)$. Therefore the set $\{\vert T(f_1) \vert > \alpha/2\}$ has measure zero (this is immediate since $\|T(f_1)\|_{L^\infty} =  \inf \left\{B > 0: \mu(\{\vert T(f_1) \vert > B\}) = 0 \right\} \leqslant \alpha/2 $ and any subset of a set with measure zero has itself measure zero). Thus similar to part \textbf{b.} of \textbf{(i.)} we get $d_{T(f)}(\alpha) \leqslant d_{T(f_0)}(\alpha/2)$.
 
-	\item Hypothesis (\ref{hyp:fp_0}) yields the estimate $\displaystyle d_{T(f_0)}(\alpha/2) \leqslant \left(\frac{A_0}{\alpha/2}\right)^{p_0} \int_{\{2A_1\vert f \vert > \alpha\}} \vert f \vert^{p_0}d\mu$.
+	Hypothesis (\ref{hyp:fp_0}) yields the estimate $\displaystyle d_{T(f_0)}(\alpha/2) \leqslant \left(\frac{A_0}{\alpha/2}\right)^{p_0} \int_{\{2A_1\vert f \vert > \alpha\}} \vert f \vert^{p_0}d\mu$.
 
-	\item Thus by \textbf{a.} and \textbf{b.}
+	Thus by \textbf{a.} and \textbf{b.}
 
 	\begin{gather}
 		\begin{aligned}
@@ -249,7 +246,4 @@ Provided we stipulate $\delta := 1/(2A_1)$. Therefore the set $\{\vert T(f_1) \v
 		=& 2\left( \frac{p}{p - p_0} \right)^{1/p} A_0^{\frac{p_0}{p}} A_1^{1 - \frac{p_0}{p}}
 		\end{aligned}
 	\end{gather*}
-	\end{enumerate}
-
-\end{enumerate}
 \end{proof}

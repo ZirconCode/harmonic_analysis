@@ -8,8 +8,8 @@ As the name already says, the lemma yields a natural bound of an analytic functi
 
 \begin{mdframed}
 	\begin{lemma}{Hadamard's three lines lemma)}
-		Let $F$ be an analytic function on the strip $S := \{z \in \mathbb{C}: 0 < \mathrm{Re}z < 1\}$, continuous and bounded on $\overline{S}$, such that $\vert F(z)\vert \leqslant B_0$ when $\mathrm{Re}z = 0$ and $\vert F(z) \vert \leqslant B_1$ when $\mathrm{Re}z = 1$, for some $0 < B_0,B_1 < \infty$. Then $\vert F(z) \vert \leqslant B_0^{1 - \theta}B_1^\theta$ when $\mathrm{Re}z = \theta$, for any $0 \leqslant \theta \leqslant 1$.
-		\label{lemma:HTL}
+		Let $F$ be a holomorphic function in the strip $S := \{z \in \mathbb{C}: 0 < \Re z < 1\}$, continuous and bounded on $\overline{S}$, such that $\left| F(z)\right| \leqslant B_0$ when $\Re z = 0$ and $\left| F(z) \right| \leqslant B_1$ when $\Re z = 1$, for some $0 < B_0,B_1 < \infty$. Then $\left| F(z) \right| \leqslant B_0^{1 - \theta}B_1^\theta$ when $\Re z = \theta$, for any $0 \leqslant \theta \leqslant 1$.
+		\label{lem:HTL}
 	\end{lemma}
 \end{mdframed}
 				
@@ -22,59 +22,59 @@ As the name already says, the lemma yields a natural bound of an analytic functi
 	G(z) := \frac{F(z)}{B_0^{1 - z}B_1^z} \qquad \forall n \in \mathbb{N}_{>0}: G_n(z) := G(z) e^{(z^2 - 1)/n} 
 \end{equation}
 
-Obviously, $G(z)$ and $G_n(z)$ are analytic functions on $S$ for $n \in \mathbb{N}_{>0}$\footnote{
-	I adapt here the terminology established in \cite[197]{rudin:rc_analysis:1987}. A complex-valued function $f$ is said to be \emph{holomorphic} or \emph{analytic} in $\Omega \subseteq \mathbb{C}$ open, if $f'(z)$ exists for any $z \in \Omega$.	
+	Obviously, $G(z)$ and $G_n(z)$ are holomorphic functions on $S$ for $n \in \mathbb{N}_{>0}$\footnote{
+	I adapt here the terminology established in \cite[197]{rudin:rc_analysis:1987}. A complex-valued function $f$ is said to be \emph{holomorphic} (or \emph{analytic}) in $\Omega \subseteq \mathbb{C}$ open, if $f'(z)$ exists for any $z \in \Omega$.	
 					}. Further, we have
 
-					\begin{gather}
-						\begin{aligned}
-							\vert B_0^{1 - z}B_1^z \vert^2 &= \vert B_0^{1 - z}\vert^2 \vert B_1^z \vert^2 = B_0^{1 - z}B_0^{1 - \overline{z}} B_1^z B_1^{\overline{z}} = \left( B_0^{1 -\mathrm{Re}z} \right)^2 \left( B_1^{\mathrm{Re}z} \right)^2 
-						\end{aligned}
-					\end{gather}
+\begin{gather}
+	\begin{aligned}
+		\left| B_0^{1 - z}B_1^z \right|^2 &= \left| B_0^{1 - z}\right|^2 \left| B_1^z \right|^2 = B_0^{1 - z}B_0^{1 - \overline{z}} B_1^z B_1^{\overline{z}} = \left( B_0^{1 -\Re z} \right)^2 \left( B_1^{\Re z} \right)^2 
+	\end{aligned}
+\end{gather}
 
-					Consider $0 \leqslant \mathrm{Re} z \leqslant 1$ and $B_0 \geqslant 1$. Then  $B_0^{1 - \mathrm{Re}z} = \exp\left((1 - \mathrm{Re}z ) \log B_0\right) \geqslant 1$ and $B_0^{1 - \mathrm{Re} z } \geqslant B_0$ in the case $B_0 < 1$. A similar estimation of $B_1^{\mathrm{Re}z}$ leads to 
+	Consider $0 \leqslant \Re z \leqslant 1$ and $B_0 \geqslant 1$. Then  $B_0^{1 - \mathrm{Re}z} = \exp\left((1 - \Re z ) \log B_0\right) \geqslant 1$ and $B_0^{1 - \Re z } \geqslant B_0$ in the case $B_0 < 1$. A similar estimation of $B_1^{\Re z}$ leads to 
 
-					\begin{equation}
-						\vert B_0^{1 - z}B_1^z \vert \geqslant \min\{1,B_0\}\min\{1,B_1\}
-					\end{equation}
+\begin{equation}
+	\left| B_0^{1 - z}B_1^z \right| \geqslant \min\{1,B_0\}\min\{1,B_1\}
+\end{equation}
 
-					for all $z \in \overline{S}$. By this, $G(z)$ is bounded on $\overline{S}$ (by the boundedness of $F$). Let $M > 0$, such that $\vert G(z) \vert \leqslant M$ for $z \in \overline{S}$. Fix $n \in \mathbb{N}_{>0}$ and write $z := x + iy \in \overline{S}$. Since
+	for all $z \in \overline{S}$. By this, $G(z)$ is bounded on $\overline{S}$ (by the boundedness of $F$). Let $M > 0$, such that $\left| G(z) \right| \leqslant M$ for $z \in \overline{S}$. Fix $n \in \mathbb{N}_{>0}$ and write $z := x + iy \in \overline{S}$. Since
 
-					\begin{gather}
-						\begin{aligned}
-						\vert G_n(z)\vert^2 &= \vert G(z) \vert^2 \vert e^{((x + iy)^2 - 1)/n} \vert^2\\
-						& \leqslant M^2 e^{(x^2 + 2ixy -y^2 - 1)/n} e^{(x^2 - 2ixy -y^2 - 1)/n}\\
-						&= M^2 \left( e^{-y^2/n} \right)^2 \left(e^{(x^2 - 1)/n}\right)^2\\
-						&\leqslant M^2 \left(e^{-y^2/n}\right)^2\\
-						&= M^2 \left( e^{-\vert y \vert^2/n} \right)^2
-						\end{aligned}
-					\end{gather}
+\begin{gather}
+	\begin{aligned}
+	\left| G_n(z)\right|^2 &= \left| G(z) \right|^2 \left| e^{((x + iy)^2 - 1)/n} \right|^2\\
+	& \leqslant M^2 e^{(x^2 + 2ixy -y^2 - 1)/n} e^{(x^2 - 2ixy -y^2 - 1)/n}\\
+	&= M^2 \left( e^{-y^2/n} \right)^2 \left(e^{(x^2 - 1)/n}\right)^2\\
+	&\leqslant M^2 \left(e^{-y^2/n}\right)^2\\
+	&= M^2 \left( e^{-\left| y \right|^2/n} \right)^2
+	\end{aligned}
+\end{gather}
 
-					we have $\lim_{y \rightarrow \pm \infty}\sup\{\vert G_n(z)\vert : x \in [0,1]\} = 0$ by the pinching-principle. Hence there exists some $C(n) \in \mathbb{R}_{>0}$, such that $\vert G_n(z) \vert \leqslant 1$ for all $\vert y \vert \geqslant C(n)$ and all $x \in [0,1]$. Consider the rectangle $R := [0,1] \times [-C(n),C(n)]$. Now $\vert G_n(z) \vert \leqslant 1$ on the lines $[0,1] \times \{\pm C(n)\}$ and since $\vert G(z) \vert = \vert F(z)\vert/B_0 \leqslant 1$, $\vert G(z) \vert = \vert F(z) \vert/B_1 \leqslant 1$ on the line $\{0\} \times [-C(n),C(n)]$ and $\{1\} \times [-C(n),C(n)]$ respectively by assumption, we have $\vert G_n(z) \vert \leqslant 1$ on $\partial S$. By the maximum modulus principle \footnote{
-						Let $\Omega$ be a bounded region of the complex plane, $f$ be a complex-valued continuous function on $\overline{\Omega}$ which is holomorphic in $\Omega$. Then $\vert f(z) \vert \leqslant \sup\left\{ \vert f(z) \vert : z \in \partial \Omega\right\}$ for every $z \in \Omega$. See \cite[253]{rudin:rc_analysis:1987}.}
-					we have $\vert G_n(z) \vert \leqslant 1$ on $R$ and thus $\vert G_n(z) \vert \leqslant 1$ on $\overline{S}$. Since inequalities are preserved by limits and the modulus is a continuous function, we have that $\vert G(z) \vert = \lim_{n \rightarrow \infty} \vert G_n(z) \vert \leqslant 1$ on $\overline{S}$. Taking $z := \theta + it$, where $0 \leqslant \theta \leqslant 1$ and $t \in \mathbb{R}$, we conclude $\vert F(z) \vert = \vert G(z) \vert \vert B_0^{1 - z}B_1^z\vert \leqslant B_0^{1 - \theta} B_1^{\theta}$, which completes the proof.\\
-		\end{proof}
+	we have $\lim_{y \to \pm \infty}\sup\{\left| G_n(z)\right| : x \in [0,1]\} = 0$ by the pinching-principle. Hence there exists some $C(n) > 0$, such that $\left| G_n(z) \right| \leqslant 1$ for all $\left| y \right| \geqslant C(n)$ and all $x \in [0,1]$. Consider the rectangle $R := [0,1] \times [-C(n),C(n)]$. Now $\left| G_n(z) \right| \leqslant 1$ on the lines $[0,1] \times \{\pm C(n)\}$ and since $\left| G(z) \right| = \left| F(z)\right|/B_0 \leqslant 1$, $\left| G(z) \right| = \left| F(z) \right|/B_1 \leqslant 1$ on the line $\{0\} \times [-C(n),C(n)]$ and $\{1\} \times [-C(n),C(n)]$ respectively by assumption, we have $\left| G_n(z) \right| \leqslant 1$ on $\partial S$. By the maximum modulus principle \footnote{
+						Let $\Omega$ be a bounded region of the complex plane, $f$ be a complex-valued continuous function on $\overline{\Omega}$ which is holomorphic in $\Omega$. Then $\left| f(z) \right| \leqslant \sup\left\{ \left| f(z) \right| : z \in \partial \Omega\right\}$ for every $z \in \Omega$. See \cite[253]{rudin:rc_analysis:1987}.}
+	we have $\left| G_n(z) \right| \leqslant 1$ on $R$ and thus $\left| G_n(z) \right| \leqslant 1$ on $\overline{S}$. Since inequalities are preserved by limits and the modulus is a continuous function, we have that $\left| G(z) \right| = \lim_{n \to \infty} \left| G_n(z) \right| \leqslant 1$ on $\overline{S}$. Taking $z := \theta + it$, where $0 \leqslant \theta \leqslant 1$ and $t \in \mathbb{R}$, we conclude $\left| F(z) \right| = \left| G(z) \right| \left| B_0^{1 - z}B_1^z\right| \leqslant B_0^{1 - \theta} B_1^{\theta}$, which completes the proof.
+\end{proof}
 
-	\subsection{The Riesz-Thorin Interpolation Theorem}
-Now we are able to proove the Riesz-Thorin Interpolation theorem without an interruption.
+\subsection{The Riesz-Thorin Interpolation Theorem}
+Now we are able to proove the Riesz-Thorin Interpolation theorem without an interruption. To simplify notation, let $\Sigma_X$, $\Sigma_Y$ denote the set of all finitely simple functions on $X$ and $Y$ respectively.
 
 \vspace{2mm}
 
 \begin{mdframed}
 	\begin{theorem}\emph{(Riesz-Thorin Interpolation Theorem)}
-		Let $(X,\mu)$ be a measure space, $(Y,\nu)$ a $\sigma$-finite measure space and $T$ be a linear operator defined on the set of all finitely simple functions on $X$ and taking values in the set of measurable functions on $Y$. Let $1 \leqslant p_0,p_1,q_0,q_1 \leqslant \infty$ and assume that
+		Let $(X,\mu)$ be a measure space, $(Y,\nu)$ a semifinite measure space and $T$ be a linear operator defined on $\Sigma_X$ and taking values in the set of measurable functions on $Y$. Let $1 \leqslant p_0,p_1,q_0,q_1 \leqslant \infty$ and assume that
 
 		\begin{equation}
-			\|T(f)\|_{L^{q_0}} \leqslant M_0\|f\|_{L^{p_0}} \qquad \|T(f)\|_{L^{q_1}} \leqslant M_1\|f\|_{L^{p_1}}
+			\left\|T(f)\right\|_{L^{q_0}} \leqslant M_0\left\|f\right\|_{L^{p_0}} \qquad \left\|T(f)\right\|_{L^{q_1}} \leqslant M_1\left\|f\right\|_{L^{p_1}}
 		\end{equation}
 
-		holds for all finitely simple functions $f$ on $X$ and $0 < M_0,M_1 < \infty$. Then for all $0 < \theta < 1$ we have
+		for all $f \in \Sigma_X$ and $M_0,M_1 < \infty$. Then for all $0 < \theta < 1$ we have
 
 		\begin{equation}
-			\|T(f)\|_{L^q} \leqslant M_0^{1 - \theta}M_1^\theta\|f\|_{L^p}
+			\left\|T(f)\right\|_{L^q} \leqslant M_0^{1 - \theta}M_1^\theta\left\|f\right\|_{L^p}
 		\end{equation}
 
-		for all finitely simple functions $f$ on $X$, where
+		for all $f \in \Sigma_X$, where
 
 		\begin{equation}
 			\frac{1}{p} = \frac{1 - \theta}{p_0} + \frac{\theta}{p_1} \qquad \frac{1}{q} = \frac{1 - \theta}{q_0} + \frac{\theta}{q_1}
@@ -84,210 +84,152 @@ Now we are able to proove the Riesz-Thorin Interpolation theorem without an inte
 \end{mdframed}
 
 \begin{proof}
-	The proof heavily relies on the fact, that the $L^p$ norm of a function can be obtained via duality for $1 \leqslant p \leqslant \infty$ (for $p = \infty$ the underlying space has to be $\sigma$-finite according to \cite[288--289]{elstrodt:mass:2011}) by 
+Fix 
 	
-	\begin{equation*}
-		\|f\|_{L^p} = \sup \left\{ \left\vert \int_Y fgd\nu\right\vert : \|g\|_{L^{p'}} = 1\right\}
-	\end{equation*}
+\begin{equation*}
+	f :\equiv \sum_{j = 1}^n a_j e^{i\alpha_j}\chi_{A_j} \in \Sigma_X \qquad g :\equiv \sum_{k = 1}^m b_k e^{i\beta_k}\chi_{B_k} \in \Sigma_Y
+\end{equation*}
 
-with $p' := \frac{p}{p - 1}$ for $p \in ]1,\infty[$ and $p' := 1$ for $p = \infty$. Let $\mathcal{B}$ denote the domain of $\nu$ and define for notational simplification $\mathfrak{F} := \mathrm{span}_{\mathbb{C}}\{\chi_E: E \in \mathcal{B},\nu(E) < \infty\}$, the set of all finitely simple functions on $Y$\footnote{
-		This is almost trivial. Consider $Y_1,Y_2 \in \mathcal{B}$ with $\nu(Y_1),\nu(Y_2) < \infty$ and $Y_1 \cap Y_2 \neq \emptyset$. Then $f \equiv z_1\chi_{Y_1} + z_2\chi_{Y_2} \in \mathfrak{F}$ for $z_1,z_2 \in \mathbb{C}$. We see, that $f \equiv z_1 \chi_{Y_1\setminus Y_2} + z_2 \chi_{Y_2\setminus Y_1} + (z_1 + z_2)\chi_{Y_1 \cap Y_2} \in \mathfrak{F}$ where the latter function is a finitely simple one since $\nu(Y_1 \cup Y_2) \leqslant \nu(Y_1) + \nu(Y_2) < \infty$ and $Y_1\setminus Y_2,Y_2 \setminus Y_1, Y_1 \cap Y_2 \subseteq Y_1 \cup Y_2$.	
-	}. Since $\mathfrak{F}$ is dense in $L^p$ for every $0 < p < \infty$\footnote{
-		In \cite[242]{elstrodt:mass:2011} a proof can be found, that $\mathfrak{F}$ is dense in $\mathcal{L}^p$ for $0< p < \infty$. Now the canonical map $\pi: \mathcal{L}^p \rightarrow L^p/\mathcal{N}$ is continuous. Hence we may use the following lemma.
+	where $a_j, b_k > 0$ and $\alpha_j, \beta_k \in \mathbb{R}$ for every $j = 1,\hdots,n$, $k = 1,\hdots,m$. Define
 
-		\begin{lemma}
-			Let $X$ and $Y$ be topological spaces, $f: X \rightarrow Y$ and $A \subseteq X$ dense in $X$. Then $f(A)$ is dense in $Y$. 
-		\end{lemma}
+\begin{equation*}
+	P(z) := \frac{p}{p_0}(1 - z) + \frac{p}{p_1}z \qquad Q(z) := \frac{q'}{q'_0}(1 - z) + \frac{q'}{q'_1}z
+\end{equation*}
 
-		\begin{proof}
-			By \cite[104]{munkres:topology:2000} we have $Y = f(X) = f(\overline{A})  \subseteq \overline{f(A)} \subseteq Y$.
-		\end{proof}
+	for $z \in \overline{S}$ (if $p,q' = \infty$ then also $p_0,p_1,q_0',q_1' = \infty $ and hence $P$, $Q$ are well defined). Further let
+				
+\begin{equation}
+	f_z :\equiv \sum_{j = 1}^n a^{P(z)}_j e^{i\alpha_j}\chi_{A_j} \qquad g_z :\equiv  \sum_{k = 1}^m b^{Q(z)}_k e^{i\beta_k}\chi_{B_k}
+	\label{def:fzgz}
+\end{equation}
+				
+and 
+
+\begin{equation}
+	F(z) := \int_Y T(f_z)(y)g_z(y)d\nu(y)
+\end{equation}
+
+By the linearity of the operator $T$ we have
+
+\begin{gather}
+	F(z) = \sum_{j = 1}^n\sum_{k = 1}^m a^{P(z)}_j b_k^{Q(z)} e^{i\alpha_j} e^{i\beta_k} \int_YT(\chi_{A_j})(y)\chi_{B_k}(y)d\nu(y) 
+	\label{def:F}
+\end{gather}
+
+and by H\"older's inequality \footnote{A proof can be found in \cite[223]{elstrodt:mass:2011}.}
+
+\begin{gather}
+	\begin{aligned}
+		\left| \int_YT(\chi_{A_j})(y)\chi_{B_k}(y)d\nu(y) \right| &\leqslant \int_Y\left| T(\chi_{A_j})(y)\chi_{B_k}(y)\right|d\nu(y)\\
+		&= \left\|T(\chi_{A_j})\chi_{B_k}\right\|_{L^1}\\
+		&\leqslant \left\|T(\chi_{A_j})\right\|_{L^{q_0}} \left\|\chi_{B_k}\right\|_{L^{q_0'}}\\
+		&\leqslant M_0\left\|\chi_{A_j}\right\|_{L^{p_0}} \left\|\chi_{B_k}\right\|_{L^{q_0'}}\\
+		&\overset{p_0,q_0' \neq \infty}{=} M_0\mu\left(A_j\right)^{1/p_0} \nu\left(B_k\right)^{1/q_0'}\\ 
+		&< \infty
+	\end{aligned}
+\end{gather}
+
+for each $j = 1,\hdots,n$, $k = 1,\hdots,m$. In the case where either $p_0 = \infty$ or $q_0' = \infty$, consider that $\left\|\chi_{A_j} \right\|_{L^\infty}, \left\|\chi_{B_k}\right\|_{L^\infty} \leqslant 1 $. Thus the function $F$ is well-defined on $\overline{S}$. Let $t \in \mathbb{R}$. For $p,p_0 \neq \infty$
+
+\begin{gather}
+	\begin{aligned}
+		\left\|f_{it}\right\|_{L^{p_0}} &= \left(\sum_{j = 1}^n \int_X \left| f_{it} \right|^{p_0} d\mu + \int_{X \setminus \bigcup_{j = 1}^n A_j} \left| f_{it} \right|^{p_0} d\mu\right)^{1/p_0}\\
+		&= \left(\sum_{j = 1}^n \left| a_j^{P(it)} e^{i\alpha_j}\right|^{p_0}\int_X \chi_{A_j} d\mu\right)^{1/p_0}\\
+		&= \left(\sum_{j = 1}^n a_j^{p_0\Re P(it)}\mu\left(A_j\right)\right)^{1/p_0}\\
+		&= \left(\sum_{j = 1}^n a_j^p\mu\left(A_j\right)\right)^{p/\left(p_0p\right)}\\
+		&= \left\|f\right\|_{L^p}^{p/p_0} 
+	\end{aligned}
+\end{gather}
+
+holds. Let $p_0 = \infty$, $p \neq \infty$. Then either $\left\|f_{it}\right\|_{L^{\infty}} = 0$ or $\left\|f_{it}\right\|_{L^{\infty}} = 1$. In the former case $f \equiv 0$ $\mu$-a.e which implies $\mu\left( A_j \right) = 0$ for any $j = 1,\hdots,n$ and thus $\left\| f_{it}\right\|_{L^{\infty}} = 0$ and in the latter case $\left\| f_{it} \right\|_{L^{\infty}} = 1$ by the simple observation that $\left| a_j^{P(it)}\right| = a_j^{p/p_0} = 1$ and that there exists some index $j$, such that $\mu\left( A_j \right) \neq 0$. If $p = \infty$, observe that $P(z) = 1$ and thus $\left\| f_{it}\right\|_{L^{\infty}} = \left\| f\right\|_{L^{\infty}}$. By the same considerations we see that $\|g_{it}\|_{L^{q_0'}} = \|g\|_{L^{q'}}^{q'/q'_0}$ any legitime $q_0,q$. Hence
+
+\begin{gather}
+	\begin{aligned}
+		\left| F(it) \right| &\leqslant \int_Y \left| T(f_{it})(y)g_{it}(y)\right| d\nu(y)\\
+		&= \left\|T(f_{it}) g_{it}\right\|_{L^1}\\
+		&\leqslant \left\|T(f_{it})\right\|_{L^{q_0}}\left\|g_{it}\right\|_{L^{q_0'}}\\
+		&\leqslant M_0 \left\|f_{it}\right\|_{L^{p_0}} \left\|g_{it}\right\|_{L^{q_0'}}\\
+		&= M_0 \left\|f\right\|_{L^p}^{p/p_0} \left\|g\right\|_{L^{q'}}^{q'/q'_0}\\
+		&< \infty
+	\end{aligned}
+\end{gather}
+
+by H\"older's inequality. In an analogous manner s we can estimate 
+				
+\begin{equation}
+	\left\|f_{1 + it}\right\|_{L^{p_1}} = \left\|f\right\|_{L^p}^{p/p_1} \qquad \left\|g_{1 + it}\right\|_{L^{q_1'}} = \left\|g\right\|_{L^{q'}}^{q'/q_1'}
+\end{equation}
+
+and thus 
+				
+\begin{equation}
+	\left| F(1 + it)\right| \leqslant M_1 \left\|f\right\|_{L^p}^{p/p_1}\left\|g\right\|_{L^{q'}}^{q'/q_1'}
+\end{equation}	
+
+Further 
+		
+\begin{gather*}
+	\begin{aligned}
+		\left| F(z)\right| &\leqslant \int_Y\left| T(f_z)(y)g_z(y)\right| d\nu(y) = \left\|T(f_z)g_z\right\|_{L^1} \leqslant \left\|T(f_z)\right\|_{L^{q_0}} \left\|g_z\right\|_{L^{q'_0}}\\
+				&\leqslant M_0 \left\|f_z\right\|_{L^{p_0}} \left\|g_z\right\|_{L^{q'_0}} \overset{p_0,q_0' \neq \infty}{=} M_0 \left(\int_X \left| f_z \right|^{p_0}d\mu \right)^{1/p_0} \left(\int_Y \left| g_z \right|^{q'_0} d\nu\right)^{1/q'_0}\\
+				&= M_0 \left( \sum\limits_{j = 1}^n a_j^{p_0\Re P(z)}\mu(A_j) \right)^{1/p_0} \left( \sum\limits_{k = 1}^m b_k^{q'_0\Re Q(z)} \nu(B_k) \right)^{1/q'_0}\\
+				&= M_0 \left( \sum\limits_{j = 1}^n a_j^{p\left(1 - \Re z\right) + \left(pp_0\Re z\right)/p_1}\mu(A_j) \right)^{1/p_0} \left( \sum\limits_{k = 1}^m b_k^{q'\left(1 - \Re z\right) + \left(q'q'_0\Re z\right)/q_1'} \nu(B_k) \right)^{1/q'_0}\\
+				&\leqslant M_0 \left( \sum\limits_{j = 1}^n a_j^{p + \left(pp_0\right)/p_1}\mu(A_j) \right)^{1/p_0} \left( \sum\limits_{k = 1}^m b_k^{q' + \left(q'q'_0\right)/q'_1} \nu(B_k) \right)^{1/q'_0}\\
+				&= M_0 \left\|f\right\|_{L^{p + \left(pp_0\right)/p_1}}^{p/p_0 + p/p_1} \left\|g\right\|_{L^{q' + \left(q'q'_0\right)/q'_1}}^{q'/q_0' + q'/q_1'} =: C(f,g)
+			\end{aligned}
+		\end{gather*}
 		
 		
-	}, we may use the corollary found in \cite[76]{bourbaki:general_topology:1995}
+by H\"older's inequality and in the edge cases
+		
+\begin{gather*}
+	\begin{aligned}
+		&p_0 = \infty, q_0' \neq \infty: \qquad C(f,g) := M_0 \max_{j = 1,\hdots,n} a_j^{p/p_1} \|g\|_{L^{q' + (q'q'_0)/q'_1}}^{q'/q_0' + q'/q_1'}\\
+		&p_0 \neq \infty, q_0' = \infty: \qquad C(f,g) :=  M_0 \|f\|_{L^{p + (pp_0)/p_1}}^{p/p_0 + p/p_1} \max_{k = 1,\hdots,m} b_k^{q'/q_1'}\\
+		&p_0 = \infty, q_0' = \infty: \qquad C(f,g) := M_0 \max_{j = 1,\hdots,n} a_j^{p/p_1} \max_{k = 1,\hdots,m} b_k^{q'/q_1'}
+	\end{aligned}
+\end{gather*}
+		
+	Hence $F$ is bounded on $\overline{S}$. By writing
 	
-	\begin{corollary}\emph{(Principle of extension of identities)}
-		Let $f,g$ be two continuous mappings of a topological space $X$ into a Hausdorff space $Y$. If $f(x) = g(x)$ at all points of a dense subset of $X$, then $f \equiv g$.
-	\end{corollary}
+\begin{equation*}
+	F(z) = \sum_{j = 1}^n\sum_{k = 1}^m e^{P(z)\log\left( a_j \right)} e^{Q(z)\log\left( b_k \right)} e^{i\alpha_j} e^{i\beta_k} \int_YT(\chi_{A_j})(y)\chi_{B_k}(y)d\nu(y) 		
+\end{equation*}
+	
+it is immediate that $F$ is continuous on $\overline{S}$ and by 
 
-	to see, that also
+\begin{multline*}
+	F'(z) = \sum_{j = 1}^n\sum_{k = 1}^m a^{P(z)}_j\log \left( a_j \right) \left( \frac{p}{p_1} - \frac{p}{p_0} \right) b_k^{Q(z)}\log\left( b_j \right)\left( \frac{q'}{q'_1} - \frac{q'}{q'_0} \right) e^{i\alpha_j} e^{i\beta_k} \\\int_YT(\chi_{A_j})(y)\chi_{B_k}(y)d\nu(y) 	
+\end{multline*}
 
-	\begin{equation*}
-		\|f\|_{L^p} = \sup \left\{ \left\vert \int_Y fgd\mu\right\vert : g \in \mathfrak{F},\|g\|_{L^{p'}} = 1\right\}
-	\end{equation*}
+$F$ is holomorphic in $S$. Therefore Hadamard's three lines lemma (\ref{lem:HTL}) yields
 
-	First we will deal with the case \underline{$q > 1$}. Fix $f :\equiv \sum_{k = 1}^n a_k e^{i\alpha_k}\chi_{X_k}$, where $n \in \mathbb{N}_{>0}$,$a_k > 0$, $\alpha_k \in [0,2\pi[$, $X_i \cap X_j = \emptyset$ for $i,j = 1,\hdots,n$ and $\mu(X_k) < \infty$ for every $k = 1,\hdots,n$. Further let $g :\equiv \sum_{k = 1}^m b_k e^{i\beta_k}\chi_{Y_k} \in \mathfrak{F}$, where $m \in \mathbb{N}_{>0}$,$b_k > 0$ and $\beta_k \in [0,2\pi[$. Define
+\begin{gather}
+	\begin{aligned}
+		\left| F(z) \right| &\leqslant \left( M_0  \left\|f\right\|_{L^p}^{p/p_0} \left\|g\right\|_{L^{q'}}^{q'/q'_0} \right)^{1 - \theta}\left(  M_1 \left\|f\right\|_{L^p}^{p/p_1}\left\|g\right\|_{L^{q'}}^{q'/q_1'} \right)^\theta\\
+			&= M_0^{1 - \theta}M_1^\theta \left\|f\right\|_{L^p}\left\|g\right\|_{L^{q'}}
+		\label{est:F}
+	\end{aligned}
+\end{gather}
 
-				\begin{equation*}
-					P(z) := \frac{p}{p_0}(1 - z) + \frac{p}{p_1}z \qquad Q(z) := \frac{q'}{q'_0}(1 - z) + \frac{q'}{q'_1}z
-				\end{equation*}
+	for $\Re z = \theta$. By $P(\theta) = Q(\theta) = 1$ and
 
-				for $z \in \overline{S}$ (in the case $p = \infty$ we get also $p_0 = p_1 = \infty$ and hence by stipulating $\frac{\infty}{\infty}:= 1$ the function $P$ is well-defined). Further let
-				
-				\begin{equation}
-					f_z :\equiv \sum_{k = 1}^n a^{P(z)}_k e^{i\alpha_k}\chi_{X_k} \qquad g_z :\equiv  \sum_{k = 1}^m b^{Q(z)}_k e^{i\beta_k}\chi_{Y_k}
-					\label{def:fzgz}
-				\end{equation}
-				
-				and 
+\begin{gather}
+	\begin{aligned}
+		M_q\left( T(f) \right) &= \sup\left\{\left| \int_Y T(f)gd\nu\right| : g \in \Sigma_Y, \left\|g\right\|_{L^{q'}} = 1\right\}\\
+		&=  \sup\left\{\left| F(\theta)\right| : g \in \Sigma_Y, \left\|g\right\|_{L^{q'}} = 1\right\}\\
+		&\leqslant M_0^{1 - \theta}M_1^\theta \left\|f\right\|_{L^p}
+		\label{id:F}
+	\end{aligned}
+\end{gather}
 
-				\begin{equation}
-					F(z) := \int_Y T(f_z)(y)g_z(y)d\nu(y)
-				\end{equation}
-
-				By the linearity of the operator $T$ we have
-
-				\begin{gather}
-					F(z) = \sum_{j = 1}^n\sum_{k = 1}^m a^{P(z)}_j b_j^{Q(z)} e^{i\alpha_j} e^{i\beta_k} \int_YT(\chi_{X_j})(y)\chi_{Y_k}(y)d\nu(y) 
-					\label{def:F}
-				\end{gather}
-
-				and by using H\"older's inequality \footnote{A proof can be found in \cite[223]{elstrodt:mass:2011}.}
-
-				\begin{gather}
-					\begin{aligned}
-						\left\vert \int_YT(\chi_{X_j})(y)\chi_{Y_k}(y)d\nu(y) \right\vert &\leqslant \int_Y\vert T(\chi_{X_j})(y)\vert \chi_{Y_k}(y)d\nu(y)\\
-						&= \|T(\chi_{X_j})\chi_{Y_k}\|_{L^1}\\
-						&\leqslant \|T(\chi_{X_j})\|_{L^{q_0}} \|\chi_{Y_k}\|_{L^{q_0'}}\\
-						&\leqslant M_0\|\chi_{X_j}\|_{L^{p_0}} \|\chi_{Y_k}\|_{L^{q_0'}}\\
-						&\overset{q_0' \neq \infty}{=} M_0\|\chi_{X_j}\|_{L^{p_0}} \mu(Y_k)^{1/q_0'}\\ 
-						&< \infty
-					\end{aligned}
-				\end{gather}
-
-				for each $j = 1,\hdots,n$, $k = 1,\hdots,m$. In the case $q_0' = \infty$ we simply have $\|\chi_{Y_k}\|_{L^\infty} \leqslant 1 $. Thus the function $F$ is well-defined on $\overline{S}$. Now
-
-				\begin{gather}
-					\begin{aligned}
-						\|f_{it}\|_{L^{p_0}} &= \left(\sum_{k = 1}^n \int_X \vert f_{it} \vert^{p_0} d\mu + \int_{X \setminus \bigcup_{k = 1}^n X_k} \vert f_{it} \vert^{p_0} d\mu\right)^{1/p_0}\\
-						&= \left(\sum_{k = 1}^n \vert a_k^{P(it)} e^{i\alpha_k}\vert^{p_0}\int_X \chi_{X_k} d\mu\right)^{1/p_0}\\
-						&= \left(\sum_{k = 1}^n a_k^{p_0\mathrm{Re}P(it)}\mu(X_k)\right)^{1/p_0}\\
-						&= \left(\sum_{k = 1}^n a_{k}^p\mu(X_k)\right)^{p/(p_0p)}\\
-						&= \|f\|_{L^p}^{p/p_0} 
-					\end{aligned}
-				\end{gather}
-
-				for $p,p_0 \neq \infty$. Let us consider $p_0 = \infty$, $p \neq \infty$. Then either $\|f_{it}\|_{L^{\infty}} = 0$ or $\|f_{it}\|_{L^{\infty}} = 1$. Since $\|\cdot\|_{L^p}$ is a norm for $1 \leqslant p \leqslant \infty$ (see \cite[231]{elstrodt:mass:2011}), we have $f = 0$ $\mu$-a.e. if $\|f_{it}\|_{L^{\infty}} = 0$. Since $f$ is finitely simple, we may conclude $f \equiv \sum_{k = 1}^n a_k e^{i\alpha_k}\chi_{X_k}$, where $\mu(X_k) = 0$ for $k = 1,\hdots,n$. But then $\|f_{it}\|_{L^{\infty}} = \inf\{B > 0 : \mu(\{\vert f_{it} \vert > B\}) = 0\} =  \inf\{B > 0 : \mu(\{1 > B\}) = 0\}= 0$ since $\vert a_k^{P(it)}\vert = \lim_{p_0 \rightarrow \infty} a_k^{p/p_0} = 1$. In the other case we simply have $\|f_{it}\|_{L^{\infty}} = 1$ since there exists at least one subset $X_k$ such that $\mu(X_k) \neq 0$. Now consider $p = \infty$. Then $p_0 = p_1 = \infty$. Thus $P(it) = 1$ and so $f_z \equiv f$ and the equation holds trivially. By the same considerations we see that $\|g_{it}\|_{L^{q_0'}} = \|g\|_{L^{q'}}^{q'/q'_0}$ for $q_0 \in [1,\infty]$ (set $\infty' := 1 $). Hence
-
-				\begin{gather}
-					\begin{aligned}
-						\vert F(it) \vert &\leqslant \int_Y \vert T(f_{it})(y)g_{it}(y)\vert d\nu(y)\\
-						&= \|T(f_{it}) g_{it}\|_{L^1}\\
-						&\leqslant \|T(f_{it})\|_{L^{q_0}}\|g_{it}\|_{L^{q_0'}}\\
-						&\leqslant M_0 \|f_{it}\|_{L^{p_0}} \|g_{it}\|_{L^{q_0'}}\\
-						&= M_0 \|f\|_{L^p}^{p/p_0} \|g\|_{L^{q'}}^{q'/q'_0}\\
-						&< \infty
-					\end{aligned}
-				\end{gather}
-
-				by H\"older's inequality. By similar calculations we get 
-				
-				\begin{equation}
-					\|f_{1 + it}\|_{L^{p_1}} = \|f\|_{L^p}^{p/p_1} \qquad \|g_{1 + it}\|_{L^{q_1'}} = \|g\|_{L^{q'}}^{q'/q_1'}
-				\end{equation}
-
-				and thus 
-				
-				\begin{equation}
-					\vert F(1 + it)\vert \leqslant M_1 \|f\|_{L^p}^{p/p_1}\|g\|_{L^{q'}}^{q'/q_1'}
-				\end{equation}	
-
-				Further 
-		
-		\begin{gather*}
-			\begin{aligned}
-				\vert F(z)\vert &\leqslant \int_Y\vert T(f_z)(y)g_z(y)\vert d\nu(y)\\
-				&= \|T(f_z)g_z\|_{L^1}\\
-				&\leqslant \|T(f_z)\|_{L^{q_0}} \|g_z\|_{L^{q'_0}}\\
-				&\leqslant M_0 \|f_z\|_{L^{p_0}} \|g_z\|_{L^{q'_0}}\\
-				&\overset{p_0,q_0' \neq \infty}{=} M_0 \left(\int_X \vert f_z \vert^{p_0} d\mu\right)^{1/p_0} \left(\int_Y \vert g_z \vert^{q'_0} d\nu\right)^{1/q'_0}\\
-				&= M_0 \left( \sum\limits_{j = 1}^n a_j^{p_0\mathrm{Re}P(z)}\mu(X_j) \right)^{1/p_0} \left( \sum\limits_{k = 1}^m b_k^{q'_0\mathrm{Re}Q(z)} \nu(Y_k) \right)^{1/q'_0}\\
-				&= M_0 \left( \sum\limits_{j = 1}^n a_j^{p(1 - \mathrm{Re}z) + (pp_0\mathrm{Re}z)/p_1}\mu(X_j) \right)^{1/p_0} \left( \sum\limits_{k = 1}^m b_k^{q'(1 - \mathrm{Re}z) + (q'q'_0\mathrm{Re} z)/q_1'} \nu(Y_k) \right)^{1/q'_0}\\
-				&\leqslant M_0 \left( \sum\limits_{j = 1}^n a_j^{p + (pp_0)/p_1}\mu(X_j) \right)^{1/p_0} \left( \sum\limits_{k = 1}^m b_k^{q' + (q'q'_0)/q'_1} \nu(Y_k) \right)^{1/q'_0}\\
-				&= M_0 \|f\|_{L^{p + (pp_0)/p_1}}^{p/p_0 + p/p_1} \|g\|_{L^{q' + (q'q'_0)/q'_1}}^{q'/q_0' + q'/q_1'}\\
-				&=: C(f,g)
-			\end{aligned}
-		\end{gather*}
-		
-		
-		by H\"older's inequality and in the edge cases
-		
-		\begin{gather*}
-			\begin{aligned}
-				&p_0 = \infty, q_0' \neq \infty: \qquad C(f,g) := M_0 \max_{j = 1,\hdots,n} a_j^{p/p_1} \|g\|_{L^{q' + (q'q'_0)/q'_1}}^{q'/q_0' + q'/q_1'}\\
-				&p_0 \neq \infty, q_0' = \infty: \qquad C(f,g) :=  M_0 \|f\|_{L^{p + (pp_0)/p_1}}^{p/p_0 + p/p_1} \max_{k = 1,\hdots,m} b_k^{q'/q_1'}\\
-				&p_0 = \infty, q_0' = \infty: \qquad C(f,g) := M_0 \max_{j = 1,\hdots,n} a_j^{p/p_1} \max_{k = 1,\hdots,m} b_k^{q'/q_1'}
-			\end{aligned}
-		\end{gather*}
-		
-		
-		Hence $F$ is bounded on $\overline{S}$. It is obvious, that $F$ is analytic on $S$ and continuous on $\overline{S}$ (as the sum, product,quotient,composition of analytic/continuous functions). Therefore we can apply Hadamard's three lines lemma to get
-
-		\begin{gather}
-			\begin{aligned}
-				\vert F(z) \vert &\leqslant \left( M_0  \|f\|_{L^p}^{p/p_0} \|g\|_{L^{q'}}^{q'/q'_0} \right)^{1 - \theta}\left(  M_1 \|f\|_{L^p}^{p/p_1}\|g\|_{L^{q'}}^{q'/q_1'} \right)^\theta\\
-			&= M_0^{1 - \theta}M_1^\theta \|f\|_{L^p}\|g\|_{L^{q'}}
-			\label{est:F}
-		\end{aligned}
-		\end{gather}
-
-		for $\mathrm{Re}z = \theta$ where $0 \leqslant \theta \leqslant 1$. Further observe $P(\theta) = Q(\theta) = 1$ for $0 < \theta < 1$ and thus 
-		
-		\begin{gather}
-			\begin{aligned}
-				\|T(f)\|_{L^q} &= \sup\left\{\left\vert \int_Y T(f)gd\nu\right\vert : g \in \mathfrak{F}, \|g\|_{L^{q'}} = 1\right\}\\
-				&=  \sup\left\{\left\vert F(\theta)\right\vert : g \in \mathfrak{F}, \|g\|_{L^{q'}} = 1\right\}\\
-				&\leqslant M_0^{1 - \theta}M_1^\theta \|f\|_{L^p}
-				\label{id:F}
-			\end{aligned}
-		\end{gather}
-
-		Now assume \underline{$q = 1$}. Then $q_0 = q_1 = 1$. Let $g :\equiv \sum_{k = 1}^m b_k e^{i\beta_k}\chi_{Y_k}$ be a simple function (this means, that $\nu(Y_k) = \infty$ is possible for some $Y_k$) with $\|g\|_{L^{\infty}} = 1$. Define $f_z$ as above and
-
-		\begin{equation}
-			F(z) := \int_Y T(f_z)(y)g(y)d\nu(y)	
-		\end{equation}
-
-		Using the linearity property of $T$ we see again, that $F(z)$ is well-defined on $\overline{S}$. Analogously we get 
-
-		\begin{equation}
-			\vert F(it)\vert \leqslant M_0 \|f\|_{L^p}^{p/p_0} \qquad \vert F(1 + it) \vert \leqslant M_1 \|f\|_{L^p}^{p/p_1}
-		\end{equation}
-
-		Again, $F$ is bounded on $\overline{S}$ by 
-
-		\begin{gather*}
-			\begin{aligned}
-				&p_0 \neq \infty, q_0' = \infty: \qquad C(f,g) :=  M_0 \|f\|_{L^{p + (pp_0)/p_1}}^{p/p_0 + p/p_1} \max_{k = 1,\hdots,m} b_k^{q'/q_1'}\\
-				&p_0 = \infty, q_0' = \infty: \qquad C(f,g) := M_0 \max_{j = 1,\hdots,n} a_j^{p/p_1} \max_{k = 1,\hdots,m} b_k^{q'/q_1'}
-			\end{aligned}
-		\end{gather*}
-
-		Hadamard's three lines lemma therefore yields
-
-		\begin{equation}
-			\vert F(z)\vert \leqslant \left(M_0 \|f\|_{L^p}^{p/p_0}\right)^{1 - \theta} \left( M_1 \|f\|_{L^p}^{p/p_1}\right)^\theta =  M_0^{1 - \theta} M_1^\theta \|f\|_{L^p}
-		\end{equation}
-
-		and observing $P(\theta) = 1$ for $0 < \theta < 1$ yields
-
-		\begin{gather}
-			\begin{aligned}
-				\| T(f) \|_{L^1} &= \sup \left\{\left\vert \int_Y T(f)gd\nu \right\vert : g \text{ simple}, \|g\|_{L^{\infty}} = 1 \right\}\\
-				&= \sup \{\vert F(\theta) \vert : g \text{ simple}, \|g\|_{L^{\infty}} = 1 \}\\
-				&\leqslant  M_0^{1 - \theta} M_1^\theta \|f\|_{L^p}
-			\end{aligned}
-		\end{gather}
-
-		This is justified by the fact, that the simple functions are dense in $L^{\infty}$ (for a proof see \cite[100]{cohn:measure_theory:2013}).	
+	we conclude $\left\| T(f)\right\|_{L^q} = M_q\left( T(f) \right)$ for any $f \in \Sigma_X$ using \cite[189]{folland:real_analysis:1999} (observe, that $T(f)g \in L^1$ by either one of the hypotheses on the linear operator $T$).
 \end{proof}
 
 \begin{remark}
-	As you can see in the proof of the case $q = 1$, it is necessary to have $0 < \theta < 1$. Since for example choosing $q_1 = 1$ and $q_0 > 1$ arbitrary leads for $\theta = 1$ to $q = 1$ but then the function $g$ can be choosen so, that the integral in the definition \textup{(\ref{def:F})} diverges.
+	It is necessary to have $0 < \theta < 1$, since for example choosing $q_1 = 1$ and $q_0 > 1$ arbitrary leads for $\theta = 1$ to $q = 1$ but then the function $g$ can be choosen so, that the integral in the definition \textup{(\ref{def:F})} is $\infty$.
 \end{remark}
 
-\begin{remark}
-	The proof initially given by Grafakos differs in the case study of $q$. I argued in a different way, because I used the density of the simple functions and finitely simple functions whereas he used the theorem given here \textup{\cite[189]{folland:real_analysis:1999}}, which makes the distinction of the cases $q > 1$ and $q = 1$ unnecessary. \end{remark}
 
 \subsection{Young's inequality}
 Using the Riesz-Thorin interpolation theorem, we can give an alternative proof of Young's inequality \cite[22--23]{grafakos:fourier:2014}.
