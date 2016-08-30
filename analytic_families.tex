@@ -86,10 +86,10 @@ This lemma is inspired by a lemma originally proposed by I.I.Hirschman. I will s
 \end{proof}
 
 \begin{lemma}
-	Let $1/4 \leqslant \rho < 1$ and $\zeta = \rho e^{i\theta}$. Then
+	Let $1/(2e - 1) \leqslant \rho < 1$ and $\zeta = \rho e^{i\theta}$. Then
 
 	\begin{equation*}
-		\left| \log \left| \frac{1 + \zeta}{1 - \zeta} \right| \right| \leqslant \log(5/2) + \log \frac{1}{\left| \cos(\theta/2) \right|} + \log \frac{1}{\left| \sin(\theta/2) \right|}
+		\left| \log \left| \frac{1 + \zeta}{1 - \zeta} \right| \right| \leqslant 1 + \log \frac{1}{\left| \cos(\theta/2) \right|} + \log \frac{1}{\left| \sin(\theta/2) \right|}
 	\end{equation*}
 	\label{lem:upper_bound}
 \end{lemma}
@@ -97,15 +97,15 @@ This lemma is inspired by a lemma originally proposed by I.I.Hirschman. I will s
 \begin{proof}
 	This proof is due to Prof. Schlein. We have on the one hand
 
-	\begin{equation}
+	\begin{equation*}
 		\left| 1 + \zeta \right| \leqslant 1 + \left| \zeta \right| = 1 + \rho
-	\end{equation}
+	\end{equation*}
 
 	and on the other hand
 
-	\begin{equation}
+	\begin{equation*}
 		\left| 1 - \zeta \right| \geqslant \left|\Im\zeta \right| = \rho\left|\sin(\theta)\right|
-	\end{equation}
+	\end{equation*}
 
 	Hence
 	
@@ -114,21 +114,21 @@ This lemma is inspired by a lemma originally proposed by I.I.Hirschman. I will s
 			\log \frac{\left| 1 + \zeta \right|}{\left| 1 - \zeta \right|} &\leqslant \log\frac{1 + \rho}{\rho \left| \sin(\theta)\right|}\\
 			&=  \log\frac{1 + \rho}{2\rho \left| \sin(\theta/2)\right|\left| \cos(\theta/2)\right|}\\
 			&=  \log\frac{1 + \rho}{2\rho}  +  \log \frac{1}{\left| \sin(\theta/2)\right|} +  \log\frac{1}{\left| \cos(\theta/2)\right|}\\
-			&\leqslant  \log(5/2) + \log \frac{1}{\left| \sin(\theta/2)\right|} + \log \frac{1}{\left| \cos(\theta/2)\right|}	
+			&\leqslant  1 + \log \frac{1}{\left| \sin(\theta/2)\right|} + \log \frac{1}{\left| \cos(\theta/2)\right|}	
 		\end{aligned}
 	\end{gather*}
 
 	since
 
 	\begin{equation*}
-		\frac{1 + \rho}{2\rho} = \frac{1}{2} + \frac{1}{2\rho} \leqslant \frac{5}{2}
+		\frac{1 + \rho}{2\rho} = \frac{1}{2} + \frac{1}{2\rho} \leqslant e
 	\end{equation*}
 
 	Now by
 
-	\begin{equation}
+	\begin{equation*}
 		-\log \frac{\left| 1 + \zeta \right|}{\left| 1 - \zeta \right|}  = 	\log \frac{\left| 1 - \zeta \right|}{\left| 1 + \zeta \right|} 
-	\end{equation}
+	\end{equation*}
 
 	which corresponds to considering $-\zeta = e^{i\pi}\zeta = e^{i(\pi + \theta)}$ in the first case, yields by invoking the identities
 
@@ -139,7 +139,7 @@ This lemma is inspired by a lemma originally proposed by I.I.Hirschman. I will s
 	the bound 
 
 	\begin{equation*}
-		-\log \frac{\left| 1 + \zeta \right|}{\left| 1 - \zeta \right|} \leqslant \log(5/2) + \log \frac{1}{\left| \sin(\theta/2)\right|} + \log \frac{1}{\left| \cos(\theta/2)\right|}	 
+		-\log \frac{\left| 1 + \zeta \right|}{\left| 1 - \zeta \right|} \leqslant 1 + \log \frac{1}{\left| \sin(\theta/2)\right|} + \log \frac{1}{\left| \cos(\theta/2)\right|}	 
 	\end{equation*}
 
 	and we are done.
@@ -152,7 +152,7 @@ Now we are able to proove the main result in prooving Stein's interpolation theo
 
 \begin{mdframed}
 	\begin{lemma}\emph{(Hadamard's three lines lemma, extension)}
-		Let $F$ be a holomorphic function in the strip $S := \{z \in \mathbb{C}: 0 < \mathrm{Re}z < 1\}$ and continuous on $\overline{S}$, such that for some $A < \infty$ and $\tau \in [0,\pi[$ we have $\log \vert F(z)\vert \leqslant A e^{\tau \vert \Im z \vert}$ for every $z \in \overline{S}$. Then
+		Let $F$ be a holomorphic function in the strip $S := \{z \in \mathbb{C}: 0 < \mathrm{Re}z < 1\}$ and continuous on $\overline{S}$, such that for some $0 < A < \infty$ and $\tau_0 \in (0,\pi)$ we have $\log \vert F(z)\vert \leqslant A e^{\tau_0 \vert \Im z \vert}$ for every $z \in \overline{S}$. Then
 
 			\begin{equation*}
 				\vert F(z) \vert \leqslant \exp\left( \frac{\sin(\pi x)}{2} \int_{-\infty}^\infty \left[ \frac{\log \vert F(it + iy)\vert}{\cosh(\pi t) - \cos(\pi x)} + \frac{\log \vert F(1 + it + iy)\vert}{\cosh(\pi t) + \cos(\pi x)} \right] d\lambda(t)\right)
@@ -164,23 +164,14 @@ Now we are able to proove the main result in prooving Stein's interpolation theo
 \end{mdframed}
 
 \begin{proof}
-	We will first proove the case \underline{$y = 0$.} Assume $F$ to be not identically zero (the case where $F$ is identically zero is trivial). Let $h$ be as in lemma (\ref{lem:h}). By composition, $F \circ h$ is holomorphic in $D$ and thus by \cite[336]{rudin:rc_analysis:1987} $\log\vert F \circ h \vert$ is subharmonic in $D$. Let $\zeta = \rho e^{i\theta}$, $0 \leqslant \rho < 1$. Since $\zeta \in D$, we have $0 < \Re h(\zeta) < 1$ and thus the hypothesis on $F$ yields
+	We will first proove the case \underline{$y = 0$.} Assume $F$ to be not identically zero (the case where $F$ is identically zero is trivial). Let $h$ be as in lemma (\ref{lem:h}). By composition, $F \circ h$ is holomorphic in $D$ and thus by \cite[336]{rudin:rc_analysis:1987} $\log\vert F \circ h \vert$ is subharmonic in $D$. Let $\zeta = \rho e^{i\theta}$, $0 \leqslant \rho < 1$. Since $\zeta \in D$, we have $0 < \Re h(\zeta) < 1$ and thus the hypothesis on $F$ and lemma (\ref{lem:upper_bound}) yields
 
-\begin{gather*}
-	\begin{aligned}
-		\log \vert F(h(\zeta)) \vert &\leqslant Ae^{\tau_0\vert \Im h(\zeta)\vert}\\
-		&= Ae^{\frac{\tau_0}{\pi}\left| \log\left| \frac{1 + \zeta}{1 - \zeta}\right|\right|}\\
-		&\leqslant Ae^{\frac{\tau_0}{\pi} \left| \log\left(\frac{1 + \rho}{\rho \left| \sin(\theta)\right|}\right) \right|}\\
-		&= Ae^{\frac{\tau_0}{\pi} \left| \log\left(\frac{1 + \rho}{2\rho \left| \sin(\theta/2)\right|\left| \cos(\theta/2)\right|} \right)\right|}\\
-	&\leqslant  Ae^{\frac{\tau_0}{\pi} \left[\left| \log\left(\frac{1 + \rho}{2\rho}\right) \right| + \left| \log \left(\frac{1}{\left| \sin(\theta/2)\right|}\right)\right| + \left| \log\left( \frac{1}{\left| \cos(\theta/2)\right|} \right)\right|\right]}\\
-	&=  Ae^{\frac{\tau_0}{\pi} \left[\left| \log\left(\frac{1 + \rho}{2\rho}\right) \right| + \log \left(\frac{1}{\left| \sin(\theta/2)\right|}\right) + \log\left( \frac{1}{\left| \cos(\theta/2)\right|} \right)\right]}\\
-	&\leqslant Ae^{\frac{\tau_0}{\pi} \left[ \log(5/2) + \log \left(\frac{1}{\left| \sin(\theta/2)\right|}\right) + \log\left( \frac{1}{\left| \cos(\theta/2)\right|} \right)\right]}\\
-	&= \frac{5}{2}A \frac{1}{\left|\cos( \theta/2) \right|^{\tau_0/\pi}} \frac{1}{\left|\sin( \theta/2) \right|^{\tau_0/\pi}}
-		\label{est:admissible}
-	\end{aligned}
-\end{gather*}
+\begin{gather}
+	\log \vert F(h(\zeta)) \vert \leqslant Ae^{\frac{\tau_0}{\pi}\left| \log\left| \frac{1 + \zeta}{1 - \zeta}\right|\right|} \leqslant Ae^{\tau_0/\pi}\frac{1}{\left| \cos(\theta/2) \right|^{\tau_0/\pi}}\frac{1}{\left| \sin(\theta/2) \right|^{\tau_0/\pi}}
+	\label{est:admissible}
+\end{gather}
 
-By $\left| 1 + \zeta\right| \leqslant 1 + \left| \zeta \right| = 1 + \rho$, $\left| 1 - \zeta\right| \geqslant \left|\Im\left( 1 - \zeta \right)\right| = \rho\left|\sin(\theta)\right|$ and $(1 + \rho)/(2\rho) = 1/2 + 1/(2\rho) \leqslant 5/2$ by $\rho \geqslant 1/4$. Since $0 < \tau_0 < \pi$, inequality (\ref{est:admissible}) asserts, that $\log \vert F(h(\zeta))$ is bounded from above by an integrable function of $\theta$, independently of $\rho \geqslant 1/4$. Set $R := 1/4$ and consider the function
+	for $1/(2e - 1) \leqslant \rho$. Since $0 < \tau_0 < \pi$, inequality (\ref{est:admissible}) asserts, that $\log \vert F(h(\zeta))$ is bounded from above by an integrable function of $\theta$, independently of $\rho \geqslant 1/(2e - 1)$. Set $R := 1/(2e - 1)$ and consider the function
 	 
 \begin{gather*}
 	\begin{aligned}
@@ -215,7 +206,37 @@ for all $\rho < 1$, where $g \in L^1[-\pi,\pi]$. Thus for $\rho$ fixed, we have
 	\log\left| F(h(Re^{i\varphi}))\right| \frac{R^2 - \rho^2}{R^2 - 2R\rho\cos(\theta - \varphi) + \rho^2} \leqslant G(\varphi)
 \end{equation*}
 
-where $G(\varphi) \in L^1[-\pi,\pi]$.
+where $G \in L^1[-\pi,\pi]$. For $R < 0$ let
+
+\begin{equation*}
+	f_R(\varphi) := \log\left| F(h(Re^{i\varphi}))\right| \frac{R^2 - \rho^2}{R^2 - 2R\rho\cos(\theta - \varphi) + \rho^2}
+\end{equation*}
+
+and for $\varphi \neq 0,\pi$
+
+\begin{equation*}
+	f(\varphi) := \log\left| F(h(e^{i\varphi}))\right| \frac{1 - \rho^2}{1 - 2\rho\cos(\theta - \varphi) + \rho^2}
+\end{equation*}
+
+By \cite[363]{bourbaki:general_topology:1995} the upper semicontinuity of $\log\left| F \circ h\right|$ implies
+
+\begin{equation*}
+	\limsup_{R \to 1}f_R(\varphi) = f(\varphi)
+\end{equation*}
+
+The functions $G - f_R$ being non-negative, an application of Fatou's lemma yields
+
+\begin{equation*}
+	\int_{-\pi}^\pi \liminf_{R \to 1}\left[ G(\varphi) - f_R(\varphi)\right]d\lambda(\varphi) \leqslant \liminf_{R \to 1} \int_{-\pi}^\pi \left[ G(\varphi) - f_R(\varphi)\right]d\lambda(\varphi)
+\end{equation*}
+
+From this it follows that
+
+\begin{equation*}
+	\limsup_{R \to 1}\int_{-\pi}^\pi f_R(\varphi)d\lambda(\varphi) \leqslant \int_{-\pi}^\pi \limsup_{R \to 1} f_R(\varphi)d\lambda(\varphi)
+\end{equation*}
+
+and thus
 
 \begin{equation}
 	\log\left| F( h( \rho e^{i\theta} ) )\right| \leqslant \frac{1}{2\pi} \int_{-\pi}^\pi \log\left| F( h( e^{i\varphi}))\right| \frac{1 - \rho^2}{1 - 2\rho\cos\left( \theta - \varphi \right) + \rho^2}	
