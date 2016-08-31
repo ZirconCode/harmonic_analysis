@@ -218,7 +218,9 @@ and for $\varphi \neq 0,\pi$
 	f(\varphi) := \log\left| F(h(e^{i\varphi}))\right| \frac{1 - \rho^2}{1 - 2\rho\cos(\theta - \varphi) + \rho^2}
 \end{equation*}
 
-By \cite[363]{bourbaki:general_topology:1995} the upper semicontinuity of $\log\left| F \circ h\right|$ implies
+The upper semicontinuity of $\log\left| F \circ h\right|$ implies\footnote{
+	By \cite[360]{bourbaki:general_topology:1995} if $f$ is upper semicontinuous at a point, then $-f$ is lower semicontinuous at the same point. Hence by \cite[363]{bourbaki:general_topology:1995} we have $\limsup_{x \to a} f(x) = -\liminf_{x \to a}\left( -f \right)(x) = -\left( -f \right)(a) = f(a)$.
+}
 
 \begin{equation*}
 	\begin{aligned}
