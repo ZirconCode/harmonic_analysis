@@ -14,7 +14,7 @@ This lemma is inspired by a lemma originally proposed by I.I.Hirschman. I will s
 		h(z) := \frac{1}{\pi i}\log\left( i\frac{1 + z}{1 - z} \right)
 	\end{equation*}
 
-	for $z \in \overline{D} \setminus \{\pm 1\}$ where we are taking that branch of the logarithm for which $\log 1 = 0$. Then $h$ is a holomorphic function in $D$ which maps $\overline{D}\setminus \{\pm 1\}$ bijectively onto the closure $\overline{S}$ of the strip $S := \{z \in \mathbb{C} : 0 < \Re z < 1\}$.
+	for $z \in \overline{D} \setminus \{\pm 1\}$ where we are taking that branch of the logarithm which is continuous for $-\frac{\pi}{2} < \arg z < \frac{3\pi}{2}$. Then $h$ is a holomorphic function in $D$ which maps $\overline{D}\setminus \{\pm 1\}$ bijectively onto the closure $\overline{S}$ of the strip $S := \{z \in \mathbb{C} : 0 < \Re z < 1\}$.
 
 	\label{lem:h}
 \end{lemma}
@@ -146,7 +146,7 @@ This lemma is inspired by a lemma originally proposed by I.I.Hirschman. I will s
 \end{proof}
 
 \subsubsection{The Lemma}
-Now we are able to proove the main result in prooving Stein's interpolation theorem.
+Recall, that a real-valued function $f$, defined on a topological space $X$, is said to be \emph{upper semicontinuous} at a point $a \in X$, if for each $k > f(a)$ there is a neighbourhood $V$ of $a$ such that $k > f(x)$ for each $x \in V$.
 
 \vspace{2mm}
 
@@ -221,14 +221,14 @@ and for $\varphi \neq 0,\pi$
 	f(\varphi) := \log\left| F(h(e^{i\varphi}))\right| \frac{1 - \rho^2}{1 - 2\rho\cos(\theta - \varphi) + \rho^2}
 \end{equation*}
 
-The upper semicontinuity of $\log\left| F \circ h\right|$ implies\footnote{
+The upper semicontinuity of $\log\left| F \circ h\right|$ (by \cite[360]{bourbaki:general_topology:1995} continuity at a point $a$ is equivalent to lower and upper semicontinuity of a function at $a$ and $\log \left| F \circ h\right|$ is continuous on $\overline{D}\setminus \{\pm 1\}$) implies\footnote{
 	By \cite[360]{bourbaki:general_topology:1995} if $f$ is upper semicontinuous at a point, then $-f$ is lower semicontinuous at the same point. Hence by \cite[363]{bourbaki:general_topology:1995} we have $\limsup_{x \to a} f(x) = -\liminf_{x \to a}\left( -f \right)(x) = -\left( -f \right)(a) = f(a)$.
 }
 
 \begin{equation*}
 	\begin{aligned}
-		\limsup_{R \upto 1}f_R(\varphi) &= \limsup_{R \upto 1} \left[ \log\left| F(h(Re^{i\varphi}))\right| \frac{R^2 - \rho^2}{R^2 - 2R\rho\cos(\theta - \varphi) + \rho^2}\right]\\
-		&= \limsup_{R \upto 1} \log\left| F(h(Re^{i\varphi}))\right| \lim_{R \upto 1} \frac{R^2 - \rho^2}{R^2 - 2R\rho\cos(\theta - \varphi) + \rho^2}\\
+		\limsup_{R \toup 1}f_R(\varphi) &= \limsup_{R \toup 1} \left[ \log\left| F(h(Re^{i\varphi}))\right| \frac{R^2 - \rho^2}{R^2 - 2R\rho\cos(\theta - \varphi) + \rho^2}\right]\\
+		&= \limsup_{R \toup 1} \log\left| F(h(Re^{i\varphi}))\right| \lim_{R \toup 1} \frac{R^2 - \rho^2}{R^2 - 2R\rho\cos(\theta - \varphi) + \rho^2}\\
 		&= \log\left| F(h(e^{i\varphi}))\right| \frac{1 - \rho^2}{1 - 2\rho\cos(\theta - \varphi) + \rho^2}\\
 		&= f(\varphi)
 	\end{aligned}
@@ -237,29 +237,29 @@ The upper semicontinuity of $\log\left| F \circ h\right|$ implies\footnote{
 using an extension of \cite[359]{bourbaki:general_topology:1995}. The functions $G - f_R$ being non-negative, an application of Fatou's lemma yields
 
 \begin{equation*}
-	\int_{-\pi}^\pi \liminf_{R \upto 1}\left[ G(\varphi) - f_R(\varphi)\right]d\lambda(\varphi) \leqslant \liminf_{R \upto 1} \int_{-\pi}^\pi \left[ G(\varphi)\right]d\lambda(\varphi)
+	\int_{-\pi}^\pi \liminf_{R \toup 1}\left[ G(\varphi) - f_R(\varphi)\right]d\lambda(\varphi) \leqslant \liminf_{R \toup 1} \int_{-\pi}^\pi \left[ G(\varphi)\right]d\lambda(\varphi)
 \end{equation*}
 
 By \cite[354]{bourbaki:general_topology:1995}, we get
 
 \begin{equation*}
-	-\int_{-\pi}^\pi \limsup_{R \upto 1}\left[ f_R(\varphi) - G(\varphi)\right]d\lambda(\varphi) \leqslant -\limsup_{R \upto 1} \int_{-\pi}^\pi \left[ f_R(\varphi) - G(\varphi)\right]d\lambda(\varphi)
+	-\int_{-\pi}^\pi \limsup_{R \toup 1}\left[ f_R(\varphi) - G(\varphi)\right]d\lambda(\varphi) \leqslant -\limsup_{R \toup 1} \int_{-\pi}^\pi \left[ f_R(\varphi) - G(\varphi)\right]d\lambda(\varphi)
 \end{equation*}
 
 and thus
 
 \begin{multline*}
-	\limsup_{R \upto 1} \int_{-\pi}^\pi f_R(\varphi) d\lambda(\varphi) - \int_{-\pi}^\pi G(\varphi)d\lambda(\varphi)\\
-	= \limsup_{R \upto 1} \int_{-\pi}^\pi f_R(\varphi) d\lambda(\varphi) + \liminf_{R \upto 1}\int_{-\pi}^\pi \left(-G(\varphi)\right)d\lambda(\varphi)\\
-	\leqslant \limsup_{R \upto 1}\int_{-\pi}^\pi \left[ f_R(\varphi) - G(\varphi)\right]d\lambda(\varphi)\leqslant \int_{-\pi}^\pi \limsup_{R \upto 1} \left[f_R(\varphi) - G(\varphi)\right]d\lambda(\varphi)\\
-	\leqslant \limsup_{R \upto 1} \int_{-\pi}^\pi f_R(\varphi) d\lambda(\varphi) + \limsup_{R \upto 1}\int_{-\pi}^\pi \left(-G(\varphi)\right)d\lambda(\varphi)\\
-	= \limsup_{R \upto 1} \int_{-\pi}^\pi f_R(\varphi) d\lambda(\varphi) - \int_{-\pi}^\pi G(\varphi)d\lambda(\varphi)
+	\limsup_{R \toup 1} \int_{-\pi}^\pi f_R(\varphi) d\lambda(\varphi) - \int_{-\pi}^\pi G(\varphi)d\lambda(\varphi)\\
+	= \limsup_{R \toup 1} \int_{-\pi}^\pi f_R(\varphi) d\lambda(\varphi) + \liminf_{R \toup 1}\int_{-\pi}^\pi \left(-G(\varphi)\right)d\lambda(\varphi)\\
+	\leqslant \limsup_{R \toup 1}\int_{-\pi}^\pi \left[ f_R(\varphi) - G(\varphi)\right]d\lambda(\varphi)\leqslant \int_{-\pi}^\pi \limsup_{R \toup 1} \left[f_R(\varphi) - G(\varphi)\right]d\lambda(\varphi)\\
+	\leqslant \int_{-\pi}^\pi \limsup_{R \toup 1} f_R(\varphi) d\lambda(\varphi) + \int_{-\pi}^\pi\limsup_{R \toup 1} \left(-G(\varphi)\right)d\lambda(\varphi)\\
+	= \int_{-\pi}^\pi \limsup_{R \toup 1}f_R(\varphi) d\lambda(\varphi) - \int_{-\pi}^\pi G(\varphi)d\lambda(\varphi)
 \end{multline*}
 
 by \cite[358]{bourbaki:general_topology:1995}. Hence
 
 \begin{equation*}
-	\limsup_{R \upto 1} \int_{-\pi}^\pi f_R(\varphi) d\lambda(\varphi) \leqslant\limsup_{R \upto 1} \int_{-\pi}^\pi f_R(\varphi) d\lambda(\varphi)
+	\limsup_{R \toup 1} \int_{-\pi}^\pi f_R(\varphi) d\lambda(\varphi) \leqslant\int_{-\pi}^\pi \limsup_{R \toup 1}f_R(\varphi) d\lambda(\varphi)
 \end{equation*}
 
 and so 
@@ -375,22 +375,22 @@ Because of the complex nature of the proof of the Riesz-Thorin Interpolation The
 
 \begin{mdframed}
 	\begin{definition}\emph{(Analytic family, admissible growth)}
-		Let $(X,\mu)$ be a measure space, $(Y,\nu)$ be a semifinite measure spaces and $\left( T_z \right)_{z \in \overline{S}}$, where $T_z$ is defined on the space of all finitely simple functions on $X$ and taking values in the space of all measurable functions on $Y$ such that
+		Let $(X,\mu)$ be a measure space, $(Y,\nu)$ be a semifinite measure spaces and $\left( T_z \right)_{z \in \overline{S}}$, where $T_z$ is defined $\Sigma_X$ and taking values in the space of all measurable functions on $Y$ such that
 
 		\begin{equation}
-			\int_Y \vert T_z(\chi_A)\chi_B \vert d\nu
+			\int_Y \left| T_z(\chi_A)\chi_B \right| d\nu
 		\end{equation}
 
-		whenever $\mu(A),\nu(B) < \infty$. The family $\left( T_z \right)_{z \in \overline{S}}$ is said to be \emph{analytic} if for all $f$, $g$ finitely simple we have that
+		whenever $\mu(A),\nu(B) < \infty$. The family $\left( T_z \right)_{z \in \overline{S}}$ is said to be \emph{analytic} if for all $f \in \Sigma_X$, $g \in \Sigma_Y$ we have that
 
 		\begin{equation}
 			z \mapsto \int_Y T_z(f)gd\nu
 		\end{equation}
 
-		is analytic on $S$ and continuous on $\overline{S}$. Further, an analytic family $\left( T_z \right)_{z \in \overline{S}}$ is called of \emph{admissible growth}, if there is a constant $\tau \in (0,\pi)$, such that for all finitely simple functions $f$, $g$ a constant $C(f,g)$ exists with
+		is analytic on $S$ and continuous on $\overline{S}$. Further, an analytic family $\left( T_z \right)_{z \in \overline{S}}$ is called of \emph{admissible growth}, if there is a constant $\tau_0 \in (0,\pi)$, such that for all $f \in \Sigma_X$, $g \in \Sigma_Y$ a constant $C(f,g)$ exists with
 
 			\begin{equation}
-				\log\left\vert \int_Y T_z(f) g d\nu\right\vert \leqslant C(f,g)e^{\tau\vert \mathrm{Im}z\vert}
+				\log\left| \int_Y T_z(f) g d\nu\right| \leqslant C(f,g)e^{\tau_0\left| \Im z\right|}
 			\end{equation}
 
 			for all $z \in \overline{S}$.
@@ -405,10 +405,10 @@ Now we are able to write down the theorem.
 
 \begin{mdframed}
 	\begin{theorem}\emph{(Stein's Theorem on Interpolation of Analytic Families of Operators)}
-		Let $\left( T_z \right)_{z \in \overline{S}}$ be an analytic family of admissible growth, $1 \leqslant p_0,p_1,q_0,q_1 \leqslant \infty$ and suppose that $M_0$, $M_1$ are positive functions on the real line such that for some $\tau \in [0,\pi)$
+		Let $\left( T_z \right)_{z \in \overline{S}}$ be an analytic family of admissible growth, $1 \leqslant p_0,p_1,q_0,q_1 \leqslant \infty$ and suppose that $M_0$, $M_1$ are positive functions on the real line such that for some $\tau_1 \in (0,\pi)$
 
 			\begin{equation}
-				\sup\left\{e^{-\tau \vert y \vert} \log M_0(y) : y \in \mathbb{R}\right\} < \infty \qquad \sup\left\{e^{-\tau \vert y \vert} \log M_1(y) : y \in \mathbb{R}\right\} < \infty
+				\sup\left\{e^{-\tau_1 \vert y \vert} \log M_0(y) : y \in \mathbb{R}\right\} < \infty \qquad \sup\left\{e^{-\tau_1 \vert y \vert} \log M_1(y) : y \in \mathbb{R}\right\} < \infty
 			\end{equation}
 
 			Fix $0 < \theta < 1$ and define
@@ -417,13 +417,13 @@ Now we are able to write down the theorem.
 				\frac{1}{p} := \frac{1 - \theta}{p_0} + \frac{\theta}{p_1} \qquad \frac{1}{q} := \frac{1 - \theta}{q_0} + \frac{\theta}{q_1}
 			\end{equation}
 
-			Further suppose that for all finitely simple functions $f$ on $X$ and $y \in \mathbb{R}$ we have
+			Further suppose that for all $f \in \Sigma_X$ and $y \in \mathbb{R}$ we have
 
 			\begin{equation}
 				\|T_{iy}(y)\|_{L^{q_0}} \leqslant M_0(y)\|f\|_{L^{p_0}} \qquad \|T_{1 + iy}(y)\|_{L^{q_1}} \leqslant M_1(y)\|f\|_{L^{p_1}} 
 			\end{equation}
 
-			Then for all finitely simple functions $f$ on $X$ we have
+			Then for all $f \in \Sigma_X$ we have
 
 			\begin{equation*}
 				\|T_\theta(f)\|_{L^q} \leqslant M(\theta)\|f\|_{L^p}
