@@ -185,7 +185,10 @@ Now we are able to proove the main result in prooving Stein's interpolation theo
 Then $H$ is continuous for $\vert z \vert \leqslant R$ and harmonic for $\vert z \vert < R$ (see \cite[234--235]{rudin:rc_analysis:1987}). Since $\log\vert F(h(Re^{i\theta}))\vert = H(Re^{i\theta})$ is continuous on the circle with radius $R$, by \cite[336]{rudin:rc_analysis:1987} we have
 
 \begin{equation*}
-	\log\left| F(h(\rho e^{i\theta}))\right| \leqslant \frac{1}{2\pi} \int_{-\pi}^\pi \log\left| F(h(Re^{i\varphi}))\right| \frac{R^2 - \rho^2}{R^2 - 2R\rho\cos(\theta - \varphi) + \rho^2} d\lambda(\varphi) 
+	\begin{aligned}
+		\log\left| F(h(\rho e^{i\theta}))\right| &\leqslant \frac{1}{2\pi} \int_{-\pi}^\pi \log\left| F(h(Re^{i\varphi}))\right| \frac{R^2 - \rho^2}{R^2 - 2R\rho\cos(\theta - \varphi) + \rho^2} d\lambda(\varphi)\\
+		&\leqslant \frac{Ae^{\tau_0/\pi}}{2\pi}\int_{-\pi}^\pi\frac{1}{\left| \cos(\varphi/2) \right|^{\tau_0/\pi}}\frac{1}{\left| \sin(\varphi/2) \right|^{\tau_0/\pi}}\frac{R^2 - \rho^2}{R^2 - 2R\rho\cos(\theta - \varphi) + \rho^2} d\lambda(\varphi)
+	\end{aligned}
 \end{equation*}
 
 for $0 \leqslant \rho < R$. Using 
@@ -224,8 +227,8 @@ The upper semicontinuity of $\log\left| F \circ h\right|$ implies\footnote{
 
 \begin{equation*}
 	\begin{aligned}
-		\limsup_{R \to 1}f_R(\varphi) &= \limsup_{R \to 1} \left[ \log\left| F(h(Re^{i\varphi}))\right| \frac{R^2 - \rho^2}{R^2 - 2R\rho\cos(\theta - \varphi) + \rho^2}\right]\\
-		&= \limsup_{R \to 1} \log\left| F(h(Re^{i\varphi}))\right| \lim_{R \to 1} \frac{R^2 - \rho^2}{R^2 - 2R\rho\cos(\theta - \varphi) + \rho^2}\\
+		\limsup_{R \upto 1}f_R(\varphi) &= \limsup_{R \upto 1} \left[ \log\left| F(h(Re^{i\varphi}))\right| \frac{R^2 - \rho^2}{R^2 - 2R\rho\cos(\theta - \varphi) + \rho^2}\right]\\
+		&= \limsup_{R \upto 1} \log\left| F(h(Re^{i\varphi}))\right| \lim_{R \upto 1} \frac{R^2 - \rho^2}{R^2 - 2R\rho\cos(\theta - \varphi) + \rho^2}\\
 		&= \log\left| F(h(e^{i\varphi}))\right| \frac{1 - \rho^2}{1 - 2\rho\cos(\theta - \varphi) + \rho^2}\\
 		&= f(\varphi)
 	\end{aligned}
@@ -234,29 +237,29 @@ The upper semicontinuity of $\log\left| F \circ h\right|$ implies\footnote{
 using an extension of \cite[359]{bourbaki:general_topology:1995}. The functions $G - f_R$ being non-negative, an application of Fatou's lemma yields
 
 \begin{equation*}
-	\int_{-\pi}^\pi \liminf_{R \to 1}\left[ G(\varphi) - f_R(\varphi)\right]d\lambda(\varphi) \leqslant \liminf_{R \to 1} \int_{-\pi}^\pi \left[ G(\varphi)\right]d\lambda(\varphi)
+	\int_{-\pi}^\pi \liminf_{R \upto 1}\left[ G(\varphi) - f_R(\varphi)\right]d\lambda(\varphi) \leqslant \liminf_{R \upto 1} \int_{-\pi}^\pi \left[ G(\varphi)\right]d\lambda(\varphi)
 \end{equation*}
 
 By \cite[354]{bourbaki:general_topology:1995}, we get
 
 \begin{equation*}
-	-\int_{-\pi}^\pi \limsup_{R \to 1}\left[ f_R(\varphi) - G(\varphi)\right]d\lambda(\varphi) \leqslant -\limsup_{R \to 1} \int_{-\pi}^\pi \left[ f_R(\varphi) - G(\varphi)\right]d\lambda(\varphi)
+	-\int_{-\pi}^\pi \limsup_{R \upto 1}\left[ f_R(\varphi) - G(\varphi)\right]d\lambda(\varphi) \leqslant -\limsup_{R \upto 1} \int_{-\pi}^\pi \left[ f_R(\varphi) - G(\varphi)\right]d\lambda(\varphi)
 \end{equation*}
 
 and thus
 
 \begin{multline*}
-	\limsup_{R \to 1} \int_{-\pi}^\pi f_R(\varphi) d\lambda(\varphi) - \int_{-\pi}^\pi G(\varphi)d\lambda(\varphi)\\
-	= \limsup_{R \to 1} \int_{-\pi}^\pi f_R(\varphi) d\lambda(\varphi) + \liminf_{R \to 1}\int_{-\pi}^\pi \left(-G(\varphi)\right)d\lambda(\varphi)\\
-	\leqslant \limsup_{R \to 1}\int_{-\pi}^\pi \left[ f_R(\varphi) - G(\varphi)\right]d\lambda(\varphi)\leqslant \int_{-\pi}^\pi \limsup_{R \to 1} \left[f_R(\varphi) - G(\varphi)\right]d\lambda(\varphi)\\
-	\leqslant \limsup_{R \to 1} \int_{-\pi}^\pi f_R(\varphi) d\lambda(\varphi) + \limsup_{R \to 1}\int_{-\pi}^\pi \left(-G(\varphi)\right)d\lambda(\varphi)\\
-	= \limsup_{R \to 1} \int_{-\pi}^\pi f_R(\varphi) d\lambda(\varphi) - \int_{-\pi}^\pi G(\varphi)d\lambda(\varphi)
+	\limsup_{R \upto 1} \int_{-\pi}^\pi f_R(\varphi) d\lambda(\varphi) - \int_{-\pi}^\pi G(\varphi)d\lambda(\varphi)\\
+	= \limsup_{R \upto 1} \int_{-\pi}^\pi f_R(\varphi) d\lambda(\varphi) + \liminf_{R \upto 1}\int_{-\pi}^\pi \left(-G(\varphi)\right)d\lambda(\varphi)\\
+	\leqslant \limsup_{R \upto 1}\int_{-\pi}^\pi \left[ f_R(\varphi) - G(\varphi)\right]d\lambda(\varphi)\leqslant \int_{-\pi}^\pi \limsup_{R \upto 1} \left[f_R(\varphi) - G(\varphi)\right]d\lambda(\varphi)\\
+	\leqslant \limsup_{R \upto 1} \int_{-\pi}^\pi f_R(\varphi) d\lambda(\varphi) + \limsup_{R \upto 1}\int_{-\pi}^\pi \left(-G(\varphi)\right)d\lambda(\varphi)\\
+	= \limsup_{R \upto 1} \int_{-\pi}^\pi f_R(\varphi) d\lambda(\varphi) - \int_{-\pi}^\pi G(\varphi)d\lambda(\varphi)
 \end{multline*}
 
 by \cite[358]{bourbaki:general_topology:1995}. Hence
 
 \begin{equation*}
-	\limsup_{R \to 1} \int_{-\pi}^\pi f_R(\varphi) d\lambda(\varphi) \leqslant\limsup_{R \to 1} \int_{-\pi}^\pi f_R(\varphi) d\lambda(\varphi)
+	\limsup_{R \upto 1} \int_{-\pi}^\pi f_R(\varphi) d\lambda(\varphi) \leqslant\limsup_{R \upto 1} \int_{-\pi}^\pi f_R(\varphi) d\lambda(\varphi)
 \end{equation*}
 
 and so 

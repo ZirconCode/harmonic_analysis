@@ -123,26 +123,20 @@ First we need to have a precise and suitable idea of \emph{linear operators} in 
 	\end{proof}
 
 	\section{Measure Theory}
-	Let $(X,\mu)$ be a measure space. Recall, that if for each measurable set $Y$ with $\mu(Y) = \infty$ there exists a measurable set $E \subseteq Y$ and $0 < \mu(E) < \infty$, $\mu$ is called \emph{semifinite}.
+	Let $(X,\mu)$ be a measure space. Recall, that if for each measurable set $E$ with $\mu(E) = \infty$ there exists a measurable set $F \subseteq E$ and $0 < \mu(F) < \infty$, $\mu$ is called \emph{semifinite}.
 
 		\begin{lemma}
 			Every $\sigma$-finite measure is semifinite.
 		\end{lemma}
 
 		\begin{proof}
-			Let $X = \bigcup_{n \in \mathbb{N}} X_n$ where $\mu(X_n) < \infty$ and $\mu(Y) = \infty$. By letting $\tilde{X}_N := \bigcup_{n \leqslant N} X_n$, $\tilde{X}_N$ is an increasing sequence. Then $Y \cap \tilde{X}_n$ is measurable for each $n \in \mathbb{N}$ and by \cite[10]{cohn:measure_theory:2013}
-
-			\begin{multline*}
-				\infty = \mu(Y) = \mu(Y \cap X) = \mu\left(Y \cap \left(\bigcup_{N \in \mathbb{N}} \tilde{X}_N\right)\right)\\ = \mu\left(\bigcup_{N \in \mathbb{N}} \left( Y \cap \tilde{X}_N \right)\right) = \lim\limits_{N \rightarrow \infty} \mu\left( Y \cap \tilde{X}_N \right)
-			\end{multline*}
-
-			Since $Y \cap \tilde{X}_N \subseteq \tilde{X}_N$, $\mu(Y \cap \tilde{X}_N) < \infty$ for every $N \in \mathbb{N}$. Hence for every $C > 0$ there exists $M \in \mathbb{N}$, such that
+			Let $X = \bigcup_{n \in \mathbb{N}} X_n$ where $\mu(X_n) < \infty$ and $E$ be measurabele with $\mu(E) = \infty$. By letting $Y_n := \bigcup_{k \leqslant n} X_k$, $Y_n$ is an increasing sequence. Then $E \cap Y_n$ is measurable and since $E \cap Y_n \subseteq Y_n$, $\mu(E \cap Y_n) < \infty$ for each $n \in \mathbb{N}$. By the continuity from below (see \cite[10]{cohn:measure_theory:2013} or \cite[26]{folland:real_analysis:1999}) we have
 
 			\begin{equation*}
-				\mu(Y \cap \tilde{X}_N) > M
+				\infty = \mu(E) = \mu(E \cap X) = \mu\left(E \cap \left(\bigcup_{n \in \mathbb{N}} Y_n\right)\right) = \mu\left(\bigcup_{n \in \mathbb{N}} \left( E \cap Y_n \right)\right) = \lim\limits_{n \rightarrow \infty} \mu\left( E \cap Y_n \right)
 			\end{equation*}
 
-			for $N > M$. 
+			Hence for every $C > 0$ there exists $N \in \mathbb{N}$, such that $\infty > \mu(E \cap Y_n) > C$ for $n > N$.
 		\end{proof}
 
 \end{appendix}
