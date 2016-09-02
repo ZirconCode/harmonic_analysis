@@ -2,12 +2,12 @@
 This theorem will unfortunately only be applicable to linear operators but will yield a more natural bound of the operator on the intermediate space. The proof will make strong use of complex variables technique. A major tool will be an application of the maximum modulus principle, known as \emph{Hadamard's three lines lemma}.
 
 \subsection{Hadamard's Three Lines Lemma}
-As the name already says, the lemma yields a natural bound of an analytic function defined on a vertical strip in the complex plane using the bounds of the function on the two parallel lines enclosing the strip.
-
+Recall, that a complex-valued function $f$ is said to be \emph{holomorphic}  in $\Omega \subseteq \mathbb{C}$ open, if $f'(z)$ exists for any $z \in \Omega$ (see \cite[197]{rudin:rc_analysis:1987}).
+ 
 \vspace{2mm}
 
 \begin{mdframed}
-	\begin{lemma}{Hadamard's three lines lemma)}
+	\begin{lemma}\emph{(Hadamard's three lines lemma)}
 		Let $F$ be a holomorphic function in the strip $S := \{z \in \mathbb{C}: 0 < \Re z < 1\}$, continuous and bounded on $\overline{S}$, such that $\left| F(z)\right| \leqslant B_0$ when $\Re z = 0$ and $\left| F(z) \right| \leqslant B_1$ when $\Re z = 1$, for some $0 < B_0,B_1 < \infty$. Then $\left| F(z) \right| \leqslant B_0^{1 - \theta}B_1^\theta$ when $\Re z = \theta$, for any $0 \leqslant \theta \leqslant 1$.
 		\label{lem:HTL}
 	\end{lemma}
@@ -22,9 +22,7 @@ As the name already says, the lemma yields a natural bound of an analytic functi
 	G(z) := \frac{F(z)}{B_0^{1 - z}B_1^z} \qquad \forall n \in \mathbb{N}_{>0}: G_n(z) := G(z) e^{(z^2 - 1)/n} 
 \end{equation}
 
-	Obviously, $G(z)$ and $G_n(z)$ are holomorphic functions on $S$ for $n \in \mathbb{N}_{>0}$\footnote{
-	I adapt here the terminology established in \cite[197]{rudin:rc_analysis:1987}. A complex-valued function $f$ is said to be \emph{holomorphic} (or \emph{analytic}) in $\Omega \subseteq \mathbb{C}$ open, if $f'(z)$ exists for any $z \in \Omega$.	
-					}. Further, we have
+	Obviously, $G(z)$ and $G_n(z)$ are holomorphic functions in $S$ for $n \in \mathbb{N}_{>0}$. Further, we have
 
 \begin{gather}
 	\begin{aligned}

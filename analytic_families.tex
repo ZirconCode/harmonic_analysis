@@ -14,7 +14,7 @@ This lemma is inspired by a lemma originally proposed by I.I.Hirschman. I will s
 		h(z) := \frac{1}{\pi i}\log\left( i\frac{1 + z}{1 - z} \right)
 	\end{equation*}
 
-	for $z \in \overline{D} \setminus \{\pm 1\}$ where we are taking that branch of the logarithm which is continuous for $-\frac{\pi}{2} < \arg z < \frac{3\pi}{2}$. Then $h$ is a holomorphic function in $D$ which maps $\overline{D}\setminus \{\pm 1\}$ bijectively onto the closure $\overline{S}$ of the strip $S := \{z \in \mathbb{C} : 0 < \Re z < 1\}$.
+	for $z \in \overline{D} \setminus \{\pm 1\}$ where we are taking that continuous branch of $\log z$ in the complex plane slit along the negative imaginary axis, $\mathbb{C} \setminus [0,-i\infty)$. Then $h$ is a holomorphic function in $D$ which maps $\overline{D}\setminus \{\pm 1\}$ bijectively onto the closure $\overline{S}$ of the strip $S := \{z \in \mathbb{C} : 0 < \Re z < 1\}$.
 
 	\label{lem:h}
 \end{lemma}
@@ -52,7 +52,7 @@ This lemma is inspired by a lemma originally proposed by I.I.Hirschman. I will s
 		f^{-1}(z) = \frac{z - i}{z + i}
 	\end{equation*}
 
-	Therefore $f$ maps $\overline{D}\setminus \{\pm 1\}$ onto the closed upper half plane $\{z \in \mathbb{C} : \Im z \geqslant 0\}$. The preceeding logarithm maps the upper half plane onto the strip $\{z \in \mathbb{C} : 0 \leqslant \Im z \leqslant \pi \}$. Thus $h(z)$ maps $\overline{D}\setminus \{\pm 1\}$ onto the strip $\overline{S}$. By
+	Therefore $f$ maps $\overline{D}\setminus \{\pm 1\}$ onto the punctured closed upper half plane $\{z \in \mathbb{C} : \Im z \geqslant 0\} \setminus \{0\}$. The preceeding logarithm maps this upper half plane onto the strip $\{z \in \mathbb{C} : 0 \leqslant \Im z \leqslant \pi \}$. Thus $h(z)$ maps $\overline{D}\setminus \{\pm 1\}$ onto the strip $\overline{S}$. By
 
 \begin{equation}
 	h'(z) = \frac{2}{\pi i} \frac{1}{1 - z}
@@ -237,7 +237,7 @@ The upper semicontinuity of $\log\left| F \circ h\right|$ (by \cite[360]{bourbak
 using an extension of \cite[359]{bourbaki:general_topology:1995}. The functions $G - f_R$ being non-negative, an application of Fatou's lemma yields
 
 \begin{equation*}
-	\int_{-\pi}^\pi \liminf_{R \toup 1}\left[ G(\varphi) - f_R(\varphi)\right]d\lambda(\varphi) \leqslant \liminf_{R \toup 1} \int_{-\pi}^\pi \left[ G(\varphi)\right]d\lambda(\varphi)
+	\int_{-\pi}^\pi \liminf_{R \toup 1}\left[ G(\varphi) - f_R(\varphi)\right]d\lambda(\varphi) \leqslant \liminf_{R \toup 1} \int_{-\pi}^\pi \left[ G(\varphi) f_R(\varphi)\right]d\lambda(\varphi)
 \end{equation*}
 
 By \cite[354]{bourbaki:general_topology:1995}, we get
@@ -420,7 +420,7 @@ Now we are able to write down the theorem.
 			Further suppose that for all $f \in \Sigma_X$ and $y \in \mathbb{R}$ we have
 
 			\begin{equation}
-				\|T_{iy}(y)\|_{L^{q_0}} \leqslant M_0(y)\|f\|_{L^{p_0}} \qquad \|T_{1 + iy}(y)\|_{L^{q_1}} \leqslant M_1(y)\|f\|_{L^{p_1}} 
+				\|T_{iy}(f)\|_{L^{q_0}} \leqslant M_0(y)\|f\|_{L^{p_0}} \qquad \|T_{1 + iy}(f)\|_{L^{q_1}} \leqslant M_1(y)\|f\|_{L^{p_1}} 
 			\end{equation}
 
 			Then for all $f \in \Sigma_X$ we have

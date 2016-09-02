@@ -1,0 +1,250 @@
+\input{header.tex}
+
+\begin{document}
+\title{Classical Fourier Analysis: Interpolation of $L^p$ Spaces}
+\author{Yannis B\"{a}hni}
+\address[Yannis B\"{a}hni]{University of Zurich, R\"{a}mistrasse 71, 8006 Zurich}
+\email[Yannis B\"{a}hni]{\href{mailto:yannis.baehni@uzh.ch}{yannis.baehni@uzh.ch}}
+
+\maketitle
+
+\addtocounter{section}{1}
+
+\begin{mdframed}
+	\begin{definition}
+		Let $(X,\mu)$ and $(Y,\nu)$ be measure spaces. Further let $T$ be an operator defined on a linear space of complex-valued measurable functions on $X$ and taking values in the set of all complex-valued, finite almost everywhere, measurable functions on $Y$. Then $T$ is called \emph{linear} if for all functions $f$ and $g$ in the domain of $T$ and all $z \in \mathbb{C}$ holds
+
+		\begin{equation}
+			T\left( f + g \right) = T(f) + T(g) \qquad T\left( zf \right) = zT(f)
+			\label{eq:linear}
+		\end{equation}
+
+		and \emph{quasi-linear} if
+
+		\begin{equation}
+			\left| T\left( f + g \right) \right| \leqslant K \left( \left| T(f)\right| + \left| T(g)\right| \right) \qquad \left| T(zf) \right| = \left| z\right| \left| T(f)\right|
+			\label{eq:quasilinear}
+		\end{equation}
+
+		holds for some real constant $K > 0$. If $K = 1$, $T$ is called \emph{sublinear}.
+	\end{definition}
+\end{mdframed}
+
+\newpage
+
+Recall, that a complex-valued function $f$ is said to be \emph{holomorphic}  in $\Omega \subseteq \mathbb{C}$ open, if $f'(z)$ exists for any $z \in \Omega$.
+
+\vspace{2mm}
+
+\begin{mdframed}
+	\begin{lemma}\emph{(Hadamard's three lines lemma)}
+		Let $F$ be a holomorphic function in the strip $S := \{z \in \mathbb{C}: 0 < \Re z < 1\}$, continuous and bounded on $\overline{S}$, such that $\left| F(z)\right| \leqslant B_0$ when $\Re z = 0$ and $\left| F(z) \right| \leqslant B_1$ when $\Re z = 1$, for some $0 < B_0,B_1 < \infty$. Then $\left| F(z) \right| \leqslant B_0^{1 - \theta}B_1^\theta$ when $\Re z = \theta$, for any $0 \leqslant \theta \leqslant 1$.
+	\end{lemma}
+\end{mdframed}
+
+\begin{proof}
+For $z \in \overline{S}$ define 
+
+\begin{equation*}
+	G(z) := \frac{F(z)}{B_0^{1 - z}B_1^z} \qquad G_n(z) := G(z) e^{\left(z^2 - 1\right)/n},~n \in\mathbb{N}_{>0}
+\end{equation*}
+
+$G(z)$ and $G_n(z)$ are holomorphic in $S$ by
+	
+\begin{equation*}
+	G'(z) = \frac{F'(z) - F(z)\log\left( B_1/B_0 \right)}{B_0^{1 - z}B_1^z} \qquad G_n'(z) = G'(z)e^{\left( z^2 - 1 \right)/n} + \frac{2}{n}zG_n(z)	
+\end{equation*}
+
+and $e^z \neq 0$ for every $z \in \mathbb{C}$. Further, we have
+
+\begin{equation*}
+		\left| B_0^{1 - z}B_1^z \right| = \left(B_0^{1 - z}B_0^{1 - \overline{z}} B_1^z B_1^{\overline{z}}\right)^{1/2} =  B_0^{1 -\Re z}B_1^{\Re z}
+\end{equation*}
+
+Consider $0 \leqslant \Re z \leqslant 1$ and $B_0 \geqslant 1$. Then $B_0^{1 - \Re z} \geqslant 1$ and $B_0^{1 - \Re z } \geqslant B_0$ in the case $B_0 < 1$. Similarily, $B_1^{\Re z} \geqslant 1$ if $B_1 \geqslant 1$ and $B_1^{\Re z} \leqslant B_1$ if $B_1 < 1$. Hence 
+
+\begin{equation}
+	\left| B_0^{1 - z}B_1^z \right| \geqslant \min\left\{1,B_0\right\}\min\left\{1,B_1\right\} > 0
+	\label{est:denom}
+\end{equation}
+
+for all $z \in \overline{S}$. Since $F$ is bounded on $\overline{S}$, we have $\left| F(z) \right| \leqslant L$ for some $L > 0$ and all $z \in \overline{S}$. Thus by (\ref{est:denom})
+
+\begin{equation*}
+	\left| G(z)\right| = \frac{\left| F(z)\right|}{\left| B_0^{1 - z}B_1^z \right|} \leqslant \frac{L}{\min\left\{1,B_0\right\}\min\left\{1,B_1\right\}} =: M
+\end{equation*}
+
+for every $z \in \overline{S}$. Fix $n \in \mathbb{N}_{>0}$ and write $z := x + iy \in \overline{S}$. Then
+
+\begin{gather*}
+	\left| G_n(z)\right| \leqslant M \left(e^{\left(x^2 + 2ixy -y^2 - 1\right)/n} e^{\left(x^2 - 2ixy -y^2 - 1\right)/n}\right)^{1/2}= M e^{-y^2/n}e^{\left(x^2 - 1\right)/n} \leqslant Me^{-y^2/n}
+\end{gather*}
+
+for $0 \leqslant x \leqslant 1$. Thus
+	
+\begin{equation*}
+	\lim_{y \to \pm \infty}\sup\{\left| G_n(z)\right| : 0 \leqslant x \leqslant 1\} = 0
+\end{equation*}
+
+by the pinching-principle. Hence there exist $C_0,C_1 \in \mathbb{R}$, such that 
+
+\begin{equation*}
+	\sup\{\left| G_n(z)\right| : 0 \leqslant x \leqslant 1\} \leqslant 1
+\end{equation*}
+
+when $y > C_0$ or $y < C_1$ and so there exists some $C(n) > 0$ such that $\left| G_n(z) \right| \leqslant 1$ for all $0 \leqslant x \leqslant 1$ when $\left| y \right| \geqslant C(n)$. Now consider the rectangle $R := \left(0,1\right) \times \left(-C(n),C(n)\right)$. We have $\left| G_n(z) \right| \leqslant 1$ on the lines $[0,1] \times \{\pm C(n)\}$. By
+
+\begin{equation*}
+	\left| G_n(iy)\right| = \left| F(iy)\right|/B_0 \leqslant 1 \qquad \left| G_n(1 + iy)\right| = \left| F(1 + iy)\right|/B_1 \leqslant 1
+\end{equation*}
+
+we have $\left| G_n(z)\right| \leqslant 1$ on the line $\{0\} \times [-C(n),C(n)]$ and $\{1\} \times [-C(n),C(n)]$. Thus $\left| G_n(z) \right| \leqslant 1$ on $\partial R$. Since $\left| G_n(z)\right|$ is continuous on $\overline{R}$, $R$ is a bounded region and holomorphic in $R$, the maximum modulus theorem implies
+
+\begin{equation*}
+	\left| G_n(z)\right| \leqslant \sup\left\{ \left|G_n(z) \right| : z \in \partial R \right\} \leqslant 1
+\end{equation*}
+
+for every $z \in R$. Therefore $\left| G_n(z) \right| \leqslant 1$ on $\overline{R}$ and so $\left| G_n(z) \right| \leqslant 1$ on $\overline{S}$. Since inequalities are preserved by limits and the modulus is a continuous function, we have that $\left| G(z) \right| = \lim_{n \to \infty} \left| G_n(z) \right| \leqslant 1$ for $z \in \overline{S}$. We conclude by 
+
+\begin{equation*}
+	\left| F(\theta + it) \right| = \left| G(\theta + it) \right| \left| B_0^{1 - \theta - it}B_1^{\theta + it}\right| \leqslant B_0^{1 - \theta} B_1^{\theta}
+\end{equation*}
+
+whenever $0 \leqslant \theta \leqslant 1$, $t \in \mathbb{R}$.
+\end{proof}
+
+\newpage
+
+\begin{mdframed}
+	\begin{theorem}\emph{(Riesz-Thorin Interpolation Theorem)}
+		Let $(X,\mu)$ be a measure space, $(Y,\nu)$ a semifinite measure space and $T$ be a linear operator defined on $\Sigma_X$ and taking values in the set of measurable functions on $Y$. Let $1 \leqslant p_0,p_1,q_0,q_1 \leqslant \infty$ and assume that
+
+		\begin{equation}
+			\left\|T(f)\right\|_{L^{q_0}} \leqslant M_0\left\|f\right\|_{L^{p_0}} \qquad \left\|T(f)\right\|_{L^{q_1}} \leqslant M_1\left\|f\right\|_{L^{p_1}}
+		\end{equation}
+
+		for all $f \in \Sigma_X$ and $M_0,M_1 < \infty$. Then for all $0 < \theta < 1$ we have
+
+		\begin{equation}
+			\left\|T(f)\right\|_{L^q} \leqslant M_0^{1 - \theta}M_1^\theta\left\|f\right\|_{L^p}
+		\end{equation}
+
+		for all $f \in \Sigma_X$, where
+
+		\begin{equation}
+			\frac{1}{p} = \frac{1 - \theta}{p_0} + \frac{\theta}{p_1} \qquad \frac{1}{q} = \frac{1 - \theta}{q_0} + \frac{\theta}{q_1}
+		\end{equation}
+		\label{thm:Riesz_Thorin}
+	\end{theorem}
+\end{mdframed}
+
+\vspace{2mm}
+
+\begin{mdframed}
+	\begin{lemma}\emph{(Hadamard's three lines lemma, extension)}
+		Let $F$ be a holomorphic function in the strip $S := \{z \in \mathbb{C}: 0 < \mathrm{Re}z < 1\}$ and continuous on $\overline{S}$, such that for some $0 < A < \infty$ and $\tau_0 \in (0,\pi)$ we have $\log \vert F(z)\vert \leqslant A e^{\tau_0 \vert \Im z \vert}$ for every $z \in \overline{S}$. Then
+
+			\begin{equation*}
+				\vert F(z) \vert \leqslant \exp\left( \frac{\sin(\pi x)}{2} \int_{-\infty}^\infty \left[ \frac{\log \vert F(it + iy)\vert}{\cosh(\pi t) - \cos(\pi x)} + \frac{\log \vert F(1 + it + iy)\vert}{\cosh(\pi t) + \cos(\pi x)} \right] d\lambda(t)\right)
+			\end{equation*}
+
+			whenever $z := x + iy \in S$.
+			\label{lem:EHTL}
+	\end{lemma}
+\end{mdframed}
+
+\vspace{2mm}
+
+\begin{mdframed}
+	\begin{definition}\emph{(Analytic family, admissible growth)}
+		Let $(X,\mu)$ be a measure space, $(Y,\nu)$ be a semifinite measure spaces and $\left( T_z \right)_{z \in \overline{S}}$, where $T_z$ is defined $\Sigma_X$ and taking values in the space of all measurable functions on $Y$ such that
+
+		\begin{equation}
+			\int_Y \left| T_z(\chi_A)\chi_B \right| d\nu
+		\end{equation}
+
+		whenever $\mu(A),\nu(B) < \infty$. The family $\left( T_z \right)_{z \in \overline{S}}$ is said to be \emph{analytic} if for all $f \in \Sigma_X$, $g \in \Sigma_Y$ we have that
+
+		\begin{equation}
+			z \mapsto \int_Y T_z(f)gd\nu
+		\end{equation}
+
+		is analytic on $S$ and continuous on $\overline{S}$. Further, an analytic family $\left( T_z \right)_{z \in \overline{S}}$ is called of \emph{admissible growth}, if there is a constant $\tau_0 \in (0,\pi)$, such that for all $f \in \Sigma_X$, $g \in \Sigma_Y$ a constant $C(f,g)$ exists with
+
+			\begin{equation}
+				\log\left| \int_Y T_z(f) g d\nu\right| \leqslant C(f,g)e^{\tau_0\left| \Im z\right|}
+			\end{equation}
+
+			for all $z \in \overline{S}$.
+	\end{definition}
+\end{mdframed}
+
+\vspace{2mm}
+
+\begin{mdframed}
+	\begin{theorem}\emph{(Stein's Theorem on Interpolation of Analytic Families of Operators)}
+		Let $\left( T_z \right)_{z \in \overline{S}}$ be an analytic family of admissible growth, $1 \leqslant p_0,p_1,q_0,q_1 \leqslant \infty$ and suppose that $M_0$, $M_1$ are positive functions on the real line such that for some $\tau_1 \in (0,\pi)$
+
+			\begin{equation}
+				\sup\left\{e^{-\tau_1 \vert y \vert} \log M_0(y) : y \in \mathbb{R}\right\} < \infty \qquad \sup\left\{e^{-\tau_1 \vert y \vert} \log M_1(y) : y \in \mathbb{R}\right\} < \infty
+			\end{equation}
+
+			Fix $0 < \theta < 1$ and define
+
+			\begin{equation}
+				\frac{1}{p} := \frac{1 - \theta}{p_0} + \frac{\theta}{p_1} \qquad \frac{1}{q} := \frac{1 - \theta}{q_0} + \frac{\theta}{q_1}
+			\end{equation}
+
+			Further suppose that for all $f \in \Sigma_X$ and $y \in \mathbb{R}$ we have
+
+			\begin{equation}
+				\|T_{iy}(f)\|_{L^{q_0}} \leqslant M_0(y)\|f\|_{L^{p_0}} \qquad \|T_{1 + iy}(f)\|_{L^{q_1}} \leqslant M_1(y)\|f\|_{L^{p_1}} 
+			\end{equation}
+
+			Then for all $f \in \Sigma_X$ we have
+
+			\begin{equation*}
+				\|T_\theta(f)\|_{L^q} \leqslant M(\theta)\|f\|_{L^p}
+			\end{equation*}
+
+			where for $0 < x < 1$
+
+			\begin{equation*}
+				M(x) = \exp\left( \frac{\sin(\pi x)}{2} \int_{-\infty}^\infty \left[ \frac{\log M_0(t)}{\cosh(\pi t) - \cos(\pi x)} + \frac{\log M_1(t)}{\cosh(\pi t) + \cos(\pi x)}\right] d\lambda(t) \right)
+			\end{equation*}
+	\end{theorem}
+\end{mdframed}
+
+\vspace{2mm}
+
+\begin{mdframed}
+	\begin{theorem}\emph{(The Marcinkiewicz Interpolation Theorem)}
+		Let $(X,\mu)$ be a $\sigma$-finite measure space, $(Y,\nu)$ another measure space and $0 < p_0 < p_1 \leqslant \infty$. Further let $T$ be a sublinear operator defined on
+		
+		\begin{equation*}
+			L^{p_0} + L^{p_1} := \left\{ f_0 + f_1 : f_0 \in L^{p_0}(X,\mu), f_1 \in L^{p_1}(X,\mu) \right\}
+		\end{equation*}
+		
+		and taking values in the space of measurable functions on $Y$. Assume that there exist $A_0,A_1 < \infty$ such that
+
+		\begin{align}
+			&\forall f \in L^{p_0}(X,\mu)~\|T(f)\|_{L^{p_0,\infty}} \leqslant A_0 \|f\|_{L^{p_0}}\label{hyp:fp_0}\\
+			&\forall f \in L^{p_1}(X,\mu)~\|T(f)\|_{L^{p_1,\infty}} \leqslant A_1 \|f\|_{L^{p_1}}\label{hyp:fp_1}
+		\end{align}
+
+		Then for all $p_0 < p < p_1$ and for all $f \in L^p(X,\mu)$ we have the estimate
+
+		\begin{equation}
+			\left\|T(f)\right\|_{L^p} \leqslant A \left\|f\right\|_{L^p}
+		\end{equation}
+
+		where
+
+		\begin{equation}
+			A := 2\left( \frac{p}{p - p_0} + \frac{p}{p_1 - p} \right)^{1/p}A_0^{\frac{\frac{1}{p} - \frac{1}{p_1}}{\frac{1}{p_0}-\frac{1}{p_1}}}A_1^{\frac{\frac{1}{p_0}-\frac{1}{p}}{\frac{1}{p_0}-\frac{1}{p_1}}}
+			\label{eq:constant}
+		\end{equation}
+	\end{theorem}
+\end{mdframed}
+
+\end{document}
