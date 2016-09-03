@@ -2,55 +2,109 @@
 This theorem will unfortunately only be applicable to linear operators but will yield a more natural bound of the operator on the intermediate space. The proof will make strong use of complex variables technique. A major tool will be an application of the maximum modulus principle, known as \emph{Hadamard's three lines lemma}.
 
 \subsection{Hadamard's Three Lines Lemma}
-Recall, that a complex-valued function $f$ is said to be \emph{holomorphic}  in $\Omega \subseteq \mathbb{C}$ open, if $f'(z)$ exists for any $z \in \Omega$ (see \cite[197]{rudin:rc_analysis:1987}).
- 
+A complex-valued function $f$ is said to be \emph{holomorphic}  in $\Omega \subseteq \mathbb{C}$ open, if $f'(z)$ exists for any $z \in \Omega$.
+
 \vspace{2mm}
 
 \begin{mdframed}
 	\begin{lemma}\emph{(Hadamard's three lines lemma)}
 		Let $F$ be a holomorphic function in the strip $S := \{z \in \mathbb{C}: 0 < \Re z < 1\}$, continuous and bounded on $\overline{S}$, such that $\left| F(z)\right| \leqslant B_0$ when $\Re z = 0$ and $\left| F(z) \right| \leqslant B_1$ when $\Re z = 1$, for some $0 < B_0,B_1 < \infty$. Then $\left| F(z) \right| \leqslant B_0^{1 - \theta}B_1^\theta$ when $\Re z = \theta$, for any $0 \leqslant \theta \leqslant 1$.
-		\label{lem:HTL}
 	\end{lemma}
 \end{mdframed}
-				
-\vspace{2mm}
 
 \begin{proof}
-	For $z \in \overline{S}$ define 
+For $z \in \overline{S}$ define 
+
+\begin{equation*}
+	G(z) := \frac{F(z)}{B_0^{1 - z}B_1^z} \qquad G_n(z) := G(z) e^{\left(z^2 - 1\right)/n},~n \in\mathbb{N}_{>0}
+\end{equation*}
+
+$G(z)$ and $G_n(z)$ are holomorphic in $S$ by
+	
+\begin{equation*}
+	G'(z) = \frac{F'(z) - F(z)\log\left( B_1/B_0 \right)}{B_0^{1 - z}B_1^z} \qquad G_n'(z) = G'(z)e^{\left( z^2 - 1 \right)/n} + \frac{2}{n}zG_n(z)	
+\end{equation*}
+
+and $e^z \neq 0$ for every $z \in \mathbb{C}$. Further, we have
+
+\begin{equation*}
+		\left| B_0^{1 - z}B_1^z \right| = \left(B_0^{1 - z}B_0^{1 - \overline{z}} B_1^z B_1^{\overline{z}}\right)^{1/2} =  B_0^{1 -\Re z}B_1^{\Re z}
+\end{equation*}
+
+Consider $0 \leqslant \Re z \leqslant 1$ and $B_0 \geqslant 1$. Then $B_0^{1 - \Re z} \geqslant 1$ and $B_0^{1 - \Re z } \geqslant B_0$ in the case $B_0 < 1$. Similarily, $B_1^{\Re z} \geqslant 1$ if $B_1 \geqslant 1$ and $B_1^{\Re z} \leqslant B_1$ if $B_1 < 1$. Hence 
 
 \begin{equation}
-	G(z) := \frac{F(z)}{B_0^{1 - z}B_1^z} \qquad \forall n \in \mathbb{N}_{>0}: G_n(z) := G(z) e^{(z^2 - 1)/n} 
+	\left| B_0^{1 - z}B_1^z \right| \geqslant \min\left\{1,B_0\right\}\min\left\{1,B_1\right\} > 0
+	\label{est:denom}
 \end{equation}
 
-	Obviously, $G(z)$ and $G_n(z)$ are holomorphic functions in $S$ for $n \in \mathbb{N}_{>0}$. Further, we have
+for all $z \in \overline{S}$. Since $F$ is bounded on $\overline{S}$, we have $\left| F(z) \right| \leqslant L$ for some $L > 0$ and all $z \in \overline{S}$. Thus by (\ref{est:denom})
 
-\begin{gather}
-	\begin{aligned}
-		\left| B_0^{1 - z}B_1^z \right|^2 &= \left| B_0^{1 - z}\right|^2 \left| B_1^z \right|^2 = B_0^{1 - z}B_0^{1 - \overline{z}} B_1^z B_1^{\overline{z}} = \left( B_0^{1 -\Re z} \right)^2 \left( B_1^{\Re z} \right)^2 
-	\end{aligned}
-\end{gather}
+\begin{equation*}
+	\left| G(z)\right| = \frac{\left| F(z)\right|}{\left| B_0^{1 - z}B_1^z \right|} \leqslant \frac{L}{\min\left\{1,B_0\right\}\min\left\{1,B_1\right\}} =: M
+\end{equation*}
 
-	Consider $0 \leqslant \Re z \leqslant 1$ and $B_0 \geqslant 1$. Then  $B_0^{1 - \mathrm{Re}z} = \exp\left((1 - \Re z ) \log B_0\right) \geqslant 1$ and $B_0^{1 - \Re z } \geqslant B_0$ in the case $B_0 < 1$. A similar estimation of $B_1^{\Re z}$ leads to 
+for every $z \in \overline{S}$. Fix $n \in \mathbb{N}_{>0}$ and write $z := x + iy \in \overline{S}$. Then
 
-\begin{equation}
-	\left| B_0^{1 - z}B_1^z \right| \geqslant \min\{1,B_0\}\min\{1,B_1\}
-\end{equation}
+\begin{gather*}
+	\left| G_n(z)\right| \leqslant M \left(e^{\left(x^2 + 2ixy -y^2 - 1\right)/n} e^{\left(x^2 - 2ixy -y^2 - 1\right)/n}\right)^{1/2}= M e^{-y^2/n}e^{\left(x^2 - 1\right)/n} \leqslant Me^{-y^2/n}
+\end{gather*}
 
-	for all $z \in \overline{S}$. By this, $G(z)$ is bounded on $\overline{S}$ (by the boundedness of $F$). Let $M > 0$, such that $\left| G(z) \right| \leqslant M$ for $z \in \overline{S}$. Fix $n \in \mathbb{N}_{>0}$ and write $z := x + iy \in \overline{S}$. Since
+for $0 \leqslant x \leqslant 1$. Thus
+	
+\begin{equation*}
+	\lim_{y \to \pm \infty}\sup\{\left| G_n(z)\right| : 0 \leqslant x \leqslant 1\} = 0
+\end{equation*}
 
-\begin{gather}
-	\begin{aligned}
-	\left| G_n(z)\right|^2 &= \left| G(z) \right|^2 \left| e^{((x + iy)^2 - 1)/n} \right|^2\\
-	& \leqslant M^2 e^{(x^2 + 2ixy -y^2 - 1)/n} e^{(x^2 - 2ixy -y^2 - 1)/n}\\
-	&= M^2 \left( e^{-y^2/n} \right)^2 \left(e^{(x^2 - 1)/n}\right)^2\\
-	&\leqslant M^2 \left(e^{-y^2/n}\right)^2\\
-	&= M^2 \left( e^{-\left| y \right|^2/n} \right)^2
-	\end{aligned}
-\end{gather}
+by the pinching-principle. Hence there exist $C_0,C_1 \in \mathbb{R}$, such that 
 
-	we have $\lim_{y \to \pm \infty}\sup\{\left| G_n(z)\right| : x \in [0,1]\} = 0$ by the pinching-principle. Hence there exists some $C(n) > 0$, such that $\left| G_n(z) \right| \leqslant 1$ for all $\left| y \right| \geqslant C(n)$ and all $x \in [0,1]$. Consider the rectangle $R := [0,1] \times [-C(n),C(n)]$. Now $\left| G_n(z) \right| \leqslant 1$ on the lines $[0,1] \times \{\pm C(n)\}$ and since $\left| G(z) \right| = \left| F(z)\right|/B_0 \leqslant 1$, $\left| G(z) \right| = \left| F(z) \right|/B_1 \leqslant 1$ on the line $\{0\} \times [-C(n),C(n)]$ and $\{1\} \times [-C(n),C(n)]$ respectively by assumption, we have $\left| G_n(z) \right| \leqslant 1$ on $\partial S$. By the maximum modulus principle \footnote{
-						Let $\Omega$ be a bounded region of the complex plane, $f$ be a complex-valued continuous function on $\overline{\Omega}$ which is holomorphic in $\Omega$. Then $\left| f(z) \right| \leqslant \sup\left\{ \left| f(z) \right| : z \in \partial \Omega\right\}$ for every $z \in \Omega$. See \cite[253]{rudin:rc_analysis:1987}.}
-	we have $\left| G_n(z) \right| \leqslant 1$ on $R$ and thus $\left| G_n(z) \right| \leqslant 1$ on $\overline{S}$. Since inequalities are preserved by limits and the modulus is a continuous function, we have that $\left| G(z) \right| = \lim_{n \to \infty} \left| G_n(z) \right| \leqslant 1$ on $\overline{S}$. Taking $z := \theta + it$, where $0 \leqslant \theta \leqslant 1$ and $t \in \mathbb{R}$, we conclude $\left| F(z) \right| = \left| G(z) \right| \left| B_0^{1 - z}B_1^z\right| \leqslant B_0^{1 - \theta} B_1^{\theta}$, which completes the proof.
+\begin{equation*}
+	\sup\{\left| G_n(z)\right| : 0 \leqslant x \leqslant 1\} \leqslant 1
+\end{equation*}
+
+when $y > C_0$ or $y < C_1$. Letting
+
+\begin{equation*}
+	C(n) := \max\left\{ \left| C_0\right| + 1, \left| C_1 \right| + 1\right\}
+\end{equation*}
+
+we conclude $\left| G_n(z) \right| \leqslant 1$ for all $0 \leqslant x \leqslant 1$ when $\left| y \right| \geqslant C(n)$. Now consider the rectangle $R := \left(0,1\right) \times \left(-C(n),C(n)\right)$. We have $\left| G_n(z) \right| \leqslant 1$ on the lines $[0,1] \times \{\pm C(n)\}$. By
+
+\begin{equation*}
+	\left| G_n(iy)\right| = \frac{\left| F(iy)\right|}{\left| B_0^{1 - iy} B_1^{iy}\right|}e^{-\left( y^2 + 1 \right)/n} \leqslant 1 \qquad \left| G_n(1 + iy)\right| =	\frac{\left| F(1 + iy)\right|}{\left| B_0^{-iy}B_1^{1 + iy}\right|}e^{-y^2/n} \leqslant 1
+\end{equation*}
+
+we have $\left| G_n(z)\right| \leqslant 1$ on the lines $\{0\} \times [-C(n),C(n)]$, $\{1\} \times [-C(n),C(n)]$. Thus $\left| G_n(z) \right| \leqslant 1$ on $\partial R$. Since $\left| G_n(z)\right|$ is continuous on $\overline{R}$, holomorphic in $R$ and $R$ is a bounded region, the maximum modulus theorem implies
+
+\begin{equation*}
+	\left| G_n(z)\right| \leqslant \sup\left\{ \left|G_n(z) \right| : z \in \partial R \right\} \leqslant 1
+\end{equation*}
+
+for every $z \in R$. Therefore $\left| G_n(z) \right| \leqslant 1$ on $\overline{R}$ and so $\left| G_n(z) \right| \leqslant 1$ on $\overline{S}$. Since inequalities are preserved by limits and the modulus is a continuous function, we have that $\left| G(z) \right| = \lim_{n \to \infty} \left| G_n(z) \right| \leqslant 1$ for $z \in \overline{S}$. We conclude by 
+
+\begin{equation*}
+	\left| F(\theta + it) \right| = \left| G(\theta + it) \right| \left| B_0^{1 - \theta - it}B_1^{\theta + it}\right| \leqslant B_0^{1 - \theta} B_1^{\theta}
+\end{equation*}
+
+whenever $0 \leqslant \theta \leqslant 1$, $t \in \mathbb{R}$.
+
+\begin{figure}[h!tb]
+	\centering
+	\begin{tikzpicture}
+		\draw (0,-5)--(0,5);
+		\draw (4,-5)--(4,5);
+		\draw (-1,0)--(5,0);
+		\draw [pattern = adjusted lines, pattern color = black, line width = .4mm] (0,-4) rectangle (4,4);
+		\node (0) at (-.25,-.25) {$0$};
+		\node (1) at (4.25,-.25) {$1$};
+		\node (R) at (.5,3.55) {$\overline{R}$};
+		\node (Cn) at (-.5,4) {$C(n)$};
+		\node (-Cn) at (-.65,-4) {$-C(n)$};
+		\node (R2) at (4.5,4.5) {$\mathbb{R}^2$};
+	\end{tikzpicture}	
+	\caption[Hadamard's three lines lemma: sketch of the rectangle $\overline{R}$]{Sketch of the rectangle $\overline{R}$.}
+	\label{fig:Hadamards_three_lines_lemma}
+\end{figure}
 \end{proof}
 
 \subsection{The Riesz-Thorin Interpolation Theorem}

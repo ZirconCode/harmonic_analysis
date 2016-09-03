@@ -1,5 +1,7 @@
 \input{header.tex}
+
 \begin{document}
+
 \begin{abstract}
 	In this written seminar work I will basically follow the section \emph{Interpolation} in the book \emph{Classical Fourier Analysis, third Edition} by Loukas Grafakos. I will review three basic but important theorems on interpolation of operators on $L^p$ spaces, namely the \emph{Marcinkiewicz Interpolation Theorem}, the \emph{Riesz-Thorin Interpolation Theorem} and finally an extension of the Riesz-Thorin Interpolation Theorem to analytic families of operators (the so-called \emph{Stein's theorem on interpolation of analytic families of operators}). We are mainly concerned with the notion of linear operators as well as slight generalizations of them. 
 \end{abstract}
@@ -8,11 +10,11 @@
 \author{Yannis B\"{a}hni}
 \address[Yannis B\"{a}hni]{University of Zurich, R\"{a}mistrasse 71, 8006 Zurich}
 \email[Yannis B\"{a}hni]{\href{mailto:yannis.baehni@uzh.ch}{yannis.baehni@uzh.ch}}
-\thanks{I would like to thank Dr. Chiara Saffirio for many helpful suggestions, Prof. Dr. Benjamin Schlein for his brilliant Analyis I/II/III courses as well as scripts and proof hints and of course Loukas Grafakos, who helped me a lot with understanding his proofs.}
+%\thanks{I would like to thank Dr. Chiara Saffirio for many helpful suggestions, Prof. Dr. Benjamin Schlein for his brilliant Analyis I/II/III courses as well as scripts and proof hints and of course Loukas Grafakos, who helped me a lot with understanding his proofs.}
 \maketitle
 
 \tableofcontents
-\newpage
+\listoffigures
 
 \mainsectionstyle
 
@@ -65,7 +67,7 @@ First we need to have a precise and suitable idea of \emph{linear operators} in 
 		Let $(X,d)$ a metric space, $E \subseteq X$, $f: E \rightarrow \mathbb{R}$ and $a \in X$ be a limit point of $E$. Then we define the \emph{upper limit of  $f$ at $a$} as
 
 		\begin{equation*}
-			\limsup_{x \to a}f(x) := \lim_{\varepsilon \to 0} \left[ \sup\left\{ f(x) : x \in E \cap \dot{B}_\varepsilon(a)\right\}\right]
+			\limsup_{x \to a}f(x) := \lim_{\varepsilon \todown 0} \left[ \sup\left\{ f(x) : x \in E \cap \dot{B}_\varepsilon(a)\right\}\right]
 		\end{equation*}
 
 		and the \emph{lower limit of  $f$ at $a$} as
@@ -115,8 +117,8 @@ First we need to have a precise and suitable idea of \emph{linear operators} in 
 		\begin{gather}
 			\begin{aligned}
 				\limsup_{x \to a} (fg)(x) &= \limsup_{x \to a}\left( f(x) \lim_{x \to a}g(x) \right)\\
-				&= \lim_{\varepsilon \to 0} \left[ \sup\left\{ f(x)\lim_{x \to a}g(x) : x \in E \cap \dot{B}_\varepsilon(a)\right\}\right]\\
-				&= \lim_{\varepsilon \to 0} \left[ \sup\left\{ f(x) : x \in E \cap \dot{B}_\varepsilon(a)\right\}\right]\lim_{x \to a}g(x)\\
+				&= \lim_{\varepsilon \todown 0} \left[ \sup\left\{ f(x)\lim_{x \to a}g(x) : x \in E \cap \dot{B}_\varepsilon(a)\right\}\right]\\
+				&= \lim_{\varepsilon \todown 0} \left[ \sup\left\{ f(x) : x \in E \cap \dot{B}_\varepsilon(a)\right\}\right]\lim_{x \to a}g(x)\\
 				&= \limsup_{x \to a}f(x) \lim_{x \to a} g(x)
 			\end{aligned}
 		\end{gather}

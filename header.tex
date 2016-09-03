@@ -129,8 +129,8 @@
 
 %Font settings
 %\usepackage{anyfontsize}
-
 %Footnote settings
+%\usepackage{mathptmx}
 \usepackage{footmisc}
 %	\renewcommand*{\thefootnote}{\fnsymbol{footnote}}
 
@@ -151,6 +151,9 @@
 \newcommand{\toup}{%
   \mathrel{\nonscript\mkern-1.2mu\mkern1.2mu{\uparrow}}%
 }
+\newcommand{\todown}{%
+  \mathrel{\nonscript\mkern-1.2mu\mkern1.2mu{\downarrow}}%
+}
 
 \renewcommand{\Re}{\operatorname{Re}}
 \renewcommand{\Im}{\operatorname{Im}}
@@ -163,6 +166,15 @@
 %\usepackage{xfrac} 
 %\everymath{\displaystyle}
 %Enumerate
+\usepackage{tikz}
+\usetikzlibrary{patterns}
+\pgfdeclarepatternformonly{adjusted lines}{\pgfqpoint{-1pt}{-1pt}}{\pgfqpoint{40pt}{40pt}}{\pgfqpoint{39pt}{39pt}}%
+{
+  \pgfsetlinewidth{.8pt}
+  \pgfpathmoveto{\pgfqpoint{0pt}{0pt}}
+  \pgfpathlineto{\pgfqpoint{39.1pt}{39.1pt}}
+  \pgfusepath{stroke}
+}
 \usepackage{enumitem} 
 %\renewcommand{\labelitemi}{$\bullet$}
 %\renewcommand{\labelitemii}{$\ast$}
@@ -183,12 +195,15 @@
   										 %	or \newline
   {} 
 \theoremstyle{bold}
+\newtheorem*{definition*}{Definition}
 \newtheorem{definition}{Definition}[section]
+\newtheorem*{lemma*}{Lemma}
 \newtheorem{lemma}{Lemma}[section]
 \newtheorem{Proof}{Proof}[section]
 \newtheorem{proposition}{Proposition}[section]
 \newtheorem{properties}{Properties}[section]
 \newtheorem{corollary}{Corollary}[section]
+\newtheorem*{theorem*}{Theorem}
 \newtheorem{theorem}{Theorem}[section]
 \newtheorem{example}{Example}[section]
 \newtheorem{remark}{Remark}[section]
