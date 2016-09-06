@@ -139,7 +139,7 @@ whenever $0 \leqslant \theta \leqslant 1$, $t \in \mathbb{R}$.
 
 \newpage
 
-Let $\Sigma_X$ and $\Sigma_Y$ denote the set of finitely simple functions on $X$, $Y$ respectively.
+For two measure spaces $\left( X,\mu \right)$, $\left( Y,\nu \right)$ let $\Sigma_X$ and $\Sigma_Y$ denote the set of all finitely simple functions on $X$, $Y$ respectively.
 
 \vspace{2mm}
 
@@ -175,7 +175,7 @@ Let $\Sigma_X$ and $\Sigma_Y$ denote the set of finitely simple functions on $X$
 	f :\equiv \sum_{j = 1}^n a_j e^{i\alpha_j}\chi_{A_j} \in \Sigma_X \qquad g :\equiv \sum_{k = 1}^m b_k e^{i\beta_k}\chi_{B_k} \in \Sigma_Y
 \end{equation*}
 
-where $a_j, b_k > 0$ and $\alpha_j, \beta_k \in \mathbb{R}$ for every $j = 1,\hdots,n$, $k = 1,\hdots,m$ such that $\left\| g\right\|_{L^{q'}} \neq 0$. Define
+where $a_j, b_k > 0$ and $\alpha_j, \beta_k \in \mathbb{R}$ for every $j = 1,\hdots,n$, $k = 1,\hdots,m$ such that $\left\| g\right\|_{L^{q'}} \neq 0$ (recall $q' := q/\left( q - 1 \right)$). Define
 
 \begin{equation*}
 	P(z) := \frac{p}{p_0}(1 - z) + \frac{p}{p_1}z \qquad Q(z) := \frac{q'}{q'_0}(1 - z) + \frac{q'}{q'_1}z
@@ -191,33 +191,34 @@ where $a_j, b_k > 0$ and $\alpha_j, \beta_k \in \mathbb{R}$ for every $j = 1,\hd
 and 
 
 \begin{equation}
-	F(z) := \int_Y T(f_z)(y)g_z(y)d\nu(y)
+	F(z) := \int_Y T(f_z)g_zd\nu
 	\label{eq:def_F}
 \end{equation}
 
 By the linearity of the operator $T$ we have
 
 \begin{gather*}
-	F(z) = \sum_{j = 1}^n\sum_{k = 1}^m a^{P(z)}_j b_k^{Q(z)} e^{i\alpha_j} e^{i\beta_k} \int_YT(\chi_{A_j})(y)\chi_{B_k}(y)d\nu(y) 
+	F(z) = \sum_{j = 1}^n\sum_{k = 1}^m a^{P(z)}_j b_k^{Q(z)} e^{i\alpha_j} e^{i\beta_k} \int_YT(\chi_{A_j})\chi_{B_k}d\nu
 \end{gather*}
 
 and by H\"older's inequality
 
-\begin{gather*}
+\begin{gather}
 	\begin{aligned}
-		\left| \int_YT(\chi_{A_j})(y)\chi_{B_k}(y)d\nu(y) \right| &\leqslant \int_Y\left| T(\chi_{A_j})(y)\chi_{B_k}(y)\right|d\nu(y)\\
+		\left| \int_YT(\chi_{A_j})\chi_{B_k}d\nu \right| &\leqslant \int_Y\left| T(\chi_{A_j})\chi_{B_k}\right|d\nu\\
 		&= \left\|T(\chi_{A_j})\chi_{B_k}\right\|_{L^1}\\
 		&\leqslant \left\|T(\chi_{A_j})\right\|_{L^{q_0}} \left\|\chi_{B_k}\right\|_{L^{q_0'}}\\
 		&\leqslant M_0\left\|\chi_{A_j}\right\|_{L^{p_0}} \left\|\chi_{B_k}\right\|_{L^{q_0'}}\\
 		&\leqslant M_0 \mu\left(A_j\right)^{1/p_0}\nu\left(B_k\right)^{1/q_0'}
 	\end{aligned}
-\end{gather*}
+	\label{est:constant_F}
+\end{gather}
 
-for each $j = 1,\hdots,n$, $k = 1,\hdots,m$. Thus the function $F$ is well-defined on $\overline{S}$. Let $t \in \mathbb{R}$. For $p,p_0 \neq \infty$
+for each $j = 1,\hdots,n$, $k = 1,\hdots,m$ (even in the cases where either $p_0 = \infty$ or $q_0' = \infty$, or both, by observing that $\left\| \chi_{A}\right\|_{L^\infty} \leqslant 1$ for any measurable set $A$). Thus the function $F$ is well-defined on $\overline{S}$. Let $t \in \mathbb{R}$. For $p,p_0 \neq \infty$
 
 \begin{gather*}
 	\begin{aligned}
-		\left\|f_{it}\right\|_{L^{p_0}} &= \left(\sum_{j = 1}^n \int_X \left| f_{it} \right|^{p_0} d\mu + \int_{X \setminus \bigcup_{j = 1}^n A_j} \left| f_{it} \right|^{p_0} d\mu\right)^{1/p_0}\\
+		\left\|f_{it}\right\|_{L^{p_0}} &= \left(\sum_{j = 1}^n \int_{A_j} \left| f_{it} \right|^{p_0} d\mu + \int_{X \setminus \bigcup_{j = 1}^n A_j} \left| f_{it} \right|^{p_0} d\mu\right)^{1/p_0}\\
 		&= \left(\sum_{j = 1}^n \left| a_j^{P(it)} e^{i\alpha_j}\right|^{p_0}\int_X \chi_{A_j} d\mu\right)^{1/p_0}\\
 		&= \left(\sum_{j = 1}^n a_j^{p_0\Re P(it)}\mu\left(A_j\right)\right)^{1/p_0}\\
 		&= \left(\sum_{j = 1}^n a_j^p\mu\left(A_j\right)\right)^{p/\left(p_0p\right)}\\
@@ -229,7 +230,7 @@ holds. Let $p_0 = \infty$, $p \neq \infty$. Then $\left\|f_{it}\right\|_{L^{\inf
 
 \begin{gather*}
 	\begin{aligned}
-		\left| F(it) \right| &\leqslant \int_Y \left| T(f_{it})(y)g_{it}(y)\right| d\nu(y)\\
+		\left| F(it) \right| &\leqslant \int_Y \left| T(f_{it})g_{it}\right| d\nu\\
 		&= \left\|T(f_{it}) g_{it}\right\|_{L^1}\\
 		&\leqslant \left\|T(f_{it})\right\|_{L^{q_0}}\left\|g_{it}\right\|_{L^{q_0'}}\\
 		&\leqslant M_0 \left\|f_{it}\right\|_{L^{p_0}} \left\|g_{it}\right\|_{L^{q_0'}}\\
@@ -249,34 +250,21 @@ and thus
 	\left| F(1 + it)\right| \leqslant M_1 \left\|f\right\|_{L^p}^{p/p_1}\left\|g\right\|_{L^{q'}}^{q'/q_1'}
 \end{equation*}	
 
-Further 
-		
-\begin{gather*}
+Further by estimate (\ref{est:constant_F}) 
+
+\begin{equation*}
 	\begin{aligned}
-		\left| F(z)\right| &\leqslant \int_Y\left| T(f_z)(y)g_z(y)\right| d\nu(y) = \left\|T(f_z)g_z\right\|_{L^1} \leqslant \left\|T(f_z)\right\|_{L^{q_0}} \left\|g_z\right\|_{L^{q'_0}}\\
-				&\leqslant M_0 \left\|f_z\right\|_{L^{p_0}} \left\|g_z\right\|_{L^{q'_0}} \overset{p_0,q_0' \neq \infty}{=} M_0 \left(\int_X \left| f_z \right|^{p_0}d\mu \right)^{1/p_0} \left(\int_Y \left| g_z \right|^{q'_0} d\nu\right)^{1/q'_0}\\
-				&= M_0 \left( \sum\limits_{j = 1}^n a_j^{p_0\Re P(z)}\mu(A_j) \right)^{1/p_0} \left( \sum\limits_{k = 1}^m b_k^{q'_0\Re Q(z)} \nu(B_k) \right)^{1/q'_0}\\
-				&= M_0 \left( \sum\limits_{j = 1}^n a_j^{p\left(1 - \Re z\right) + \left(pp_0\Re z\right)/p_1}\mu(A_j) \right)^{1/p_0} \left( \sum\limits_{k = 1}^m b_k^{q'\left(1 - \Re z\right) + \left(q'q'_0\Re z\right)/q_1'} \nu(B_k) \right)^{1/q'_0}\\
-				&\leqslant M_0 \left( \sum\limits_{j = 1}^n a_j^{p + \left(pp_0\right)/p_1}\mu(A_j) \right)^{1/p_0} \left( \sum\limits_{k = 1}^m b_k^{q' + \left(q'q'_0\right)/q'_1} \nu(B_k) \right)^{1/q'_0}\\
-				&= M_0 \left\|f\right\|_{L^{p + \left(pp_0\right)/p_1}}^{p/p_0 + p/p_1} \left\|g\right\|_{L^{q' + \left(q'q'_0\right)/q'_1}}^{q'/q_0' + q'/q_1'} =: C(f,g)
-			\end{aligned}
-		\end{gather*}
-		
-		
-by H\"older's inequality and in the edge cases
-		
-\begin{gather*}
-	\begin{aligned}
-		&p_0 = \infty, q_0' \neq \infty: \qquad C(f,g) := M_0 \max_{j = 1,\hdots,n} a_j^{p/p_1} \|g\|_{L^{q' + (q'q'_0)/q'_1}}^{q'/q_0' + q'/q_1'}\\
-		&p_0 \neq \infty, q_0' = \infty: \qquad C(f,g) :=  M_0 \|f\|_{L^{p + (pp_0)/p_1}}^{p/p_0 + p/p_1} \max_{k = 1,\hdots,m} b_k^{q'/q_1'}\\
-		&p_0 = \infty, q_0' = \infty: \qquad C(f,g) := M_0 \max_{j = 1,\hdots,n} a_j^{p/p_1} \max_{k = 1,\hdots,m} b_k^{q'/q_1'}
+		\left| F(z)\right| &\leqslant \sum_{j = 1}^n\sum_{k = 1}^m \left| a_j^{P(z)}\right| \left| b_k^{Q(z)}\right| \left| \int_Y T(\chi_{A_j})\chi_{B_k} d\nu\right|\\
+		&\leqslant M_0\sum_{j = 1}^n\sum_{k = 1}^m a^{\Re P(z)}b_k^{\Re Q(z)}\mu\left(A_j\right)^{1/p_0}\nu\left(B_k\right)^{1/q_0'}\\
+		&\leqslant M_0\sum_{j = 1}^n\sum_{k = 1}^m \max\left\{ 1, a^{p/p_0 + p/p_1}\right\} \max\left\{1,b_k^{q'/q_0' + q'/q_1'}\right\}\mu\left(A_j\right)^{1/p_0}\nu\left(B_k\right)^{1/q_0'}
 	\end{aligned}
-\end{gather*}
-		
-	Hence $F$ is bounded on $\overline{S}$. By 
+\end{equation*}
+
+
+Hence $F$ is bounded on $\overline{S}$ by some constant depending on $f$ and $g$ only. By 
 
 \begin{multline*}
-	F'(z) = \sum_{j = 1}^n\sum_{k = 1}^m a^{P(z)}_j\log \left( a_j \right) \left( \frac{p}{p_1} - \frac{p}{p_0} \right) b_k^{Q(z)}\log\left( b_j \right)\left( \frac{q'}{q'_1} - \frac{q'}{q'_0} \right) e^{i\alpha_j} e^{i\beta_k} \\\int_YT(\chi_{A_j})(y)\chi_{B_k}(y)d\nu(y) 	
+	F'(z) = \sum_{j = 1}^n\sum_{k = 1}^m a^{P(z)}_j\log \left( a_j \right) \left( \frac{p}{p_1} - \frac{p}{p_0} \right) b_k^{Q(z)}\log\left( b_j \right)\left( \frac{q'}{q'_1} - \frac{q'}{q'_0} \right) e^{i\alpha_j} e^{i\beta_k} \int_YT(\chi_{A_j})\chi_{B_k}d\nu	
 \end{multline*}
 
 	it is immediate, that $F$ is an entire function and thus holomorphic in $S$ and continuous on $\overline{S}$. Therefore, Hadamard's three lines lemma yields

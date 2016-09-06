@@ -226,7 +226,7 @@ Further
 				&\leqslant M_0 \left\|f_z\right\|_{L^{p_0}} \left\|g_z\right\|_{L^{q'_0}} \overset{p_0,q_0' \neq \infty}{=} M_0 \left(\int_X \left| f_z \right|^{p_0}d\mu \right)^{1/p_0} \left(\int_Y \left| g_z \right|^{q'_0} d\nu\right)^{1/q'_0}\\
 				&= M_0 \left( \sum\limits_{j = 1}^n a_j^{p_0\Re P(z)}\mu(A_j) \right)^{1/p_0} \left( \sum\limits_{k = 1}^m b_k^{q'_0\Re Q(z)} \nu(B_k) \right)^{1/q'_0}\\
 				&= M_0 \left( \sum\limits_{j = 1}^n a_j^{p\left(1 - \Re z\right) + \left(pp_0\Re z\right)/p_1}\mu(A_j) \right)^{1/p_0} \left( \sum\limits_{k = 1}^m b_k^{q'\left(1 - \Re z\right) + \left(q'q'_0\Re z\right)/q_1'} \nu(B_k) \right)^{1/q'_0}\\
-				&\leqslant M_0 \left( \sum\limits_{j = 1}^n a_j^{p + \left(pp_0\right)/p_1}\mu(A_j) \right)^{1/p_0} \left( \sum\limits_{k = 1}^m b_k^{q' + \left(q'q'_0\right)/q'_1} \nu(B_k) \right)^{1/q'_0}\\
+				&\leqslant M_0 \left( \sum\limits_{j = 1}^n a_j^{\max\left\{1, p + \left(pp_0\right)/p_1\right\}}\mu(A_j) \right)^{1/p_0} \left( \sum\limits_{k = 1}^m b_k^{\max\left{1,q' + \left(q'q'_0\right)/q'_1\right\}} \nu(B_k) \right)^{1/q'_0}\\
 				&= M_0 \left\|f\right\|_{L^{p + \left(pp_0\right)/p_1}}^{p/p_0 + p/p_1} \left\|g\right\|_{L^{q' + \left(q'q'_0\right)/q'_1}}^{q'/q_0' + q'/q_1'} =: C(f,g)
 			\end{aligned}
 		\end{gather*}
@@ -270,11 +270,6 @@ by H\"older's inequality and in the edge cases
 
 	we conclude $\left\| T(f)\right\|_{L^q} = M_q\left( T(f) \right)$ for any $f \in \Sigma_X$ using \cite[189]{folland:real_analysis:1999} (observe, that $T(f)g \in L^1$ for any $g \in \Sigma_Y$ by either one of the hypotheses on the linear operator $T$).
 \end{proof}
-
-\begin{remark}
-	It is necessary to have $0 < \theta < 1$, since for example choosing $q_1 = 1$ and $q_0 > 1$ arbitrary leads for $\theta = 1$ to $q = 1$ but then the function $g$ can be choosen so, that the integral in the definition \textup{(\ref{eq:def_F})} is $\infty$.
-\end{remark}
-
 
 \subsection{Young's inequality}
 Using the Riesz-Thorin interpolation theorem, we can give an alternative proof of Young's inequality \cite[22--23]{grafakos:fourier:2014}.
