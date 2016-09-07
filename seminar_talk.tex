@@ -30,11 +30,19 @@
 	\end{definition*}
 \end{mdframed}
 
-\newpage
-
-A complex-valued function $f$ is said to be \emph{holomorphic}  in $\Omega \subseteq \mathbb{C}$ open, if $f'(z)$ exists for any $z \in \Omega$.
-
 \vspace{2mm}
+
+A complex-valued function $f$ is said to be \emph{holomorphic} in $\Omega \subseteq \mathbb{C}$ open, if $f'(z)$ exists for any $z \in \Omega$. By a region we shall mean a nonempty connected open subset of the complex plane. The proof of Hadamard's three lines lemma heavily relies on a restatement of the maximum modulus theorem (see \cite[212]{rudin:rc_analysis:1987}) found in \cite[253]{rudin:rc_analysis:1987}.
+
+\begin{theorem*}
+	Let $\Omega \subseteq \mathbb{C}$ be a bounded region and $f$ be a continuous function on $\overline{\Omega}$ which is holomorphic in $\Omega$. Then 
+
+	\begin{equation*}
+		\left| f(z)\right| \leqslant \sup\left\{ \left|f(z) \right| : z \in \partial\Omega\right\}
+	\end{equation*}
+
+	for every $z \in \Omega$. If equality holds at one point $z \in \Omega$, then $f$ is constant.
+\end{theorem*}
 
 \begin{mdframed}
 	\begin{lemma*}\emph{(Hadamard's three lines lemma)}
@@ -136,8 +144,6 @@ whenever $0 \leqslant \theta \leqslant 1$, $t \in \mathbb{R}$.
 	\caption{Sketch of the rectangle $\overline{R}$.}
 	\label{fig:Hadamards_three_lines_lemma}
 \end{figure}
-
-\newpage
 
 For two measure spaces $\left( X,\mu \right)$, $\left( Y,\nu \right)$ let $\Sigma_X$ and $\Sigma_Y$ denote the set of all finitely simple functions on $X$, $Y$ respectively.
 
@@ -255,8 +261,8 @@ Further by estimate (\ref{est:constant_F})
 \begin{equation*}
 	\begin{aligned}
 		\left| F(z)\right| &\leqslant \sum_{j = 1}^n\sum_{k = 1}^m \left| a_j^{P(z)}\right| \left| b_k^{Q(z)}\right| \left| \int_Y T(\chi_{A_j})\chi_{B_k} d\nu\right|\\
-		&\leqslant M_0\sum_{j = 1}^n\sum_{k = 1}^m a^{\Re P(z)}b_k^{\Re Q(z)}\mu\left(A_j\right)^{1/p_0}\nu\left(B_k\right)^{1/q_0'}\\
-		&\leqslant M_0\sum_{j = 1}^n\sum_{k = 1}^m \max\left\{ 1, a^{p/p_0 + p/p_1}\right\} \max\left\{1,b_k^{q'/q_0' + q'/q_1'}\right\}\mu\left(A_j\right)^{1/p_0}\nu\left(B_k\right)^{1/q_0'}
+		&\leqslant M_0\sum_{j = 1}^n\sum_{k = 1}^m a_j^{\Re P(z)}b_k^{\Re Q(z)}\mu\left(A_j\right)^{1/p_0}\nu\left(B_k\right)^{1/q_0'}\\
+		&\leqslant M_0\sum_{j = 1}^n\sum_{k = 1}^m \max\left\{ 1, a_j^{p/p_0 + p/p_1}\right\} \max\left\{1,b_k^{q'/q_0' + q'/q_1'}\right\}\mu\left(A_j\right)^{1/p_0}\nu\left(B_k\right)^{1/q_0'}
 	\end{aligned}
 \end{equation*}
 
@@ -264,7 +270,8 @@ Further by estimate (\ref{est:constant_F})
 Hence $F$ is bounded on $\overline{S}$ by some constant depending on $f$ and $g$ only. By 
 
 \begin{multline*}
-	F'(z) = \sum_{j = 1}^n\sum_{k = 1}^m a^{P(z)}_j\log \left( a_j \right) \left( \frac{p}{p_1} - \frac{p}{p_0} \right) b_k^{Q(z)}\log\left( b_j \right)\left( \frac{q'}{q'_1} - \frac{q'}{q'_0} \right) e^{i\alpha_j} e^{i\beta_k} \int_YT(\chi_{A_j})\chi_{B_k}d\nu	
+	F'(z) = \sum_{j = 1}^n\sum_{k = 1}^m a^{P(z)}_j\log \left( a_j \right) \left( \frac{p}{p_1} - \frac{p}{p_0} \right) b_k^{Q(z)}e^{i\alpha_j} e^{i\beta_k} \int_YT(\chi_{A_j})\chi_{B_k}d\nu \\
+	+  \sum_{j = 1}^n\sum_{k = 1}^m a^{P(z)}_jb_k^{Q(z)}\log\left( b_k \right)\left( \frac{q'}{q'_1} - \frac{q'}{q'_0} \right)e^{i\alpha_j} e^{i\beta_k} \int_YT(\chi_{A_j})\chi_{B_k}d\nu 
 \end{multline*}
 
 	it is immediate, that $F$ is an entire function and thus holomorphic in $S$ and continuous on $\overline{S}$. Therefore, Hadamard's three lines lemma yields
@@ -310,7 +317,20 @@ we conclude
 for any $f \in \Sigma_X$.
 \end{proof}
 
-\newpage
+\begin{remark*}
+	A more general version of the Riesz-Thorin interpolation theorem can be found in \textup{\cite[200--202]{folland:real_analysis:1999}}. There, a linear map 
+
+	\begin{equation*}
+		T: L^{p_0} + L^{p_1} \rightarrow L^{q_0} + L^{q_1}
+	\end{equation*}
+
+	is considered. This follows using a density argument from the current version of the theorem and will not be prooven here.
+	\label{rem:extension}
+\end{remark*}
+
+\begin{remark*}
+	Using the previous remark, a standard application of the Riesz-Thorin interpolation theorem is to proove Young's inequality \textup{\cite[22--23]{grafakos:fourier:2014}}.
+\end{remark*}
 
 \begin{mdframed}
 	\begin{lemma}\emph{(Hadamard's three lines lemma, extension)}
