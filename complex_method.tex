@@ -2,9 +2,17 @@
 This theorem will unfortunately only be applicable to linear operators but will yield a more natural bound of the operator on the intermediate space. The proof will make strong use of complex variables technique. A major tool will be an application of the maximum modulus principle, known as \emph{Hadamard's three lines lemma}.
 
 \subsection{Hadamard's Three Lines Lemma}
-A complex-valued function $f$ is said to be \emph{holomorphic}  in $\Omega \subseteq \mathbb{C}$ open, if $f'(z)$ exists for any $z \in \Omega$.
+A complex-valued function $f$ is said to be \emph{holomorphic} in $\Omega \subseteq \mathbb{C}$ open, if $f'(z)$ exists for any $z \in \Omega$. By a region we shall mean a nonempty connected open subset of the complex plane. The proof of Hadamard's three lines lemma heavily relies on a restatement of the maximum modulus theorem (see \cite[212]{rudin:rc_analysis:1987}) found in \cite[253]{rudin:rc_analysis:1987}.
 
-\vspace{2mm}
+\begin{theorem}
+	Let $\Omega \subseteq \mathbb{C}$ be a bounded region and $f$ be a continuous function on $\overline{\Omega}$ which is holomorphic in $\Omega$. Then 
+
+	\begin{equation*}
+		\left| f(z)\right| \leqslant \sup\left\{ \left|f(z) \right| : z \in \partial\Omega\right\}
+	\end{equation*}
+
+	for every $z \in \Omega$. If equality holds at one point $z \in \Omega$, then $f$ is constant.
+\end{theorem}
 
 \begin{mdframed}
 	\begin{lemma}\emph{(Hadamard's three lines lemma)}
@@ -108,47 +116,49 @@ whenever $0 \leqslant \theta \leqslant 1$, $t \in \mathbb{R}$.
 \end{proof}
 
 \subsection{The Riesz-Thorin Interpolation Theorem}
-Now we are able to proove the Riesz-Thorin Interpolation theorem without an interruption. To simplify notation, let $\Sigma_X$, $\Sigma_Y$ denote the set of all finitely simple functions on $X$ and $Y$ respectively.
+For two measure spaces $\left( X,\mu \right)$, $\left( Y,\nu \right)$ let $\Sigma_X$ and $\Sigma_Y$ denote the set of all finitely simple functions on $X$, $Y$ respectively.
 
 \vspace{2mm}
 
 \begin{mdframed}
 	\begin{theorem}\emph{(Riesz-Thorin Interpolation Theorem)}
-		Let $(X,\mu)$ be a measure space, $(Y,\nu)$ a semifinite measure space and $T$ be a linear operator defined on $\Sigma_X$ and taking values in the set of measurable functions on $Y$. Let $1 \leqslant p_0,p_1,q_0,q_1 \leqslant \infty$ and assume that
+		Suppose that $(X,\mu)$, $(Y,\nu)$ are measure spaces and $1 \leqslant p_0,p_1,q_0,q_1 \leqslant \infty$. If $q_0 = q_1 = \infty$, suppose also that $\nu$ is semifinite. Let $T$ be a linear operator defined on $\Sigma_X$ and taking values in the set of measurable functions on $Y$, such that
 
 		\begin{equation}
 			\left\|T(f)\right\|_{L^{q_0}} \leqslant M_0\left\|f\right\|_{L^{p_0}} \qquad \left\|T(f)\right\|_{L^{q_1}} \leqslant M_1\left\|f\right\|_{L^{p_1}}
+			\label{hyp:Lq0Lq1}
 		\end{equation}
 
-		for all $f \in \Sigma_X$ and $M_0,M_1 < \infty$. Then for all $0 < \theta < 1$ we have
+		for all $f \in \Sigma_X$ and $0 < M_0,M_1 < \infty$. Then for all $0 < \theta < 1$ we have
 
 		\begin{equation}
 			\left\|T(f)\right\|_{L^q} \leqslant M_0^{1 - \theta}M_1^\theta\left\|f\right\|_{L^p}
+			\label{est:boundTf}
 		\end{equation}
 
 		for all $f \in \Sigma_X$, where
 
-		\begin{equation}
+		\begin{equation*}
 			\frac{1}{p} = \frac{1 - \theta}{p_0} + \frac{\theta}{p_1} \qquad \frac{1}{q} = \frac{1 - \theta}{q_0} + \frac{\theta}{q_1}
-		\end{equation}
+		\end{equation*}
 		\label{thm:Riesz_Thorin}
 	\end{theorem}
 \end{mdframed}
 
 \begin{proof}
-Fix 
+	If $f \in \Sigma_X$, $\left\| f \right\|_{L^p} = 0$, then $f = 0$ $\mu$-a.e. and either one of the hypotheses on $T$ in (\ref{hyp:Lq0Lq1}) implies $T(f) = 0$ $\mu$-a.e. and thus the estimate (\ref{est:boundTf}) holds trivially. Therefore we can assume $\left\| f\right\|_{L^p} \neq 0$. Fix 
 	
 \begin{equation*}
 	f :\equiv \sum_{j = 1}^n a_j e^{i\alpha_j}\chi_{A_j} \in \Sigma_X \qquad g :\equiv \sum_{k = 1}^m b_k e^{i\beta_k}\chi_{B_k} \in \Sigma_Y
 \end{equation*}
 
-	where $a_j, b_k > 0$ and $\alpha_j, \beta_k \in \mathbb{R}$ for every $j = 1,\hdots,n$, $k = 1,\hdots,m$. Define
+where $a_j, b_k > 0$ and $\alpha_j, \beta_k \in \mathbb{R}$ for every $j = 1,\hdots,n$, $k = 1,\hdots,m$ such that $\left\| g\right\|_{L^{q'}} \neq 0$ (recall $q' := q/\left( q - 1 \right)$). Define
 
 \begin{equation*}
 	P(z) := \frac{p}{p_0}(1 - z) + \frac{p}{p_1}z \qquad Q(z) := \frac{q'}{q'_0}(1 - z) + \frac{q'}{q'_1}z
 \end{equation*}
 
-	for $z \in \overline{S}$ (if $p,q' = \infty$ then also $p_0,p_1,q_0',q_1' = \infty $ and hence $P$, $Q$ are well defined). Further let
+for $z \in \mathbb{C}$ (if $p,q' = \infty$ then also $p_0,p_1,q_0',q_1' = \infty $ and hence $P$, $Q$ are well-defined). Further let
 				
 \begin{equation}
 	f_z :\equiv \sum_{j = 1}^n a^{P(z)}_j e^{i\alpha_j}\chi_{A_j} \qquad g_z :\equiv  \sum_{k = 1}^m b^{Q(z)}_k e^{i\beta_k}\chi_{B_k}
@@ -158,34 +168,34 @@ Fix
 and 
 
 \begin{equation}
-	F(z) := \int_Y T(f_z)(y)g_z(y)d\nu(y)
+	F(z) := \int_Y T(f_z)g_zd\nu
 	\label{eq:def_F}
 \end{equation}
 
 By the linearity of the operator $T$ we have
 
 \begin{gather*}
-	F(z) = \sum_{j = 1}^n\sum_{k = 1}^m a^{P(z)}_j b_k^{Q(z)} e^{i\alpha_j} e^{i\beta_k} \int_YT(\chi_{A_j})(y)\chi_{B_k}(y)d\nu(y) 
+	F(z) = \sum_{j = 1}^n\sum_{k = 1}^m a^{P(z)}_j b_k^{Q(z)} e^{i\alpha_j} e^{i\beta_k} \int_YT(\chi_{A_j})\chi_{B_k}d\nu
 \end{gather*}
 
-and by H\"older's inequality \footnote{A proof can be found in \cite[223]{elstrodt:mass:2011}.}
+and by H\"older's inequality
 
-\begin{gather*}
+\begin{gather}
 	\begin{aligned}
-		\left| \int_YT(\chi_{A_j})(y)\chi_{B_k}(y)d\nu(y) \right| &\leqslant \int_Y\left| T(\chi_{A_j})(y)\chi_{B_k}(y)\right|d\nu(y)\\
+		\left| \int_YT(\chi_{A_j})\chi_{B_k}d\nu \right| &\leqslant \int_Y\left| T(\chi_{A_j})\chi_{B_k}\right|d\nu\\
 		&= \left\|T(\chi_{A_j})\chi_{B_k}\right\|_{L^1}\\
 		&\leqslant \left\|T(\chi_{A_j})\right\|_{L^{q_0}} \left\|\chi_{B_k}\right\|_{L^{q_0'}}\\
 		&\leqslant M_0\left\|\chi_{A_j}\right\|_{L^{p_0}} \left\|\chi_{B_k}\right\|_{L^{q_0'}}\\
-		&\overset{p_0,q_0' \neq \infty}{=} M_0\mu\left(A_j\right)^{1/p_0} \nu\left(B_k\right)^{1/q_0'}\\ 
-		&< \infty
+		&\leqslant M_0 \mu\left(A_j\right)^{1/p_0}\nu\left(B_k\right)^{1/q_0'}
 	\end{aligned}
-\end{gather*}
+	\label{est:constant_F}
+\end{gather}
 
-for each $j = 1,\hdots,n$, $k = 1,\hdots,m$. In the case where either $p_0 = \infty$ or $q_0' = \infty$, consider that $\left\|\chi_{A_j} \right\|_{L^\infty}, \left\|\chi_{B_k}\right\|_{L^\infty} \leqslant 1 $. Thus the function $F$ is well-defined on $\overline{S}$. Let $t \in \mathbb{R}$. For $p,p_0 \neq \infty$
+for each $j = 1,\hdots,n$, $k = 1,\hdots,m$ (even in the cases where either $p_0 = \infty$ or $q_0' = \infty$, or both, by observing that $\left\| \chi_{A}\right\|_{L^\infty} \leqslant 1$ for any measurable set $A$). Thus the function $F$ is well-defined on $\mathbb{C}$. Let $t \in \mathbb{R}$. For $p,p_0 \neq \infty$
 
 \begin{gather*}
 	\begin{aligned}
-		\left\|f_{it}\right\|_{L^{p_0}} &= \left(\sum_{j = 1}^n \int_X \left| f_{it} \right|^{p_0} d\mu + \int_{X \setminus \bigcup_{j = 1}^n A_j} \left| f_{it} \right|^{p_0} d\mu\right)^{1/p_0}\\
+		\left\|f_{it}\right\|_{L^{p_0}} &= \left(\sum_{j = 1}^n \int_{A_j} \left| f_{it} \right|^{p_0} d\mu + \int_{X \setminus \bigcup_{j = 1}^n A_j} \left| f_{it} \right|^{p_0} d\mu\right)^{1/p_0}\\
 		&= \left(\sum_{j = 1}^n \left| a_j^{P(it)} e^{i\alpha_j}\right|^{p_0}\int_X \chi_{A_j} d\mu\right)^{1/p_0}\\
 		&= \left(\sum_{j = 1}^n a_j^{p_0\Re P(it)}\mu\left(A_j\right)\right)^{1/p_0}\\
 		&= \left(\sum_{j = 1}^n a_j^p\mu\left(A_j\right)\right)^{p/\left(p_0p\right)}\\
@@ -193,20 +203,19 @@ for each $j = 1,\hdots,n$, $k = 1,\hdots,m$. In the case where either $p_0 = \in
 	\end{aligned}
 \end{gather*}
 
-holds. Let $p_0 = \infty$, $p \neq \infty$. Then either $\left\|f_{it}\right\|_{L^{\infty}} = 0$ or $\left\|f_{it}\right\|_{L^{\infty}} = 1$. In the former case $f \equiv 0$ $\mu$-a.e which implies $\mu\left( A_j \right) = 0$ for any $j = 1,\hdots,n$ and thus $\left\| f_{it}\right\|_{L^{\infty}} = 0$ and in the latter case $\left\| f_{it} \right\|_{L^{\infty}} = 1$ by the simple observation that $\left| a_j^{P(it)}\right| = a_j^{p/p_0} = 1$ and that there exists some index $j$, such that $\mu\left( A_j \right) \neq 0$. If $p = \infty$, observe that $P(z) = 1$ and thus $\left\| f_{it}\right\|_{L^{\infty}} = \left\| f\right\|_{L^{\infty}}$. By the same considerations we see that $\|g_{it}\|_{L^{q_0'}} = \|g\|_{L^{q'}}^{q'/q'_0}$ any legitime $q_0,q$. Hence
+holds. Let $p_0 = \infty$, $p \neq \infty$. Then $\left\|f_{it}\right\|_{L^{\infty}} = 1$ since $\left| a_j^{P(it)}\right| = a_j^{p/p_0} = 1$ and that there exists some index $j$, such that $\mu\left( A_j \right) \neq 0$. If $p = \infty$, observe that $P(z) = 1$ and thus $\left\| f_{it}\right\|_{L^{\infty}} = \left\| f\right\|_{L^{\infty}}$. By the same considerations we have $\|g_{it}\|_{L^{q_0'}} = \|g\|_{L^{q'}}^{q'/q'_0}$. Hence
 
 \begin{gather*}
 	\begin{aligned}
-		\left| F(it) \right| &\leqslant \int_Y \left| T(f_{it})(y)g_{it}(y)\right| d\nu(y)\\
+		\left| F(it) \right| &\leqslant \int_Y \left| T(f_{it})g_{it}\right| d\nu\\
 		&= \left\|T(f_{it}) g_{it}\right\|_{L^1}\\
 		&\leqslant \left\|T(f_{it})\right\|_{L^{q_0}}\left\|g_{it}\right\|_{L^{q_0'}}\\
 		&\leqslant M_0 \left\|f_{it}\right\|_{L^{p_0}} \left\|g_{it}\right\|_{L^{q_0'}}\\
-		&= M_0 \left\|f\right\|_{L^p}^{p/p_0} \left\|g\right\|_{L^{q'}}^{q'/q'_0}\\
-		&< \infty
+		&= M_0 \left\|f\right\|_{L^p}^{p/p_0} \left\|g\right\|_{L^{q'}}^{q'/q'_0}
 	\end{aligned}
 \end{gather*}
 
-by H\"older's inequality. In an analogous manner s we can estimate 
+by H\"older's inequality. In an analogous manner we derive
 				
 \begin{equation*}
 	\left\|f_{1 + it}\right\|_{L^{p_1}} = \left\|f\right\|_{L^p}^{p/p_1} \qquad \left\|g_{1 + it}\right\|_{L^{q_1'}} = \left\|g\right\|_{L^{q'}}^{q'/q_1'}
@@ -218,57 +227,65 @@ and thus
 	\left| F(1 + it)\right| \leqslant M_1 \left\|f\right\|_{L^p}^{p/p_1}\left\|g\right\|_{L^{q'}}^{q'/q_1'}
 \end{equation*}	
 
-Further 
-		
-\begin{gather*}
+Further by estimate (\ref{est:constant_F}) 
+
+\begin{equation*}
 	\begin{aligned}
-		\left| F(z)\right| &\leqslant \int_Y\left| T(f_z)(y)g_z(y)\right| d\nu(y) = \left\|T(f_z)g_z\right\|_{L^1} \leqslant \left\|T(f_z)\right\|_{L^{q_0}} \left\|g_z\right\|_{L^{q'_0}}\\
-				&\leqslant M_0 \left\|f_z\right\|_{L^{p_0}} \left\|g_z\right\|_{L^{q'_0}} \overset{p_0,q_0' \neq \infty}{=} M_0 \left(\int_X \left| f_z \right|^{p_0}d\mu \right)^{1/p_0} \left(\int_Y \left| g_z \right|^{q'_0} d\nu\right)^{1/q'_0}\\
-				&= M_0 \left( \sum\limits_{j = 1}^n a_j^{p_0\Re P(z)}\mu(A_j) \right)^{1/p_0} \left( \sum\limits_{k = 1}^m b_k^{q'_0\Re Q(z)} \nu(B_k) \right)^{1/q'_0}\\
-				&= M_0 \left( \sum\limits_{j = 1}^n a_j^{p\left(1 - \Re z\right) + \left(pp_0\Re z\right)/p_1}\mu(A_j) \right)^{1/p_0} \left( \sum\limits_{k = 1}^m b_k^{q'\left(1 - \Re z\right) + \left(q'q'_0\Re z\right)/q_1'} \nu(B_k) \right)^{1/q'_0}\\
-				&\leqslant M_0 \left( \sum\limits_{j = 1}^n a_j^{\max\left\{1, p + \left(pp_0\right)/p_1\right\}}\mu(A_j) \right)^{1/p_0} \left( \sum\limits_{k = 1}^m b_k^{\max\left{1,q' + \left(q'q'_0\right)/q'_1\right\}} \nu(B_k) \right)^{1/q'_0}\\
-				&= M_0 \left\|f\right\|_{L^{p + \left(pp_0\right)/p_1}}^{p/p_0 + p/p_1} \left\|g\right\|_{L^{q' + \left(q'q'_0\right)/q'_1}}^{q'/q_0' + q'/q_1'} =: C(f,g)
-			\end{aligned}
-		\end{gather*}
-		
-		
-by H\"older's inequality and in the edge cases
-		
-\begin{gather*}
-	\begin{aligned}
-		&p_0 = \infty, q_0' \neq \infty: \qquad C(f,g) := M_0 \max_{j = 1,\hdots,n} a_j^{p/p_1} \|g\|_{L^{q' + (q'q'_0)/q'_1}}^{q'/q_0' + q'/q_1'}\\
-		&p_0 \neq \infty, q_0' = \infty: \qquad C(f,g) :=  M_0 \|f\|_{L^{p + (pp_0)/p_1}}^{p/p_0 + p/p_1} \max_{k = 1,\hdots,m} b_k^{q'/q_1'}\\
-		&p_0 = \infty, q_0' = \infty: \qquad C(f,g) := M_0 \max_{j = 1,\hdots,n} a_j^{p/p_1} \max_{k = 1,\hdots,m} b_k^{q'/q_1'}
+		\left| F(z)\right| &\leqslant \sum_{j = 1}^n\sum_{k = 1}^m \left| a_j^{P(z)}\right| \left| b_k^{Q(z)}\right| \left| \int_Y T(\chi_{A_j})\chi_{B_k} d\nu\right|\\
+		&\leqslant M_0\sum_{j = 1}^n\sum_{k = 1}^m a_j^{\Re P(z)}b_k^{\Re Q(z)}\mu\left(A_j\right)^{1/p_0}\nu\left(B_k\right)^{1/q_0'}\\
+		&\leqslant M_0\sum_{j = 1}^n\sum_{k = 1}^m \max\left\{ 1, a_j^{p/p_0 + p/p_1}\right\} \max\left\{1,b_k^{q'/q_0' + q'/q_1'}\right\}\mu\left(A_j\right)^{1/p_0}\nu\left(B_k\right)^{1/q_0'}
 	\end{aligned}
-\end{gather*}
-		
-	Hence $F$ is bounded on $\overline{S}$. By 
+\end{equation*}
+
+
+Hence $F$ is bounded on $\overline{S}$ by some constant depending on $f$ and $g$ only. By 
 
 \begin{multline*}
-	F'(z) = \sum_{j = 1}^n\sum_{k = 1}^m a^{P(z)}_j\log \left( a_j \right) \left( \frac{p}{p_1} - \frac{p}{p_0} \right) b_k^{Q(z)}\log\left( b_j \right)\left( \frac{q'}{q'_1} - \frac{q'}{q'_0} \right) e^{i\alpha_j} e^{i\beta_k} \\\int_YT(\chi_{A_j})(y)\chi_{B_k}(y)d\nu(y) 	
+	F'(z) = \sum_{j = 1}^n\sum_{k = 1}^m a^{P(z)}_j\log \left( a_j \right) \left( \frac{p}{p_1} - \frac{p}{p_0} \right) b_k^{Q(z)}e^{i\alpha_j} e^{i\beta_k} \int_YT(\chi_{A_j})\chi_{B_k}d\nu \\
+	+  \sum_{j = 1}^n\sum_{k = 1}^m a^{P(z)}_jb_k^{Q(z)}\log\left( b_k \right)\left( \frac{q'}{q'_1} - \frac{q'}{q'_0} \right)e^{i\alpha_j} e^{i\beta_k} \int_YT(\chi_{A_j})\chi_{B_k}d\nu 
 \end{multline*}
 
-	it is immediate, that $F$ is an entire function (see \cite[198]{rudin:rc_analysis:1987}) and thus holomorphic in $S$ and continuous on $\overline{S}$. Therefore Hadamard's three lines lemma (\ref{lem:HTL}) yields
+	it is immediate, that $F$ is an entire function and thus holomorphic in $S$ and continuous on $\overline{S}$. Therefore, Hadamard's three lines lemma yields
 
 \begin{gather*}
-	\begin{aligned}
-		\left| F(z) \right| &\leqslant \left( M_0  \left\|f\right\|_{L^p}^{p/p_0} \left\|g\right\|_{L^{q'}}^{q'/q'_0} \right)^{1 - \theta}\left(  M_1 \left\|f\right\|_{L^p}^{p/p_1}\left\|g\right\|_{L^{q'}}^{q'/q_1'} \right)^\theta\\
-			&= M_0^{1 - \theta}M_1^\theta \left\|f\right\|_{L^p}\left\|g\right\|_{L^{q'}}
-	\end{aligned}
+	\left| F(z) \right| \leqslant \left( M_0  \left\|f\right\|_{L^p}^{p/p_0} \left\|g\right\|_{L^{q'}}^{q'/q'_0} \right)^{1 - \theta}\left(  M_1 \left\|f\right\|_{L^p}^{p/p_1}\left\|g\right\|_{L^{q'}}^{q'/q_1'} \right)^\theta = M_0^{1 - \theta}M_1^\theta \left\|f\right\|_{L^p}\left\|g\right\|_{L^{q'}}
 \end{gather*}
 
-	for $\Re z = \theta$. By $P(\theta) = Q(\theta) = 1$ and
+for $\Re z = \theta$, $0 < \theta < 1$. We have
+
+\begin{equation*}
+	\left\{ T(f) \neq 0\right\} = \bigcup_{n = 1}^\infty \left\{ \left| T(f)\right| > 1/n\right\}
+\end{equation*}
+
+and by Chebychev's inequality either
+
+\begin{equation*}
+	\nu\left( \left\{ \left| T(f)\right| > 1/n\right\} \right) \leqslant n^{q_0}\left\| T(f)\right\|_{L^{q_0}}^{q_0}
+\end{equation*}
+
+or
+
+\begin{equation*}
+	\nu\left( \left\{ \left| T(f)\right| > 1/n\right\} \right) \leqslant n^{q_1}\left\| T(f)\right\|_{L^{q_1}}^{q_1}
+\end{equation*}
+
+whenever $q_0 \neq \infty$ or $q_1 \neq \infty$. Therefore, the set $\left\{ T(f) \neq 0\right\}$ is $\sigma$-finite unless $q_0 = q_1 = \infty$. Further we have $P(\theta) = Q(\theta) = 1$. Thus by
 
 \begin{gather*}
 	\begin{aligned}
 		M_q\left( T(f) \right) &= \sup\left\{\left| \int_Y T(f)gd\nu\right| : g \in \Sigma_Y, \left\|g\right\|_{L^{q'}} = 1\right\}\\
 		&=  \sup\left\{\left| F(\theta)\right| : g \in \Sigma_Y, \left\|g\right\|_{L^{q'}} = 1\right\}\\
 		&\leqslant M_0^{1 - \theta}M_1^\theta \left\|f\right\|_{L^p}\\
-		&< \infty
 	\end{aligned}
 \end{gather*}
 
-	we conclude $\left\| T(f)\right\|_{L^q} = M_q\left( T(f) \right)$ for any $f \in \Sigma_X$ using \cite[189]{folland:real_analysis:1999} (observe, that $T(f)g \in L^1$ for any $g \in \Sigma_Y$ by either one of the hypotheses on the linear operator $T$).
+we conclude 
+	
+\begin{equation*}
+	\left\| T(f)\right\|_{L^q} = M_q\left( T(f) \right) \leqslant M_0^{1 - \theta}M_1^\theta \left\|f\right\|_{L^p}
+\end{equation*}
+	
+for any $f \in \Sigma_X$.
 \end{proof}
 
 \subsection{Young's inequality}

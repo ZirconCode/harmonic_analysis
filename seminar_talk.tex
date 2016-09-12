@@ -11,23 +11,21 @@
 \addtocounter{section}{1}
 
 \begin{mdframed}
-	\begin{definition*}
-		Let $(X,\mu)$ and $(Y,\nu)$ be measure spaces. Further let $T$ be an operator defined on a linear space of complex-valued measurable functions on $X$ and taking values in the set of all complex-valued, finite almost everywhere, measurable functions on $Y$. Then $T$ is called \emph{linear} if for all functions $f$ and $g$ in the domain of $T$ and all $z \in \mathbb{C}$ holds
+	\begin{definition}
+		Let $(X,\mu)$ and $(Y,\nu)$ be measure spaces. Further let $T$ be an operator defined on a linear space of complex-valued measurable functions on $X$ and taking values in the set of all complex-valued, finite almost everywhere, measurable functions on $Y$. Then $T$ is called \emph{linear} if for all functions $f$ and $g$ in the domain of $T$ and all $z \in \mathbb{C}$ 
 
-		\begin{equation}
+		\begin{equation*}
 			T\left( f + g \right) = T(f) + T(g) \qquad T\left( zf \right) = zT(f)
-			\label{eq:linear}
-		\end{equation}
+		\end{equation*}
 
-		and \emph{quasi-linear} if
+		holds and \emph{quasi-linear} if
 
-		\begin{equation}
+		\begin{equation*}
 			\left| T\left( f + g \right) \right| \leqslant K \left( \left| T(f)\right| + \left| T(g)\right| \right) \qquad \left| T(zf) \right| = \left| z\right| \left| T(f)\right|
-			\label{eq:quasilinear}
-		\end{equation}
+		\end{equation*}
 
-		holds for some real constant $K > 0$. If $K = 1$, $T$ is called \emph{sublinear}.
-	\end{definition*}
+		holds for some constant $K > 0$. If $K = 1$, $T$ is called \emph{sublinear}.
+	\end{definition}
 \end{mdframed}
 
 \vspace{2mm}
@@ -45,9 +43,9 @@ A complex-valued function $f$ is said to be \emph{holomorphic} in $\Omega \subse
 \end{theorem*}
 
 \begin{mdframed}
-	\begin{lemma*}\emph{(Hadamard's three lines lemma)}
-		Let $F$ be a holomorphic function in the strip $S := \{z \in \mathbb{C}: 0 < \Re z < 1\}$, continuous and bounded on $\overline{S}$, such that $\left| F(z)\right| \leqslant B_0$ when $\Re z = 0$ and $\left| F(z) \right| \leqslant B_1$ when $\Re z = 1$, for some $0 < B_0,B_1 < \infty$. Then $\left| F(z) \right| \leqslant B_0^{1 - \theta}B_1^\theta$ when $\Re z = \theta$, for any $0 \leqslant \theta \leqslant 1$.
-	\end{lemma*}
+	\begin{lemma}\emph{(Hadamard's three lines lemma)}
+		Let $F$ be a holomorphic function in the strip $S := \{z \in \mathbb{C}: 0 < \Re z < 1\}$, continuous and bounded on $\overline{S}$, such that $\left| F(z)\right| \leqslant B_0$ when $\Re z = 0$ and $\left| F(z) \right| \leqslant B_1$ when $\Re z = 1$, for some $0 < B_0,B_1 < \infty$. Then $\left| F(z) \right| \leqslant B_0^{1 - \theta}B_1^\theta$ when $\Re z = \theta$, for any $0 < \theta < 1$.
+	\end{lemma}
 \end{mdframed}
 
 \begin{proof}
@@ -124,8 +122,11 @@ for every $z \in R$. Therefore $\left| G_n(z) \right| \leqslant 1$ on $\overline
 	\left| F(\theta + it) \right| = \left| G(\theta + it) \right| \left| B_0^{1 - \theta - it}B_1^{\theta + it}\right| \leqslant B_0^{1 - \theta} B_1^{\theta}
 \end{equation*}
 
-whenever $0 \leqslant \theta \leqslant 1$, $t \in \mathbb{R}$.
+whenever $0 < \theta < 1$, $t \in \mathbb{R}$.
 \end{proof}
+
+%Remake Tikz-picture
+%\tikzset{external/force remake}
 
 \begin{figure}[h!tb]
 	\centering
@@ -136,7 +137,7 @@ whenever $0 \leqslant \theta \leqslant 1$, $t \in \mathbb{R}$.
 		\draw [pattern = adjusted lines, pattern color = black, line width = .4mm] (0,-4) rectangle (4,4);
 		\node (0) at (-.25,-.25) {$0$};
 		\node (1) at (4.25,-.25) {$1$};
-		\node (R) at (.5,3.55) {$\overline{R}$};
+		\node (R) at (.5,3.2) {$\overline{R}$};
 		\node (Cn) at (-.5,4) {$C(n)$};
 		\node (-Cn) at (-.65,-4) {$-C(n)$};
 		\node (R2) at (4.5,4.5) {$\mathbb{R}^2$};
@@ -145,12 +146,20 @@ whenever $0 \leqslant \theta \leqslant 1$, $t \in \mathbb{R}$.
 	\label{fig:Hadamards_three_lines_lemma}
 \end{figure}
 
-For two measure spaces $\left( X,\mu \right)$, $\left( Y,\nu \right)$ let $\Sigma_X$ and $\Sigma_Y$ denote the set of all finitely simple functions on $X$, $Y$ respectively.
+For two measure spaces $\left( X,\mu \right)$, $\left( Y,\nu \right)$ let $\Sigma_X$ and $\Sigma_Y$ denote the set of all finitely simple functions on $X$, $Y$ respectively. The proof uses the following theorem found in \cite[189]{folland:real_analysis:1999}.
 
-\vspace{2mm}
+\begin{theorem*}
+	Let $p$, $q$ be conjugate exponents. Suppose that $g$ is a measurable function on $X$ such that $fg \in L^1$ for all $f \in \Sigma_X$, and 
+
+	\begin{equation*}
+		M_q(g) = \sup\left\{ \left| \int_X fg d\mu\right| : f \in \Sigma_X, \left\| f\right\|_{L^p} = 1\right\} < \infty
+	\end{equation*}
+
+	Also, suppose either that $\left\{ g \neq 0\right\}$ is $\sigma$-finite or that $\mu$ is semifinite. Then $g \in L^q$ and $M_q(g) = \left\| g\right\|_{L^q}$.
+\end{theorem*}
 
 \begin{mdframed}
-	\begin{theorem*}\emph{(Riesz-Thorin Interpolation Theorem)}
+	\begin{theorem}\emph{(Riesz-Thorin Interpolation Theorem)}
 		Suppose that $(X,\mu)$, $(Y,\nu)$ are measure spaces and $1 \leqslant p_0,p_1,q_0,q_1 \leqslant \infty$. If $q_0 = q_1 = \infty$, suppose also that $\nu$ is semifinite. Let $T$ be a linear operator defined on $\Sigma_X$ and taking values in the set of measurable functions on $Y$, such that
 
 		\begin{equation}
@@ -158,7 +167,7 @@ For two measure spaces $\left( X,\mu \right)$, $\left( Y,\nu \right)$ let $\Sigm
 			\label{hyp:Lq0Lq1}
 		\end{equation}
 
-		for all $f \in \Sigma_X$ and $0 < M_0,M_1 < \infty$. Then for all $0 < \theta < 1$ we have
+		for all $f \in \Sigma_X$ and $0 < M_0,M_1 < \infty$. Then for all $0 \leqslant \theta \leqslant 1$ we have
 
 		\begin{equation}
 			\left\|T(f)\right\|_{L^q} \leqslant M_0^{1 - \theta}M_1^\theta\left\|f\right\|_{L^p}
@@ -171,11 +180,11 @@ For two measure spaces $\left( X,\mu \right)$, $\left( Y,\nu \right)$ let $\Sigm
 			\frac{1}{p} = \frac{1 - \theta}{p_0} + \frac{\theta}{p_1} \qquad \frac{1}{q} = \frac{1 - \theta}{q_0} + \frac{\theta}{q_1}
 		\end{equation*}
 		\label{thm:Riesz_Thorin}
-	\end{theorem*}
+	\end{theorem}
 \end{mdframed}
 
 \begin{proof}
-	If $f \in \Sigma_X$, $\left\| f \right\|_{L^p} = 0$, then $f = 0$ $\mu$-a.e. and either one of the hypotheses on $T$ in (\ref{hyp:Lq0Lq1}) implies $T(f) = 0$ $\mu$-a.e. and thus the estimate (\ref{est:boundTf}) holds trivially. Therefore we can assume $\left\| f\right\|_{L^p} \neq 0$. Fix 
+	If either $\theta = 0$ or $\theta = 1$, the estimate (\ref{est:boundTf}) follows directly from the hypotheses (\ref{hyp:Lq0Lq1}) on $T$. Thus we may assume \underline{$0 < \theta < 1$}. Furthermore, if $f \in \Sigma_X$, $\left\| f \right\|_{L^p} = 0$, then $f = 0$ $\mu$-a.e. and either one of the hypotheses on $T$ in (\ref{hyp:Lq0Lq1}) implies $T(f) = 0$ $\mu$-a.e. and thus the estimate (\ref{est:boundTf}) holds trivially. Therefore we can assume \underline{$\left\| f\right\|_{L^p} \neq 0$}. Fix 
 	
 \begin{equation*}
 	f :\equiv \sum_{j = 1}^n a_j e^{i\alpha_j}\chi_{A_j} \in \Sigma_X \qquad g :\equiv \sum_{k = 1}^m b_k e^{i\beta_k}\chi_{B_k} \in \Sigma_Y
@@ -187,7 +196,7 @@ where $a_j, b_k > 0$ and $\alpha_j, \beta_k \in \mathbb{R}$ for every $j = 1,\hd
 	P(z) := \frac{p}{p_0}(1 - z) + \frac{p}{p_1}z \qquad Q(z) := \frac{q'}{q'_0}(1 - z) + \frac{q'}{q'_1}z
 \end{equation*}
 
-	for $z \in \overline{S}$ (if $p,q' = \infty$ then also $p_0,p_1,q_0',q_1' = \infty $ and hence $P$, $Q$ are well-defined). Further let
+for $z \in \mathbb{C}$ (since either $p = \infty$ implies $p_0 = p_1 = \infty$ or $q = 1$ implies $q_0 = q_1 = 1$, the functions $P$, $Q$ are well-defined). Further let
 				
 \begin{equation}
 	f_z :\equiv \sum_{j = 1}^n a^{P(z)}_j e^{i\alpha_j}\chi_{A_j} \qquad g_z :\equiv  \sum_{k = 1}^m b^{Q(z)}_k e^{i\beta_k}\chi_{B_k}
@@ -220,7 +229,7 @@ and by H\"older's inequality
 	\label{est:constant_F}
 \end{gather}
 
-for each $j = 1,\hdots,n$, $k = 1,\hdots,m$ (even in the cases where either $p_0 = \infty$ or $q_0' = \infty$, or both, by observing that $\left\| \chi_{A}\right\|_{L^\infty} \leqslant 1$ for any measurable set $A$). Thus the function $F$ is well-defined on $\overline{S}$. Let $t \in \mathbb{R}$. For $p,p_0 \neq \infty$
+for each $j = 1,\hdots,n$, $k = 1,\hdots,m$ (even in the cases where either $p_0 = \infty$ or $q_0' = \infty$, or both, by observing that $\left\| \chi_{A}\right\|_{L^\infty} \leqslant 1$ for any measurable set $A$). Thus the function $F$ is well-defined on $\mathbb{C}$. Let $t \in \mathbb{R}$. For $p,p_0 \neq \infty$
 
 \begin{gather*}
 	\begin{aligned}
@@ -232,7 +241,7 @@ for each $j = 1,\hdots,n$, $k = 1,\hdots,m$ (even in the cases where either $p_0
 	\end{aligned}
 \end{gather*}
 
-holds. Let $p_0 = \infty$, $p \neq \infty$. Then $\left\|f_{it}\right\|_{L^{\infty}} = 1$ since $\left| a_j^{P(it)}\right| = a_j^{p/p_0} = 1$ and that there exists some index $j$, such that $\mu\left( A_j \right) \neq 0$. If $p = \infty$, observe that $P(z) = 1$ and thus $\left\| f_{it}\right\|_{L^{\infty}} = \left\| f\right\|_{L^{\infty}}$. By the same considerations we have $\|g_{it}\|_{L^{q_0'}} = \|g\|_{L^{q'}}^{q'/q'_0}$. Hence
+holds. Let $p_0 = \infty$, $p \neq \infty$. Then $\left\|f_{it}\right\|_{L^{\infty}} = 1$ since $\left| a_j^{P(it)}\right| = a_j^{p/p_0} = 1$ and that there exists some index $j$, such that $\mu\left( A_j \right) \neq 0$. If $p = \infty$, then $p_0 = p_1 = \infty$ and thus $P(it) = 1$. By the same considerations we have $\|g_{it}\|_{L^{q_0'}} = \|g\|_{L^{q'}}^{q'/q'_0}$. Hence
 
 \begin{gather*}
 	\begin{aligned}
@@ -345,27 +354,35 @@ for any $f \in \Sigma_X$.
 	\end{lemma}
 \end{mdframed}
 
-\vspace{2mm}
+\begin{proof}
+	Only a sketch will be given here. The core of the proof is the exploitation of the mapping
+
+	\begin{equation*}
+		h(z) := \frac{1}{\pi i}\log\left( i\frac{1 + z}{1 - z} \right)
+	\end{equation*}
+
+	defined for $z \in \left\{ z \in \mathbb{C} : \left| z\right| \leqslant 1\right\} \setminus \{\pm 1\}$ together with an application of a version of Fatou's lemma on the Poisson integral formula and the maximum principle for subharmonic functions. However, the main part of the proof is spent on a nice representation of the result obtained by the previous technical part. A change of variable is used to get the stated form of the upper bound.
+\end{proof}
 
 \begin{mdframed}
 	\begin{definition}\emph{(Analytic family, admissible growth)}
-		Let $(X,\mu)$ be a measure space, $(Y,\nu)$ be a semifinite measure spaces and $\left( T_z \right)_{z \in \overline{S}}$, where $T_z$ is defined $\Sigma_X$ and taking values in the space of all measurable functions on $Y$ such that
+		Let $(X,\mu)$, $(Y,\nu)$ be two $\sigma$-finite measure spaces and for every $z \in \overline{S}$ we have an associated linear operator $T_z$ which is defined on $\Sigma_X$ and taking values in the space of all measurable functions on $Y$ such that
 
-		\begin{equation}
-			\int_Y \left| T_z(\chi_A)\chi_B \right| d\nu
-		\end{equation}
+		\begin{equation*}
+			\int_Y \left| T_z(\chi_A)\chi_B \right| d\nu < \infty
+		\end{equation*}
 
 		whenever $\mu(A),\nu(B) < \infty$. The family $\left( T_z \right)_{z \in \overline{S}}$ is said to be \emph{analytic} if for all $f \in \Sigma_X$, $g \in \Sigma_Y$ we have that
 
-		\begin{equation}
+		\begin{equation*}
 			z \mapsto \int_Y T_z(f)gd\nu
-		\end{equation}
+		\end{equation*}
 
-		is analytic on $S$ and continuous on $\overline{S}$. Further, an analytic family $\left( T_z \right)_{z \in \overline{S}}$ is called of \emph{admissible growth}, if there is a constant $\tau_0 \in (0,\pi)$, such that for all $f \in \Sigma_X$, $g \in \Sigma_Y$ a constant $C(f,g)$ exists with
+		is analytic in $S$ and continuous on $\overline{S}$. Further, an analytic family $\left( T_z \right)_{z \in \overline{S}}$ is called of \emph{admissible growth}, if there is a constant $\tau_0 \in (0,\pi)$, such that for all $f \in \Sigma_X$, $g \in \Sigma_Y$ a constant $0 < C(f,g) < \infty$ exists with
 
-			\begin{equation}
+			\begin{equation*}
 				\log\left| \int_Y T_z(f) g d\nu\right| \leqslant C(f,g)e^{\tau_0\left| \Im z\right|}
-			\end{equation}
+			\end{equation*}
 
 			for all $z \in \overline{S}$.
 	\end{definition}
@@ -407,7 +424,9 @@ for any $f \in \Sigma_X$.
 	\end{theorem}
 \end{mdframed}
 
-\vspace{2mm}
+\begin{proof}
+	As mentioned in \href{https://terrytao.wordpress.com/2011/05/03/steins-interpolation-theorem/}{Terence Tao's blog}, Fefferman once noted, that this proof can be obtained from that of the Riesz-Thorin theorem \ref{thm:Riesz_Thorin} simply by adding a single letter of the alphabet. Indeed, this is truly the case, since all hypotheses made in the theorem incorporate the same proof as in the Riesz-Thorin theorem. The only heavy and technical part is the proof of the extension of Hadamard's three lines lemma \ref{lem:EHTL}.
+\end{proof}
 
 \begin{mdframed}
 	\begin{theorem}\emph{(The Marcinkiewicz Interpolation Theorem)}
@@ -417,7 +436,7 @@ for any $f \in \Sigma_X$.
 			L^{p_0} + L^{p_1} := \left\{ f_0 + f_1 : f_0 \in L^{p_0}(X,\mu), f_1 \in L^{p_1}(X,\mu) \right\}
 		\end{equation*}
 		
-		and taking values in the space of measurable functions on $Y$. Assume that there exist $A_0,A_1 < \infty$ such that
+		and taking values in the space of measurable functions on $Y$. Assume that there exist $0 < A_0,A_1 < \infty$ such that
 
 		\begin{align}
 			&\forall f \in L^{p_0}(X,\mu)~\|T(f)\|_{L^{p_0,\infty}} \leqslant A_0 \|f\|_{L^{p_0}}\label{hyp:fp_0}\\
@@ -439,4 +458,44 @@ for any $f \in \Sigma_X$.
 	\end{theorem}
 \end{mdframed}
 
+\begin{proof}
+	Again, only a sketch of the proof will be given here. The proof has the following structure.
+
+	\begin{enumerate}[label = \textbf{(\roman*.)}]
+		\item \underline{$p_1 < \infty$.}
+			\begin{enumerate}[label = \textbf{\alph*.}]
+				\item Split $f$ using the two cut-off functions
+
+					\begin{gather*}
+						\begin{aligned}
+							f_0(x;\alpha,\delta) &:= \begin{cases}
+							f(x), & \left| f(x) \right| > \delta \alpha,\\
+							0, & \left| f(x)\right| \leqslant \delta \alpha.
+						\end{cases}\\
+						f_1(x;\alpha,\delta) &:= \begin{cases}
+							f(x), & \left| f(x) \right| \leqslant \delta \alpha,\\
+							0, & \left| f(x)\right > \delta \alpha.
+						\end{cases}
+					\end{aligned}
+					\end{gather*}
+
+					for some $\alpha, \delta > 0$.
+
+				\item Estimate the distribution function $d_{T(f)}$ at $\alpha$ using the sublinearity of $T$ and the splitting obtained in \textbf{a.}.
+				\item Estimate $\left\|T(f)\right\|_{L^p}^p$ using the representation (see \cite[5]{grafakos:fourier:2014})
+
+					\begin{equation*}
+						\left\| f \right\|_{L^p}^p = p\int_{0}^\infty \alpha^{p - 1}d_f(\alpha)d\lambda(\alpha)
+					\end{equation*}
+			\end{enumerate}
+		\item \underline{$p_1 = \infty$.}
+			\begin{enumerate}[label = \textbf{\alph*.}]
+				\item Using the same splitting as in part \textbf{(i.)} of the function $f$, we show that $\mu(\{\left| T(f_1)\right| > \alpha/2\}) = 0$.
+				\item Estimate the distribution function $d_{T(f_0)}$ at $\alpha$.
+				\item Estimate $\|T(f)\|_{L^p}^p$ as in \textbf{(i.)} part \textbf{c.}.
+			\end{enumerate}
+	\end{enumerate}
+	
+
+	\end{proof}
 \end{document}
