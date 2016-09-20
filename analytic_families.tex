@@ -145,6 +145,14 @@ This lemma is inspired by a lemma originally proposed by I.I.Hirschman. I will s
 	and we are done.
 \end{proof}
 
+\begin{lemma}
+	Let $0 < \tau_0 < \pi$. Then 
+
+	\begin{equation*}
+		\frac{1}{\left| \cos(\theta/2) \right|^{\tau_0/\pi}}\frac{1}{\left| \sin(\theta/2) \right|^{\tau_0/\pi}} \in L^1[-\pi,\pi]
+	\end{equation*}
+\end{lemma}
+
 \subsubsection{The Lemma}
 Recall, that a real-valued function $f$, defined on a topological space $X$, is said to be \emph{upper semicontinuous} at a point $a \in X$, if for each $k > f(a)$ there is a neighbourhood $V$ of $a$ such that $k > f(x)$ for each $x \in V$.
 
@@ -171,28 +179,11 @@ Recall, that a real-valued function $f$, defined on a topological space $X$, is 
 	\label{est:admissible}
 \end{gather}
 
-	for $1/(2e - 1) \leqslant \rho$. Since $0 < \tau_0 < \pi$, inequality (\ref{est:admissible}) asserts, that $\log \vert F(h(\zeta))$ is bounded from above by an integrable function of $\theta$, independently of $\rho \geqslant 1/(2e - 1)$. Set $R := 1/(2e - 1)$ and consider the function
-	 
-\begin{gather*}
-	\begin{aligned}
-		H(\rho e^{i\theta}):= \begin{cases}
-			\log \left| F(h(Re^{i\theta}))\right| & \rho = R,\\
-			\displaystyle \frac{1}{2\pi} \int_{-\pi}^\pi \log\left| F(h(Re^{i\varphi}))\right| \frac{R^2 - \rho^2}{R^2 - 2R\rho \cos(\theta - \varphi) + \rho^2} d\lambda(\varphi) & 0 \leqslant \rho < R
-	\end{cases}
-	\end{aligned}
-\end{gather*}
+	for $1/(2e - 1) \leqslant \rho$. Since $0 < \tau_0 < \pi$, inequality (\ref{est:admissible}) asserts, that $\log \vert F(h(\zeta))$ is bounded from above by an integrable function of $\theta$, independently of $\rho \geqslant 1/(2e - 1)$. Let $R:= 1/(2e - 1)$. By the maximum principle for subharmonic functions we have, that 
 
-Then $H$ is continuous for $\vert z \vert \leqslant R$ and harmonic for $\vert z \vert < R$ (see \cite[234--235]{rudin:rc_analysis:1987}). Since $\log\vert F(h(Re^{i\theta}))\vert = H(Re^{i\theta})$ is continuous on the circle with radius $R$, by \cite[336]{rudin:rc_analysis:1987} we have
-
-\begin{equation*}
-	\begin{aligned}
-		\log\left| F(h(\rho e^{i\theta}))\right| &\leqslant \frac{1}{2\pi} \int_{-\pi}^\pi \log\left| F(h(Re^{i\varphi}))\right| \frac{R^2 - \rho^2}{R^2 - 2R\rho\cos(\theta - \varphi) + \rho^2} d\lambda(\varphi)\\
-		&\leqslant \frac{Ae^{\tau_0/\pi}}{2\pi}\int_{-\pi}^\pi\frac{1}{\left| \cos(\varphi/2) \right|^{\tau_0/\pi}}\frac{1}{\left| \sin(\varphi/2) \right|^{\tau_0/\pi}}\frac{R^2 - \rho^2}{R^2 - 2R\rho\cos(\theta - \varphi) + \rho^2} d\lambda(\varphi)
-	\end{aligned}
-\end{equation*}
-
-for $0 \leqslant \rho < R$. Using 
-
+	\begin{equation}
+		\log \vert F(h(\zeta)) \vert \leqslant \sup\left\{ \log \vert F(h(Re^{i\theta})) : -\pi \leqslant \theta \leqslant \pi\vert \right\}
+	\end{equation}
 \begin{equation*}
 	\frac{R - \rho}{R + \rho} \leqslant \frac{R^2 - \rho^2}{R^2 - 2R\rho\cos(\theta - \varphi) + \rho^2} \leqslant \frac{R + \rho}{R - \rho}
 \end{equation*}
@@ -444,23 +435,23 @@ Now we are able to write down the theorem.
 		F(z) := \int_Y T_z(f_z)g_z d\nu	
 	\end{equation}
 
-	Observe, that $\left| a^{P(z)}_j\right| \leqslant a_j^{p/p_0 + p/p_1}$ and $\left| b^{Q(z)}_k\right| \leqslant b_k^{q'/q'_0 + q'/q'_1}$ for $z \in \overline{S}$. Hence
+	We have
 
 	\begin{gather*}
 		\begin{aligned}
 			\log \left| F(z) \right| &= \log \left| \sum_{j = 1}^n\sum_{k = 1}^m a^{P(z)}_j b_j^{Q(z)} e^{i\alpha_j} e^{i\beta_k} \int_YT_z(\chi_{A_j})(y)\chi_{B_k}(y)d\nu(y)\right|\\
-			&\leqslant  \log \left( \sum_{j = 1}^n\sum_{k = 1}^m a_j^{p/p_0 + p/p_1} b_k^{q'/q'_0 + q'/q'_1} \left|\int_{B_k} T_z(\chi_{A_j}) d\nu\right|\right)\\
-			&\leqslant \log\left( \sum_{j = 1}^n\sum_{k = 1}^m a_j^{p/p_0 + p/p_1} b_k^{q'/q'_0 + q'/q'_1} e^{c(A_j,B_k)e^{\tau_0 \left| \Im z\right|}} \right)\\
-			&\leqslant  \log\left( \sum_{j = 1}^n\sum_{k = 1}^m e^{\left|\log\left(a_j^{p/p_0 + p/p_1} b_k^{q'/q'_0 + q'/q'_1}\right)\right| + c(A_j,B_k)e^{\tau_0 \left| \Im z\right|}} \right)\\
-			&\leqslant \log\left( mn e^{\sum_{j = 1}^n\sum_{k = 1}^m\log\left(a_j^{p/p_0 + p/p_1} b_k^{q'/q'_0 + q'/q'_1}\right) + c(A_j,B_k)e^{\tau_0 \left| \Im z\right|}} \right)\\
-			&= \log\left( mn \right) + \sum_{j = 1}^n\sum_{k = 1}^m\left|\log\left(a_j^{p/p_0 + p/p_1} b_k^{q'/q'_0 + q'/q'_1}\right)\right| + c(A_j,B_k)e^{\tau_0 \left| \Im z\right|}
+			&\leqslant  \log \left[ \sum_{j = 1}^n\sum_{k = 1}^m \max\left\{1,a_j^{p/p_0 + p/p_1}\right\} \max\left\{1,b_k^{q'/q'_0 + q'/q'_1}\right\} \left|\int_{B_k} T_z(\chi_{A_j}) d\nu\right|\right]\\
+		&\leqslant \log\left[ \sum_{j = 1}^n\sum_{k = 1}^m \left( 1 + a_j\right)^{p/p_0 + p/p_1} \left(1 + b_k\right)^{q'/q'_0 + q'/q'_1} e^{c(A_j,B_k)e^{\tau_0 \left| \Im z\right|}} \right]\\
+	&\leqslant  \log\left[ \sum_{j = 1}^n\sum_{k = 1}^m e^{\log\left(\left( 1 + a_j\right)^{p/p_0 + p/p_1}\left( 1 + b_k\right)^{q'/q'_0 + q'/q'_1}\right) + c(A_j,B_k)e^{\tau_0 \left| \Im z\right|}} \right]\\
+	&\leqslant \log\left[ mn e^{\sum_{j = 1}^n\sum_{k = 1}^m\log\left(\left( 1 + a_j\right)^{p/p_0 + p/p_1} \left(1 + b_k\right)^{q'/q'_0 + q'/q'_1}\right) + c(A_j,B_k)e^{\tau_0 \left| \Im z\right|}} \right]\\
+			&= \log\left( mn \right) + \sum_{j = 1}^n\sum_{k = 1}^m\log\left(\left(1 + a_j\right)^{p/p_0 + p/p_1}\left(1 +  b_k\right)^{q'/q'_0 + q'/q'_1}\right) + c(A_j,B_k)e^{\tau_0 \left| \Im z\right|}
 		\end{aligned}
 	\end{gather*}
 
-	Since $\tau_0 \in (0,\pi)$ and thus $e^{\tau_0 \left| \Im z\right|} > 1$, $F$ satisfies the hypotheses of the extension of Hadamard's three lines lemma (\ref{lem:EHTL}) with 
+	Since $\tau_0 \in (0,\pi)$ and thus $e^{\tau_0 \left| \Im z\right|} \geqslant 1$, $F$ satisfies the hypotheses of the extension of Hadamard's three lines lemma (\ref{lem:EHTL}) with 
 
 		\begin{equation*}
-		A =  \log\left( mn \right) + \sum_{j = 1}^n\sum_{k = 1}^m\left( \frac{p}{p_0} + \frac{p}{p_1}\right)\left|\log\left(a_j\right)\right| + \left( \frac{q'}{q'_0} + \frac{q'}{q'_1} \right) \left|\log\left( b_k\right)\right| + c(A_j,B_k)
+		A =  \log\left( mn \right) + \sum_{j = 1}^n\sum_{k = 1}^m\left( \frac{p}{p_0} + \frac{p}{p_1}\right)\log\left(1 + a_j\right) + \left( \frac{q'}{q'_0} + \frac{q'}{q'_1} \right) \log\left( 1 + b_k\right) + c(A_j,B_k)
 	\end{equation*}
 
 	The same calculations as in the proof of the Riesz-Thorin interpolation theorem (\ref{thm:Riesz_Thorin}) yields for $y \in \mathbb{R}$

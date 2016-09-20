@@ -145,8 +145,19 @@ whenever $0 < \theta < 1$, $t \in \mathbb{R}$.
 	\caption{Sketch of the rectangle $\overline{R}$.}
 	\label{fig:Hadamards_three_lines_lemma}
 \end{figure}
+Suppose $\left(p_0,q_0\right),\left( p_1,q_1 \right) \in [1,\infty]\times [1,\infty]$ are two pairs of indices and assume that 
 
-For two measure spaces $\left( X,\mu \right)$, $\left( Y,\nu \right)$ let $\Sigma_X$ and $\Sigma_Y$ denote the set of all finitely simple functions on $X$, $Y$ respectively. The proof uses the following theorem found in \cite[189]{folland:real_analysis:1999}.
+\begin{equation*}
+	\left\|T(f)\right\|_{L^{q_0}} \leqslant M_0\left\|f\right\|_{L^{p_0}} \qquad \left\|T(f)\right\|_{L^{q_1}} \leqslant M_1\left\|f\right\|_{L^{p_1}}
+\end{equation*}
+
+where $T$ is a linear operator. Does this imply that
+
+\begin{equation*}
+	\left\| T(f)\right\|_{L^q} \leqslant M \left\| f\right\|_{L^p}
+\end{equation*}
+
+for other pairs $\left( p,q \right) \in [1,\infty]$? We shall investigate this question in the next theorem, but first we need to establish some terminology. For two measure spaces $\left( X,\mu \right)$, $\left( Y,\nu \right)$ let $\Sigma_X$ and $\Sigma_Y$ denote the set of all finitely simple functions on $X$, $Y$ respectively. The proof uses the following theorem found in \cite[189]{folland:real_analysis:1999}.
 
 \begin{theorem*}
 	Let $p$, $q$ be conjugate exponents. Suppose that $g$ is a measurable function on $X$ such that $fg \in L^1$ for all $f \in \Sigma_X$, and 
@@ -190,7 +201,7 @@ For two measure spaces $\left( X,\mu \right)$, $\left( Y,\nu \right)$ let $\Sigm
 	f :\equiv \sum_{j = 1}^n a_j e^{i\alpha_j}\chi_{A_j} \in \Sigma_X \qquad g :\equiv \sum_{k = 1}^m b_k e^{i\beta_k}\chi_{B_k} \in \Sigma_Y
 \end{equation*}
 
-where $a_j, b_k > 0$ and $\alpha_j, \beta_k \in \mathbb{R}$ for every $j = 1,\hdots,n$, $k = 1,\hdots,m$ such that $\left\| g\right\|_{L^{q'}} \neq 0$ (recall $q' := q/\left( q - 1 \right)$). Define
+where $f$ and $g$ are given by its standard representation neglecting the zero coefficients, i.e. $a_j,b_k \neq 0$ for any $j = 1,\dots,n$, $k = 1,\dots,m$, and the complex coefficients are represented in polar form, i.e. $-\pi < \alpha_j,\beta_k \leqslant \pi$ for any $j = 1,\dots,n$, $k = 1,\dots,m$, and so, that $\left\| g\right\|_{L^{q'}} \neq 0$ (recall $q' := q/\left( q - 1 \right)$). Define
 
 \begin{equation*}
 	P(z) := \frac{p}{p_0}(1 - z) + \frac{p}{p_1}z \qquad Q(z) := \frac{q'}{q'_0}(1 - z) + \frac{q'}{q'_1}z
@@ -495,7 +506,5 @@ for any $f \in \Sigma_X$.
 				\item Estimate $\|T(f)\|_{L^p}^p$ as in \textbf{(i.)} part \textbf{c.}.
 			\end{enumerate}
 	\end{enumerate}
-	
-
 	\end{proof}
 \end{document}
