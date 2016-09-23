@@ -8,7 +8,27 @@
 
 \maketitle
 
+%Remake Tikz-picture
+%\tikzset{external/force remake}
+
 \addtocounter{section}{1}
+
+Suppose $\left(p_0,q_0\right),\left( p_1,q_1 \right) \in [1,\infty]\times [1,\infty]$ are two pairs of indices and assume that the estimates 
+
+\begin{equation*}
+	\left\|T(f)\right\|_{L^{q_0}} \leqslant M_0\left\|f\right\|_{L^{p_0}} \qquad \left\|T(f)\right\|_{L^{q_1}} \leqslant M_1\left\|f\right\|_{L^{p_1}}
+\end{equation*}
+
+holds where $T$ is an apropriate operator. Does this imply that
+
+\begin{equation*}
+	\left\| T(f)\right\|_{L^q} \leqslant M \left\| f\right\|_{L^p}
+\end{equation*}
+
+for other pairs $\left( p,q \right) \in [1,\infty]$? Those and similar questions will be answered by a tool called \emph{interpolation}, in our case interpolation of $L^p$ spaces. Using interpolation it is possible to reduce difficult estimates to endpoint estimates and so interpolation can (but not always does) simplify matters. To give one of numerous applications of interpolation is a quick proof of \emph{Young's inequality for convolutions} \textup{\cite[22--23]{grafakos:fourier:2014}}. There is not \emph{the} interpolation theorem, merely a family of theorems which can be 
+roughly divided into two main categories: \emph{real} and \emph{complex} interpolation methods. Real methods use so called \emph{cut-off} functions to divide the functions in the domain of the operator $T$ into a bounded and unbounded part and then to establish bounds on each of those parts. However, Complex interpolation theorems are based upon standard results in complex analysis and are more restrictive on the operator $T$ in question but yield more natural bounds (even continuous estimates) and will therefore be considered in this task. First we need a rigorous idea of what apropriate operator means in the context of Lebesgue spaces.
+
+\vspace{2mm}
 
 \begin{mdframed}
 	\begin{definition}
@@ -30,24 +50,12 @@
 
 \vspace{2mm}
 
-Suppose $\left(p_0,q_0\right),\left( p_1,q_1 \right) \in [1,\infty]\times [1,\infty]$ are two pairs of indices and assume that 
-
-\begin{equation*}
-	\left\|T(f)\right\|_{L^{q_0}} \leqslant M_0\left\|f\right\|_{L^{p_0}} \qquad \left\|T(f)\right\|_{L^{q_1}} \leqslant M_1\left\|f\right\|_{L^{p_1}}
-\end{equation*}
-
-where $T$ is a linear operator. Does this imply that
-
-\begin{equation*}
-	\left\| T(f)\right\|_{L^q} \leqslant M \left\| f\right\|_{L^p}
-\end{equation*}
-
-for other pairs $\left( p,q \right) \in [1,\infty]$? We shall investigate this question in the next theorem, but first we need to establish some terminology. For two measure spaces $\left( X,\mu \right)$, $\left( Y,\nu \right)$ let $\Sigma_X$ and $\Sigma_Y$ denote the set of all finitely simple functions on $X$, $Y$ respectively. 
+For two measure spaces $\left( X,\mu \right)$, $\left( Y,\nu \right)$ let $\Sigma_X$ and $\Sigma_Y$ denote the set of all finitely simple functions on $X$, $Y$ respectively. 
 
 \vspace{2mm}
 
 \begin{mdframed}
-	\begin{theorem}\emph{(Riesz-Thorin Interpolation Theorem)}
+	\begin{theorem}\emph{(Riesz-Thorin interpolation theorem)}
 		Suppose that $(X,\mu)$, $(Y,\nu)$ are measure spaces and $1 \leqslant p_0,p_1,q_0,q_1 \leqslant \infty$. If $q_0 = q_1 = \infty$, suppose also that $\nu$ is semifinite. Let $T$ be a linear operator defined on $\Sigma_X$ and taking values in the set of measurable functions on $Y$, such that
 
 		\begin{equation}
@@ -65,7 +73,7 @@ for other pairs $\left( p,q \right) \in [1,\infty]$? We shall investigate this q
 		for all $f \in \Sigma_X$, where
 
 		\begin{equation*}
-			\frac{1}{p} = \frac{1 - \theta}{p_0} + \frac{\theta}{p_1} \qquad \frac{1}{q} = \frac{1 - \theta}{q_0} + \frac{\theta}{q_1}.
+			\frac{1}{p} = \frac{1 - \theta}{p_0} + \frac{\theta}{p_1} \quad \text{and} \quad \frac{1}{q} = \frac{1 - \theta}{q_0} + \frac{\theta}{q_1}.
 		\end{equation*}
 		\label{thm:Riesz_Thorin}
 	\end{theorem}
@@ -90,6 +98,23 @@ The proof of Hadamard's three lines lemma heavily relies on a restatement of the
 		Let $F$ be a holomorphic function in the strip $S := \{z \in \mathbb{C}: 0 < \Re z < 1\}$, continuous and bounded on $\overline{S}$, such that $\left| F(z)\right| \leqslant B_0$ when $\Re z = 0$ and $\left| F(z) \right| \leqslant B_1$ when $\Re z = 1$, for some $0 < B_0,B_1 < \infty$. Then $\left| F(z) \right| \leqslant B_0^{1 - \theta}B_1^\theta$ when $\Re z = \theta$, for any $0 < \theta < 1$.
 	\end{lemma}
 \end{mdframed}
+
+\begin{figure}[h!tb]
+	\centering
+	\begin{tikzpicture}
+		\draw [line width = .5mm] (0,-3.5)--(0,3.5);
+		\draw [line width = .5mm] (1,-3.5)--(1,3.5);
+		\draw [line width = .5mm] (4,-3.5)--(4,3.5);
+		\draw (-1,0)--(5,0);
+		\fill [pattern = adjusted lines, pattern color = black, line width = .2mm] (0,-3.5) rectangle (4,3.5);
+		\node (0) at (-.25,-.25) {$0$};
+		\node (1) at (4.25,-.25) {$1$};
+		\node (T) at (1.25,-.25) {$\theta$};
+		\node (RR) at (4.7,3) {$\mathbb{R} \times \mathbb{R}$};
+	\end{tikzpicture}	
+	\caption{Sketch of the setting of Hadamard's three lines lemma.}
+	\label{fig:Hadamards_three_lines_lemma}
+\end{figure}
 
 \begin{proof}
 For $z \in \overline{S}$ define 
@@ -168,39 +193,35 @@ for every $z \in R$. Therefore $\left| G_n(z) \right| \leqslant 1$ on $\overline
 whenever $0 < \theta < 1$, $t \in \mathbb{R}$.
 \end{proof}
 
-%Remake Tikz-picture
-%\tikzset{external/force remake}
-
 \begin{figure}[h!tb]
 	\centering
 	\begin{tikzpicture}
-		\draw (0,-5)--(0,5);
-		\draw (4,-5)--(4,5);
+		\draw (0,-3.5)--(0,3.5);
+		\draw (4,-3.5)--(4,3.5);
 		\draw (-1,0)--(5,0);
-		\draw [pattern = adjusted lines, pattern color = black, line width = .4mm] (0,-4) rectangle (4,4);
+		\draw [pattern = adjusted lines, pattern color = black, line width = .5mm] (0,-2.5) rectangle (4,2.5);
 		\node (0) at (-.25,-.25) {$0$};
 		\node (1) at (4.25,-.25) {$1$};
-		\node (R) at (.5,3.2) {$\overline{R}$};
-		\node (Cn) at (-.5,4) {$C(n)$};
-		\node (-Cn) at (-.65,-4) {$-C(n)$};
-		\node (R2) at (4.5,4.5) {$\mathbb{R}^2$};
+		\node (R) at (.5,2) {$\overline{R}$};
+		\node (Cn) at (-.5,2.5) {$C(n)$};
+		\node (-Cn) at (-.65,-2.5) {$-C(n)$};
+		\node (RR) at (4.7,3) {$\mathbb{R} \times \mathbb{R}$};
 	\end{tikzpicture}	
 	\caption{Sketch of the rectangle $\overline{R}$.}
-	\label{fig:Hadamards_three_lines_lemma}
+	\label{fig:Hadamards_three_lines_lemma_proof}
 \end{figure}
 
 \begin{proof}
 	The idea is to bound the quantity (see \cite[189]{folland:real_analysis:1999})
 	
 	\begin{equation*}
-		M_q\left( T(f) \right) = \sup\left\{ \left| \int_Y T(f)g d\nu\right| : g \in \Sigma_Y, \left\| g\right\|_{L^{q'}} = 1\right\} < \infty
+		M_q\left( T(f) \right) = \sup\left\{ \left| \int_Y T(f)g \d \nu\right| : g \in \Sigma_Y, \left\| g\right\|_{L^{q'}} = 1\right\} < \infty
 	\end{equation*}
 
-	appropriately.\\
-	If either $\theta = 0$ or $\theta = 1$, the estimate (\ref{est:boundTf}) follows directly from the hypotheses (\ref{hyp:Lq0Lq1}) on $T$. Thus we may assume \underline{$0 < \theta < 1$}. Furthermore, if $f \in \Sigma_X$, $\left\| f \right\|_{L^p} = 0$, then $f = 0$ $\mu$-a.e. and either one of the hypotheses on $T$ in (\ref{hyp:Lq0Lq1}) implies $T(f) = 0$ $\mu$-a.e. and thus the estimate (\ref{est:boundTf}) holds trivially. Therefore we can assume \underline{$\left\| f\right\|_{L^p} \neq 0$}. Fix 
+	appropriately. If either $\theta = 0$ or $\theta = 1$, the estimate (\ref{est:boundTf}) follows directly from the hypotheses (\ref{hyp:Lq0Lq1}) on $T$. Thus we may assume \underline{$0 < \theta < 1$}. Furthermore, if $f \in \Sigma_X$, $\left\| f \right\|_{L^p} = 0$, then $f = 0$ $\mu$-a.e. and either one of the hypotheses on $T$ in (\ref{hyp:Lq0Lq1}) implies $T(f) = 0$ $\mu$-a.e. and thus the estimate (\ref{est:boundTf}) holds trivially. Therefore we can assume \underline{$\left\| f\right\|_{L^p} \neq 0$}. Fix $f \in \Sigma_X$, $g \in \Sigma_Y$ with representation
 	
 \begin{equation*}
-	f :\equiv \sum_{j = 1}^n a_j e^{i\alpha_j}\chi_{A_j} \in \Sigma_X \qquad g :\equiv \sum_{k = 1}^m b_k e^{i\beta_k}\chi_{B_k} \in \Sigma_Y
+	f = \sum_{j = 1}^n a_j e^{i\alpha_j}\chi_{A_j} \qquad g = \sum_{k = 1}^m b_k e^{i\beta_k}\chi_{B_k}
 \end{equation*}
 
 where $a_j,b_k \neq 0$, $\alpha_j,\beta_k \in \mathbb{R}$ for any $j = 1,\dots,n$, $k = 1,\dots,m$, the sets $A_j$ and $B_k$ are each pairwise disjoint with $\mu\left( A_j \right),\nu\left( B_k \right) < \infty$ and so, that $\left\| g\right\|_{L^{q'}} \neq 0$ (recall $q' := q/\left( q - 1 \right)$). Define
@@ -212,28 +233,28 @@ where $a_j,b_k \neq 0$, $\alpha_j,\beta_k \in \mathbb{R}$ for any $j = 1,\dots,n
 for $z \in \mathbb{C}$ (since either $p = \infty$ implies $p_0 = p_1 = \infty$ or $q = 1$ implies $q_0 = q_1 = 1$, the functions $P$, $Q$ are well-defined). Further let
 				
 \begin{equation}
-	f_z :\equiv \sum_{j = 1}^n a^{P(z)}_j e^{i\alpha_j}\chi_{A_j} \qquad g_z :\equiv  \sum_{k = 1}^m b^{Q(z)}_k e^{i\beta_k}\chi_{B_k}
+	f_z := \sum_{j = 1}^n a^{P(z)}_j e^{i\alpha_j}\chi_{A_j} \qquad g_z :=  \sum_{k = 1}^m b^{Q(z)}_k e^{i\beta_k}\chi_{B_k}
 	\label{def:fzgz}
 \end{equation}
 				
 and 
 
 \begin{equation}
-	F(z) := \int_Y T(f_z)g_zd\nu
+	F(z) := \int_Y T(f_z)g_z\d\nu
 	\label{eq:def_F}
 \end{equation}
 
 By the linearity of the operator $T$ we have
 
 \begin{gather*}
-	F(z) = \sum_{j = 1}^n\sum_{k = 1}^m a^{P(z)}_j b_k^{Q(z)} e^{i\alpha_j} e^{i\beta_k} \int_YT(\chi_{A_j})\chi_{B_k}d\nu
+	F(z) = \sum_{j = 1}^n\sum_{k = 1}^m a^{P(z)}_j b_k^{Q(z)} e^{i\alpha_j} e^{i\beta_k} \int_YT(\chi_{A_j})\chi_{B_k}\d\nu
 \end{gather*}
 
 and by H\"older's inequality
 
 \begin{gather}
 	\begin{aligned}
-		\left| \int_YT(\chi_{A_j})\chi_{B_k}d\nu \right| &\leqslant \int_Y\left| T(\chi_{A_j})\chi_{B_k}\right|d\nu\\
+		\left| \int_YT(\chi_{A_j})\chi_{B_k}\d\nu \right| &\leqslant \int_Y\left| T(\chi_{A_j})\chi_{B_k}\right|\d\nu\\
 		&= \left\|T(\chi_{A_j})\chi_{B_k}\right\|_{L^1}\\
 		&\leqslant \left\|T(\chi_{A_j})\right\|_{L^{q_0}} \left\|\chi_{B_k}\right\|_{L^{q_0'}}\\
 		&\leqslant M_0\left\|\chi_{A_j}\right\|_{L^{p_0}} \left\|\chi_{B_k}\right\|_{L^{q_0'}}\\
@@ -246,8 +267,8 @@ for each $j = 1,\hdots,n$, $k = 1,\hdots,m$ (even in the cases where either $p_0
 
 \begin{gather*}
 	\begin{aligned}
-		\left\|f_{it}\right\|_{L^{p_0}} &= \left(\sum_{j = 1}^n \int_{A_j} \left| f_{it} \right|^{p_0} d\mu + \int_{X \setminus \bigcup_{j = 1}^n A_j} \left| f_{it} \right|^{p_0} d\mu\right)^{1/p_0}\\
-		&= \left(\sum_{j = 1}^n \left| a_j^{P(it)} e^{i\alpha_j}\right|^{p_0}\int_X \chi_{A_j} d\mu\right)^{1/p_0}\\
+		\left\|f_{it}\right\|_{L^{p_0}} &= \left(\sum_{j = 1}^n \int_{A_j} \left| f_{it} \right|^{p_0} \d\mu + \int_{X \setminus \bigcup_{j = 1}^n A_j} \left| f_{it} \right|^{p_0} \d\mu\right)^{1/p_0}\\
+		&= \left(\sum_{j = 1}^n \left| a_j^{P(it)} e^{i\alpha_j}\right|^{p_0}\int_X \chi_{A_j} \d\mu\right)^{1/p_0}\\
 		&= \left(\sum_{j = 1}^n a_j^{p_0\Re P(it)}\mu\left(A_j\right)\right)^{1/p_0}\\
 		&= \left(\sum_{j = 1}^n a_j^p\mu\left(A_j\right)\right)^{p/\left(p_0p\right)}\\
 		&= \left\|f\right\|_{L^p}^{p/p_0} 
@@ -258,7 +279,7 @@ holds. Let $p_0 = \infty$, $p \neq \infty$. Then $\left\|f_{it}\right\|_{L^{\inf
 
 \begin{gather*}
 	\begin{aligned}
-		\left| F(it) \right| &\leqslant \int_Y \left| T(f_{it})g_{it}\right| d\nu\\
+		\left| F(it) \right| &\leqslant \int_Y \left| T(f_{it})g_{it}\right| \d\nu\\
 		&= \left\|T(f_{it}) g_{it}\right\|_{L^1}\\
 		&\leqslant \left\|T(f_{it})\right\|_{L^{q_0}}\left\|g_{it}\right\|_{L^{q_0'}}\\
 		&\leqslant M_0 \left\|f_{it}\right\|_{L^{p_0}} \left\|g_{it}\right\|_{L^{q_0'}}\\
@@ -282,7 +303,7 @@ Further by estimate (\ref{est:constant_F})
 
 \begin{equation*}
 	\begin{aligned}
-		\left| F(z)\right| &\leqslant \sum_{j = 1}^n\sum_{k = 1}^m \left| a_j^{P(z)}\right| \left| b_k^{Q(z)}\right| \left| \int_Y T(\chi_{A_j})\chi_{B_k} d\nu\right|\\
+		\left| F(z)\right| &\leqslant \sum_{j = 1}^n\sum_{k = 1}^m \left| a_j^{P(z)}\right| \left| b_k^{Q(z)}\right| \left| \int_Y T(\chi_{A_j})\chi_{B_k} \d\nu\right|\\
 		&\leqslant M_0\sum_{j = 1}^n\sum_{k = 1}^m a_j^{\Re P(z)}b_k^{\Re Q(z)}\mu\left(A_j\right)^{1/p_0}\nu\left(B_k\right)^{1/q_0'}\\
 		&\leqslant M_0\sum_{j = 1}^n\sum_{k = 1}^m \max\left\{ 1, a_j^{p/p_0 + p/p_1}\right\} \max\left\{1,b_k^{q'/q_0' + q'/q_1'}\right\}\mu\left(A_j\right)^{1/p_0}\nu\left(B_k\right)^{1/q_0'}
 	\end{aligned}
@@ -292,8 +313,8 @@ Further by estimate (\ref{est:constant_F})
 Hence $F$ is bounded on $\overline{S}$ by some constant depending on $f$ and $g$ only. By 
 
 \begin{multline*}
-	F'(z) = \sum_{j = 1}^n\sum_{k = 1}^m a^{P(z)}_j\log \left( a_j \right) \left( \frac{p}{p_1} - \frac{p}{p_0} \right) b_k^{Q(z)}e^{i\alpha_j} e^{i\beta_k} \int_YT(\chi_{A_j})\chi_{B_k}d\nu \\
-	+  \sum_{j = 1}^n\sum_{k = 1}^m a^{P(z)}_jb_k^{Q(z)}\log\left( b_k \right)\left( \frac{q'}{q'_1} - \frac{q'}{q'_0} \right)e^{i\alpha_j} e^{i\beta_k} \int_YT(\chi_{A_j})\chi_{B_k}d\nu 
+	F'(z) = \sum_{j = 1}^n\sum_{k = 1}^m a^{P(z)}_j\log \left( a_j \right) \left( \frac{p}{p_1} - \frac{p}{p_0} \right) b_k^{Q(z)}e^{i\alpha_j} e^{i\beta_k} \int_YT(\chi_{A_j})\chi_{B_k}\d\nu \\
+	+  \sum_{j = 1}^n\sum_{k = 1}^m a^{P(z)}_jb_k^{Q(z)}\log\left( b_k \right)\left( \frac{q'}{q'_1} - \frac{q'}{q'_0} \right)e^{i\alpha_j} e^{i\beta_k} \int_YT(\chi_{A_j})\chi_{B_k}\d\nu 
 \end{multline*}
 
 	it is immediate, that $F$ is an entire function and thus holomorphic in $S$ and continuous on $\overline{S}$. Therefore, Hadamard's three lines lemma yields
@@ -324,7 +345,7 @@ whenever $q_0 \neq \infty$ or $q_1 \neq \infty$. Therefore, the set $\left\{ T(f
 
 \begin{gather*}
 	\begin{aligned}
-		M_q\left( T(f) \right) &= \sup\left\{\left| \int_Y T(f)gd\nu\right| : g \in \Sigma_Y, \left\|g\right\|_{L^{q'}} = 1\right\}\\
+		M_q\left( T(f) \right) &= \sup\left\{\left| \int_Y T(f)g\d\nu\right| : g \in \Sigma_Y, \left\|g\right\|_{L^{q'}} = 1\right\}\\
 		&=  \sup\left\{\left| F(\theta)\right| : g \in \Sigma_Y, \left\|g\right\|_{L^{q'}} = 1\right\}\\
 		&\leqslant M_0^{1 - \theta}M_1^\theta \left\|f\right\|_{L^p}\\
 	\end{aligned}
@@ -359,19 +380,19 @@ for any $f \in \Sigma_X$.
 		Let $(X,\mu)$, $(Y,\nu)$ be two $\sigma$-finite measure spaces and for every $z \in \overline{S}$ we have an associated linear operator $T_z$ which is defined on $\Sigma_X$ and taking values in the space of all measurable functions on $Y$ such that
 
 		\begin{equation*}
-			\int_Y \left| T_z(\chi_A)\chi_B \right| d\nu < \infty
+			\int_Y \left| T_z(\chi_A)\chi_B \right| \d\nu < \infty
 		\end{equation*}
 
 		whenever $\mu(A),\nu(B) < \infty$. The family $\left( T_z \right)_{z \in \overline{S}}$ is said to be \emph{analytic} if for all $f \in \Sigma_X$, $g \in \Sigma_Y$ we have that
 
 		\begin{equation*}
-			z \mapsto \int_Y T_z(f)gd\nu
+			z \mapsto \int_Y T_z(f)g\d\nu
 		\end{equation*}
 
 		is analytic in $S$ and continuous on $\overline{S}$. Further, an analytic family $\left( T_z \right)_{z \in \overline{S}}$ is called of \emph{admissible growth}, if there is a constant $\tau_0 \in (0,\pi)$, such that for all $f \in \Sigma_X$, $g \in \Sigma_Y$ a constant $0 < C(f,g) < \infty$ exists with
 
 			\begin{equation*}
-				\log\left| \int_Y T_z(f) g d\nu\right| \leqslant C(f,g)e^{\tau_0\left| \Im z\right|}
+				\log\left| \int_Y T_z(f) g \d\nu\right| \leqslant C(f,g)e^{\tau_0\left| \Im z\right|}
 			\end{equation*}
 
 			for all $z \in \overline{S}$.
@@ -381,7 +402,7 @@ for any $f \in \Sigma_X$.
 \vspace{2mm}
 
 \begin{mdframed}
-	\begin{theorem}\emph{(Stein's Theorem on Interpolation of Analytic Families of Operators)}
+	\begin{theorem}\emph{(Stein-Weiss theorem on interpolation of analytic families of operators)}
 		Let $\left( T_z \right)_{z \in \overline{S}}$ be an analytic family of admissible growth, $1 \leqslant p_0,p_1,q_0,q_1 \leqslant \infty$ and suppose that $M_0$, $M_1$ are positive functions on the real line such that for some $\tau_1 \in (0,\pi)$
 
 			\begin{equation}
@@ -397,19 +418,19 @@ for any $f \in \Sigma_X$.
 			Further suppose that for all $f \in \Sigma_X$ and $y \in \mathbb{R}$ we have
 
 			\begin{equation}
-				\|T_{iy}(f)\|_{L^{q_0}} \leqslant M_0(y)\|f\|_{L^{p_0}} \qquad \|T_{1 + iy}(f)\|_{L^{q_1}} \leqslant M_1(y)\|f\|_{L^{p_1}} 
+				\left\|T_{iy}(f)\right\|_{L^{q_0}} \leqslant M_0(y)\left\|f\right\|_{L^{p_0}} \qquad \left\|T_{1 + iy}(f)\right\|_{L^{q_1}} \leqslant M_1(y)\left\|f\right\|_{L^{p_1}} 
 			\end{equation}
 
 			Then for all $f \in \Sigma_X$ we have
 
 			\begin{equation*}
-				\|T_\theta(f)\|_{L^q} \leqslant M(\theta)\|f\|_{L^p}
+				\left\|T_\theta(f)\right\|_{L^q} \leqslant M(\theta)\left\|f\right\|_{L^p}
 			\end{equation*}
 
 			where for $0 < x < 1$
 
 			\begin{equation*}
-				M(x) = \exp\left( \frac{\sin(\pi x)}{2} \int_{-\infty}^\infty \left[ \frac{\log M_0(t)}{\cosh(\pi t) - \cos(\pi x)} + \frac{\log M_1(t)}{\cosh(\pi t) + \cos(\pi x)}\right] d\lambda(t) \right)
+				M(x) = \exp\left( \frac{\sin(\pi x)}{2} \int_{-\infty}^\infty \left[ \frac{\log M_0(t)}{\cosh(\pi t) - \cos(\pi x)} + \frac{\log M_1(t)}{\cosh(\pi t) + \cos(\pi x)}\right] \d\lambda(t) \right)
 			\end{equation*}
 	\end{theorem}
 \end{mdframed}
@@ -421,7 +442,7 @@ for any $f \in \Sigma_X$.
 		Let $F$ be a holomorphic function in the strip $S := \{z \in \mathbb{C}: 0 < \mathrm{Re}z < 1\}$ and continuous on $\overline{S}$, such that for some $0 < A < \infty$ and $\tau_0 \in (0,\pi)$ we have $\log \vert F(z)\vert \leqslant A e^{\tau_0 \vert \Im z \vert}$ for every $z \in \overline{S}$. Then
 
 			\begin{equation*}
-				\vert F(z) \vert \leqslant \exp\left( \frac{\sin(\pi x)}{2} \int_{-\infty}^\infty \left[ \frac{\log \vert F(it + iy)\vert}{\cosh(\pi t) - \cos(\pi x)} + \frac{\log \vert F(1 + it + iy)\vert}{\cosh(\pi t) + \cos(\pi x)} \right] d\lambda(t)\right)
+				\left\| F(z) \right\| \leqslant \exp\left( \frac{\sin(\pi x)}{2} \int_{-\infty}^\infty \left[ \frac{\log \vert F(it + iy)\vert}{\cosh(\pi t) - \cos(\pi x)} + \frac{\log \vert F(1 + it + iy)\vert}{\cosh(\pi t) + \cos(\pi x)} \right] \d\lambda(t)\right)
 			\end{equation*}
 
 			whenever $z := x + iy \in S$.

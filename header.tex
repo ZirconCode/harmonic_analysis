@@ -154,7 +154,7 @@
 \newcommand{\todown}{%
   \mathrel{\nonscript\mkern-1.2mu\mkern1.2mu{\downarrow}}%
 }
-
+\AtBeginDocument{\renewcommand*\d{\mathop{}\!\mathrm{d}}}
 \renewcommand{\Re}{\operatorname{Re}}
 \renewcommand{\Im}{\operatorname{Im}}
 \DeclareMathOperator\Log{Log}
