@@ -30,7 +30,50 @@
 
 \vspace{2mm}
 
-A complex-valued function $f$ is said to be \emph{holomorphic} in $\Omega \subseteq \mathbb{C}$ open, if $f'(z)$ exists for any $z \in \Omega$. By a region we shall mean a nonempty connected open subset of the complex plane. The proof of Hadamard's three lines lemma heavily relies on a restatement of the maximum modulus theorem (see \cite[212]{rudin:rc_analysis:1987}) found in \cite[253]{rudin:rc_analysis:1987}.
+Suppose $\left(p_0,q_0\right),\left( p_1,q_1 \right) \in [1,\infty]\times [1,\infty]$ are two pairs of indices and assume that 
+
+\begin{equation*}
+	\left\|T(f)\right\|_{L^{q_0}} \leqslant M_0\left\|f\right\|_{L^{p_0}} \qquad \left\|T(f)\right\|_{L^{q_1}} \leqslant M_1\left\|f\right\|_{L^{p_1}}
+\end{equation*}
+
+where $T$ is a linear operator. Does this imply that
+
+\begin{equation*}
+	\left\| T(f)\right\|_{L^q} \leqslant M \left\| f\right\|_{L^p}
+\end{equation*}
+
+for other pairs $\left( p,q \right) \in [1,\infty]$? We shall investigate this question in the next theorem, but first we need to establish some terminology. For two measure spaces $\left( X,\mu \right)$, $\left( Y,\nu \right)$ let $\Sigma_X$ and $\Sigma_Y$ denote the set of all finitely simple functions on $X$, $Y$ respectively. 
+
+\vspace{2mm}
+
+\begin{mdframed}
+	\begin{theorem}\emph{(Riesz-Thorin Interpolation Theorem)}
+		Suppose that $(X,\mu)$, $(Y,\nu)$ are measure spaces and $1 \leqslant p_0,p_1,q_0,q_1 \leqslant \infty$. If $q_0 = q_1 = \infty$, suppose also that $\nu$ is semifinite. Let $T$ be a linear operator defined on $\Sigma_X$ and taking values in the set of measurable functions on $Y$, such that
+
+		\begin{equation}
+			\left\|T(f)\right\|_{L^{q_0}} \leqslant M_0\left\|f\right\|_{L^{p_0}} \qquad \left\|T(f)\right\|_{L^{q_1}} \leqslant M_1\left\|f\right\|_{L^{p_1}}
+			\label{hyp:Lq0Lq1}
+		\end{equation}
+
+		for all $f \in \Sigma_X$ and $0 < M_0,M_1 < \infty$. Then for all $0 \leqslant \theta \leqslant 1$ we have
+
+		\begin{equation}
+			\left\|T(f)\right\|_{L^q} \leqslant M_0^{1 - \theta}M_1^\theta\left\|f\right\|_{L^p}
+			\label{est:boundTf}
+		\end{equation}
+
+		for all $f \in \Sigma_X$, where
+
+		\begin{equation*}
+			\frac{1}{p} = \frac{1 - \theta}{p_0} + \frac{\theta}{p_1} \qquad \frac{1}{q} = \frac{1 - \theta}{q_0} + \frac{\theta}{q_1}.
+		\end{equation*}
+		\label{thm:Riesz_Thorin}
+	\end{theorem}
+\end{mdframed}
+
+\vspace{2mm}
+
+The proof of Hadamard's three lines lemma heavily relies on a restatement of the maximum modulus theorem (see \cite[212]{rudin:rc_analysis:1987}) found in \cite[253]{rudin:rc_analysis:1987}. To do so we have to first establish some common terminology. A complex-valued function $f$ is said to be \emph{holomorphic} in $\Omega \subseteq \mathbb{C}$ open, if $f'(z)$ exists for any $z \in \Omega$. By a region we shall mean a nonempty connected open subset of the complex plane. The restatement reads as follows.
 
 \begin{theorem*}
 	Let $\Omega \subseteq \mathbb{C}$ be a bounded region and $f$ be a continuous function on $\overline{\Omega}$ which is holomorphic in $\Omega$. Then 
@@ -145,63 +188,22 @@ whenever $0 < \theta < 1$, $t \in \mathbb{R}$.
 	\caption{Sketch of the rectangle $\overline{R}$.}
 	\label{fig:Hadamards_three_lines_lemma}
 \end{figure}
-Suppose $\left(p_0,q_0\right),\left( p_1,q_1 \right) \in [1,\infty]\times [1,\infty]$ are two pairs of indices and assume that 
-
-\begin{equation*}
-	\left\|T(f)\right\|_{L^{q_0}} \leqslant M_0\left\|f\right\|_{L^{p_0}} \qquad \left\|T(f)\right\|_{L^{q_1}} \leqslant M_1\left\|f\right\|_{L^{p_1}}
-\end{equation*}
-
-where $T$ is a linear operator. Does this imply that
-
-\begin{equation*}
-	\left\| T(f)\right\|_{L^q} \leqslant M \left\| f\right\|_{L^p}
-\end{equation*}
-
-for other pairs $\left( p,q \right) \in [1,\infty]$? We shall investigate this question in the next theorem, but first we need to establish some terminology. For two measure spaces $\left( X,\mu \right)$, $\left( Y,\nu \right)$ let $\Sigma_X$ and $\Sigma_Y$ denote the set of all finitely simple functions on $X$, $Y$ respectively. The proof uses the following theorem found in \cite[189]{folland:real_analysis:1999}.
-
-\begin{theorem*}
-	Let $p$, $q$ be conjugate exponents. Suppose that $g$ is a measurable function on $X$ such that $fg \in L^1$ for all $f \in \Sigma_X$, and 
-
-	\begin{equation*}
-		M_q(g) = \sup\left\{ \left| \int_X fg d\mu\right| : f \in \Sigma_X, \left\| f\right\|_{L^p} = 1\right\} < \infty
-	\end{equation*}
-
-	Also, suppose either that $\left\{ g \neq 0\right\}$ is $\sigma$-finite or that $\mu$ is semifinite. Then $g \in L^q$ and $M_q(g) = \left\| g\right\|_{L^q}$.
-\end{theorem*}
-
-\begin{mdframed}
-	\begin{theorem}\emph{(Riesz-Thorin Interpolation Theorem)}
-		Suppose that $(X,\mu)$, $(Y,\nu)$ are measure spaces and $1 \leqslant p_0,p_1,q_0,q_1 \leqslant \infty$. If $q_0 = q_1 = \infty$, suppose also that $\nu$ is semifinite. Let $T$ be a linear operator defined on $\Sigma_X$ and taking values in the set of measurable functions on $Y$, such that
-
-		\begin{equation}
-			\left\|T(f)\right\|_{L^{q_0}} \leqslant M_0\left\|f\right\|_{L^{p_0}} \qquad \left\|T(f)\right\|_{L^{q_1}} \leqslant M_1\left\|f\right\|_{L^{p_1}}
-			\label{hyp:Lq0Lq1}
-		\end{equation}
-
-		for all $f \in \Sigma_X$ and $0 < M_0,M_1 < \infty$. Then for all $0 \leqslant \theta \leqslant 1$ we have
-
-		\begin{equation}
-			\left\|T(f)\right\|_{L^q} \leqslant M_0^{1 - \theta}M_1^\theta\left\|f\right\|_{L^p}
-			\label{est:boundTf}
-		\end{equation}
-
-		for all $f \in \Sigma_X$, where
-
-		\begin{equation*}
-			\frac{1}{p} = \frac{1 - \theta}{p_0} + \frac{\theta}{p_1} \qquad \frac{1}{q} = \frac{1 - \theta}{q_0} + \frac{\theta}{q_1}
-		\end{equation*}
-		\label{thm:Riesz_Thorin}
-	\end{theorem}
-\end{mdframed}
 
 \begin{proof}
+	The idea is to bound the quantity (see \cite[189]{folland:real_analysis:1999})
+	
+	\begin{equation*}
+		M_q\left( T(f) \right) = \sup\left\{ \left| \int_Y T(f)g d\nu\right| : g \in \Sigma_Y, \left\| g\right\|_{L^{q'}} = 1\right\} < \infty
+	\end{equation*}
+
+	appropriately.\\
 	If either $\theta = 0$ or $\theta = 1$, the estimate (\ref{est:boundTf}) follows directly from the hypotheses (\ref{hyp:Lq0Lq1}) on $T$. Thus we may assume \underline{$0 < \theta < 1$}. Furthermore, if $f \in \Sigma_X$, $\left\| f \right\|_{L^p} = 0$, then $f = 0$ $\mu$-a.e. and either one of the hypotheses on $T$ in (\ref{hyp:Lq0Lq1}) implies $T(f) = 0$ $\mu$-a.e. and thus the estimate (\ref{est:boundTf}) holds trivially. Therefore we can assume \underline{$\left\| f\right\|_{L^p} \neq 0$}. Fix 
 	
 \begin{equation*}
 	f :\equiv \sum_{j = 1}^n a_j e^{i\alpha_j}\chi_{A_j} \in \Sigma_X \qquad g :\equiv \sum_{k = 1}^m b_k e^{i\beta_k}\chi_{B_k} \in \Sigma_Y
 \end{equation*}
 
-where $f$ and $g$ are given by its standard representation neglecting the zero coefficients, i.e. $a_j,b_k \neq 0$ for any $j = 1,\dots,n$, $k = 1,\dots,m$, and the complex coefficients are represented in polar form, i.e. $-\pi < \alpha_j,\beta_k \leqslant \pi$ for any $j = 1,\dots,n$, $k = 1,\dots,m$, and so, that $\left\| g\right\|_{L^{q'}} \neq 0$ (recall $q' := q/\left( q - 1 \right)$). Define
+where $a_j,b_k \neq 0$, $\alpha_j,\beta_k \in \mathbb{R}$ for any $j = 1,\dots,n$, $k = 1,\dots,m$, the sets $A_j$ and $B_k$ are each pairwise disjoint with $\mu\left( A_j \right),\nu\left( B_k \right) < \infty$ and so, that $\left\| g\right\|_{L^{q'}} \neq 0$ (recall $q' := q/\left( q - 1 \right)$). Define
 
 \begin{equation*}
 	P(z) := \frac{p}{p_0}(1 - z) + \frac{p}{p_1}z \qquad Q(z) := \frac{q'}{q'_0}(1 - z) + \frac{q'}{q'_1}z
@@ -353,29 +355,6 @@ for any $f \in \Sigma_X$.
 \end{remark*}
 
 \begin{mdframed}
-	\begin{lemma}\emph{(Hadamard's three lines lemma, extension)}
-		Let $F$ be a holomorphic function in the strip $S := \{z \in \mathbb{C}: 0 < \mathrm{Re}z < 1\}$ and continuous on $\overline{S}$, such that for some $0 < A < \infty$ and $\tau_0 \in (0,\pi)$ we have $\log \vert F(z)\vert \leqslant A e^{\tau_0 \vert \Im z \vert}$ for every $z \in \overline{S}$. Then
-
-			\begin{equation*}
-				\vert F(z) \vert \leqslant \exp\left( \frac{\sin(\pi x)}{2} \int_{-\infty}^\infty \left[ \frac{\log \vert F(it + iy)\vert}{\cosh(\pi t) - \cos(\pi x)} + \frac{\log \vert F(1 + it + iy)\vert}{\cosh(\pi t) + \cos(\pi x)} \right] d\lambda(t)\right)
-			\end{equation*}
-
-			whenever $z := x + iy \in S$.
-			\label{lem:EHTL}
-	\end{lemma}
-\end{mdframed}
-
-\begin{proof}
-	Only a sketch will be given here. The core of the proof is the exploitation of the mapping
-
-	\begin{equation*}
-		h(z) := \frac{1}{\pi i}\log\left( i\frac{1 + z}{1 - z} \right)
-	\end{equation*}
-
-	defined for $z \in \left\{ z \in \mathbb{C} : \left| z\right| \leqslant 1\right\} \setminus \{\pm 1\}$ together with an application of a version of Fatou's lemma on the Poisson integral formula and the maximum principle for subharmonic functions. However, the main part of the proof is spent on a nice representation of the result obtained by the previous technical part. A change of variable is used to get the stated form of the upper bound.
-\end{proof}
-
-\begin{mdframed}
 	\begin{definition}\emph{(Analytic family, admissible growth)}
 		Let $(X,\mu)$, $(Y,\nu)$ be two $\sigma$-finite measure spaces and for every $z \in \overline{S}$ we have an associated linear operator $T_z$ which is defined on $\Sigma_X$ and taking values in the space of all measurable functions on $Y$ such that
 
@@ -435,6 +414,21 @@ for any $f \in \Sigma_X$.
 	\end{theorem}
 \end{mdframed}
 
+\vspace{2mm}
+
+\begin{mdframed}
+	\begin{lemma}\emph{(Hadamard's three lines lemma, extension)}
+		Let $F$ be a holomorphic function in the strip $S := \{z \in \mathbb{C}: 0 < \mathrm{Re}z < 1\}$ and continuous on $\overline{S}$, such that for some $0 < A < \infty$ and $\tau_0 \in (0,\pi)$ we have $\log \vert F(z)\vert \leqslant A e^{\tau_0 \vert \Im z \vert}$ for every $z \in \overline{S}$. Then
+
+			\begin{equation*}
+				\vert F(z) \vert \leqslant \exp\left( \frac{\sin(\pi x)}{2} \int_{-\infty}^\infty \left[ \frac{\log \vert F(it + iy)\vert}{\cosh(\pi t) - \cos(\pi x)} + \frac{\log \vert F(1 + it + iy)\vert}{\cosh(\pi t) + \cos(\pi x)} \right] d\lambda(t)\right)
+			\end{equation*}
+
+			whenever $z := x + iy \in S$.
+			\label{lem:EHTL}
+	\end{lemma}
+\end{mdframed}
+
 \begin{proof}
 	As mentioned in \href{https://terrytao.wordpress.com/2011/05/03/steins-interpolation-theorem/}{Terence Tao's blog}, Fefferman once noted, that this proof can be obtained from that of the Riesz-Thorin theorem \ref{thm:Riesz_Thorin} simply by adding a single letter of the alphabet. Indeed, this is truly the case, since all hypotheses made in the theorem incorporate the same proof as in the Riesz-Thorin theorem. The only heavy and technical part is the proof of the extension of Hadamard's three lines lemma \ref{lem:EHTL}.
 \end{proof}
@@ -468,43 +462,4 @@ for any $f \in \Sigma_X$.
 		\end{equation}
 	\end{theorem}
 \end{mdframed}
-
-\begin{proof}
-	Again, only a sketch of the proof will be given here. The proof has the following structure.
-
-	\begin{enumerate}[label = \textbf{(\roman*.)}]
-		\item \underline{$p_1 < \infty$.}
-			\begin{enumerate}[label = \textbf{\alph*.}]
-				\item Split $f$ using the two cut-off functions
-
-					\begin{gather*}
-						\begin{aligned}
-							f_0(x;\alpha,\delta) &:= \begin{cases}
-							f(x), & \left| f(x) \right| > \delta \alpha,\\
-							0, & \left| f(x)\right| \leqslant \delta \alpha.
-						\end{cases}\\
-						f_1(x;\alpha,\delta) &:= \begin{cases}
-							f(x), & \left| f(x) \right| \leqslant \delta \alpha,\\
-							0, & \left| f(x)\right > \delta \alpha.
-						\end{cases}
-					\end{aligned}
-					\end{gather*}
-
-					for some $\alpha, \delta > 0$.
-
-				\item Estimate the distribution function $d_{T(f)}$ at $\alpha$ using the sublinearity of $T$ and the splitting obtained in \textbf{a.}.
-				\item Estimate $\left\|T(f)\right\|_{L^p}^p$ using the representation (see \cite[5]{grafakos:fourier:2014})
-
-					\begin{equation*}
-						\left\| f \right\|_{L^p}^p = p\int_{0}^\infty \alpha^{p - 1}d_f(\alpha)d\lambda(\alpha)
-					\end{equation*}
-			\end{enumerate}
-		\item \underline{$p_1 = \infty$.}
-			\begin{enumerate}[label = \textbf{\alph*.}]
-				\item Using the same splitting as in part \textbf{(i.)} of the function $f$, we show that $\mu(\{\left| T(f_1)\right| > \alpha/2\}) = 0$.
-				\item Estimate the distribution function $d_{T(f_0)}$ at $\alpha$.
-				\item Estimate $\|T(f)\|_{L^p}^p$ as in \textbf{(i.)} part \textbf{c.}.
-			\end{enumerate}
-	\end{enumerate}
-	\end{proof}
 \end{document}
