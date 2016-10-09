@@ -67,6 +67,20 @@ This lemma is inspired by a lemma originally proposed by I.I.Hirschman. I will s
 \end{proof}
 
 \begin{lemma}
+	Let $\Omega \subseteq \mathbb{C}$ and $f: \Omega \to \mathbb{C}$ continuous. Then $\log\left| f\right|$ is upper semicontinuous on $\Omega$.
+\end{lemma}
+
+\begin{proof}
+	Let us consider the topological space $\left( \Omega, \left| \cdot\right| \right)$. Let $z_0 \in \Omega$ so such that $f(z_0) \neq 0$. Then $\log\left| f\right|$ is continuous as a composition of continuous functions. If $M > f(z_0)$, then $M - \log\left| f(z_0)\right| > 0$ and thus there exists some $\delta > 0$ such that $z \in B_\delta(z_0)$ implies $\left| \log\left| f(z)\right| - \log\left| f(z_0)\right|\right| < M- \log\left| f(z_0)\right|$ or equivalently $\log\left| f(z)\right| < M$. Now let $z_0 \in \Omega$ so such that $f(z_0) = 0$. By convention $\log\left| f(z_0)\right| = -\infty$. Furthermore, $M > \log\left| f(z_0)\right|$ for any $M \in \mathbb{R}$. The condition $M > \log\left| f(z)\right|$ is equivalent to $\left| f(z)\right| < e^M$. But $f(z_0) = 0$ and so
+
+	\begin{equation*}
+		\left| f(z)\right| = \left| f(z) - f(z_0)\right|< e^M
+	\end{equation*}
+
+	Since $f$ is continuous at $z_0$ and $e^M > 0$ we find $\delta > 0$ such that $z \in B_\delta(z_0)$ implies $\left| f(z)\right| < e^M$.
+\end{proof}
+
+\begin{lemma}
 	The mapping $\Phi: \mathbb{R} \rightarrow (-\pi,0)$ defined by $\Phi(t) := -i\log\left( h^{-1}(it) \right)$ is a $C^1$-Diffeomorphism with $\vert D\Phi(t)\vert = \pi \sech(\pi t)$. In an analogous manner we have that $\Psi: \mathbb{R} \rightarrow (0,\pi)$, $\Psi(t) := -i\log\left( h^{-1}(1 + it) \right)$ is a $C^1$-Diffeomorphism with $\vert D\Psi(t)\vert = \pi \sech(\pi t)$.
 	\label{lem:change_of_variables}
 \end{lemma}
