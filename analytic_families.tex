@@ -27,7 +27,7 @@ This lemma is inspired by a lemma originally proposed by I.I.Hirschman. I will s
 		\label{eq:rep_lft}
 	\end{equation}
 
-	Hence $\Im f(z) \geqslant 0$ on $\overline{D}\setminus \{\pm 1\}$. Stipulating $x := 1 - y$ for $y$ satisfying $y^2 < y$, we get
+	Hence $\Im f(z) \geq 0$ on $\overline{D}\setminus \{\pm 1\}$. Stipulating $x := 1 - y$ for $y$ satisfying $y^2 < y$, we get
 
 	\begin{equation*}
 		\lim\limits_{y^2 < y, y \rightarrow 0^+} \Im f(z) = \lim\limits_{y^2 < y, y \rightarrow 0^+} \left( \frac{1}{y} - 1 \right) = \infty
@@ -52,7 +52,7 @@ This lemma is inspired by a lemma originally proposed by I.I.Hirschman. I will s
 		f^{-1}(z) = \frac{z - i}{z + i}
 	\end{equation*}
 
-	Therefore $f$ maps $\overline{D}\setminus \{\pm 1\}$ onto the punctured closed upper half plane $\{z \in \mathbb{C} : \Im z \geqslant 0\} \setminus \{0\}$. The preceeding logarithm maps this upper half plane onto the strip $\{z \in \mathbb{C} : 0 \leqslant \Im z \leqslant \pi \}$. Thus $h(z)$ maps $\overline{D}\setminus \{\pm 1\}$ onto the strip $\overline{S}$. By
+	Therefore $f$ maps $\overline{D}\setminus \{\pm 1\}$ onto the punctured closed upper half plane $\{z \in \mathbb{C} : \Im z \geq 0\} \setminus \{0\}$. The preceeding logarithm maps this upper half plane onto the strip $\{z \in \mathbb{C} : 0 \leq \Im z \leq \pi \}$. Thus $h(z)$ maps $\overline{D}\setminus \{\pm 1\}$ onto the strip $\overline{S}$. By
 
 \begin{equation}
 	h'(z) = \frac{2}{\pi i} \frac{1}{1 - z}
@@ -64,6 +64,41 @@ This lemma is inspired by a lemma originally proposed by I.I.Hirschman. I will s
 	\begin{equation*}
 		h^{-1}(z) = \frac{e^{\pi iz} - i}{e^{\pi i z} + i}
 	\end{equation*}
+\end{proof}
+
+\begin{lemma*}
+	Let $X$ be a topological space. A function $f: X \to [-\infty,\infty)$ is upper semicontinuous if and only if for all $\alpha \in \mathbb{R}$ the set $f^{-1}\left( [-\infty,\alpha )\right)$ is open.
+\end{lemma*}
+
+\begin{proof}
+	Suppose $f: X \to [-\infty,\infty)$ is upper semicontinuous and fix $\alpha \in \mathbb{R}$. We have that 
+
+		\begin{equation*}
+			f^{-1}\left( [-\infty,\alpha )\right) = \bigcup_{x \in \left\{ f < \alpha \right\}} U_x
+		\end{equation*}
+
+		\noindent where $U_x$ is a neighbourhood of $x$ such that $f < \alpha$ for any element in $U_x$. Conversly, for $x_0 \in X$ and $\alpha > f(x_0)$ we have that $f^{-1}\left( [-\infty,\alpha )\right)$ is open and $x_0 \in f^{-1}\left( [-\infty,\alpha )\right)$.
+\end{proof}
+
+\begin{lemma*}
+	An upper semiconutinuous function $f: X \to [-\infty,\infty)$ on a compact topological space attains its supremum. In particular it is bounded from above.
+		\label{lem:semicom}
+\end{lemma*}
+
+\begin{proof}
+	 $f(X)$ is bounded from above since otherwise
+
+	\begin{equation*}
+		X = \bigcup_{n \in \mathbb{N}} f^{-1}\left( [-\infty,n)\right)
+	\end{equation*}
+
+	\noindent would not have any finite subcover. Therefore $\sup_{x \in X}f(x)$ exists. Further we have $f(x_0) = \sup_{x \in X}f(x)$ for some $x_0 \in X$ since otherwise
+
+	\begin{equation*}
+		X = \bigcup_{n \in \mathbb{N}} \textstyle f^{-1}\left( [-\infty,\sup_{x \in X}f(x) - 1/n)\right)
+	\end{equation*}
+
+	\noindent would not have any finite subcover.	
 \end{proof}
 
 \begin{lemma}
@@ -100,10 +135,10 @@ This lemma is inspired by a lemma originally proposed by I.I.Hirschman. I will s
 \end{proof}
 
 \begin{lemma}
-	Let $1/(2e - 1) \leqslant \rho < 1$ and $\zeta = \rho e^{i\theta}$. Then
+	Let $1/(2e - 1) \leq \rho < 1$ and $\zeta = \rho e^{i\theta}$. Then
 
 	\begin{equation*}
-		\left| \log \left| \frac{1 + \zeta}{1 - \zeta} \right| \right| \leqslant 1 + \log \frac{1}{\left| \cos(\theta/2) \right|} + \log \frac{1}{\left| \sin(\theta/2) \right|}
+		\left| \log \left| \frac{1 + \zeta}{1 - \zeta} \right| \right| \leq 1 + \log \frac{1}{\left| \cos(\theta/2) \right|} + \log \frac{1}{\left| \sin(\theta/2) \right|}
 	\end{equation*}
 	\label{lem:upper_bound}
 \end{lemma}
@@ -112,30 +147,30 @@ This lemma is inspired by a lemma originally proposed by I.I.Hirschman. I will s
 	This proof is due to Prof. Schlein. We have on the one hand
 
 	\begin{equation*}
-		\left| 1 + \zeta \right| \leqslant 1 + \left| \zeta \right| = 1 + \rho
+		\left| 1 + \zeta \right| \leq 1 + \left| \zeta \right| = 1 + \rho
 	\end{equation*}
 
 	and on the other hand
 
 	\begin{equation*}
-		\left| 1 - \zeta \right| \geqslant \left|\Im\zeta \right| = \rho\left|\sin(\theta)\right|
+		\left| 1 - \zeta \right| \geq \left|\Im\zeta \right| = \rho\left|\sin(\theta)\right|
 	\end{equation*}
 
 	Hence
 	
 	\begin{gather*}
 		\begin{aligned}
-			\log \frac{\left| 1 + \zeta \right|}{\left| 1 - \zeta \right|} &\leqslant \log\frac{1 + \rho}{\rho \left| \sin(\theta)\right|}\\
+			\log \frac{\left| 1 + \zeta \right|}{\left| 1 - \zeta \right|} &\leq \log\frac{1 + \rho}{\rho \left| \sin(\theta)\right|}\\
 			&=  \log\frac{1 + \rho}{2\rho \left| \sin(\theta/2)\right|\left| \cos(\theta/2)\right|}\\
 			&=  \log\frac{1 + \rho}{2\rho}  +  \log \frac{1}{\left| \sin(\theta/2)\right|} +  \log\frac{1}{\left| \cos(\theta/2)\right|}\\
-			&\leqslant  1 + \log \frac{1}{\left| \sin(\theta/2)\right|} + \log \frac{1}{\left| \cos(\theta/2)\right|}	
+			&\leq  1 + \log \frac{1}{\left| \sin(\theta/2)\right|} + \log \frac{1}{\left| \cos(\theta/2)\right|}	
 		\end{aligned}
 	\end{gather*}
 
 	since
 
 	\begin{equation*}
-		\frac{1 + \rho}{2\rho} = \frac{1}{2} + \frac{1}{2\rho} \leqslant e
+		\frac{1 + \rho}{2\rho} = \frac{1}{2} + \frac{1}{2\rho} \leq e
 	\end{equation*}
 
 	Now by
@@ -153,7 +188,7 @@ This lemma is inspired by a lemma originally proposed by I.I.Hirschman. I will s
 	the bound 
 
 	\begin{equation*}
-		-\log \frac{\left| 1 + \zeta \right|}{\left| 1 - \zeta \right|} \leqslant 1 + \log \frac{1}{\left| \sin(\theta/2)\right|} + \log \frac{1}{\left| \cos(\theta/2)\right|}	 
+		-\log \frac{\left| 1 + \zeta \right|}{\left| 1 - \zeta \right|} \leq 1 + \log \frac{1}{\left| \sin(\theta/2)\right|} + \log \frac{1}{\left| \cos(\theta/2)\right|}	 
 	\end{equation*}
 
 	and we are done.
@@ -174,10 +209,10 @@ Recall, that a real-valued function $f$, defined on a topological space $X$, is 
 
 \begin{mdframed}
 	\begin{lemma}\emph{(Hadamard's three lines lemma, extension)}
-		Let $F$ be a holomorphic function in the strip $S := \{z \in \mathbb{C}: 0 < \mathrm{Re}z < 1\}$ and continuous on $\overline{S}$, such that for some $0 < A < \infty$ and $\tau_0 \in (0,\pi)$ we have $\log \vert F(z)\vert \leqslant A e^{\tau_0 \vert \Im z \vert}$ for every $z \in \overline{S}$. Then
+		Let $F$ be a holomorphic function in the strip $S := \{z \in \mathbb{C}: 0 < \mathrm{Re}z < 1\}$ and continuous on $\overline{S}$, such that for some $0 < A < \infty$ and $\tau_0 \in (0,\pi)$ we have $\log \vert F(z)\vert \leq A e^{\tau_0 \vert \Im z \vert}$ for every $z \in \overline{S}$. Then
 
 			\begin{equation*}
-				\vert F(z) \vert \leqslant \exp\left( \frac{\sin(\pi x)}{2} \int_{-\infty}^\infty \left[ \frac{\log \vert F(it + iy)\vert}{\cosh(\pi t) - \cos(\pi x)} + \frac{\log \vert F(1 + it + iy)\vert}{\cosh(\pi t) + \cos(\pi x)} \right] d\lambda(t)\right)
+				\vert F(z) \vert \leq \exp\left( \frac{\sin(\pi x)}{2} \int_{-\infty}^\infty \left[ \frac{\log \vert F(it + iy)\vert}{\cosh(\pi t) - \cos(\pi x)} + \frac{\log \vert F(1 + it + iy)\vert}{\cosh(\pi t) + \cos(\pi x)} \right] \d t\right)
 			\end{equation*}
 
 			whenever $z := x + iy \in S$.
@@ -186,32 +221,63 @@ Recall, that a real-valued function $f$, defined on a topological space $X$, is 
 \end{mdframed}
 
 \begin{proof}
-	We will first proove the case \underline{$y = 0$.} Assume $F$ to be not identically zero (the case where $F$ is identically zero is trivial). Let $h$ be as in lemma (\ref{lem:h}). By composition, $F \circ h$ is holomorphic in $D$ and thus by \cite[336]{rudin:rc_analysis:1987} $\log\vert F \circ h \vert$ is subharmonic in $D$. Let $\zeta = \rho e^{i\theta}$, $0 \leqslant \rho < 1$. Since $\zeta \in D$, we have $0 < \Re h(\zeta) < 1$ and thus the hypothesis on $F$ and lemma (\ref{lem:upper_bound}) yields
+	We will first prove the case \underline{$y = 0$.} Assume $F$ to be not identically zero (the case where $F$ is identically zero is trivial). Let $h$ be as in lemma (\ref{lem:h}) and let $\zeta = \rho e^{i\theta}$, $0 \leq \rho < 1$. Since $\zeta \in D$, we have $0 < \Re h(\zeta) < 1$ and thus the hypothesis on $F$ and lemma (\ref{lem:upper_bound}) yields
 
 \begin{gather}
-	\log \vert F(h(\zeta)) \vert \leqslant Ae^{\frac{\tau_0}{\pi}\left| \log\left| \frac{1 + \zeta}{1 - \zeta}\right|\right|} \leqslant Ae^{\tau_0/\pi}\frac{1}{\left| \cos(\theta/2) \right|^{\tau_0/\pi}}\frac{1}{\left| \sin(\theta/2) \right|^{\tau_0/\pi}}
+	\log \vert F(h(\zeta)) \vert \leq Ae^{\frac{\tau_0}{\pi}\left| \log\left| \frac{1 + \zeta}{1 - \zeta}\right|\right|} \leq Ae^{\tau_0/\pi}\frac{1}{\left| \cos(\theta/2) \right|^{\tau_0/\pi}}\frac{1}{\left| \sin(\theta/2) \right|^{\tau_0/\pi}}
 	\label{est:admissible}
 \end{gather}
 
-	for $1/(2e - 1) \leqslant \rho$. Since $0 < \tau_0 < \pi$, inequality (\ref{est:admissible}) asserts, that $\log \vert F(h(\zeta))$ is bounded from above by an integrable function of $\theta$, independently of $\rho \geqslant 1/(2e - 1)$. Let $R:= 1/(2e - 1)$. By the maximum principle for subharmonic functions we have, that 
+	for $1/(2e - 1) \leq \rho$. Since $0 < \tau_0 < \pi$, inequality (\ref{est:admissible}) asserts, that $\log \vert F(h(\zeta))$ is bounded from above by an integrable function of $\theta$, independently of $\rho \geq 1/(2e - 1)$. Furthermore we have 
 
 	\begin{equation}
-		\log \vert F(h(\zeta)) \vert \leqslant \sup\left\{ \log \vert F(h(Re^{i\theta})) : -\pi \leqslant \theta \leqslant \pi\vert \right\}
+		M := \sup\left\{\log \vert F(h(\zeta))\vert : \zeta \in \overline{B}_{1/\left( 2e - 1 \right)}\right\} < \infty
 	\end{equation}
+
+	\noindent since a upper semicontinuous function on a compact space attains its supremum (see lemma \ref{lem:semicom}). Hence
+
+	\begin{equation}
+		\log\vert F( h( \rho e^{i\theta} ))\vert \leq \max\left\{ M,   Ae^{\tau_0/\pi}\frac{1}{\left| \cos(\theta/2) \right|^{\tau_0/\pi}}\frac{1}{\left| \sin(\theta/2) \right|^{\tau_0/\pi}}\right\} =: g\left( \theta \right)
+	\end{equation}
+
+	\noindent for any $0 \leq \rho < 1$ where $g \in L^1[-\pi,\pi]$. Let $0 \leq \rho < R < 1$ and $a_1,\dots,a_n$ denote the zeros of $F(h(\zeta))$ for $\left\vert \zeta\right\vert < R$ (since $F \circ h$ is holomorphic for $\left\vert \zeta\right\vert < 1$ there are indeed only finitely many ones) multiple zeros being repeated. Then for $F(h(\zeta)) \neq 0$ we have by the \emph{Poisson-Jensen formula} (see \cite[208]{ahlfors:complex_analysis:1979})
+
+	\begin{equation}
+		\log\vert F(h(\zeta))\vert = - \sum_{k = 1}^n \log\left\vert \frac{R^2 - \overline{a}_k\zeta}{R\left( \zeta - a_k \right)}\right\vert	+ \frac{1}{2\pi}\int_{-\pi}^\pi \Re \left[\frac{R e^{it} + \zeta}{R e^{it} - \zeta}\right]\log\vert F(h(R e^{it}))\vert\d t
+	\end{equation}
+
+	Therefore by
+
+	\begin{equation*}
+		\begin{aligned}
+			\Re \left[\frac{R e^{it} + \zeta}{R e^{it} - \zeta}\right] &= \Re \left[\frac{R^2 - 2i \Im \left[ \zeta R e^{-it} \right] - \vert \zeta \vert^2}{R^2 - 2\Re \left[ \zeta R e^{-it} \right] + \vert \zeta \vert^2}\right]\\ &= \Re \left[\frac{R^2 - 2iR\rho \sin\left( \theta - t \right) - \rho^2 }{R^2 - 2R\rho \cos\left( \theta - t \right) + \rho^2}\right]\\
+			&= \frac{R^2 - \rho^2}{R^2 - 2R\rho \cos\left( \theta - t \right) + \rho^2}
+		\end{aligned}
+	\end{equation*}
+
+	\noindent and since $\left( R^2 - \vert a_k \vert^2 \right)\left( R^2 - \rho^2 \right)\geq 0$ for all $k = 1,\dots,n$ implies $\vert R^2 - \overline{a}_k\zeta \vert \geq \vert R\left( \zeta - a_k\right)\vert$ the estimate 
+
+	\begin{equation}
+		\log\vert F(h(\zeta))\vert \leq \frac{1}{2\pi}\int_{-\pi}^\pi \frac{R^2 - \rho^2}{R^2 - 2R\rho \cos\left( \theta - t \right) + \rho^2}\log\vert F(h(R e^{it}))\vert\d t
+	\end{equation}
+
+	\noindent is valid for every $\vert \zeta \vert < R$.
+
+
 \begin{equation*}
-	\frac{R - \rho}{R + \rho} \leqslant \frac{R^2 - \rho^2}{R^2 - 2R\rho\cos(\theta - \varphi) + \rho^2} \leqslant \frac{R + \rho}{R - \rho}
+	\frac{R - \rho}{R + \rho} \leq \frac{R^2 - \rho^2}{R^2 - 2R\rho\cos(\theta - \varphi) + \rho^2} \leq \frac{R + \rho}{R - \rho}
 \end{equation*}
 
-which holds for $0 \leqslant \rho < R < 1$ (see \cite[236]{rudin:rc_analysis:1987}), we conclude
+which holds for $0 \leq \rho < R < 1$ (see \cite[236]{rudin:rc_analysis:1987}), we conclude
 
 \begin{equation*}
-	\log\left| F(h(\rho e^{i\theta}))\right| \leqslant g(\theta)
+	\log\left| F(h(\rho e^{i\theta}))\right| \leq g(\theta)
 \end{equation*}
 
 for all $\rho < 1$, where $g \in L^1[-\pi,\pi]$. Thus for $\rho$ fixed, we have 
 
 \begin{equation*}
-	\log\left| F(h(Re^{i\varphi}))\right| \frac{R^2 - \rho^2}{R^2 - 2R\rho\cos(\theta - \varphi) + \rho^2} \leqslant G(\varphi)
+	\log\left| F(h(Re^{i\varphi}))\right| \frac{R^2 - \rho^2}{R^2 - 2R\rho\cos(\theta - \varphi) + \rho^2} \leq G(\varphi)
 \end{equation*}
 
 where $G \in L^1[-\pi,\pi]$. For $R < 0$ let
@@ -242,13 +308,13 @@ The upper semicontinuity of $\log\left| F \circ h\right|$ (by \cite[360]{bourbak
 using an extension of \cite[359]{bourbaki:general_topology:1995}. The functions $G - f_R$ being non-negative, an application of Fatou's lemma yields
 
 \begin{equation*}
-	\int_{-\pi}^\pi \liminf_{R \toup 1}\left[ G(\varphi) - f_R(\varphi)\right]d\lambda(\varphi) \leqslant \liminf_{R \toup 1} \int_{-\pi}^\pi \left[ G(\varphi) f_R(\varphi)\right]d\lambda(\varphi)
+	\int_{-\pi}^\pi \liminf_{R \toup 1}\left[ G(\varphi) - f_R(\varphi)\right]d\lambda(\varphi) \leq \liminf_{R \toup 1} \int_{-\pi}^\pi \left[ G(\varphi) f_R(\varphi)\right]d\lambda(\varphi)
 \end{equation*}
 
 By \cite[354]{bourbaki:general_topology:1995}, we get
 
 \begin{equation*}
-	-\int_{-\pi}^\pi \limsup_{R \toup 1}\left[ f_R(\varphi) - G(\varphi)\right]d\lambda(\varphi) \leqslant -\limsup_{R \toup 1} \int_{-\pi}^\pi \left[ f_R(\varphi) - G(\varphi)\right]d\lambda(\varphi)
+	-\int_{-\pi}^\pi \limsup_{R \toup 1}\left[ f_R(\varphi) - G(\varphi)\right]d\lambda(\varphi) \leq -\limsup_{R \toup 1} \int_{-\pi}^\pi \left[ f_R(\varphi) - G(\varphi)\right]d\lambda(\varphi)
 \end{equation*}
 
 and thus
@@ -256,21 +322,21 @@ and thus
 \begin{multline*}
 	\limsup_{R \toup 1} \int_{-\pi}^\pi f_R(\varphi) d\lambda(\varphi) - \int_{-\pi}^\pi G(\varphi)d\lambda(\varphi)\\
 	= \limsup_{R \toup 1} \int_{-\pi}^\pi f_R(\varphi) d\lambda(\varphi) + \lim_{R \toup 1}\int_{-\pi}^\pi \left(-G(\varphi)\right)d\lambda(\varphi)\\
-	= \limsup_{R \toup 1}\int_{-\pi}^\pi \left[ f_R(\varphi) - G(\varphi)\right]d\lambda(\varphi)\leqslant \int_{-\pi}^\pi \limsup_{R \toup 1} \left[f_R(\varphi) - G(\varphi)\right]d\lambda(\varphi)\\
-	\leqslant \int_{-\pi}^\pi \limsup_{R \toup 1} f_R(\varphi) d\lambda(\varphi) + \int_{-\pi}^\pi\lim_{R \toup 1} \left(-G(\varphi)\right)d\lambda(\varphi)\\
+	= \limsup_{R \toup 1}\int_{-\pi}^\pi \left[ f_R(\varphi) - G(\varphi)\right]d\lambda(\varphi)\leq \int_{-\pi}^\pi \limsup_{R \toup 1} \left[f_R(\varphi) - G(\varphi)\right]d\lambda(\varphi)\\
+	\leq \int_{-\pi}^\pi \limsup_{R \toup 1} f_R(\varphi) d\lambda(\varphi) + \int_{-\pi}^\pi\lim_{R \toup 1} \left(-G(\varphi)\right)d\lambda(\varphi)\\
 	= \int_{-\pi}^\pi \limsup_{R \toup 1}f_R(\varphi) d\lambda(\varphi) - \int_{-\pi}^\pi G(\varphi)d\lambda(\varphi)
 \end{multline*}
 
 by \cite[358]{bourbaki:general_topology:1995}. Hence
 
 \begin{equation*}
-	\limsup_{R \toup 1} \int_{-\pi}^\pi f_R(\varphi) d\lambda(\varphi) \leqslant\int_{-\pi}^\pi \limsup_{R \toup 1}f_R(\varphi) d\lambda(\varphi)
+	\limsup_{R \toup 1} \int_{-\pi}^\pi f_R(\varphi) d\lambda(\varphi) \leq\int_{-\pi}^\pi \limsup_{R \toup 1}f_R(\varphi) d\lambda(\varphi)
 \end{equation*}
 
 and so 
 
 \begin{equation}
-	\log\left| F( h( \rho e^{i\theta} ) )\right| \leqslant \frac{1}{2\pi} \int_{-\pi}^\pi \log\left| F( h( e^{i\varphi}))\right| \frac{1 - \rho^2}{1 - 2\rho\cos\left( \theta - \varphi \right) + \rho^2}	
+	\log\left| F( h( \rho e^{i\theta} ) )\right| \leq \frac{1}{2\pi} \int_{-\pi}^\pi \log\left| F( h( e^{i\varphi}))\right| \frac{1 - \rho^2}{1 - 2\rho\cos\left( \theta - \varphi \right) + \rho^2}	
 	\label{eq:limit_case}
 \end{equation}
 
@@ -302,7 +368,7 @@ and
 	+ \sin^2(\pi x) + \sin(\pi x)+ i \cos(\pi x) + \sin(\pi x) + 1 = 2 + 2\sin(\pi x)
 \end{multline*}
 
-	From equality (\ref{eq:radius_angle}) we deduce $\rho = \frac{\cos(\pi x)}{1 + \sin(\pi x)}$, $\theta = \frac{\pi}{2}$ if $0 < x \leqslant \frac{1}{2}$ and $\rho = -\frac{\cos(\pi x)}{1 + \sin(\pi x)}$, $\theta = \frac{\pi}{2}$ if $\frac{1}{2} \leqslant x < 1$. Let $0 < x \leqslant \frac{1}{2}$. Then we have
+	From equality (\ref{eq:radius_angle}) we deduce $\rho = \frac{\cos(\pi x)}{1 + \sin(\pi x)}$, $\theta = \frac{\pi}{2}$ if $0 < x \leq \frac{1}{2}$ and $\rho = -\frac{\cos(\pi x)}{1 + \sin(\pi x)}$, $\theta = \frac{\pi}{2}$ if $\frac{1}{2} \leq x < 1$. Let $0 < x \leq \frac{1}{2}$. Then we have
 
 \begin{multline*}
 	\frac{1 - \rho^2}{1 - 2\rho\cos(\theta - \varphi) + \rho^2} \\= \frac{1 + 2\sin(\pi x) + \sin^2(\pi x) - \cos^2(\pi x)}{1 + 2\sin(\pi x) + \sin^2(\pi x) + 2\cos(\pi x)\sin(\varphi)(1 + \sin(\pi x)) + \cos^2(\pi x)}\\
@@ -310,7 +376,7 @@ and
 	= \frac{\sin(\pi x)}{1 + \cos(\pi x)\sin(\varphi)}
 \end{multline*}
 
-	since $\cos\left( -\pi/2 - \varphi \right) = -\sin(\varphi)$. That the case $\frac{1}{2} \leqslant x < 1$ yields the same result is due to $\cos(\pi/2 - \varphi) = \sin(\varphi)$. Let $\Phi$ and $\Psi$ be defined as in lemma (\ref{lem:change_of_variables}). We have 
+	since $\cos\left( -\pi/2 - \varphi \right) = -\sin(\varphi)$. That the case $\frac{1}{2} \leq x < 1$ yields the same result is due to $\cos(\pi/2 - \varphi) = \sin(\varphi)$. Let $\Phi$ and $\Psi$ be defined as in lemma (\ref{lem:change_of_variables}). We have 
 				
 \begin{gather*}
 	\begin{aligned}
@@ -361,13 +427,13 @@ Thus the case $y = 0$ is prooven.\\
 The case \underline{$y \neq 0$.} follows easily from the previous one. Fix $y \neq 0$ and define $G(z) := F(z + iy)$ for $z \in \overline{S}$. Then $G$ is a holomorphic function in $S$ and continuous on $\overline{S}$ as a composition of continuous and holomorphic functions. Moreover, the hypothesis on $F$ yields
 
 		\begin{equation}
-			\log \vert G(z) \vert = \log \vert F(z + iy) \vert \leqslant Ae^{\tau \vert \Im z + y\vert} \leqslant Ae^{\tau \vert \Im z \vert}e^{\tau \vert y \vert}
+			\log \vert G(z) \vert = \log \vert F(z + iy) \vert \leq Ae^{\tau \vert \Im z + y\vert} \leq Ae^{\tau \vert \Im z \vert}e^{\tau \vert y \vert}
 		\end{equation}
 
 		for all $z \in \overline{S}$. The previous case yields for $G$ with $A$ replaced by $Ae^{\tau\vert y \vert}$
 
 		\begin{equation}
-			\vert G(x) \vert \leqslant \exp\left( \frac{\sin(\pi x)}{2} \int_{-\infty}^\infty \left[ \frac{\log \vert G(it)\vert}{\cosh(\pi t) - \cos(\pi x)} + \frac{\log \vert G(1 + it)\vert}{\cosh(\pi t) + \cos(\pi x)} \right] d\lambda(t)\right)
+			\vert G(x) \vert \leq \exp\left( \frac{\sin(\pi x)}{2} \int_{-\infty}^\infty \left[ \frac{\log \vert G(it)\vert}{\cosh(\pi t) - \cos(\pi x)} + \frac{\log \vert G(1 + it)\vert}{\cosh(\pi t) + \cos(\pi x)} \right] d\lambda(t)\right)
 		\end{equation}
 
 		Now, observing $G(x) = F(x + iy)$, $G(it) = F(it + iy)$ and $G(1 + it) = F(1 + it + iy)$ yields the desired result.
@@ -395,7 +461,7 @@ Because of the complex nature of the proof of the Riesz-Thorin Interpolation The
 		is analytic on $S$ and continuous on $\overline{S}$. Further, an analytic family $\left( T_z \right)_{z \in \overline{S}}$ is called of \emph{admissible growth}, if there is a constant $\tau_0 \in (0,\pi)$, such that for all $f \in \Sigma_X$, $g \in \Sigma_Y$ a constant $C(f,g)$ exists with
 
 			\begin{equation}
-				\log\left| \int_Y T_z(f) g d\nu\right| \leqslant C(f,g)e^{\tau_0\left| \Im z\right|}
+				\log\left| \int_Y T_z(f) g d\nu\right| \leq C(f,g)e^{\tau_0\left| \Im z\right|}
 			\end{equation}
 
 			for all $z \in \overline{S}$.
@@ -410,7 +476,7 @@ Now we are able to write down the theorem.
 
 \begin{mdframed}
 	\begin{theorem}\emph{(Stein's Theorem on Interpolation of Analytic Families of Operators)}
-		Let $\left( T_z \right)_{z \in \overline{S}}$ be an analytic family of admissible growth, $1 \leqslant p_0,p_1,q_0,q_1 \leqslant \infty$ and suppose that $M_0$, $M_1$ are positive functions on the real line such that for some $\tau_1 \in (0,\pi)$
+		Let $\left( T_z \right)_{z \in \overline{S}}$ be an analytic family of admissible growth, $1 \leq p_0,p_1,q_0,q_1 \leq \infty$ and suppose that $M_0$, $M_1$ are positive functions on the real line such that for some $\tau_1 \in (0,\pi)$
 
 			\begin{equation}
 				\sup\left\{e^{-\tau_1 \vert y \vert} \log M_0(y) : y \in \mathbb{R}\right\} < \infty \qquad \sup\left\{e^{-\tau_1 \vert y \vert} \log M_1(y) : y \in \mathbb{R}\right\} < \infty
@@ -425,13 +491,13 @@ Now we are able to write down the theorem.
 			Further suppose that for all $f \in \Sigma_X$ and $y \in \mathbb{R}$ we have
 
 			\begin{equation}
-				\|T_{iy}(f)\|_{L^{q_0}} \leqslant M_0(y)\|f\|_{L^{p_0}} \qquad \|T_{1 + iy}(f)\|_{L^{q_1}} \leqslant M_1(y)\|f\|_{L^{p_1}} 
+				\|T_{iy}(f)\|_{L^{q_0}} \leq M_0(y)\|f\|_{L^{p_0}} \qquad \|T_{1 + iy}(f)\|_{L^{q_1}} \leq M_1(y)\|f\|_{L^{p_1}} 
 			\end{equation}
 
 			Then for all $f \in \Sigma_X$ we have
 
 			\begin{equation*}
-				\|T_\theta(f)\|_{L^q} \leqslant M(\theta)\|f\|_{L^p}
+				\|T_\theta(f)\|_{L^q} \leq M(\theta)\|f\|_{L^p}
 			\end{equation*}
 
 			where for $0 < x < 1$
@@ -454,15 +520,15 @@ Now we are able to write down the theorem.
 	\begin{gather*}
 		\begin{aligned}
 			\log \left| F(z) \right| &= \log \left| \sum_{j = 1}^n\sum_{k = 1}^m a^{P(z)}_j b_j^{Q(z)} e^{i\alpha_j} e^{i\beta_k} \int_YT_z(\chi_{A_j})(y)\chi_{B_k}(y)d\nu(y)\right|\\
-			&\leqslant  \log \left[ \sum_{j = 1}^n\sum_{k = 1}^m \max\left\{1,a_j^{p/p_0 + p/p_1}\right\} \max\left\{1,b_k^{q'/q'_0 + q'/q'_1}\right\} \left|\int_{B_k} T_z(\chi_{A_j}) d\nu\right|\right]\\
-		&\leqslant \log\left[ \sum_{j = 1}^n\sum_{k = 1}^m \left( 1 + a_j\right)^{p/p_0 + p/p_1} \left(1 + b_k\right)^{q'/q'_0 + q'/q'_1} e^{c(A_j,B_k)e^{\tau_0 \left| \Im z\right|}} \right]\\
-	&\leqslant  \log\left[ \sum_{j = 1}^n\sum_{k = 1}^m e^{\log\left(\left( 1 + a_j\right)^{p/p_0 + p/p_1}\left( 1 + b_k\right)^{q'/q'_0 + q'/q'_1}\right) + c(A_j,B_k)e^{\tau_0 \left| \Im z\right|}} \right]\\
-	&\leqslant \log\left[ mn e^{\sum_{j = 1}^n\sum_{k = 1}^m\log\left(\left( 1 + a_j\right)^{p/p_0 + p/p_1} \left(1 + b_k\right)^{q'/q'_0 + q'/q'_1}\right) + c(A_j,B_k)e^{\tau_0 \left| \Im z\right|}} \right]\\
+			&\leq  \log \left[ \sum_{j = 1}^n\sum_{k = 1}^m \max\left\{1,a_j^{p/p_0 + p/p_1}\right\} \max\left\{1,b_k^{q'/q'_0 + q'/q'_1}\right\} \left|\int_{B_k} T_z(\chi_{A_j}) d\nu\right|\right]\\
+		&\leq \log\left[ \sum_{j = 1}^n\sum_{k = 1}^m \left( 1 + a_j\right)^{p/p_0 + p/p_1} \left(1 + b_k\right)^{q'/q'_0 + q'/q'_1} e^{c(A_j,B_k)e^{\tau_0 \left| \Im z\right|}} \right]\\
+	&\leq  \log\left[ \sum_{j = 1}^n\sum_{k = 1}^m e^{\log\left(\left( 1 + a_j\right)^{p/p_0 + p/p_1}\left( 1 + b_k\right)^{q'/q'_0 + q'/q'_1}\right) + c(A_j,B_k)e^{\tau_0 \left| \Im z\right|}} \right]\\
+	&\leq \log\left[ mn e^{\sum_{j = 1}^n\sum_{k = 1}^m\log\left(\left( 1 + a_j\right)^{p/p_0 + p/p_1} \left(1 + b_k\right)^{q'/q'_0 + q'/q'_1}\right) + c(A_j,B_k)e^{\tau_0 \left| \Im z\right|}} \right]\\
 			&= \log\left( mn \right) + \sum_{j = 1}^n\sum_{k = 1}^m\log\left(\left(1 + a_j\right)^{p/p_0 + p/p_1}\left(1 +  b_k\right)^{q'/q'_0 + q'/q'_1}\right) + c(A_j,B_k)e^{\tau_0 \left| \Im z\right|}
 		\end{aligned}
 	\end{gather*}
 
-	Since $\tau_0 \in (0,\pi)$ and thus $e^{\tau_0 \left| \Im z\right|} \geqslant 1$, $F$ satisfies the hypotheses of the extension of Hadamard's three lines lemma (\ref{lem:EHTL}) with 
+	Since $\tau_0 \in (0,\pi)$ and thus $e^{\tau_0 \left| \Im z\right|} \geq 1$, $F$ satisfies the hypotheses of the extension of Hadamard's three lines lemma (\ref{lem:EHTL}) with 
 
 		\begin{equation*}
 		A =  \log\left( mn \right) + \sum_{j = 1}^n\sum_{k = 1}^m\left( \frac{p}{p_0} + \frac{p}{p_1}\right)\log\left(1 + a_j\right) + \left( \frac{q'}{q'_0} + \frac{q'}{q'_1} \right) \log\left( 1 + b_k\right) + c(A_j,B_k)
@@ -483,19 +549,19 @@ Now we are able to write down the theorem.
 	Further
 
 	\begin{equation*}
-		\left| F(iy)\right| \leqslant \left\| T_{iy}(f_{iy})\right\|_{L^{q_0}} \left\| g_{iy}\right\|_{L^{q'_0}} \leqslant M_0(y) \left\|f_{iy}\right\|_{L^{p_0}}\left\| g_{iy}\right\|_{L^{q_0'}} = M_0(y)
+		\left| F(iy)\right| \leq \left\| T_{iy}(f_{iy})\right\|_{L^{q_0}} \left\| g_{iy}\right\|_{L^{q'_0}} \leq M_0(y) \left\|f_{iy}\right\|_{L^{p_0}}\left\| g_{iy}\right\|_{L^{q_0'}} = M_0(y)
 	\end{equation*}
 
 	and
 
 	\begin{equation*}
-		\left| F(1 + iy)\right| \leqslant \left\| T_{1 + iy}(f_{1 + iy})\right\|_{L^{q_1}} \left\| g_{1 + iy}\right\|_{L^{q'_1}} \leqslant M_1(y) \left\|f_{1 + iy}\right\|_{L^{p_1}}\left\| g_{1 + iy}\right\|_{L^{q_1'}} = M_1(y)
+		\left| F(1 + iy)\right| \leq \left\| T_{1 + iy}(f_{1 + iy})\right\|_{L^{q_1}} \left\| g_{1 + iy}\right\|_{L^{q'_1}} \leq M_1(y) \left\|f_{1 + iy}\right\|_{L^{p_1}}\left\| g_{1 + iy}\right\|_{L^{q_1'}} = M_1(y)
 	\end{equation*}
 
 	by H\"older's inequality and the hypotheses on the analytic family $(T_z)_{z \in \overline{S}}$. Therefore the extension of Hadamard's three lines lemma (\ref{lem:EHTL}) yields
 
 	\begin{equation*}
-		\left| F(x) \right| \leqslant \exp\left( \frac{\sin(\pi x)}{2} \int_{-\infty}^\infty \left[ \frac{\log M_0(t)}{\cosh(\pi t) - \cos(\pi x)} + \frac{\log M_1(t)}{\cosh(\pi t) + \cos(\pi x)}\right] d\lambda(t) \right) = M(x)
+		\left| F(x) \right| \leq \exp\left( \frac{\sin(\pi x)}{2} \int_{-\infty}^\infty \left[ \frac{\log M_0(t)}{\cosh(\pi t) - \cos(\pi x)} + \frac{\log M_1(t)}{\cosh(\pi t) + \cos(\pi x)}\right] d\lambda(t) \right) = M(x)
 	\end{equation*}
 
 	for every $0 < x < 1$. Furthermore observe that
@@ -510,7 +576,7 @@ Now we are able to write down the theorem.
 		\begin{aligned}
 			M_q\left(T_\theta(f)\right) &= \sup\left\{ \left| \int_Y T_\theta(f) g\right| : g \in \Sigma_Y, \left\|g \right\|_{L^{q'}}\right\}\\
 			&= \sup\left\{ \left| F(\theta)\right| : g \in \Sigma_Y, \left\| g \right\|_{L^{q'}}\right\}\\
-			&\leqslant M(\theta)
+			&\leq M(\theta)
 		\end{aligned}
 	\end{gather*}
 
