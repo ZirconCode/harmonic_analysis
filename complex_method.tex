@@ -17,6 +17,7 @@ The proof of the Riesz-Thorin interpolation theorem heavily relies on Hadamard's
 \begin{mdframed}
 	\begin{lemma}\emph{(Hadamard's three lines lemma)}
 		Let $F$ be a holomorphic function in the strip $S := \{z \in \mathbb{C}: 0 < \Re z < 1\}$, continuous and bounded on $\overline{S}$, such that $\left| F(z)\right| \leq B_0$ when $\Re z = 0$ and $\left| F(z) \right| \leq B_1$ when $\Re z = 1$, for some $0 < B_0,B_1 < \infty$. Then $\left| F(z) \right| \leq B_0^{1 - \theta}B_1^\theta$ when $\Re z = \theta$, for any $0 < \theta < 1$.
+		\label{lem:HTL}
 	\end{lemma}
 \end{mdframed}
 
@@ -312,78 +313,76 @@ Hence $F$ is bounded on $\overline{S}$ by some constant depending on $f$ and $g$
 \end{proof}
 
 \begin{remark}
-	A more general version of the Riesz-Thorin interpolation theorem can be found in \textup{\cite[200--202]{folland:real_analysis:1999}}. There, a linear map 
-
-	\begin{equation*}
-		T: L^{p_0} + L^{p_1} \rightarrow L^{q_0} + L^{q_1}
-	\end{equation*}
-
-	\noindent is considered. This follows using a density argument from the current version of the theorem and will not be prooven here.
+	A more general version of the Riesz-Thorin interpolation theorem can be found in \textup{\cite[200--202]{folland:real_analysis:1999}}. There, a linear map $T: L^{p_0} + L^{p_1} \rightarrow L^{q_0} + L^{q_1}$ is considered. This follows using a density argument from the current version of the theorem and will not be prooven here.
 	\label{rem:extension}
 \end{remark}
 
 \begin{remark}
-	Using the previous remark, a standard application of the Riesz-Thorin interpolation theorem is to prove Young's inequality for convolutions \textup{\cite[22--23]{grafakos:fourier:2014}}.
-\end{remark}
+	Using the previous remark, a standard application of the Riesz-Thorin interpolation theorem is to prove Young's inequality for convolutions \textup{\cite[22--23]{grafakos:fourier:2014}}. Let $G$ be a locally compact group and $\lambda$ be a left invariant Haar measure on $G$, furthermore we assume that $G$ is a countable union of compact subsets, hence the pair $\left( G,\lambda \right)$ forms a $\sigma$-finite measure space.
 
-\begin{proof}
-	Fix $g \in L^r(G,\eta)$ and let $T(f) := f \ast g$ be defined on $L^1(G,\eta) + L^{r'}(G,\eta)$. Obviously, $T$ is a linear operator by the linearity of the integral. By Minkowski's integral inequality (see exercise \textbf{1.1.6} \cite[13]{grafakos:fourier:2014}) we get
+\begin{theorem*}\emph{(Young's inequality)}
+	Let $1 \leq p,q,r \leq \infty$ satisfy
 
-	\begin{gather}
-		\begin{aligned}
-			\|T(f)\|_{L^r} &= \left(\int_G \left\vert \int_G f(y)g(y^{-1}x) d\eta(y)\right\vert^r d\eta(x)\right)^{1/r}\\
-			&\leqslant \int_G \left( \int_G \vert f(y) \vert^r \vert g(y^{-1}x) \vert^r d\eta(x)\right)^{1/r} d\eta(y)\\
-			&= \int_G \vert f(y) \vert \left( \int_G \vert g(y^{-1}x) \vert^r d\eta(y^{-1}x) \right)^{1/r} d\eta(y)\\
-			&= \int_G \vert f(y) \vert \left( \int_G \vert g(z) \vert^r d\eta(z) \right)^{1/r} d\eta(y)\\
-			&\leqslant \|f\|_{L^1} \|g\|_{L^r}
-		\end{aligned} 
-	\end{gather}
-
-	for $f \in L^1(g,\mu)$ and $1 \leqslant p < \infty$ (since $(G,\eta)$ is $\sigma$-finite). The case $r = \infty$ follows from
-	
 	\begin{equation}
-		\vert (f \ast g)(x) \vert = \left\vert \int_G f(y)g(y^{-1}x) d\eta(y)\right\vert \leqslant \int_G \vert f(y)\vert \vert g(y^{-1}x)\vert d\eta(y) \leqslant \|g\|_{L^\infty}\|f\|_{L^1}
+		\frac{1}{q} + 1 = \frac{1}{p} + \frac{1}{r}
+		\label{hyp:young}
 	\end{equation}
+
+	Then for all $f \in L^p\left( G \right)$, $g \in L^r\left( G \right)$
+	satisfying $\norm{g}_{L^r} = \norm{\tilde{g}}$ we have $f \ast g$ exists $\lambda$-a.e. and satisfies
+
+	\begin{equation*}
+		\norm{f \ast g}_{L^1} \leq \norm{g}_{L^r} \norm{f}_{L^p}
+	\end{equation*}
+\end{theorem*}
+	
+\begin{proof}
+	Fix $g \in L^r\left( G \right)$ and let $T(f) := f \ast g$ be defined on $L^1\left( G \right) + L^{r'}\left( G \right)$. Obviously, $T$ is a linear operator by the linearity of the integral. By Minkowski's integral inequality (see exercise \textbf{1.1.6} \cite[13]{grafakos:fourier:2014}) we get
+
+	\begin{equation*}
+		\begin{aligned}
+			\|T(f)\|_{L^r} &= \left(\int_G \left\vert \int_G f(y)g(y^{-1}x) d\lambda(y)\right\vert^r d\lambda(x)\right)^{1/r}\\
+			&\leq \int_G \left( \int_G \vert f(y) \vert^r \vert g(y^{-1}x) \vert^r d\lambda(x)\right)^{1/r} d\lambda(y)\\
+			&= \int_G \vert f(y) \vert \left( \int_G \vert g(y^{-1}x) \vert^r d\lambda(y^{-1}x) \right)^{1/r} d\lambda(y)\\
+			&= \int_G \vert f(y) \vert \left( \int_G \vert g(z) \vert^r d\lambda(z) \right)^{1/r} d\lambda(y)\\
+			&\leq \|f\|_{L^1} \|g\|_{L^r}
+		\end{aligned} 
+	\end{equation*}
+
+	for $f \in L^1(g,\mu)$ and $1 \leqslant p < \infty$. The case $r = \infty$ follows from
+	
+	\begin{equation*}
+		\vert (f \ast g)(x) \vert = \left\vert \int_G f(y)g(y^{-1}x) d\lambda(y)\right\vert \leq \int_G \vert f(y)\vert \vert g(y^{-1}x)\vert d\lambda(y) \leq \|g\|_{L^\infty}\|f\|_{L^1}
+	\end{equation*}
 	
 	By stipulating $h(y) := g(y^{-1}x)$ we have 
 
-	\begin{gather}
+	\begin{equation*}
 		\begin{aligned}
-			\vert (f \ast g)(x) \vert &= \left\vert \int_G f(y)g(y^{-1}x) d\eta(y)\right\vert \leqslant \int_G \vert f(y)g(y^{-1}x)\vert d\eta(y)\\
-			&= \|fh\|_{L^1} \leqslant \|f\|_{L^{r'}} \|h\|_{L^r} = \|f\|_{L^{r'}} \|\tilde{g}\|_{L^r} = \|g\|_{L^r} \|f\|_{L^{r'}}
+			\abs{(f \ast g)(x)} &= \left\vert \int_G f(y)g(y^{-1}x) d\lambda(y)\right\vert \leq \int_G \vert f(y)g(y^{-1}x)\vert d\lambda(y)\\
+			&= \|fh\|_{L^1} \leq \|f\|_{L^{r'}} \|h\|_{L^r} = \|f\|_{L^{r'}} \|\tilde{g}\|_{L^r} = \|g\|_{L^r} \|f\|_{L^{r'}}
 		\end{aligned}
-	\end{gather}
+	\end{equation*}
 
-	for $r < \infty$ and $f \in L^{r'}(g,\eta)$, since
+	for $r < \infty$ and $f \in L^{r'}\left( G \right)$, since
 
 	\begin{equation*}
-		\|h\|^r_{L^r} = \int_G \vert g(y^{-1}x)\vert^r d\eta(y) = \int_G \vert\tilde{g}(x^{-1}y)\vert d\eta(y) = \|\tilde{g}\|^r_{L^{r}}
+		\|h\|^r_{L^r} = \int_G \vert g(y^{-1}x)\vert^r d\lambda(y) = \int_G \vert\tilde{g}(x^{-1}y)\vert d\lambda(y) = \|\tilde{g}\|^r_{L^{r}}
 	\end{equation*}
 
 	The Riesz-Thorin interpolation theorem now yields for any $0 < \theta < 1$
 
 	\begin{equation}
-		\|f \ast g\|_{L^q} = \|T(f)\|_{L^q} \leqslant \|g\|_{L^r}^{1 - \theta}\|g\|_{L^r}^{\theta} \|f\|_{L^p} = \|g\|_{L^r}\|f\|_{L^p}
+		\norm{f \ast g}_{L^q} = \norm{T(f)}_{L^q} \leqslant \norm{g}_{L^r}^{1 - \theta}\norm{g}_{L^r}^{\theta} \norm{f}_{L^p} = \norm{g}_{L^r}\norm{f}_{L^p}
 	\end{equation}
 
-	where 
+	\noindent where 
 
 	\begin{equation*}
 		\frac{1}{p} = \frac{1 - \theta}{1} + \frac{\theta}{r'} \qquad \frac{1}{q} = \frac{1 - \theta}{r} + \frac{\theta}{\infty}
 	\end{equation*}
-
-	and by 
-
-	\begin{equation*}
-		\frac{1}{p} = 1 - \frac{\theta}{r} \qquad \frac{1}{q} = \frac{1}{r} - \frac{\theta}{r}
-	\end{equation*}
-
-	we get 
-
-	\begin{equation*}
-			\frac{1}{q} + 1 = \frac{1}{p} + \frac{1}{r}		
-	\end{equation*}
 \end{proof}
+\end{remark}
 
 \begin{remark}
 	The proof would be much shorter if we just used Minkowski's inequality \textup{\cite[21--22]{grafakos:fourier:2014}} instead of Minkowski's integral inequality. However, the proof given here is an alternative version of the one given already for Minkowski's inequality.
