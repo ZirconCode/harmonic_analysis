@@ -203,6 +203,45 @@ This lemma is inspired by a lemma originally proposed by I.I.Hirschman. I will s
 	\end{equation*}
 \end{lemma}
 
+\begin{proof}
+	We use \cite[153--154]{elstrodt:mass:2011}. By the symmetry of the integrand it is enough to consider 
+
+	\begin{equation*}
+		\int_{0}^\pi \frac{1}{\left| \cos(\theta/2) \right|^{\tau_0/\pi}}\frac{1}{\left| \sin(\theta/2) \right|^{\tau_0/\pi}} \d \theta
+	\end{equation*}
+
+	Thus we may perform the splitting 
+	
+	\begin{equation*}
+		\int_{0}^1 \frac{1}{\left| \cos(\theta/2) \right|^{\tau_0/\pi}}\frac{1}{\left| \sin(\theta/2) \right|^{\tau_0/\pi}} \d \theta + \int_{1}^\pi \frac{1}{\left| \cos(\theta/2) \right|^{\tau_0/\pi}}\frac{1}{\left| \sin(\theta/2) \right|^{\tau_0/\pi}} \d\theta
+	\end{equation*}
+	
+	Let us consider only the first integral, the second one is similar. Then we have 
+	
+	\begin{equation*}
+		\frac{1}{\left| \cos(\theta/2) \right|^{\tau_0/\pi}} \leq 1 	\end{equation*}
+	
+	\noindent for $0 \leq \theta \leq 1$ and 
+	
+	\begin{equation*}
+		\begin{aligned}
+			\lim_{\theta \searrow 0}\frac{1/\sin(\theta/2)^{\tau_0/\pi}}{1/(\theta/2)^{\tau_0/\pi}} &=\lim_{\theta \to 0^+} \frac{(\theta/2)^{\tau_0/\pi}}{\sin(\theta/2)^{\tau_0/\pi}}\\ 
+			&= \lim_{\theta \searrow 0} \frac{(\theta/2)^{\tau_0/\pi}}{\left(\frac{\theta}{2} + O\left(\frac{\theta^3}{8}\right)\right)^{\tau_0/\pi}}\\
+			&= \lim_{\theta \searrow 0} \frac{(\theta/2)^{\tau_0/\pi}}{(\theta/2)^{\tau_0/\pi}\left(1 + O\left(\frac{\theta^2}{4}\right)\right)^{\tau_0/\pi}}\\ 
+			&= \lim_{\theta \searrow 0} \frac{(\theta/2)^{\tau_0/\pi}}{(\theta/2)^{\tau_0/\pi}\left(1 + O\left(\frac{\theta^2}{4}\right)\right)}\\ 
+			&= 1 
+		\end{aligned}
+	\end{equation*} 
+	
+	Thus 
+	
+	\begin{equation*}
+		\frac{1}{\left| \sin(\theta/2) \right|^{\tau_0/\pi}} \sim\frac{1}{\left( \theta/2 \right)^{\tau_0/\pi}}
+	\end{equation*}
+	
+	\noindent when $\theta \searrow 0$ and since $\tau_0 < \pi$, the latter integral converges. Thus we conclude by the comparison theorem.
+\end{proof}
+
 \subsubsection{The Lemma}
 Recall, that a real-valued function $f$, defined on a topological space $X$, is said to be \emph{upper semicontinuous} at a point $a \in X$, if for each $k > f(a)$ there is a neighbourhood $V$ of $a$ such that $k > f(x)$ for each $x \in V$.
 
@@ -292,8 +331,8 @@ Since $\log\vert F(h(\zeta))\vert$ is upper semicontinuous on $\overline{D} \set
 
 \begin{equation*}
 	\begin{aligned}
-		\limsup_{R \toup 1}f_R(\varphi) &= \limsup_{R \toup 1} \left[ \log\vert F(h(Re^{i\varphi}))\vert \frac{R^2 - \rho^2}{R^2 - 2R\rho\cos(\theta - \varphi) + \rho^2}\right]\\
-		&= \limsup_{R \toup 1} \log\vert F(h(Re^{i\varphi}))\vert \lim_{R \toup 1} \frac{R^2 - \rho^2}{R^2 - 2R\rho\cos(\theta - \varphi) + \rho^2}\\
+		\limsup_{R \nearrow 1}f_R(\varphi) &= \limsup_{R \nearrow 1} \left[ \log\vert F(h(Re^{i\varphi}))\vert \frac{R^2 - \rho^2}{R^2 - 2R\rho\cos(\theta - \varphi) + \rho^2}\right]\\
+		&= \limsup_{R \nearrow 1} \log\vert F(h(Re^{i\varphi}))\vert \lim_{R \nearrow 1} \frac{R^2 - \rho^2}{R^2 - 2R\rho\cos(\theta - \varphi) + \rho^2}\\
 		&= \log\vert F(h(e^{i\varphi}))\vert \frac{1 - \rho^2}{1 - 2\rho\cos(\theta - \varphi) + \rho^2}\\
 		&= f(\varphi)
 	\end{aligned}
@@ -302,29 +341,29 @@ Since $\log\vert F(h(\zeta))\vert$ is upper semicontinuous on $\overline{D} \set
 \noindent using \cite[363]{bourbaki:general_topology:1995} and proposition \ref{prop:limsup}. The functions $G - f_R$ being non-negative, an application of Fatou's lemma yields
 
 \begin{equation*}
-	\int_{-\pi}^\pi \liminf_{R \toup 1}\left[ G(\varphi) - f_R(\varphi)\right]\d\varphi \leq \liminf_{R \toup 1} \int_{-\pi}^\pi \left[ G(\varphi) f_R(\varphi)\right]\d\varphi
+	\int_{-\pi}^\pi \liminf_{R \nearrow 1}\left[ G(\varphi) - f_R(\varphi)\right]\d\varphi \leq \liminf_{R \nearrow 1} \int_{-\pi}^\pi \left[ G(\varphi) f_R(\varphi)\right]\d\varphi
 \end{equation*}
 
 By \cite[354]{bourbaki:general_topology:1995}, we get
 
 \begin{equation*}
-	-\int_{-\pi}^\pi \limsup_{R \toup 1}\left[ f_R(\varphi) - G(\varphi)\right]\d\varphi \leq -\limsup_{R \toup 1} \int_{-\pi}^\pi \left[ f_R(\varphi) - G(\varphi)\right]\d \varphi
+	-\int_{-\pi}^\pi \limsup_{R \nearrow 1}\left[ f_R(\varphi) - G(\varphi)\right]\d\varphi \leq -\limsup_{R \nearrow 1} \int_{-\pi}^\pi \left[ f_R(\varphi) - G(\varphi)\right]\d \varphi
 \end{equation*}
 
 and thus
 
 \begin{multline*}
-	\limsup_{R \toup 1} \int_{-\pi}^\pi f_R(\varphi) \d\varphi - \int_{-\pi}^\pi G(\varphi)\d\varphi\\
-	= \limsup_{R \toup 1} \int_{-\pi}^\pi f_R(\varphi) \d\varphi + \lim_{R \toup 1}\int_{-\pi}^\pi \left(-G(\varphi)\right)\d\varphi\\
-	= \limsup_{R \toup 1}\int_{-\pi}^\pi \left[ f_R(\varphi) - G(\varphi)\right]\d\varphi\leq \int_{-\pi}^\pi \limsup_{R \toup 1} \left[f_R(\varphi) - G(\varphi)\right]\d\varphi\\
-	\leq \int_{-\pi}^\pi \limsup_{R \toup 1} f_R(\varphi) \d\varphi + \int_{-\pi}^\pi\lim_{R \toup 1} \left(-G(\varphi)\right)\d\varphi\\
-	= \int_{-\pi}^\pi \limsup_{R \toup 1}f_R(\varphi) \d\varphi - \int_{-\pi}^\pi G(\varphi)\d\varphi
+	\limsup_{R \nearrow 1} \int_{-\pi}^\pi f_R(\varphi) \d\varphi - \int_{-\pi}^\pi G(\varphi)\d\varphi\\
+	= \limsup_{R \nearrow 1} \int_{-\pi}^\pi f_R(\varphi) \d\varphi + \lim_{R \nearrow 1}\int_{-\pi}^\pi \left(-G(\varphi)\right)\d\varphi\\
+	= \limsup_{R \nearrow 1}\int_{-\pi}^\pi \left[ f_R(\varphi) - G(\varphi)\right]\d\varphi\leq \int_{-\pi}^\pi \limsup_{R \nearrow 1} \left[f_R(\varphi) - G(\varphi)\right]\d\varphi\\
+	\leq \int_{-\pi}^\pi \limsup_{R \nearrow 1} f_R(\varphi) \d\varphi + \int_{-\pi}^\pi\lim_{R \nearrow 1} \left(-G(\varphi)\right)\d\varphi\\
+	= \int_{-\pi}^\pi \limsup_{R \nearrow 1}f_R(\varphi) \d\varphi - \int_{-\pi}^\pi G(\varphi)\d\varphi
 \end{multline*}
 
 by \cite[358]{bourbaki:general_topology:1995}. Hence
 
 \begin{equation*}
-	\limsup_{R \toup 1} \int_{-\pi}^\pi f_R(\varphi) \d\varphi \leq\int_{-\pi}^\pi \limsup_{R \toup 1}f_R(\varphi) \d\varphi
+	\limsup_{R \nearrow 1} \int_{-\pi}^\pi f_R(\varphi) \d\varphi \leq\int_{-\pi}^\pi \limsup_{R \nearrow 1}f_R(\varphi) \d\varphi
 \end{equation*}
 
 and so 
@@ -334,18 +373,16 @@ and so
 	\label{eq:limit_case}
 \end{equation}
 
-The lemma will now follows from (\ref{eq:limit_case}) by a change of variables. By stipulating $x := h\left( \zeta \right)$ we obtain \footnote{
+The lemma now follows from (\ref{eq:limit_case}) by a change of variables. By stipulating $x := h\left( \zeta \right)$ we obtain \footnote{
 		Recall, that for $z \in \mathbb{C}$ the trigonometric functions are defined by $\sin(z) := \frac{e^{iz} - e^{-iz}}{2i}$ and $\cos(z) := \frac{e^{iz} + e^{-iz}}{2}$. Hence the identities $e^{iz} = \cos(z) + i\sin(z)$ and $\cos^2(z) + \sin^2(z) = 1$ holds for any $z \in \mathbb{C}$ (see \cite[42--44]{ahlfors:complex_analysis:1979}).	
 	}
 
-\begin{gather}
-	\begin{aligned}
-		\zeta &= h^{-1}(x) = \frac{e^{\pi i x}- i}{e^{\pi i x} + i} = \frac{\cos(\pi x) + i\sin(\pi x) - i}{\cos(\pi x) + i\sin(\pi x) + i}\\
-		&= \frac{\cos(\pi x) + i\sin(\pi x) - i}{\cos(\pi x) + i\sin(\pi x) + i}\frac{\cos(\pi x) - i\sin(\pi x) - i}{\cos(\pi x) - i\sin(\pi x) - i} = -i \frac{\cos(\pi x)}{1 + \sin(\pi x)}\\
-		&= \left( \frac{\cos(\pi x)}{1 + \sin(\pi x)} \right)e^{-i\pi/2}
-	\end{aligned}
+\begin{multline}
+	\zeta = h^{-1}(x) = \frac{e^{\pi i x}- i}{e^{\pi i x} + i} = \frac{\cos(\pi x) + i\sin(\pi x) - i}{\cos(\pi x) + i\sin(\pi x) + i}\\
+		= \frac{\cos(\pi x) + i\sin(\pi x) - i}{\cos(\pi x) + i\sin(\pi x) + i}\frac{\cos(\pi x) - i\sin(\pi x) - i}{\cos(\pi x) - i\sin(\pi x) - i}\\
+		= -i \frac{\cos(\pi x)}{1 + \sin(\pi x)} = \left( \frac{\cos(\pi x)}{1 + \sin(\pi x)} \right)e^{-i\pi/2}
 	\label{eq:radius_angle}
-\end{gather}
+\end{multline}
 
 by
 
