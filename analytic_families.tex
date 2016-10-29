@@ -103,6 +103,7 @@ This lemma is inspired by a lemma originally proposed by I.I.Hirschman. I will s
 
 \begin{lemma}
 	Let $\Omega \subseteq \mathbb{C}$ and $f: \Omega \to \mathbb{C}$ continuous. Then $\log\left| f\right|$ is upper semicontinuous on $\Omega$.
+	\label{lem:uppersemcont}
 \end{lemma}
 
 \begin{proof}
@@ -238,6 +239,7 @@ Recall, that a real-valued function $f$, defined on a topological space $X$, is 
 
 	\begin{equation}
 		\log\vert F( h( \rho e^{i\theta} ))\vert \leq \max\left\{ M,   Ae^{\tau_0/\pi}\frac{1}{\left| \cos(\theta/2) \right|^{\tau_0/\pi}}\frac{1}{\left| \sin(\theta/2) \right|^{\tau_0/\pi}}\right\} =: g\left( \theta \right)
+		\label{est:log}
 	\end{equation}
 
 	\noindent for any $0 \leq \rho < 1$ where $g \in L^1[-\pi,\pi]$. Let $0 \leq \rho < R < 1$ and $a_1,\dots,a_n$ denote the zeros of $F(h(\zeta))$ for $\left\vert \zeta\right\vert < R$ (since $F \circ h$ is holomorphic for $\left\vert \zeta\right\vert < 1$ there are indeed only finitely many ones) multiple zeros being repeated. Then for $F(h(\zeta)) \neq 0$ we have by the \emph{Poisson-Jensen formula} (see \cite[208]{ahlfors:complex_analysis:1979})
@@ -261,82 +263,74 @@ Recall, that a real-valued function $f$, defined on a topological space $X$, is 
 		\log\vert F(h(\zeta))\vert \leq \frac{1}{2\pi}\int_{-\pi}^\pi \frac{R^2 - \rho^2}{R^2 - 2R\rho \cos\left( \theta - t \right) + \rho^2}\log\vert F(h(R e^{it}))\vert\d t
 	\end{equation}
 
-	\noindent is valid for every $\vert \zeta \vert < R$.
+	\noindent is valid for every $\vert \zeta \vert < R$. By \cite[236]{rudin:rc_analysis:1987} we have
 
+	\begin{equation}
+		\frac{R - \rho}{R + \rho} \leq \frac{R^2 - \rho^2}{R^2 - 2R\rho\cos(\theta - \varphi) + \rho^2} \leq \frac{R + \rho}{R - \rho}
+		\label{est:poisson}
+	\end{equation}
+	
+	\noindent for $0 \leq \rho < R$. Combining (\ref{est:log}) and (\ref{est:poisson}) yields 
 
-\begin{equation*}
-	\frac{R - \rho}{R + \rho} \leq \frac{R^2 - \rho^2}{R^2 - 2R\rho\cos(\theta - \varphi) + \rho^2} \leq \frac{R + \rho}{R - \rho}
-\end{equation*}
+\begin{equation}
+	\frac{R^2 - \rho^2}{R^2 - 2R\rho \cos\left( \theta - t \right) + \rho^2}\log\vert F(h(\zeta))\vert \leq \frac{R + \rho}{R - \rho}g\left( \theta \right) =: G\left( \theta \right)
+\end{equation}
 
-which holds for $0 \leq \rho < R < 1$ (see \cite[236]{rudin:rc_analysis:1987}), we conclude
-
-\begin{equation*}
-	\log\left| F(h(\rho e^{i\theta}))\right| \leq g(\theta)
-\end{equation*}
-
-for all $\rho < 1$, where $g \in L^1[-\pi,\pi]$. Thus for $\rho$ fixed, we have 
-
-\begin{equation*}
-	\log\left| F(h(Re^{i\varphi}))\right| \frac{R^2 - \rho^2}{R^2 - 2R\rho\cos(\theta - \varphi) + \rho^2} \leq G(\varphi)
-\end{equation*}
-
-where $G \in L^1[-\pi,\pi]$. For $R < 0$ let
+\noindent where $G \in L^1[-\pi,\pi]$. For $0 < R < 1$ let
 
 \begin{equation*}
-	f_R(\varphi) := \log\left| F(h(Re^{i\varphi}))\right| \frac{R^2 - \rho^2}{R^2 - 2R\rho\cos(\theta - \varphi) + \rho^2}
+	f_R(\varphi) := \log\vert F(h(Re^{i\varphi}))\vert \frac{R^2 - \rho^2}{R^2 - 2R\rho\cos(\theta - \varphi) + \rho^2}
 \end{equation*}
 
-and for $\varphi \neq 0,\pi$
+\noindent and for $\varphi \neq 0,\pi$
 
 \begin{equation*}
-	f(\varphi) := \log\left| F(h(e^{i\varphi}))\right| \frac{1 - \rho^2}{1 - 2\rho\cos(\theta - \varphi) + \rho^2}
+	f(\varphi) := \log\vert F(h(e^{i\varphi}))\vert \frac{1 - \rho^2}{1 - 2\rho\cos(\theta - \varphi) + \rho^2}
 \end{equation*}
 
-The upper semicontinuity of $\log\left| F \circ h\right|$ (by \cite[360]{bourbaki:general_topology:1995} continuity at a point $a$ is equivalent to lower and upper semicontinuity of a function at $a$ and $\log \left| F \circ h\right|$ is continuous on $\overline{D}\setminus \{\pm 1\}$) implies\footnote{
-	By \cite[360]{bourbaki:general_topology:1995} if $f$ is upper semicontinuous at a point, then $-f$ is lower semicontinuous at the same point. Hence by \cite[363]{bourbaki:general_topology:1995} we have $\limsup_{x \to a} f(x) = -\liminf_{x \to a}\left( -f \right)(x) = -\left( -f \right)(a) = f(a)$.
-}
+Since $\log\vert F(h(\zeta))\vert$ is upper semicontinuous on $\overline{D} \setminus \left\{ \pm 1\right\}$ by lemma \ref{lem:uppersemcont} we get
 
 \begin{equation*}
 	\begin{aligned}
-		\limsup_{R \toup 1}f_R(\varphi) &= \limsup_{R \toup 1} \left[ \log\left| F(h(Re^{i\varphi}))\right| \frac{R^2 - \rho^2}{R^2 - 2R\rho\cos(\theta - \varphi) + \rho^2}\right]\\
-		&= \limsup_{R \toup 1} \log\left| F(h(Re^{i\varphi}))\right| \lim_{R \toup 1} \frac{R^2 - \rho^2}{R^2 - 2R\rho\cos(\theta - \varphi) + \rho^2}\\
-		&= \log\left| F(h(e^{i\varphi}))\right| \frac{1 - \rho^2}{1 - 2\rho\cos(\theta - \varphi) + \rho^2}\\
+		\limsup_{R \toup 1}f_R(\varphi) &= \limsup_{R \toup 1} \left[ \log\vert F(h(Re^{i\varphi}))\vert \frac{R^2 - \rho^2}{R^2 - 2R\rho\cos(\theta - \varphi) + \rho^2}\right]\\
+		&= \limsup_{R \toup 1} \log\vert F(h(Re^{i\varphi}))\vert \lim_{R \toup 1} \frac{R^2 - \rho^2}{R^2 - 2R\rho\cos(\theta - \varphi) + \rho^2}\\
+		&= \log\vert F(h(e^{i\varphi}))\vert \frac{1 - \rho^2}{1 - 2\rho\cos(\theta - \varphi) + \rho^2}\\
 		&= f(\varphi)
 	\end{aligned}
 \end{equation*}
 
-using an extension of \cite[359]{bourbaki:general_topology:1995}. The functions $G - f_R$ being non-negative, an application of Fatou's lemma yields
+\noindent using \cite[363]{bourbaki:general_topology:1995} and proposition \ref{prop:limsup}. The functions $G - f_R$ being non-negative, an application of Fatou's lemma yields
 
 \begin{equation*}
-	\int_{-\pi}^\pi \liminf_{R \toup 1}\left[ G(\varphi) - f_R(\varphi)\right]d\lambda(\varphi) \leq \liminf_{R \toup 1} \int_{-\pi}^\pi \left[ G(\varphi) f_R(\varphi)\right]d\lambda(\varphi)
+	\int_{-\pi}^\pi \liminf_{R \toup 1}\left[ G(\varphi) - f_R(\varphi)\right]\d\varphi \leq \liminf_{R \toup 1} \int_{-\pi}^\pi \left[ G(\varphi) f_R(\varphi)\right]\d\varphi
 \end{equation*}
 
 By \cite[354]{bourbaki:general_topology:1995}, we get
 
 \begin{equation*}
-	-\int_{-\pi}^\pi \limsup_{R \toup 1}\left[ f_R(\varphi) - G(\varphi)\right]d\lambda(\varphi) \leq -\limsup_{R \toup 1} \int_{-\pi}^\pi \left[ f_R(\varphi) - G(\varphi)\right]d\lambda(\varphi)
+	-\int_{-\pi}^\pi \limsup_{R \toup 1}\left[ f_R(\varphi) - G(\varphi)\right]\d\varphi \leq -\limsup_{R \toup 1} \int_{-\pi}^\pi \left[ f_R(\varphi) - G(\varphi)\right]\d \varphi
 \end{equation*}
 
 and thus
 
 \begin{multline*}
-	\limsup_{R \toup 1} \int_{-\pi}^\pi f_R(\varphi) d\lambda(\varphi) - \int_{-\pi}^\pi G(\varphi)d\lambda(\varphi)\\
-	= \limsup_{R \toup 1} \int_{-\pi}^\pi f_R(\varphi) d\lambda(\varphi) + \lim_{R \toup 1}\int_{-\pi}^\pi \left(-G(\varphi)\right)d\lambda(\varphi)\\
-	= \limsup_{R \toup 1}\int_{-\pi}^\pi \left[ f_R(\varphi) - G(\varphi)\right]d\lambda(\varphi)\leq \int_{-\pi}^\pi \limsup_{R \toup 1} \left[f_R(\varphi) - G(\varphi)\right]d\lambda(\varphi)\\
-	\leq \int_{-\pi}^\pi \limsup_{R \toup 1} f_R(\varphi) d\lambda(\varphi) + \int_{-\pi}^\pi\lim_{R \toup 1} \left(-G(\varphi)\right)d\lambda(\varphi)\\
-	= \int_{-\pi}^\pi \limsup_{R \toup 1}f_R(\varphi) d\lambda(\varphi) - \int_{-\pi}^\pi G(\varphi)d\lambda(\varphi)
+	\limsup_{R \toup 1} \int_{-\pi}^\pi f_R(\varphi) \d\varphi - \int_{-\pi}^\pi G(\varphi)\d\varphi\\
+	= \limsup_{R \toup 1} \int_{-\pi}^\pi f_R(\varphi) \d\varphi + \lim_{R \toup 1}\int_{-\pi}^\pi \left(-G(\varphi)\right)\d\varphi\\
+	= \limsup_{R \toup 1}\int_{-\pi}^\pi \left[ f_R(\varphi) - G(\varphi)\right]\d\varphi\leq \int_{-\pi}^\pi \limsup_{R \toup 1} \left[f_R(\varphi) - G(\varphi)\right]\d\varphi\\
+	\leq \int_{-\pi}^\pi \limsup_{R \toup 1} f_R(\varphi) \d\varphi + \int_{-\pi}^\pi\lim_{R \toup 1} \left(-G(\varphi)\right)\d\varphi\\
+	= \int_{-\pi}^\pi \limsup_{R \toup 1}f_R(\varphi) \d\varphi - \int_{-\pi}^\pi G(\varphi)\d\varphi
 \end{multline*}
 
 by \cite[358]{bourbaki:general_topology:1995}. Hence
 
 \begin{equation*}
-	\limsup_{R \toup 1} \int_{-\pi}^\pi f_R(\varphi) d\lambda(\varphi) \leq\int_{-\pi}^\pi \limsup_{R \toup 1}f_R(\varphi) d\lambda(\varphi)
+	\limsup_{R \toup 1} \int_{-\pi}^\pi f_R(\varphi) \d\varphi \leq\int_{-\pi}^\pi \limsup_{R \toup 1}f_R(\varphi) \d\varphi
 \end{equation*}
 
 and so 
 
 \begin{equation}
-	\log\left| F( h( \rho e^{i\theta} ) )\right| \leq \frac{1}{2\pi} \int_{-\pi}^\pi \log\left| F( h( e^{i\varphi}))\right| \frac{1 - \rho^2}{1 - 2\rho\cos\left( \theta - \varphi \right) + \rho^2}	
+	\log\vert F( h( \zeta ) )\vert \leq \frac{1}{2\pi} \int_{-\pi}^\pi \log\vert F( h( e^{i\varphi}))\vert \frac{1 - \rho^2}{1 - 2\rho\cos\left( \theta - \varphi \right) + \rho^2}\d\varphi	
 	\label{eq:limit_case}
 \end{equation}
 
@@ -401,13 +395,13 @@ and thus
 Therefore the transformation formula yields
 
 \begin{multline}
-	\frac{1}{2\pi} \int_{-\pi}^0 \frac{\sin(\pi x)}{1 + \cos(\pi x)\sin(\varphi)} \log \vert F(h(e^{i\varphi}))\vert d\lambda(\varphi)\\ = \frac{1}{2}\int_{-\infty}^\infty\frac{\sin(\pi x)}{\cosh(\pi t) - \cos(\pi x)} \log\vert F(it) \vert d\lambda(t)
+	\frac{1}{2\pi} \int_{-\pi}^0 \frac{\sin(\pi x)}{1 + \cos(\pi x)\sin(\varphi)} \log \vert F(h(e^{i\varphi}))\vert \d\varphi\\ = \frac{1}{2}\int_{-\infty}^\infty\frac{\sin(\pi x)}{\cosh(\pi t) - \cos(\pi x)} \log\vert F(it) \vert \d t
 \end{multline}
 				
 and in a similar manner
 		
 \begin{multline}
-	\frac{1}{2\pi} \int_0^\pi \frac{\sin(\pi x)}{1 + \cos(\pi x)\sin(\varphi)} \log \vert F(h(e^{i\varphi}))\vert d\lambda(\varphi)\\ = \frac{1}{2}\int_{-\infty}^\infty\frac{\sin(\pi x)}{\cosh(\pi t) + \cos(\pi x)} \log\vert F(1 + it) \vert d\lambda(t)
+	\frac{1}{2\pi} \int_0^\pi \frac{\sin(\pi x)}{1 + \cos(\pi x)\sin(\varphi)} \log \vert F(h(e^{i\varphi}))\vert \d\varphi\\ = \frac{1}{2}\int_{-\infty}^\infty\frac{\sin(\pi x)}{\cosh(\pi t) + \cos(\pi x)} \log\vert F(1 + it) \vert \d t
 \end{multline}
 
 holds since
@@ -433,7 +427,7 @@ The case \underline{$y \neq 0$.} follows easily from the previous one. Fix $y \n
 		for all $z \in \overline{S}$. The previous case yields for $G$ with $A$ replaced by $Ae^{\tau\vert y \vert}$
 
 		\begin{equation}
-			\vert G(x) \vert \leq \exp\left( \frac{\sin(\pi x)}{2} \int_{-\infty}^\infty \left[ \frac{\log \vert G(it)\vert}{\cosh(\pi t) - \cos(\pi x)} + \frac{\log \vert G(1 + it)\vert}{\cosh(\pi t) + \cos(\pi x)} \right] d\lambda(t)\right)
+			\vert G(x) \vert \leq \exp\left( \frac{\sin(\pi x)}{2} \int_{-\infty}^\infty \left[ \frac{\log \vert G(it)\vert}{\cosh(\pi t) - \cos(\pi x)} + \frac{\log \vert G(1 + it)\vert}{\cosh(\pi t) + \cos(\pi x)} \right] \d t\right)
 		\end{equation}
 
 		Now, observing $G(x) = F(x + iy)$, $G(it) = F(it + iy)$ and $G(1 + it) = F(1 + it + iy)$ yields the desired result.
