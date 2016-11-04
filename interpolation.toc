@@ -10,22 +10,22 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\tocsubsection {}{2.2}{The Riesz-Thorin Interpolation Theorem}}{5}{subsection.2.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\tocsection {}{3}{Interpolation of Analytic Families of Operators}}{11}{section.3}
+\contentsline {section}{\tocsection {}{3}{Interpolation of Analytic Families of Operators}}{10}{section.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\tocsubsection {}{3.1}{Extension of Hadamard's Three Lines Lemma}}{11}{subsection.3.1}
+\contentsline {subsection}{\tocsubsection {}{3.1}{Extension of Hadamard's Three Lines Lemma}}{10}{subsection.3.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\tocsubsubsection {}{3.1.1}{Auxiliary Lemmata}}{11}{subsubsection.3.1.1}
+\contentsline {subsubsection}{\tocsubsubsection {}{3.1.1}{Auxiliary Lemmata}}{10}{subsubsection.3.1.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\tocsubsubsection {}{3.1.2}{The Lemma}}{15}{subsubsection.3.1.2}
+\contentsline {subsubsection}{\tocsubsubsection {}{3.1.2}{The Lemma}}{14}{subsubsection.3.1.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\tocsubsection {}{3.2}{Stein's Theorem on Interpolation of Analytic Families of Operators}}{21}{subsection.3.2}
+\contentsline {subsection}{\tocsubsection {}{3.2}{Stein's Theorem on Interpolation of Analytic Families of Operators}}{20}{subsection.3.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\tocsection {}{4}{The Real Method}}{24}{section.4}
+\contentsline {section}{\tocsection {}{4}{The Real Method}}{23}{section.4}
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\tocsubsection {}{4.1}{The Marcinkiewicz Interpolation Theorem}}{24}{subsection.4.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\tocsection {Appendix}{A}{Limit superior and limit inferior revisited}}{31}{appendix.A}
+\contentsline {section}{\tocsection {Appendix}{A}{Limit superior and limit inferior revisited}}{30}{appendix.A}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\tocsection {Appendix}{B}{Measure Theory}}{32}{appendix.B}
+\contentsline {section}{\tocsection {Appendix}{B}{Measure Theory}}{31}{appendix.B}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\tocsection {Appendix}{}{References}}{33}{section*.3}
+\contentsline {section}{\tocsection {Appendix}{}{References}}{32}{section*.3}

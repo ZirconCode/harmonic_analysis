@@ -22,16 +22,16 @@
 \mainsectionstyle
 
 \section{Introduction and Basic Definitions}
-Suppose $\left(p_0,q_0\right),\left( p_1,q_1 \right) \in [1,\infty]\times [1,\infty]$ are two pairs of indices and assume that the estimates 
+Suppose $\del{p_0,q_0},\del{ p_1,q_1} \in \intcc{1,\infty} \times \intcc{1,\infty}$ are two pairs of indices and assume that the estimates 
 
 \begin{equation*}
-	\left\|T(f)\right\|_{L^{q_0}} \leq M_0\left\|f\right\|_{L^{p_0}} \quad \text{and} \quad \left\|T(f)\right\|_{L^{q_1}} \leq M_1\left\|f\right\|_{L^{p_1}}
+	\norm[0]{T\del{f}}_{L^{q_0}} \leq M_0 \norm[0]{f}_{L^{p_0}} \quad \text{and} \quad \norm[0]{T\del{f}}_{L^{q_1}} \leq M_1\norm{f}_{L^{p_1}}
 \end{equation*}
 
 \noindent hold, where $T$ is an appropriately choosen operator. Does this imply that
 
 \begin{equation*}
-	\left\| T(f)\right\|_{L^q} \leq M \left\| f\right\|_{L^p} \quad \text{for other pairs $\left( p,q \right) \in [1,\infty]$?} 
+	\norm[0]{T\del{f}}_{L^q} \leq M \norm{f}_{L^p} \quad \text{for other pairs $\del{p,q} \in \intcc{1,\infty}$?} 
 \end{equation*}
 
 Those and similar questions will be answered by a tool called \emph{interpolation}, in our case interpolation of $L^p$ spaces. Using interpolation it is possible to reduce difficult estimates to endpoint estimates and so interpolation can (but not always does) simplify matters. Among the numerous applications of interpolation is by far the shortest proof of \emph{Young's inequality for convolutions} \textup{\cite[22--23]{grafakos:fourier:2014}}. There is not \emph{the} interpolation theorem, merely a family of theorems which can be 
@@ -41,21 +41,21 @@ roughly divided into two main categories: \emph{real} and \emph{complex} interpo
 
 \begin{mdframed}
 	\begin{definition}
-		Let $(X,\mu)$ and $(Y,\nu)$ be measure spaces. Further let $T$ be an operator defined on a linear space of complex-valued measurable functions on $X$ and taking values in the set of all complex-valued, finite almost everywhere, measurable functions on $Y$. Then $T$ is called \emph{linear} if for all functions $f$ and $g$ in the domain of $T$ and all $z \in \mathbb{C}$ holds
+		Let $\del{X,\mu}$ and $\del{Y,\nu}$ be measure spaces. Further let $T$ be an operator defined on a linear space of complex-valued measurable functions on $X$ and taking values in the set of all complex-valued, finite almost everywhere, measurable functions on $Y$. Then $T$ is called \emph{linear} if for all functions $f$ and $g$ in the domain of $T$ and all $z \in \mathbb{C}$ holds
 
 		\begin{equation}
-			T\left( f + g \right) = T(f) + T(g) \qquad T\left( zf \right) = zT(f)
+			T{f + g} = T\del{f} + T\del{g} \qquad T\del{zf} = zT\del{f}
 			\label{eq:linear}
 		\end{equation}
 
-		and \emph{quasi-linear} if
+		\noindent and \emph{quasi-linear} if
 
 		\begin{equation}
-			\left| T\left( f + g \right) \right| \leqslant K \left( \left| T(f)\right| + \left| T(g)\right| \right) \qquad \left| T(zf) \right| = \left| z\right| \left| T(f)\right|
+			\abs[0]{T \del{f + g}} \leqslant K \del[0]{\abs[0]{ T\del{f}} + \abs[0]{ T\del{g}}} \qquad \abs[0]{ T\del{zf} } = \abs{z}\abs[0]{ T\del{f}}
 			\label{eq:quasilinear}
 		\end{equation}
 
-		holds for some real constant $K > 0$. If $K = 1$, $T$ is called \emph{sublinear}.
+		\noindent holds for some real constant $K > 0$. If $K = 1$, $T$ is called \emph{sublinear}.
 	\end{definition}
 \end{mdframed}
 

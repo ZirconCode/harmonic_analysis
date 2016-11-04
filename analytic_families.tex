@@ -1,5 +1,5 @@
 \section{Interpolation of Analytic Families of Operators}
-The generalization of the classical Riesz-Thorin interpolation theorem to analytic families of operators is due to \emph{E. M. Stein} and \emph{Guido  Weiss}\footnote{\href{https://projecteuclid.org/euclid.tmj/1178244785}{https://projecteuclid.org/euclid.tmj/1178244785}, last accessed \today.}. Crucial for its proof is again an applicatio of advanced topics in complex analysis.
+The generalization of the classical Riesz-Thorin interpolation theorem to analytic families of operators is due to \emph{E. M. Stein} and \emph{Guido  Weiss}\footnote{\href{https://projecteuclid.org/euclid.tmj/1178244785}{https://projecteuclid.org/euclid.tmj/1178244785}, last accessed \today.}. Crucial for its proof is again an application of advanced topics in complex analysis.
 
 \subsection{Extension of Hadamard's Three Lines Lemma}
 This lemma is inspired by a lemma originally proposed by I.I.Hirschman. I will stick for the most part to the proof given in \cite[43--45]{grafakos:fourier:2014}, but for some parts I will use the paper by Stein and Weiss.
@@ -8,66 +8,39 @@ This lemma is inspired by a lemma originally proposed by I.I.Hirschman. I will s
 \subsubsection{Auxiliary Lemmata} To shorten the proof of the extension of Hadamard's three lines lemma, I will summarize the most important facts used during the proof.
 
 \begin{lemma}
-	Let $D := \{z \in \mathbb{C} : \vert z \vert < 1\}$ be the open unit disc and 
+	Let $D := \cbr[0]{z \in \mathbb{C} : \abs{z} < 1}$ be the open unit disc and 
 	
 	\begin{equation*}
-		h(z) := \frac{1}{\pi i}\log\left( i\frac{1 + z}{1 - z} \right)
+		h\del{z} := \frac{1}{\pi i}\log\del{i\frac{1 + z}{1 - z}}
 	\end{equation*}
 
-	for $z \in \overline{D} \setminus \{\pm 1\}$ where we are taking that continuous branch of $\log z$ in the complex plane slit along the negative imaginary axis, $\mathbb{C} \setminus\left(\{0\} \times [0,\infty)\right)$. Then $h$ is a holomorphic function in $D$ which maps $\overline{D}\setminus \{\pm 1\}$ bijectively onto the closure $\overline{S}$ of the strip $S := \{z \in \mathbb{C} : 0 < \Re z < 1\}$.
+	for $z \in \overline{D} \setminus \{\pm 1\}$ where we are taking that continuous branch of $\log z$ in the complex plane slit along the negative imaginary axis, $\mathbb{C} \setminus \del{\cbr{0} \times \intco{0,\infty}}$. Then $h$ is a holomorphic function in $D$ which maps $\overline{D}\setminus \cbr{\pm 1}$ bijectively onto the closure $\overline{S}$ of the strip $S := \cbr{z \in \mathbb{C} : 0 < \Re z < 1}$.
 
 	\label{lem:h}
 \end{lemma}
 
 \begin{proof}
-	Define $\displaystyle f(z) := i\frac{1 + z}{1 - z}$. If we write $z := x + iy \in \overline{D} \setminus \{\pm 1\}$, we have 
-
-	\begin{equation}
-		f(z) = \frac{-2y}{(1 - x)^2 + y^2} + i \frac{1 - x^2 - y^2}{(1 - x)^2 + y^2}
-		\label{eq:rep_lft}
-	\end{equation}
-
-	Hence $\Im f(z) \geq 0$ on $\overline{D}\setminus \{\pm 1\}$. Stipulating $x := 1 - y$ for $y$ satisfying $y^2 < y$, we get
+	Consider the mapping $\varphi: \mathbb{S}^2 \to \mathbb{S}^2$ defined by
 
 	\begin{equation*}
-		\lim\limits_{y^2 < y, y \rightarrow 0^+} \Im f(z) = \lim\limits_{y^2 < y, y \rightarrow 0^+} \left( \frac{1}{y} - 1 \right) = \infty
+		\varphi\del{z} := \frac{1 + z}{1 - z}
 	\end{equation*}
 
-	using the same definition of $x$ we get
-
+	This $\varphi$ maps $\cbr{-1,0,1}$ to $\cbr{0,1,\infty}$ and is a conformal mapping by \cite[278--279]{rudin:rc_analysis:1987}. The segment $\intoo{-1,1}$ maps onto the positive real axis as can be verified by considering the corresponding real limits and the unit circle $\mathbb{S}^1$ passes through $-1$ and $1$, hence $\varphi\del[0]{\mathbb{S}^1}$ is a straight line through $\varphi\del{-1} = 0$. Since $\mathbb{S}^1$ makes a right angle with the real axis at $-1$ so does $\varphi\del[0]{\mathbb{S}^1}$ at $0$ by the conformality of $\varphi$. Thus $\varphi\del[0]{\mathbb{S}^1}$ is the imaginary axis. Since $\varphi\del{0} = 1$, it follows that $\varphi$ is a conformal one-to-one mapping of the open unit disc onto the open right half plane. Furthermore, $\varphi\del[0]{\overline{D}\setminus \cbr{\pm 1}} = \mathbb{H}^\times$ where $\mathbb{H}^\times := \cbr{z \in \mathbb{C} : \Re z \geq 0} \setminus \cbr{0}$. Thus $i\varphi\del[0]{\overline{D}\setminus \cbr{\pm 1}} = i\mathbb{H}^\times = \cbr{z \in \mathbb{C} : \Im z \geq 0} \setminus \cbr{0}$ and so 
+	
 	\begin{equation*}
-		\lim\limits_{y^2 < y, y \rightarrow 0^+} \Re f(z) = -\lim\limits_{y^2 < y, y \rightarrow 0^+} \frac{1}{y} = -\infty
+		\log i\mathbb{H}^\times = \log \abs[0]{\mathbb{H}^\times} + i \arg i\mathbb{H}^\times = \cbr{z \in \mathbb{C} : 0 \leq \Im z \leq \pi}
 	\end{equation*}
 
-	and by stipulating $x := 1 + y$
+	Finally, multiplication with the preceeding factor $1/\del{\pi i}$ yields $h\del[0]{\overline{D} \setminus \cbr{\pm 1}} = \overline{S}$. Furthermore, we have
 
 	\begin{equation*}
-		\lim\limits_{y^2 < -y, y \rightarrow 0^-} \Re f(z) = -\lim\limits_{y^2 < -y, y \rightarrow 0^-} \frac{1}{y} = \infty	
-	\end{equation*}
-
-
-	Since $2i \neq 0$, $f$ is a linear fractional transformation (see \cite[279]{rudin:rc_analysis:1987}) with
-
-	\begin{equation*}
-		f^{-1}(z) = \frac{z - i}{z + i}
-	\end{equation*}
-
-	Therefore $f$ maps $\overline{D}\setminus \{\pm 1\}$ onto the punctured closed upper half plane $\{z \in \mathbb{C} : \Im z \geq 0\} \setminus \{0\}$. The preceeding logarithm maps this upper half plane onto the strip $\{z \in \mathbb{C} : 0 \leq \Im z \leq \pi \}$. Thus $h(z)$ maps $\overline{D}\setminus \{\pm 1\}$ onto the strip $\overline{S}$. By
-
-\begin{equation}
-	h'(z) = \frac{2}{\pi i} \frac{1}{1 - z}
-	\label{eq:h_diff}
-\end{equation}
-
-	we see that $h$ is a holomorphic function in $D$. Furthermore, we have
-
-	\begin{equation*}
-		h^{-1}(z) = \frac{e^{\pi iz} - i}{e^{\pi i z} + i}
+		h^{-1}\del{z} = \frac{e^{\pi iz} - i}{e^{\pi i z} + i}
 	\end{equation*}
 \end{proof}
 
 \begin{lemma*}
-	Let $X$ be a topological space. A function $f: X \to [-\infty,\infty)$ is upper semicontinuous if and only if for all $\alpha \in \mathbb{R}$ the set $f^{-1}\left( [-\infty,\alpha )\right)$ is open.
+	Let $X$ be a topological space. A function $f: X \to [-\infty,\infty)$ is upper semicontinuous if and only if for all $\alpha \in \mathbb{R}$ the set $f^{-1}\left( [-\infty,\alpha )\right)$ is open. 
 \end{lemma*}
 
 \begin{proof}
@@ -569,7 +542,7 @@ Now we are able to write down the theorem.
 			where for $0 < x < 1$
 
 			\begin{equation*}
-				M(x) = \exp\left( \frac{\sin(\pi x)}{2} \int_{-\infty}^\infty \left[ \frac{\log M_0(t)}{\cosh(\pi t) - \cos(\pi x)} + \frac{\log M_1(t)}{\cosh(\pi t) + \cos(\pi x)}\right] d\lambda(t) \right)
+				M(x) = \exp\left( \frac{\sin(\pi x)}{2} \int_{-\infty}^\infty \left[ \frac{\log M_0(t)}{\cosh(\pi t) - \cos(\pi x)} + \frac{\log M_1(t)}{\cosh(\pi t) + \cos(\pi x)}\right] \d t \right)
 			\end{equation*}
 	\end{theorem}
 \end{mdframed}
@@ -581,7 +554,13 @@ Now we are able to write down the theorem.
 		F(z) := \int_Y T_z(f_z)g_z d\nu	
 	\end{equation}
 
-	We have
+	Since the family $\del{T_z}_{z \in \overline{S}}$ is of admissible growth we have that there exist constants $c\del[0]{\chi_{A_j},\chi_{B_k}}$ for any $j = 1,\dots,n$ and $k = 1,\dots,m$ such that 
+
+	\begin{equation*}
+		\log\abs{\int_{B_k}T_z\del[0]{\chi_{A_j}}\d \nu} \leq c\del[0]{\chi_{A_j},\chi_{B_k}}e^{\tau_0\abs{\Im z}}
+	\end{equation*}
+
+	For shorthand we will denote these constants simply by $c\del[0]{A_j,B_k}$ and get
 
 	\begin{gather*}
 		\begin{aligned}
